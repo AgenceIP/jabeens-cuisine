@@ -149,14 +149,29 @@ export default function Menu() {
         </div>
 
         {/* Menu content */}
-        <main className="flex-1 py-12 px-8 md:px-16 max-w-3xl">
+        <main className="flex-1 py-12 px-4 md:px-16 max-w-3xl">
           {menuData.map(category => (
             <section
               key={category.id}
               id={category.id}
-              className="mb-20"
+              className="mb-12 md:mb-20"
             >
-              <div className="mb-8">
+              {/* Mobile header */}
+              <div className="md:hidden mb-6 flex flex-col items-center text-center py-4" style={{ borderTop: '1px solid #1E1E1E', borderBottom: '1px solid #1E1E1E' }}>
+                <span style={{ width: 24, height: 1, background: '#A8956A', display: 'block', marginBottom: 10 }} />
+                <p className="text-label text-gold" style={{ fontSize: '0.7rem', letterSpacing: '0.25em' }}>
+                  {category.label}
+                </p>
+                {category.sublabel && (
+                  <p className="text-text-muted font-light mt-1" style={{ fontSize: '0.65rem' }}>
+                    {category.sublabel}
+                  </p>
+                )}
+                <span style={{ width: 24, height: 1, background: '#A8956A', display: 'block', marginTop: 10 }} />
+              </div>
+
+              {/* Desktop header */}
+              <div className="hidden md:block mb-8">
                 <p
                   className="text-label text-gold mb-2"
                   style={{
@@ -174,7 +189,7 @@ export default function Menu() {
                 <div className="mt-4 gold-rule" />
               </div>
 
-              <div>
+              <div className="px-0">
                 {category.items.map((item, i) => (
                   <MenuItemRow key={i} item={item} />
                 ))}

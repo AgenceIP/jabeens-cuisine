@@ -79,8 +79,8 @@ export default function Hero() {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
-          style={{ transform: 'scale(1.12)' /* extra room so parallax never shows edges */ }}
+          className="w-full h-full object-cover scale-100 md:scale-[1.12]"
+          style={{ objectPosition: 'center center' }}
         />
         <div
           className="absolute inset-0"
