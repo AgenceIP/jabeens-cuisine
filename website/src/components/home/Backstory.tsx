@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 export default function Backstory() {
   const sectionRef     = useRef<HTMLDivElement>(null)
   const quoteMarkRef   = useRef<HTMLDivElement>(null)
-  const quoteInner     = useRef<HTMLElement>(null)   // masked reveal
+  const quoteInner     = useRef<HTMLQuoteElement>(null)   // masked reveal
   const ruleRef        = useRef<HTMLDivElement>(null)
   const imgWrapRef     = useRef<HTMLDivElement>(null) // clip-path
   const imgInnerRef    = useRef<HTMLImageElement>(null) // scale + parallax
