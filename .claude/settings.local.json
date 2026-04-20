@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(identify \"/c/Users/Yousif Ibrahim/Documents/Jabeen's Cuisine/1_20260414_124018_0000.png\")",
+      "Bash(npm info *)",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(npx tailwindcss *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(ls *.css)",
+      "WebFetch(domain:www.jabeenscuisine.com)",
+      "WebFetch(domain:static.wixstatic.com)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
+      "Bash(winget install *)"
+    ]
+  }
+}
