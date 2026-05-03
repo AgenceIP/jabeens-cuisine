@@ -46,11 +46,11 @@ export default function Navbar() {
           {/* Logo — hard left */}
           <Link to="/" onClick={closeMobile} className="flex-shrink-0">
             <img
-              src="/assets/logo-tagline.png"
+              src="/assets/logo-main.png"
               alt="Jabeen's Cuisine"
-              width={260}
-              height={46}
-              style={{ objectFit: 'contain', mixBlendMode: 'screen' }}
+              width={160}
+              height={60}
+              style={{ objectFit: 'contain' }}
             />
           </Link>
 

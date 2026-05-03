@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Navbar from '@/components/layout/Navbar'
 import PageTransition from '@/components/layout/PageTransition'
+import GrandOpeningPopup from '@/components/ui/GrandOpeningPopup'
 import Home from '@/pages/Home'
 import Menu from '@/pages/Menu'
 import NotreHistoire from '@/pages/NotreHistoire'
@@ -38,6 +39,7 @@ export default function App() {
     <LanguageProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <GrandOpeningPopup />
         <Navbar />
         <AnimatedRoutes />
       </BrowserRouter>

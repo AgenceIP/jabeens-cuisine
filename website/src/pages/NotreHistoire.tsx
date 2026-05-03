@@ -31,7 +31,7 @@ export default function NotreHistoire() {
     <div ref={sectionRef} style={{ background: '#0A0A0A' }}>
       {/* Hero */}
       <div className="relative h-[65vh] overflow-hidden flex items-center justify-center">
-        <img src="/assets/food-shahi-paneer.jpg" alt="" width={736} height={980} className="absolute inset-0 w-full h-full object-cover" loading="eager" />
+        <img src="/menu/images/Butter%20Chicken.jpg" alt="" width={800} height={533} className="absolute inset-0 w-full h-full object-cover" loading="eager" style={{ objectPosition: 'center 30%' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.5), rgba(10,10,10,0.85))' }} />
         <div className="histoire-hero-content relative z-10 text-center px-8 opacity-0">
           <p className="text-label text-gold mb-6">{h.label}</p>

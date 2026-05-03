@@ -1,5 +1,7 @@
 import type { MenuCategory } from '../types'
 
+const img = (name: string) => `/menu/images/${encodeURIComponent(name)}.jpg`
+
 export const menuData: MenuCategory[] = [
   {
     id: 'fusion-bites',
@@ -10,26 +12,32 @@ export const menuData: MenuCategory[] = [
         name: 'Popadum Platter',
         description: '3 types de papad, chutney mangue, yaourt menthe, chutney betterave',
         vegetarian: true,
+        image: img('Popadum Platter'),
+        menus: ['dineIn'],
       },
       {
         name: 'Pani Puri',
         description: 'Street food indien : puri, seringue de chutney, mélange de pommes de terre épicé',
         vegetarian: true,
+        image: img('Pani Puri'),
       },
       {
         name: 'Dahi Puri',
         description: 'Puri de semoule, yaourt sucré, chutney tamarin et menthe, garni de sev',
         vegetarian: true,
+        image: img('Dahi Puri'),
       },
       {
         name: 'Samosa Chaat',
         description: 'Samosa végétarien, channa masala, yaourt, sauces, oignons, sev',
         vegetarian: true,
+        image: img('Samosa Chaat'),
       },
       {
         name: 'Quinoa Bhel',
         description: 'Quinoa, riz soufflé, pomme verte, chutneys tamarin-betterave-menthe',
         vegetarian: true,
+        menus: ['dineIn'],
       },
       {
         name: 'Veg Samosas',
@@ -39,6 +47,7 @@ export const menuData: MenuCategory[] = [
       {
         name: 'Beef Samosas',
         description: 'Notre spécialité maison (3 pcs)',
+        image: img('Beef Samosa'),
       },
       {
         name: 'Gobhi Fritters',
@@ -48,6 +57,29 @@ export const menuData: MenuCategory[] = [
       {
         name: 'Desi Style Fish & Chips',
         description: 'Poisson mariné aux épices Amritsari, frites au chaat masala',
+        image: img('Desi Style Fish and Chips'),
+      },
+      {
+        name: 'Veg Spring Rolls',
+        description: 'Rouleaux de légumes croustillants, sauce aigre-douce maison',
+        vegetarian: true,
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Chicken Spring Rolls',
+        description: 'Rouleaux de poulet épicé croustillants, sauce chili',
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Honey Chili Potato',
+        description: 'Pommes de terre croustillantes, sauce miel-piment, sésame',
+        vegetarian: true,
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Afghani Mantu',
+        description: 'Raviolis afghans farcis, sauce tomate et yaourt épicé',
+        menus: ['takeOut'],
       },
     ],
   },
@@ -64,6 +96,8 @@ export const menuData: MenuCategory[] = [
         name: 'Melon Salad',
         description: 'Laitue, melon frais, feta, vinaigrette miel-citron (veg / crevettes / chicken tikka)',
         vegetarian: true,
+        image: img('Melon Salad'),
+        menus: ['dineIn'],
       },
     ],
   },
@@ -74,18 +108,21 @@ export const menuData: MenuCategory[] = [
     items: [
       {
         name: 'Achaari Paneer Tikka',
-        description: 'Fromage cottage mariné en pickles, cuit au four d\'argile',
+        description: "Fromage cottage mariné en pickles, cuit au four d'argile",
         vegetarian: true,
+        image: img('Achaari Paneer Tikka'),
       },
       {
         name: 'Honey Chili Gobhi',
         description: 'Chou-fleur croustillant, sauce aigre-douce, sésame',
         vegetarian: true,
+        image: img('Honey Chili Gobhi'),
       },
       {
         name: 'Mushroom Stuffed Tikka',
         description: 'Champignons farcis au fromage, cuits lentement au tandoor',
         vegetarian: true,
+        image: img('Mushroom Stuffed Tikka'),
       },
       {
         name: 'Tandoori Prawns',
@@ -102,6 +139,7 @@ export const menuData: MenuCategory[] = [
       {
         name: 'Chicken Malai Tikka',
         description: 'Marinade cajou et épices douces, crème et beurre',
+        image: img('Chicken Malai Tikka'),
       },
       {
         name: 'Chili Chicken',
@@ -168,6 +206,12 @@ export const menuData: MenuCategory[] = [
         description: 'Maïs nain, carotte, brocoli, champignons, tomates cerises',
         vegetarian: true,
       },
+      {
+        name: 'Shahi Paneer',
+        description: 'Fromage cottage en sauce royale crémeuse, noix de cajou et épices douces',
+        vegetarian: true,
+        menus: ['takeOut'],
+      },
     ],
   },
   {
@@ -178,30 +222,40 @@ export const menuData: MenuCategory[] = [
       {
         name: 'Butter Chicken',
         description: 'Poulet tikka, sauce tomate-cajou, crème',
+        image: img('Butter Chicken'),
       },
       {
         name: 'Chicken Tikka Masala',
         description: 'Poulet tandoori, sauce tomate-poivron-crème de coco',
       },
       {
+        name: 'Chicken Lababdar',
+        description: 'Poulet tikka, sauce onion-tomate crémeuse, poivrons',
+        image: img('Chicken Lababdar'),
+      },
+      {
         name: 'Methi Malai Chicken',
         description: 'Malai tikka, sauce kasturi methi et cajou crémeux',
+        image: img('Methi Malai Chicken'),
       },
       {
         name: 'Lahori Kadhai Chicken',
         description: 'Sauce rustique oignon-tomate, poivrons, poulet tikka désossé',
+        image: img('Lahori Kadhai Chicken'),
       },
       {
         name: 'Goan Style Prawns Curry',
         description: 'Curry tomate et crème de coco, crevettes',
+        image: img('Goan Style Prawns Curry'),
       },
       {
         name: 'Lamb Rogan Josh',
-        description: 'Agneau tendre, curry d\'agneau épicé à l\'huile aromatique',
+        description: "Agneau tendre, curry d'agneau épicé à l'huile aromatique",
       },
       {
         name: 'Lamb Bhuna',
         description: 'Agneau tendre en sauce épaisse, poivrons et épices',
+        image: img('Lamb Bhuna'),
       },
       {
         name: 'Beef Karahi',
@@ -219,7 +273,7 @@ export const menuData: MenuCategory[] = [
     sublabel: 'Pains',
     items: [
       { name: 'Tandoori Butter Roti', vegetarian: true },
-      { name: 'Butter Naan', vegetarian: true },
+      { name: 'Butter Naan', vegetarian: true, image: img('Butter Naan') },
       { name: 'Garlic Naan', vegetarian: true },
       { name: 'Cheese Naan', vegetarian: true },
       { name: 'Mushroom Truffle Naan', vegetarian: true },
@@ -250,6 +304,58 @@ export const menuData: MenuCategory[] = [
     ],
   },
   {
+    id: 'karachi-rolls',
+    label: 'Karachi Rolls',
+    sublabel: 'Rôtis farcis',
+    items: [
+      {
+        name: 'Paneer Tikka Roll',
+        description: 'Rôti paratha, paneer tikka, chutney vert, oignons',
+        vegetarian: true,
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Chicken Roll',
+        description: 'Rôti paratha, poulet tikka, oignons, chutney maison',
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Beef Seekh Roll',
+        description: 'Rôti paratha, seekh kebab de bœuf, oignons, sauce maison',
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Malai Chicken Tikka Roll',
+        description: 'Rôti paratha, malai tikka, chutney menthe crémeuse',
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Butter Chicken Roll',
+        description: 'Rôti paratha, butter chicken, sauce tomate-cajou',
+        menus: ['takeOut'],
+      },
+    ],
+  },
+  {
+    id: 'rice-noodles',
+    label: 'Rice & Noodles',
+    sublabel: 'Riz & Nouilles',
+    items: [
+      {
+        name: 'Veg Fried Rice',
+        description: 'Riz sauté aux légumes mélangés, sauce soja, œuf',
+        vegetarian: true,
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Veg Noodles',
+        description: 'Nouilles sautées aux légumes, sauce soja, sésame',
+        vegetarian: true,
+        menus: ['takeOut'],
+      },
+    ],
+  },
+  {
     id: 'sides',
     label: 'Sides',
     sublabel: 'Accompagnements',
@@ -266,18 +372,48 @@ export const menuData: MenuCategory[] = [
     items: [
       {
         name: 'New Style Boondi Pak',
-        description: 'Caviar de boondi, rabri vanille, poudre de pistache, feuille d\'or',
+        description: "Caviar de boondi, rabri vanille, poudre de pistache, feuille d'or",
         vegetarian: true,
+        menus: ['dineIn'],
       },
       {
         name: 'Tiramisu Went to South Asia',
         description: 'Rasmalai, mousse mascarpone café, cacao',
         vegetarian: true,
+        image: img('South Asian Tiramisu'),
+        menus: ['dineIn'],
       },
       {
         name: 'Phirni Brûlée',
         description: 'Phirni de riz au safran, effet brûlée',
         vegetarian: true,
+        image: img('Phirni Brûlée'),
+        menus: ['dineIn'],
+      },
+      {
+        name: 'Gulab Jamun',
+        description: 'Boulettes de lait frites au sirop de rose et cardamome (2 pcs)',
+        vegetarian: true,
+        menus: ['takeOut'],
+      },
+      {
+        name: 'Rasmalai',
+        description: 'Galettes de fromage frais, crème au lait aromatisée, pistaches',
+        vegetarian: true,
+        menus: ['takeOut'],
+      },
+    ],
+  },
+  {
+    id: 'options',
+    label: 'Options',
+    sublabel: 'Extras',
+    items: [
+      {
+        name: 'Frites + Boisson',
+        description: 'Ajoutez des frites et une boisson gazeuse à votre commande — +$4',
+        vegetarian: true,
+        menus: ['takeOut'],
       },
     ],
   },

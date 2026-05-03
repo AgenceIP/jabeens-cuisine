@@ -9,7 +9,7 @@ export const siteConfig = {
     'Jeu – Sam': '11h00 – 1h00',
   },
   social: {
-    instagram: 'https://www.instagram.com/jabeens.cuisine/',
+    instagram: 'https://www.instagram.com/jabeenscuisineofficial/',
     facebook: 'https://www.facebook.com/jabeenscuisine',
     tiktok: 'https://www.tiktok.com/@jabeenscuisine',
   },

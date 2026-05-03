@@ -125,12 +125,12 @@ export default function Backstory() {
             >
               <img
                 ref={imgInnerRef}
-                src="/assets/food-shahi-paneer.jpg"
-                alt="Shahi Paneer — Jabeen's Cuisine"
-                width={736}
-                height={980}
+                src="/assets/our-story.jpg"
+                alt="Jabeen's Cuisine"
+                width={800}
+                height={600}
                 className="w-full object-cover"
-                style={{ willChange: 'transform' }}
+                style={{ willChange: 'transform', aspectRatio: '4/3' }}
                 loading="lazy"
               />
             </div>

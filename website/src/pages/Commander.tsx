@@ -65,19 +65,35 @@ export default function Commander() {
             ))}
           </div>
 
-          {/* Deliverect */}
-          <div className="mt-16 p-12 text-center" style={{ border: '1px solid #1E1E1E', background: '#111111' }}>
-            <p className="text-label text-gold mb-4" style={{ fontSize: '0.6rem' }}>{c.deliverect_label}</p>
-            <p className="text-display text-text-primary mb-4" style={{ fontSize: '1.5rem' }}>{c.deliverect_heading}</p>
-            <p className="text-text-muted font-light mb-8" style={{ fontSize: '0.8rem' }}>{c.deliverect_body}</p>
-            {/* EMBED DELIVERECT WIDGET HERE
-                1. Go to your Deliverect dashboard
-                2. Navigate to Online Ordering > Widget
-                3. Copy the embed code and replace this div
-            */}
-            <div className="w-full min-h-[200px] flex items-center justify-center" style={{ border: '1px dashed #1E1E1E', background: '#0A0A0A' }}>
-              <p className="text-label text-text-muted" style={{ fontSize: '0.55rem' }}>{c.deliverect_zone}</p>
-            </div>
+          {/* Order button */}
+          <div className="mt-16 py-14 text-center" style={{ border: '1px solid #1E1E1E', background: '#111111' }}>
+            {/* TODO: link href to external ordering platform */}
+            <a
+              href="#"
+              style={{
+                display: 'inline-block',
+                fontFamily: 'Montserrat',
+                fontSize: '0.65rem',
+                fontWeight: 600,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: '#0A0A0A',
+                background: '#A8956A',
+                padding: '18px 48px',
+                textDecoration: 'none',
+                transition: 'background 0.3s, color 0.3s',
+              }}
+              onMouseEnter={e => {
+                const a = e.currentTarget as HTMLAnchorElement
+                a.style.background = '#C4AF85'
+              }}
+              onMouseLeave={e => {
+                const a = e.currentTarget as HTMLAnchorElement
+                a.style.background = '#A8956A'
+              }}
+            >
+              Order from the menu
+            </a>
           </div>
 
           {/* Hours */}

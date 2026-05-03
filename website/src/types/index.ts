@@ -3,6 +3,8 @@ export interface MenuItem {
   description?: string
   price?: string
   vegetarian?: boolean
+  image?: string
+  menus?: ('dineIn' | 'takeOut')[]
 }
 
 export interface MenuCategory {

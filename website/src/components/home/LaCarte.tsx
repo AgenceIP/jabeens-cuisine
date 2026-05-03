@@ -2,32 +2,35 @@ import { Link } from 'react-router-dom'
 import { useT } from '@/contexts/LanguageContext'
 import './GaleriePhoto.css'
 
-// Each row uses a different subset + ordering for visual variety.
-// object-position varies to show different parts of the same photo.
+const p = (name: string) => `/menu/images/${encodeURIComponent(name)}.jpg`
+
 const row1: { src: string; w: number; pos?: string }[] = [
-  { src: '/assets/food-north-indian.jpg', w: 300, pos: 'center center' },
-  { src: '/assets/food-shahi-paneer.jpg', w: 260, pos: 'center 30%' },
-  { src: '/assets/food-gen-2.png',        w: 320, pos: 'center center' },
-  { src: '/assets/food-gen-1.png',        w: 280, pos: 'center 60%' },
-  { src: '/assets/food-north-indian.jpg', w: 300, pos: 'left center' },
-  { src: '/assets/food-gen-2.png',        w: 260, pos: 'right center' },
+  { src: p('Butter Chicken'),              w: 340, pos: 'center center' },
+  { src: p('Lahori Kadhai Chicken'),       w: 300, pos: 'center center' },
+  { src: p('Achaari Paneer Tikka'),        w: 320, pos: 'center center' },
+  { src: p('Goan Style Prawns Curry'),     w: 290, pos: 'center center' },
+  { src: p('Mushroom Stuffed Tikka'),      w: 330, pos: 'center center' },
+  { src: p('Lamb Bhuna'),                  w: 310, pos: 'center center' },
+  { src: p('Desi Style Fish and Chips'),   w: 285, pos: 'center center' },
 ]
 
 const row2: { src: string; w: number; pos?: string }[] = [
-  { src: '/assets/food-gen-1.png',        w: 460, pos: 'center top' },
-  { src: '/assets/food-north-indian.jpg', w: 500, pos: 'center center' },
-  { src: '/assets/food-shahi-paneer.jpg', w: 420, pos: 'center 40%' },
-  { src: '/assets/food-gen-2.png',        w: 480, pos: 'center bottom' },
-  { src: '/assets/food-gen-1.png',        w: 440, pos: 'center 60%' },
+  { src: p('Chicken Lababdar'),       w: 480, pos: 'center center' },
+  { src: p('Samosa Chaat'),           w: 440, pos: 'center center' },
+  { src: p('Methi Malai Chicken'),    w: 460, pos: 'center center' },
+  { src: p('Dahi Puri'),              w: 420, pos: 'center center' },
+  { src: p('Melon Salad'),            w: 450, pos: 'center center' },
+  { src: p('Chicken Malai Tikka'),    w: 430, pos: 'center center' },
 ]
 
 const row3: { src: string; w: number; pos?: string }[] = [
-  { src: '/assets/food-shahi-paneer.jpg', w: 270, pos: 'center center' },
-  { src: '/assets/food-gen-2.png',        w: 310, pos: 'left 40%' },
-  { src: '/assets/food-north-indian.jpg', w: 290, pos: 'right center' },
-  { src: '/assets/food-gen-1.png',        w: 340, pos: 'center 70%' },
-  { src: '/assets/food-shahi-paneer.jpg', w: 280, pos: 'center 20%' },
-  { src: '/assets/food-gen-2.png',        w: 300, pos: 'center center' },
+  { src: p('Honey Chili Gobhi'),      w: 310, pos: 'center center' },
+  { src: p('Phirni Brûlée'),          w: 290, pos: 'center center' },
+  { src: p('Popadum Platter'),        w: 330, pos: 'center center' },
+  { src: p('Beef Samosa'),            w: 270, pos: 'center center' },
+  { src: p('South Asian Tiramisu'),   w: 320, pos: 'center center' },
+  { src: p('Pani Puri'),              w: 300, pos: 'center center' },
+  { src: p('Butter Naan'),            w: 285, pos: 'center center' },
 ]
 
 const GAP = 6 // px between photos
@@ -108,9 +111,9 @@ export default function LaCarte() {
 
       {/* Three drift rows */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
-        <PhotoRow photos={row1} height={360} direction="left"  duration={48} />
-        <PhotoRow photos={row2} height={260} direction="right" duration={36} />
-        <PhotoRow photos={row3} height={320} direction="left"  duration={56} />
+        <PhotoRow photos={row1} height={218} direction="left"  duration={48} />
+        <PhotoRow photos={row2} height={198} direction="right" duration={36} />
+        <PhotoRow photos={row3} height={210} direction="left"  duration={56} />
       </div>
 
       {/* Left + right edge vignettes */}
