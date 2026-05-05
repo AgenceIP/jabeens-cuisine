@@ -48,8 +48,8 @@ export default function Navbar() {
             <img
               src="/assets/logo-main.png"
               alt="Jabeen's Cuisine"
-              width={160}
-              height={60}
+              width={220}
+              height={80}
               style={{ objectFit: 'contain' }}
             />
           </Link>

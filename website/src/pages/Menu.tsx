@@ -58,6 +58,7 @@ function MenuItemRow({ item }: { item: MenuCategory['items'][0] }) {
             height: 80,
             objectFit: 'cover',
             flexShrink: 0,
+            objectPosition: 'center 65%',
             filter: 'brightness(0.88) contrast(1.05)',
           }}
         />

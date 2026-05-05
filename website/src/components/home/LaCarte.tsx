@@ -5,32 +5,32 @@ import './GaleriePhoto.css'
 const p = (name: string) => `/menu/images/${encodeURIComponent(name)}.jpg`
 
 const row1: { src: string; w: number; pos?: string }[] = [
-  { src: p('Butter Chicken'),              w: 340, pos: 'center center' },
-  { src: p('Lahori Kadhai Chicken'),       w: 300, pos: 'center center' },
-  { src: p('Achaari Paneer Tikka'),        w: 320, pos: 'center center' },
-  { src: p('Goan Style Prawns Curry'),     w: 290, pos: 'center center' },
-  { src: p('Mushroom Stuffed Tikka'),      w: 330, pos: 'center center' },
-  { src: p('Lamb Bhuna'),                  w: 310, pos: 'center center' },
-  { src: p('Desi Style Fish and Chips'),   w: 285, pos: 'center center' },
+  { src: p('Butter Chicken'),              w: 340, pos: 'center 65%' },
+  { src: p('Lahori Kadhai Chicken'),       w: 300, pos: 'center 65%' },
+  { src: p('Achaari Paneer Tikka'),        w: 320, pos: 'center 65%' },
+  { src: p('Goan Style Prawns Curry'),     w: 290, pos: 'center 65%' },
+  { src: p('Mushroom Stuffed Tikka'),      w: 330, pos: 'center 65%' },
+  { src: p('Lamb Bhuna'),                  w: 310, pos: 'center 65%' },
+  { src: p('Desi Style Fish and Chips'),   w: 285, pos: 'center 65%' },
 ]
 
 const row2: { src: string; w: number; pos?: string }[] = [
-  { src: p('Chicken Lababdar'),       w: 480, pos: 'center center' },
-  { src: p('Samosa Chaat'),           w: 440, pos: 'center center' },
-  { src: p('Methi Malai Chicken'),    w: 460, pos: 'center center' },
-  { src: p('Dahi Puri'),              w: 420, pos: 'center center' },
-  { src: p('Melon Salad'),            w: 450, pos: 'center center' },
-  { src: p('Chicken Malai Tikka'),    w: 430, pos: 'center center' },
+  { src: p('Chicken Lababdar'),       w: 480, pos: 'center 65%' },
+  { src: p('Samosa Chaat'),           w: 440, pos: 'center 65%' },
+  { src: p('Methi Malai Chicken'),    w: 460, pos: 'center 65%' },
+  { src: p('Dahi Puri'),              w: 420, pos: 'center 65%' },
+  { src: p('Melon Salad'),            w: 450, pos: 'center 65%' },
+  { src: p('Chicken Malai Tikka'),    w: 430, pos: 'center 65%' },
 ]
 
 const row3: { src: string; w: number; pos?: string }[] = [
-  { src: p('Honey Chili Gobhi'),      w: 310, pos: 'center center' },
-  { src: p('Phirni Brûlée'),          w: 290, pos: 'center center' },
-  { src: p('Popadum Platter'),        w: 330, pos: 'center center' },
-  { src: p('Beef Samosa'),            w: 270, pos: 'center center' },
-  { src: p('South Asian Tiramisu'),   w: 320, pos: 'center center' },
-  { src: p('Pani Puri'),              w: 300, pos: 'center center' },
-  { src: p('Butter Naan'),            w: 285, pos: 'center center' },
+  { src: p('Honey Chili Gobhi'),      w: 310, pos: 'center 65%' },
+  { src: p('Phirni Brûlée'),          w: 290, pos: 'center 65%' },
+  { src: p('Popadum Platter'),        w: 330, pos: 'center 65%' },
+  { src: p('Beef Samosa'),            w: 270, pos: 'center 65%' },
+  { src: p('South Asian Tiramisu'),   w: 320, pos: 'center 65%' },
+  { src: p('Pani Puri'),              w: 300, pos: 'center 65%' },
+  { src: p('Butter Naan'),            w: 285, pos: 'center 65%' },
 ]
 
 const GAP = 6 // px between photos
