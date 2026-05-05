@@ -5,8 +5,7 @@ export const siteConfig = {
   phone: '(450) 926-3111',
   email: 'info@jabeenscuisine.ca',
   hours: {
-    'Dim – Mer': '11h00 – 22h30',
-    'Jeu – Sam': '11h00 – 1h00',
+    'Tous les jours': '11h00 – 23h00',
   },
   social: {
     instagram: 'https://www.instagram.com/jabeenscuisineofficial/',

@@ -100,16 +100,9 @@ export default function Commander() {
           <div className="mt-16 text-center">
             <div className="gold-rule mb-8" />
             <p className="text-label text-text-muted mb-6">{c.hours_label}</p>
-            <div className="flex flex-col sm:flex-row justify-center gap-8">
-              <div>
-                <p className="text-display text-text-primary" style={{ fontSize: '1.1rem' }}>{c.days1}</p>
-                <p className="text-text-muted font-light text-sm">11:00 – 22:30</p>
-              </div>
-              <div style={{ width: 1, background: '#1E1E1E' }} className="hidden sm:block" />
-              <div>
-                <p className="text-display text-text-primary" style={{ fontSize: '1.1rem' }}>{c.days2}</p>
-                <p className="text-text-muted font-light text-sm">11:00 – 1:00</p>
-              </div>
+            <div>
+              <p className="text-display text-text-primary" style={{ fontSize: '1.1rem' }}>Tous les jours</p>
+              <p className="text-text-muted font-light text-sm">11:00 – 23:00</p>
             </div>
           </div>
         </div>
