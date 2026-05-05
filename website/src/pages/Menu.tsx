@@ -22,7 +22,15 @@ const PDF_MENUS = [
   },
 ]
 
-function MenuItemRow({ item }: { item: MenuCategory['items'][0] }) {
+type LightboxItem = { image: string; name: string; description?: string; vegetarian?: boolean }
+
+function MenuItemRow({
+  item,
+  onImageClick,
+}: {
+  item: MenuCategory['items'][0]
+  onImageClick: (item: LightboxItem) => void
+}) {
   return (
     <div
       className="flex items-start gap-4 py-5"
@@ -33,40 +41,55 @@ function MenuItemRow({ item }: { item: MenuCategory['items'][0] }) {
           {item.vegetarian && (
             <span className="text-gold" style={{ fontSize: '0.65rem' }}>✦</span>
           )}
-          <p
-            className="text-display text-text-primary"
-            style={{ fontSize: '1.1rem' }}
-          >
+          <p className="text-display text-text-primary" style={{ fontSize: '1.1rem' }}>
             {item.name}
           </p>
         </div>
         {item.description && (
-          <p
-            className="text-text-muted font-light leading-relaxed"
-            style={{ fontSize: '0.78rem' }}
-          >
+          <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.78rem' }}>
             {item.description}
           </p>
         )}
       </div>
       {item.image ? (
-        <img
-          src={item.image}
-          alt={item.name}
+        <button
+          onClick={() => onImageClick({ image: item.image!, name: item.name, description: item.description, vegetarian: item.vegetarian })}
           style={{
-            width: 120,
-            height: 80,
-            objectFit: 'cover',
+            padding: 0,
+            background: 'none',
+            border: 'none',
+            cursor: 'zoom-in',
             flexShrink: 0,
-            objectPosition: 'center 65%',
-            filter: 'brightness(0.88) contrast(1.05)',
+            display: 'block',
+            overflow: 'hidden',
+            position: 'relative',
           }}
-        />
-      ) : (
-        <p
-          className="text-text-muted font-light flex-shrink-0 pt-1"
-          style={{ fontSize: '0.85rem' }}
+          aria-label={`Voir ${item.name}`}
         >
+          <img
+            src={item.image}
+            alt={item.name}
+            style={{
+              width: 120,
+              height: 80,
+              objectFit: 'cover',
+              objectPosition: 'center 65%',
+              filter: 'brightness(0.88) contrast(1.05)',
+              display: 'block',
+              transition: 'transform 0.4s ease, filter 0.4s ease',
+            }}
+            onMouseEnter={e => {
+              ;(e.currentTarget as HTMLImageElement).style.transform = 'scale(1.06)'
+              ;(e.currentTarget as HTMLImageElement).style.filter = 'brightness(1) contrast(1.05)'
+            }}
+            onMouseLeave={e => {
+              ;(e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'
+              ;(e.currentTarget as HTMLImageElement).style.filter = 'brightness(0.88) contrast(1.05)'
+            }}
+          />
+        </button>
+      ) : (
+        <p className="text-text-muted font-light flex-shrink-0 pt-1" style={{ fontSize: '0.85rem' }}>
           ——
         </p>
       )}
@@ -74,9 +97,112 @@ function MenuItemRow({ item }: { item: MenuCategory['items'][0] }) {
   )
 }
 
+function ImageLightbox({ item, onClose }: { item: LightboxItem; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      onClick={onClose}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9998,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'rgba(0,0,0,0.88)',
+        backdropFilter: 'blur(8px)',
+        padding: '24px',
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.94, y: 8 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        onClick={e => e.stopPropagation()}
+        style={{
+          position: 'relative',
+          maxWidth: 560,
+          width: '100%',
+          background: '#0E0E0E',
+          border: '1px solid #2A2A2A',
+          boxShadow: '0 32px 80px rgba(0,0,0,0.8)',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Close */}
+        <button
+          onClick={onClose}
+          aria-label="Fermer"
+          style={{
+            position: 'absolute',
+            top: 12,
+            right: 12,
+            zIndex: 10,
+            width: 30,
+            height: 30,
+            borderRadius: '50%',
+            background: 'rgba(10,10,10,0.7)',
+            border: '1px solid #3A3A3A',
+            color: '#999',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.75rem',
+            backdropFilter: 'blur(4px)',
+          }}
+        >
+          ✕
+        </button>
+
+        {/* Image */}
+        <img
+          src={item.image}
+          alt={item.name}
+          style={{
+            width: '100%',
+            aspectRatio: '4/3',
+            objectFit: 'cover',
+            objectPosition: 'center 65%',
+            display: 'block',
+          }}
+        />
+
+        {/* Info */}
+        <div style={{ padding: '20px 24px 24px' }}>
+          <div className="flex items-center gap-2 mb-2">
+            {item.vegetarian && (
+              <span className="text-gold" style={{ fontSize: '0.65rem' }}>✦</span>
+            )}
+            <p className="text-display text-text-primary" style={{ fontSize: '1.2rem' }}>
+              {item.name}
+            </p>
+          </div>
+          {item.description && (
+            <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.82rem' }}>
+              {item.description}
+            </p>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
 export default function Menu() {
   const [activeMenu, setActiveMenu] = useState<MenuType>('dineIn')
   const [activeId, setActiveId] = useState(menuData[0].id)
+  const [lightbox, setLightbox] = useState<LightboxItem | null>(null)
   const t = useT()
   const m = t.menuPage
 
@@ -406,7 +532,7 @@ export default function Menu() {
 
                 <div className="px-0">
                   {category.items.map((item, i) => (
-                    <MenuItemRow key={i} item={item} />
+                    <MenuItemRow key={i} item={item} onImageClick={setLightbox} />
                   ))}
                 </div>
               </section>
@@ -419,6 +545,10 @@ export default function Menu() {
             </div>
           </main>
         </motion.div>
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {lightbox && <ImageLightbox item={lightbox} onClose={() => setLightbox(null)} />}
       </AnimatePresence>
 
       <Footer />
