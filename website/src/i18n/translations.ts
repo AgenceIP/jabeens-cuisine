@@ -7,8 +7,8 @@ export const translations = {
       reservations: 'Reservations',
       order: 'Order',
       hallRental: 'Hall Rental',
-      reserve: 'Book a Table',
-      reserveTable: 'Book a Table',
+      reserve: 'Call Us',
+      reserveTable: 'Call Us',
     },
     hero: {
       eyebrow: 'Brossard · Halal · Since 2019',
@@ -214,8 +214,8 @@ export const translations = {
       reservations: 'Réservations',
       order: 'Commander',
       hallRental: 'Location de Salle',
-      reserve: 'Réserver une table',
-      reserveTable: 'Réserver une table',
+      reserve: 'Nous Appeler',
+      reserveTable: 'Nous Appeler',
     },
     hero: {
       eyebrow: 'Brossard · Halal · Depuis 2019',

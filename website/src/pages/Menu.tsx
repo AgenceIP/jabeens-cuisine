@@ -161,9 +161,9 @@ export default function Menu() {
                   </div>
                   <a
                     href={menu.pdf} target="_blank" rel="noopener noreferrer"
-                    style={{ fontFamily: 'Montserrat', fontSize: '0.52rem', color: '#555', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #2A2A2A', padding: '5px 10px', transition: 'color 0.2s, border-color 0.2s' }}
+                    style={{ fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 700, color: '#F5F5F0', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #6B6B6B', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
                     onMouseEnter={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#A8956A'; a.style.borderColor = '#A8956A' }}
-                    onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#555'; a.style.borderColor = '#2A2A2A' }}
+                    onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#F5F5F0'; a.style.borderColor = '#6B6B6B' }}
                   >↗ OUVRIR</a>
                 </div>
                 {/* PDF iframe — desktop only */}
