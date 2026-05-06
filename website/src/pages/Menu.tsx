@@ -153,8 +153,19 @@ export default function Menu() {
               style={{ transformStyle: 'preserve-3d' }}
             >
               <div style={{ border: '1px solid #2A2A2A', overflow: 'hidden', background: '#0E0E0E', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}>
-                {/* Header — always visible */}
-                <div style={{ padding: '14px 20px', borderBottom: '1px solid #1E1E1E', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                {/* Mobile: full-card button */}
+                <a
+                  href={menu.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="md:hidden flex flex-col items-center justify-center py-10 px-6"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: '#F5F5F0', textAlign: 'center' }}>{menu.title}</p>
+                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.6rem', color: '#6B6B6B', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
+                </a>
+                {/* Desktop header */}
+                <div className="hidden md:flex" style={{ padding: '14px 20px', borderBottom: '1px solid #1E1E1E', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <p style={{ fontFamily: 'Montserrat', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.22em', color: '#A8956A' }}>{menu.title}</p>
                     <p style={{ fontFamily: 'Montserrat', fontSize: '0.55rem', color: '#555', marginTop: 3 }}>{menu.subtitle}</p>
