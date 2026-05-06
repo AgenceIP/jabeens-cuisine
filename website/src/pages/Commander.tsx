@@ -34,6 +34,32 @@ export default function Commander() {
             </p>
           </div>
 
+          {/* Order button */}
+          <div className="mb-8 py-14 text-center" style={{ border: '1px solid #1E1E1E', background: '#111111' }}>
+            <a
+              href="http://jabeenscuisine.clusterpos.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-block',
+                fontFamily: 'Montserrat',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: '#F5F5F0',
+                background: '#A8956A',
+                padding: '18px 48px',
+                textDecoration: 'none',
+                transition: 'background 0.3s, color 0.3s',
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = '#C4AF85' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = '#A8956A' }}
+            >
+              Order from the menu
+            </a>
+          </div>
+
           {/* Platform cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: '#1E1E1E' }}>
             {platforms.map(platform => (
@@ -63,39 +89,6 @@ export default function Commander() {
                 </span>
               </a>
             ))}
-          </div>
-
-          {/* Order button */}
-          <div className="mt-16 py-14 text-center" style={{ border: '1px solid #1E1E1E', background: '#111111' }}>
-            {/* TODO: link href to external ordering platform */}
-            <a
-              href="http://jabeenscuisine.clusterpos.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-block',
-                fontFamily: 'Montserrat',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-                color: '#F5F5F0',
-                background: '#A8956A',
-                padding: '18px 48px',
-                textDecoration: 'none',
-                transition: 'background 0.3s, color 0.3s',
-              }}
-              onMouseEnter={e => {
-                const a = e.currentTarget as HTMLAnchorElement
-                a.style.background = '#C4AF85'
-              }}
-              onMouseLeave={e => {
-                const a = e.currentTarget as HTMLAnchorElement
-                a.style.background = '#A8956A'
-              }}
-            >
-              Order from the menu
-            </a>
           </div>
 
           {/* Hours */}
