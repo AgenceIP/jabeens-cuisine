@@ -53,6 +53,7 @@ export default function NotreHistoire() {
           src="/assets/restaurant-interior.mp4"
           autoPlay muted loop playsInline
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'right center' }}
         />
 
         {/* Directional overlay: dark on left for readability, opens up on right */}
