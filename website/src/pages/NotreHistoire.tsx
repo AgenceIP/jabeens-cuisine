@@ -30,7 +30,7 @@ export default function NotreHistoire() {
   return (
     <div ref={sectionRef} style={{ background: '#0A0A0A' }}>
       {/* Hero */}
-      <div className="relative h-[65vh] overflow-hidden flex items-center justify-center">
+      <div className="relative h-screen overflow-hidden flex items-center justify-center">
         <video
           src="/assets/restaurant-interior.mp4"
           autoPlay
