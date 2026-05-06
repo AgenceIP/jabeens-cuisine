@@ -81,7 +81,7 @@ function ImageLightbox({ item, onClose }: { item: LightboxItem; onClose: () => v
           onClick={onClose} aria-label="Fermer"
           style={{ position: 'absolute', top: 12, right: 12, zIndex: 10, width: 30, height: 30, borderRadius: '50%', background: 'rgba(10,10,10,0.7)', border: '1px solid #3A3A3A', color: '#999', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', backdropFilter: 'blur(4px)' }}
         >✕</button>
-        <img src={item.image} alt={item.name} style={{ width: '100%', maxHeight: '65vh', objectFit: 'contain', background: '#111', display: 'block' }} />
+        <img src={item.image} alt={item.name} style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '65vh', display: 'block', margin: '0 auto' }} />
         <div style={{ padding: '20px 24px 24px' }}>
           <div className="flex items-center gap-2 mb-2">
             {item.vegetarian && <span className="text-gold" style={{ fontSize: '0.65rem' }}>✦</span>}
