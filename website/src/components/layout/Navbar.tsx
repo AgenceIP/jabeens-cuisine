@@ -44,12 +44,15 @@ export default function Navbar() {
         <div className="max-w-site mx-auto px-8 md:px-16 flex items-center h-20" style={{ gap: 0 }}>
 
           {/* Logo — hard left */}
-          <Link to="/" onClick={closeMobile} className="flex-shrink-0">
+          <Link
+            to="/"
+            onClick={() => { closeMobile(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+            className="flex-shrink-0"
+          >
             <img
               src="/assets/logo-main.png"
               alt="Jabeen's Cuisine"
-              width={270}
-              height={90}
+              className="w-52 md:w-80"
               style={{ objectFit: 'contain' }}
             />
           </Link>
