@@ -69,7 +69,9 @@ export default function Commander() {
           <div className="mt-16 py-14 text-center" style={{ border: '1px solid #1E1E1E', background: '#111111' }}>
             {/* TODO: link href to external ordering platform */}
             <a
-              href="#"
+              href="http://jabeenscuisine.clusterpos.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: 'inline-block',
                 fontFamily: 'Montserrat',
