@@ -45,29 +45,19 @@ export default function NotreHistoire() {
 
   return (
     <div ref={sectionRef} style={{ background: '#0A0A0A' }}>
-      {/* Hero — full video centered with edge fades */}
-      <div className="relative h-screen overflow-hidden flex items-center">
+      {/* Hero — split: dark left panel + video right panel */}
+      <div className="relative h-screen overflow-hidden flex">
 
-        {/* Video — contained, centered, fully visible */}
-        <video
-          src="/assets/restaurant-interior.mp4"
-          autoPlay muted loop playsInline
-          className="absolute inset-0 w-full h-full"
-          style={{ objectFit: 'contain', objectPosition: 'center' }}
-        />
-
-        {/* Left + right edge fades */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #0A0A0A 0%, transparent 28%, transparent 72%, #0A0A0A 100%)' }} />
-        {/* Top + bottom edge fades */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #0A0A0A 0%, transparent 18%, transparent 70%, #0A0A0A 100%)' }} />
-        {/* Extra dark veil on left for text readability */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.75) 0%, transparent 45%)' }} />
-
-        {/* Text — left aligned, vertically centered */}
-        <div className="relative z-10 w-full max-w-site mx-auto px-10 md:px-20 lg:px-24">
-          <div className="histoire-hero-content opacity-0 max-w-lg text-center md:text-left">
+        {/* Left: solid dark panel with text */}
+        <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24" style={{ background: '#0A0A0A' }}>
+          <video
+            src="/assets/restaurant-interior.mp4"
+            autoPlay muted loop playsInline
+            className="md:hidden absolute inset-0 w-full h-full object-cover opacity-30"
+          />
+          <div className="histoire-hero-content opacity-0 relative z-10 text-center md:text-left">
             <p className="text-label text-gold mb-6">{h.label}</p>
-            <h1 className="text-display text-text-primary leading-none mb-10" style={{ fontSize: 'clamp(3rem, 5vw, 5.5rem)' }}>
+            <h1 className="text-display text-text-primary leading-none mb-10" style={{ fontSize: 'clamp(3rem, 4.5vw, 5rem)' }}>
               {h.heroTitle}
             </h1>
             <div className="gold-divider mb-8 mx-auto md:mx-0" />
@@ -75,6 +65,17 @@ export default function NotreHistoire() {
               {h.quote}
             </blockquote>
           </div>
+        </div>
+
+        {/* Right: video panel (desktop only) */}
+        <div className="hidden md:block flex-1 relative overflow-hidden">
+          <video
+            src="/assets/restaurant-interior.mp4"
+            autoPlay muted loop playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #0A0A0A 0%, transparent 18%)' }} />
+          <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
         </div>
 
       </div>
