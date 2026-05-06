@@ -114,11 +114,6 @@ export default function Footer() {
                   {siteConfig.phone}
                 </a>
               </li>
-              <li>
-                <Link to="/reservations" className="text-text-muted hover:text-text-primary transition-colors duration-300 text-sm font-light">
-                  {f.reservations}
-                </Link>
-              </li>
             </ul>
           </div>
 

@@ -131,7 +131,7 @@ export default function Hero() {
               <Link
                 to="/commander"
                 className="text-label px-8 py-4 transition-colors duration-300 block"
-                style={{ background: '#A8956A', color: '#0A0A0A' }}
+                style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
                 onMouseEnter={e => (e.currentTarget.style.background = '#bfa97a')}
                 onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}
               >
@@ -142,7 +142,7 @@ export default function Hero() {
               <Link
                 to="/menu"
                 className="text-label px-8 py-4 border transition-all duration-300 block"
-                style={{ borderColor: 'rgba(245,245,240,0.4)', color: '#F5F5F0' }}
+                style={{ borderColor: 'rgba(245,245,240,0.4)', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
                 onMouseEnter={e => {
                   e.currentTarget.style.borderColor = '#A8956A'
                   e.currentTarget.style.color = '#A8956A'

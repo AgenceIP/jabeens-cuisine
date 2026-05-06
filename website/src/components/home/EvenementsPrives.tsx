@@ -98,9 +98,9 @@ export default function EvenementsPrives() {
               <Link
                 to="/location-salle"
                 className="text-label border px-8 py-4 inline-block transition-all duration-300"
-                style={{ borderColor: '#A8956A', color: '#A8956A' }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#A8956A'; e.currentTarget.style.color = '#0A0A0A' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#A8956A' }}
+                style={{ borderColor: '#F5F5F0', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#F5F5F0'; e.currentTarget.style.color = '#0A0A0A' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#F5F5F0' }}
               >
                 {t.evenements.cta}
               </Link>

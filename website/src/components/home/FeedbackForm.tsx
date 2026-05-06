@@ -135,7 +135,7 @@ export default function FeedbackForm() {
                 type="submit"
                 disabled={sending}
                 className="text-label w-full py-5 transition-all duration-300"
-                style={{ background: '#A8956A', color: '#0A0A0A', opacity: sending ? 0.7 : 1, cursor: sending ? 'wait' : 'pointer' }}
+                style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700, opacity: sending ? 0.7 : 1, cursor: sending ? 'wait' : 'pointer' }}
                 onMouseEnter={e => { if (!sending) e.currentTarget.style.background = '#bfa97a' }}
                 onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}
               >

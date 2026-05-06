@@ -48,8 +48,8 @@ export default function Navbar() {
             <img
               src="/assets/logo-main.png"
               alt="Jabeen's Cuisine"
-              width={220}
-              height={80}
+              width={270}
+              height={90}
               style={{ objectFit: 'contain' }}
             />
           </Link>
@@ -72,12 +72,13 @@ export default function Navbar() {
           {/* Right: Réserver CTA + lang toggle — desktop */}
           <div className="hidden md:flex items-center gap-5 flex-shrink-0">
             <MagneticButton strength={0.2}>
-              <Link
-                to="/reservations"
+              <a
+                href="tel:4509263111"
                 className="text-label border border-text-primary text-text-primary px-6 py-3 transition-all duration-300 hover:border-gold hover:text-gold block text-center"
+                style={{ fontSize: '0.76rem', fontWeight: 700 }}
               >
                 {t.nav.reserve}
-              </Link>
+              </a>
             </MagneticButton>
             <LangToggle lang={lang} setLang={setLang} />
           </div>
@@ -150,13 +151,14 @@ export default function Navbar() {
                 transition={{ delay: 0.5 }}
                 className="flex flex-col items-center gap-4 mt-4"
               >
-                <Link
-                  to="/reservations"
+                <a
+                  href="tel:4509263111"
                   onClick={closeMobile}
                   className="text-label border border-gold text-gold px-8 py-4 block"
+                  style={{ fontSize: '0.76rem', fontWeight: 700 }}
                 >
                   {t.nav.reserveTable}
-                </Link>
+                </a>
                 <LangToggle lang={lang} setLang={(l) => { setLang(l); closeMobile() }} />
               </motion.div>
             </div>

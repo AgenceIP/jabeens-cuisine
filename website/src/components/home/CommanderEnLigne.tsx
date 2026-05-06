@@ -81,9 +81,9 @@ export default function CommanderEnLigne() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-label px-10 py-4 border transition-all duration-300 block"
-                style={{ borderColor: '#1E1E1E', color: '#6B6B6B' }}
+                style={{ borderColor: '#3A3A3A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = '#A8956A'; e.currentTarget.style.color = '#A8956A' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = '#1E1E1E'; e.currentTarget.style.color = '#6B6B6B' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = '#3A3A3A'; e.currentTarget.style.color = '#F5F5F0' }}
               >
                 {platform.name}
               </a>

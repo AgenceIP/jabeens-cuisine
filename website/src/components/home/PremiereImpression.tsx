@@ -124,7 +124,8 @@ export default function PremiereImpression() {
             <Link
               ref={linkRef}
               to="/notre-histoire"
-              className="text-label text-gold hover-underline inline-block"
+              className="text-label hover-underline inline-block"
+              style={{ color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
             >
               {t.premiereImpression.link}
             </Link>
