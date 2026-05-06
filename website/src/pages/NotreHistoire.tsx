@@ -13,17 +13,33 @@ export default function NotreHistoire() {
   const h = t.histoirePage
 
   useGSAP(() => {
+    // Hero entrance
     gsap.fromTo('.histoire-hero-content',
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.3 }
     )
+
+    // Fade-in every section block as it enters the viewport
+    gsap.utils.toArray<Element>('.fade-in-section').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 82%', once: true } }
+      )
+    })
+
+    // Timeline entries — staggered
     gsap.fromTo('.timeline-entry',
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.15, scrollTrigger: { trigger: '.timeline-section', start: 'top 75%' } }
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.15,
+        scrollTrigger: { trigger: '.timeline-section', start: 'top 75%' } }
     )
+
+    // Philosophy columns — staggered
     gsap.fromTo('.philosophy-col',
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.15, scrollTrigger: { trigger: '.philosophy-section', start: 'top 75%' } }
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.15,
+        scrollTrigger: { trigger: '.philosophy-section', start: 'top 75%' } }
     )
   }, { scope: sectionRef })
 
@@ -49,7 +65,7 @@ export default function NotreHistoire() {
       </div>
 
       {/* Pull quote */}
-      <div className="section-padding text-center" style={{ borderBottom: '1px solid #1E1E1E' }}>
+      <div className="fade-in-section section-padding text-center" style={{ borderBottom: '1px solid #1E1E1E' }}>
         <div className="max-w-2xl mx-auto">
           <div className="text-display-italic text-gold leading-none mb-6 select-none" style={{ fontSize: '5rem', lineHeight: 0.8, opacity: 0.4 }}>
             "
@@ -63,7 +79,7 @@ export default function NotreHistoire() {
       {/* Timeline */}
       <div className="timeline-section section-padding">
         <div className="max-w-site mx-auto">
-          <p className="text-label text-gold mb-16 text-center">{h.timelineLabel}</p>
+          <p className="fade-in-section text-label text-gold mb-16 text-center">{h.timelineLabel}</p>
           <div className="relative max-w-3xl mx-auto">
             <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 hidden md:block" style={{ width: 1, background: '#1E1E1E' }} />
             <div className="space-y-16">
@@ -89,7 +105,7 @@ export default function NotreHistoire() {
       {/* Philosophy */}
       <div className="philosophy-section section-padding" style={{ background: '#111111', borderTop: '1px solid #1E1E1E' }}>
         <div className="max-w-site mx-auto">
-          <p className="text-label text-gold mb-16 text-center">{h.valuesLabel}</p>
+          <p className="fade-in-section text-label text-gold mb-16 text-center">{h.valuesLabel}</p>
           <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: '1px solid #1E1E1E' }}>
             {h.values.map((col, i) => (
               <div
