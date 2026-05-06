@@ -417,4 +417,19 @@ export const menuData: MenuCategory[] = [
       },
     ],
   },
+  {
+    id: 'drinks',
+    label: 'Boissons',
+    sublabel: 'Drinks',
+    items: [
+      { name: 'Mojito', description: 'Citron vert, menthe, soda — 9$', vegetarian: true, menus: ['drinks'] },
+      { name: 'Strawberry Mojito', description: 'Citron vert, fraise, mangue — 9$', vegetarian: true, menus: ['drinks'] },
+      { name: 'Bonbon à la mangue', description: 'Citron vert, pulpe de mangue, soda avec crème de noix de coco — 10$', vegetarian: true, menus: ['drinks'] },
+      { name: 'Latte glacé', description: 'Café froid, lait, glace — 7$', vegetarian: true, menus: ['drinks'] },
+      { name: 'Chai', description: 'Thé épicé chaud, lait — 5$', vegetarian: true, menus: ['drinks'] },
+      { name: 'Chai glacé', description: 'Thé épicé froid, lait — 7$', vegetarian: true, menus: ['drinks'] },
+      { name: 'Lassi à la mangue', description: 'Yaourt, mangue kesar — 7$', vegetarian: true, menus: ['drinks'] },
+      { name: 'Canettes', description: 'Boissons gazeuses — 3$', vegetarian: true, menus: ['drinks'] },
+    ],
+  },
 ]

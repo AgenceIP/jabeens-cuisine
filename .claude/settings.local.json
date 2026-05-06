@@ -14,7 +14,13 @@
       "WebFetch(domain:static.wixstatic.com)",
       "Bash(npx tsc *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
-      "Bash(winget install *)"
+      "Bash(winget install *)",
+      "Bash(Get-ChildItem -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Format-Table -AutoSize)",
+      "Bash(cp '/c/Users/Yousif Ibrahim/Downloads/Dine-in Menu-20260503T183030Z-3-001/Menu/*.jpg' '/c/Users/Yousif Ibrahim/Documents/Jabeen'\\\\''s Cuisine/website/public/menu/images/')",
+      "Bash(cp '/c/Users/Yousif Ibrahim/Downloads/Dine-in Menu-20260503T183030Z-3-001/Menu/*.pdf' '/c/Users/Yousif Ibrahim/Documents/Jabeen'\\\\''s Cuisine/website/public/menu/')"
     ]
   }
 }

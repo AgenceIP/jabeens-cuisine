@@ -60,11 +60,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <img
-              src="/assets/logo-peacock-tagline.png"
+              src="/assets/logo-footer.png"
               alt="Jabeen's Cuisine"
-              width={140}
-              height={140}
-              style={{ objectFit: 'contain', filter: 'sepia(1) saturate(0.8) brightness(0.85)' }}
+              width={200}
+              height={200}
+              style={{ objectFit: 'contain' }}
               className="mb-6"
             />
             <p className="text-text-muted text-xs leading-relaxed font-light" style={{ fontFamily: 'Montserrat' }}>
