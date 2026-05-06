@@ -45,35 +45,40 @@ export default function NotreHistoire() {
 
   return (
     <div ref={sectionRef} style={{ background: '#0A0A0A' }}>
-      {/* Hero */}
-      <div className="relative h-screen overflow-hidden flex items-center justify-center">
+      {/* Hero — split layout */}
+      <div className="relative h-screen overflow-hidden flex">
+
+        {/* Video — full background, visible on the right on desktop */}
         <video
           src="/assets/restaurant-interior.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
+          autoPlay muted loop playsInline
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.5), rgba(10,10,10,0.85))' }} />
-        <div className="histoire-hero-content relative z-10 text-center px-8 opacity-0">
-          <p className="text-label text-gold mb-6">{h.label}</p>
-          <h1 className="text-display text-text-primary leading-none" style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}>
-            {h.heroTitle}
-          </h1>
-        </div>
-      </div>
 
-      {/* Pull quote */}
-      <div className="fade-in-section section-padding text-center" style={{ borderBottom: '1px solid #1E1E1E' }}>
-        <div className="max-w-2xl mx-auto">
-          <div className="text-display-italic text-gold leading-none mb-6 select-none" style={{ fontSize: '5rem', lineHeight: 0.8, opacity: 0.4 }}>
-            "
+        {/* Desktop: solid dark panel left side */}
+        <div className="hidden md:block absolute left-0 top-0 bottom-0" style={{ width: '45%', background: '#0A0A0A' }} />
+        {/* Desktop: gradient blend at edge */}
+        <div className="hidden md:block absolute top-0 bottom-0" style={{ left: '41%', width: '180px', background: 'linear-gradient(to right, #0A0A0A, transparent)' }} />
+
+        {/* Mobile: dark overlay */}
+        <div className="md:hidden absolute inset-0" style={{ background: 'rgba(10,10,10,0.75)' }} />
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
+
+        {/* Text */}
+        <div className="relative z-10 w-full md:w-[45%] flex flex-col justify-center px-10 md:px-16 lg:px-24 text-center md:text-left">
+          <div className="histoire-hero-content opacity-0">
+            <p className="text-label text-gold mb-6">{h.label}</p>
+            <h1 className="text-display text-text-primary leading-none mb-10" style={{ fontSize: 'clamp(2.8rem, 5vw, 5rem)' }}>
+              {h.heroTitle}
+            </h1>
+            <div className="gold-divider mb-8" style={{ marginLeft: 0 }} />
+            <blockquote className="text-display-italic" style={{ fontSize: 'clamp(0.95rem, 1.4vw, 1.2rem)', lineHeight: 1.9, color: 'rgba(245,245,240,0.65)' }}>
+              {h.quote}
+            </blockquote>
           </div>
-          <blockquote className="text-display-italic text-text-primary" style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.9rem)', lineHeight: 1.6 }}>
-            {h.quote}
-          </blockquote>
         </div>
+
       </div>
 
       {/* Timeline */}
