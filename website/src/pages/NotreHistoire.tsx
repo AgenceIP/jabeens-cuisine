@@ -45,34 +45,40 @@ export default function NotreHistoire() {
 
   return (
     <div ref={sectionRef} style={{ background: '#0A0A0A' }}>
-      {/* Hero — full-width video, text overlaid left */}
-      <div className="relative h-screen overflow-hidden flex items-center">
+      {/* Hero — split: dark left panel + video right panel */}
+      <div className="relative h-screen overflow-hidden flex">
 
-        {/* Video — full background */}
-        <video
-          src="/assets/restaurant-interior.mp4"
-          autoPlay muted loop playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: 'right center' }}
-        />
-
-        {/* Directional overlay: dark on left for readability, opens up on right */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.85) 35%, rgba(10,10,10,0.45) 65%, rgba(10,10,10,0.2) 100%)' }} />
-        {/* Bottom fade into page */}
-        <div className="absolute bottom-0 left-0 right-0" style={{ height: 140, background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
-
-        {/* Text — left-aligned on desktop, centered on mobile */}
-        <div className="relative z-10 w-full max-w-site mx-auto px-10 md:px-20 lg:px-24">
-          <div className="histoire-hero-content opacity-0 max-w-xl text-center md:text-left">
+        {/* Left: solid dark panel with text */}
+        <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24" style={{ background: '#0A0A0A' }}>
+          {/* Mobile: video as background behind text */}
+          <video
+            src="/assets/restaurant-interior.mp4"
+            autoPlay muted loop playsInline
+            className="md:hidden absolute inset-0 w-full h-full object-cover opacity-30"
+          />
+          <div className="histoire-hero-content opacity-0 relative z-10 text-center md:text-left">
             <p className="text-label text-gold mb-6">{h.label}</p>
-            <h1 className="text-display text-text-primary leading-none mb-10" style={{ fontSize: 'clamp(3rem, 6vw, 6rem)' }}>
+            <h1 className="text-display text-text-primary leading-none mb-10" style={{ fontSize: 'clamp(3rem, 4.5vw, 5rem)' }}>
               {h.heroTitle}
             </h1>
             <div className="gold-divider mb-8 mx-auto md:mx-0" />
-            <blockquote className="text-display-italic" style={{ fontSize: 'clamp(0.95rem, 1.4vw, 1.2rem)', lineHeight: 1.9, color: 'rgba(245,245,240,0.65)' }}>
+            <blockquote className="text-display-italic" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.15rem)', lineHeight: 1.9, color: 'rgba(245,245,240,0.65)' }}>
               {h.quote}
             </blockquote>
           </div>
+        </div>
+
+        {/* Right: video panel (desktop only) */}
+        <div className="hidden md:block flex-1 relative overflow-hidden">
+          <video
+            src="/assets/restaurant-interior.mp4"
+            autoPlay muted loop playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Blend left edge into dark panel */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #0A0A0A 0%, transparent 18%)' }} />
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
         </div>
 
       </div>
