@@ -12,6 +12,8 @@ const PDF_MENUS = [
   { type: 'takeOut' as MenuType, title: 'TAKE OUT', subtitle: 'À emporter',       pdf: '/menu/TAKE OUT MENU.pdf' },
 ]
 
+const DRINKS_PDF = { title: 'DRINKS', subtitle: 'Boissons & Cocktails', pdf: '/menu/DrinkMenu.pdf' }
+
 type LightboxItem = { image: string; name: string; description?: string; vegetarian?: boolean }
 
 function MenuItemRow({ item, onImageClick }: { item: MenuCategory['items'][0]; onImageClick: (item: LightboxItem) => void }) {
@@ -141,10 +143,10 @@ export default function Menu() {
         <p className="text-center text-label text-gold mb-8" style={{ fontSize: '0.6rem', letterSpacing: '0.25em' }}>
           NOS MENUS — TÉLÉCHARGER OU CONSULTER
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ maxWidth: 900, margin: '0 auto', perspective: 1200 }}>
-          {PDF_MENUS.map((menu, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto', perspective: 1200 }}>
+          {[...PDF_MENUS, DRINKS_PDF].map((menu, i) => (
             <motion.div
-              key={menu.type}
+              key={menu.title}
               initial={{ opacity: 0, y: 40, rotateY: i === 0 ? 12 : -12, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, rotateY: 0, scale: 1 }}
               transition={{ duration: 0.75, delay: i * 0.18, ease: [0.22, 1, 0.36, 1] }}

@@ -92,7 +92,6 @@ export default function Footer() {
                 { label: f.menu, to: '/menu' },
                 { label: f.order, to: '/commander' },
                 { label: f.hallRental, to: '/location-salle' },
-                { label: f.events, to: '/notre-histoire' },
               ].map(item => (
                 <li key={item.to}>
                   <Link to={item.to} className="text-text-muted hover:text-text-primary transition-colors duration-300 text-sm font-light">

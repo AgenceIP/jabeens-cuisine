@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function GrandOpeningPopup() {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setOpen(true), 5000)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <AnimatePresence>

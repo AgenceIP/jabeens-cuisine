@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { siteConfig } from '@/data/siteConfig'
 import { useT } from '@/contexts/LanguageContext'
 
+// TODO: remplace FORMSPREE_ID par l'ID obtenu sur formspree.io
+const FORMSPREE_ID = 'FORMSPREE_ID'
+
 interface FormValues {
   prenom: string
   nom: string
@@ -29,11 +32,29 @@ const selectArrow = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/200
 
 export default function FeedbackForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>()
   const t = useT()
   const fb = t.feedback
 
-  const onSubmit = (_data: FormValues) => setSubmitted(true)
+  const onSubmit = async (data: FormValues) => {
+    setSending(true)
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: `${data.prenom} ${data.nom}`,
+          email: data.email,
+          type: data.type,
+          message: data.message,
+        }),
+      })
+      if (res.ok) setSubmitted(true)
+    } finally {
+      setSending(false)
+    }
+  }
 
   return (
     <section style={{ background: '#0A0A0A', borderTop: '1px solid #1E1E1E' }} className="section-padding">
@@ -112,12 +133,13 @@ export default function FeedbackForm() {
 
               <button
                 type="submit"
+                disabled={sending}
                 className="text-label w-full py-5 transition-all duration-300"
-                style={{ background: '#A8956A', color: '#0A0A0A' }}
-                onMouseEnter={e => (e.currentTarget.style.background = '#bfa97a')}
+                style={{ background: '#A8956A', color: '#0A0A0A', opacity: sending ? 0.7 : 1, cursor: sending ? 'wait' : 'pointer' }}
+                onMouseEnter={e => { if (!sending) e.currentTarget.style.background = '#bfa97a' }}
                 onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}
               >
-                {fb.submit}
+                {sending ? '...' : fb.submit}
               </button>
 
               <div className="flex justify-center gap-8 mt-12">
