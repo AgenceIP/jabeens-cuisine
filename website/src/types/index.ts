@@ -4,7 +4,7 @@ export interface MenuItem {
   price?: string
   vegetarian?: boolean
   image?: string
-  menus?: ('dineIn' | 'takeOut' | 'drinks')[]
+  menus?: ('dineIn' | 'takeOut')[]
 }
 
 export interface MenuCategory {

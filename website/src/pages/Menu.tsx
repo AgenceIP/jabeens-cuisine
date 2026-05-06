@@ -5,13 +5,14 @@ import type { MenuCategory } from '@/types'
 import Footer from '@/components/layout/Footer'
 import { useT } from '@/contexts/LanguageContext'
 
-type MenuType = 'dineIn' | 'takeOut' | 'drinks'
+type MenuType = 'dineIn' | 'takeOut'
 
 const PDF_MENUS = [
-  { type: 'dineIn' as MenuType,  title: 'DINE IN',  subtitle: 'Restaurant Menu',      pdf: '/menu/Restaurant MENU.pdf' },
-  { type: 'takeOut' as MenuType, title: 'TAKE OUT', subtitle: 'À emporter',            pdf: '/menu/TAKE OUT MENU.pdf' },
-  { type: 'drinks' as MenuType,  title: 'DRINKS',   subtitle: 'Boissons & Cocktails', pdf: '/menu/DrinkMenu.pdf' },
+  { type: 'dineIn' as MenuType,  title: 'DINE IN',  subtitle: 'Restaurant Menu', pdf: '/menu/Restaurant MENU.pdf' },
+  { type: 'takeOut' as MenuType, title: 'TAKE OUT', subtitle: 'À emporter',       pdf: '/menu/TAKE OUT MENU.pdf' },
 ]
+
+const DRINKS_PDF = { title: 'DRINKS', subtitle: 'Boissons & Cocktails', pdf: '/menu/DrinkMenu.pdf' }
 
 type LightboxItem = { image: string; name: string; description?: string; vegetarian?: boolean }
 
@@ -143,7 +144,7 @@ export default function Menu() {
           NOS MENUS — TÉLÉCHARGER OU CONSULTER
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto', perspective: 1200 }}>
-          {PDF_MENUS.map((menu, i) => (
+          {[...PDF_MENUS, DRINKS_PDF].map((menu, i) => (
             <motion.div
               key={menu.title}
               initial={{ opacity: 0, y: 40, rotateY: i === 0 ? 12 : -12, scale: 0.95 }}
