@@ -50,7 +50,7 @@ export default function CommanderEnLigne() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden" style={{ background: '#07091C' }}>
+    <section ref={sectionRef} className="relative overflow-hidden" style={{ background: '#0A0A0A' }}>
       <div className="absolute inset-0">
         <img src="/assets/food-gen-2.png" alt="" width={896} height={1200} className="w-full h-full object-cover opacity-20" loading="lazy" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.7), rgba(10,10,10,0.9))' }} />

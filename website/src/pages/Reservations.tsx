@@ -59,7 +59,7 @@ export default function Reservations() {
 
   return (
     <>
-      <div style={{ background: '#07091C', minHeight: '100vh' }}>
+      <div style={{ background: '#0A0A0A', minHeight: '100vh' }}>
 
         {/* Header */}
         <div className="pt-40 pb-16 text-center px-8" style={{ borderBottom: '1px solid #1E1E1E' }}>
@@ -224,7 +224,7 @@ export default function Reservations() {
                 <button
                   type="submit"
                   className="text-label w-full py-5 transition-all duration-300"
-                  style={{ background: '#A8956A', color: '#07091C' }}
+                  style={{ background: '#A8956A', color: '#0A0A0A' }}
                   onMouseEnter={e => (e.currentTarget.style.background = '#bfa97a')}
                   onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}
                 >

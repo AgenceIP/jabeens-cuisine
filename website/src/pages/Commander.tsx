@@ -26,7 +26,7 @@ export default function Commander() {
         </div>
       </div>
 
-      <div style={{ background: '#07091C' }}>
+      <div style={{ background: '#0A0A0A' }}>
         <div className="max-w-3xl mx-auto px-8 py-20">
           <div className="text-center mb-16">
             <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.9rem', whiteSpace: 'pre-line' }}>
@@ -35,7 +35,7 @@ export default function Commander() {
           </div>
 
           {/* Order button */}
-          <div className="mb-8 py-14 text-center" style={{ border: '1px solid #1E1E1E', background: '#0B0E25' }}>
+          <div className="mb-8 py-14 text-center" style={{ border: '1px solid #1E1E1E', background: '#111111' }}>
             <a
               href="http://jabeenscuisine.clusterpos.com/"
               target="_blank"
@@ -69,9 +69,9 @@ export default function Commander() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center justify-center py-14 px-8 text-center transition-all duration-500"
-                style={{ background: '#0B0E25' }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#07091C' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#0B0E25' }}
+                style={{ background: '#111111' }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#0A0A0A' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#111111' }}
               >
                 <p className="text-label text-text-muted mb-2 transition-colors duration-300 group-hover:text-gold" style={{ fontSize: '0.6rem' }}>
                   {platform.description}

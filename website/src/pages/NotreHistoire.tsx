@@ -44,12 +44,12 @@ export default function NotreHistoire() {
   }, { scope: sectionRef })
 
   return (
-    <div ref={sectionRef} style={{ background: '#07091C' }}>
+    <div ref={sectionRef} style={{ background: '#0A0A0A' }}>
       {/* Hero — split: dark left panel + video right panel */}
       <div className="relative h-screen overflow-hidden flex">
 
         {/* Left: solid dark panel with text */}
-        <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24" style={{ background: '#07091C' }}>
+        <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24" style={{ background: '#0A0A0A' }}>
           <video
             src="/assets/restaurant-interior.mp4"
             autoPlay muted loop playsInline
@@ -74,8 +74,8 @@ export default function NotreHistoire() {
             autoPlay muted loop playsInline
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #07091C 0%, transparent 18%)' }} />
-          <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #07091C, transparent)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #0A0A0A 0%, transparent 18%)' }} />
+          <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
         </div>
 
       </div>
@@ -97,7 +97,7 @@ export default function NotreHistoire() {
                     <h3 className="text-display text-text-primary mb-3" style={{ fontSize: '1.3rem' }}>{entry.title}</h3>
                     <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.85rem' }}>{entry.text}</p>
                   </div>
-                  <div className="hidden md:flex flex-shrink-0 items-center justify-center w-3 h-3 rounded-full border border-gold mt-4" style={{ background: '#07091C' }} />
+                  <div className="hidden md:flex flex-shrink-0 items-center justify-center w-3 h-3 rounded-full border border-gold mt-4" style={{ background: '#0A0A0A' }} />
                   <div className="flex-1" />
                 </div>
               ))}
@@ -107,7 +107,7 @@ export default function NotreHistoire() {
       </div>
 
       {/* Philosophy */}
-      <div className="philosophy-section section-padding" style={{ background: '#0B0E25', borderTop: '1px solid #1E1E1E' }}>
+      <div className="philosophy-section section-padding" style={{ background: '#111111', borderTop: '1px solid #1E1E1E' }}>
         <div className="max-w-site mx-auto">
           <p className="fade-in-section text-label text-gold mb-16 text-center">{h.valuesLabel}</p>
           <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: '1px solid #1E1E1E' }}>

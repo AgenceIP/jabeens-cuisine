@@ -69,7 +69,7 @@ export default function Hero() {
     <section
       ref={containerRef}
       className="relative h-screen w-full overflow-hidden flex items-center"
-      style={{ background: '#07091C' }}
+      style={{ background: '#0A0A0A' }}
     >
       {/* Background — parallax target */}
       <div ref={bgRef} className="absolute inset-0 overflow-hidden" style={{ willChange: 'transform' }}>

@@ -12,7 +12,7 @@
   }
 
   html {
-    background-color: #07091C;
+    background-color: #0A0A0A;
     color: #F5F5F0;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -22,35 +22,7 @@
   body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    background-color: #07091C;
-    /* Dark navy silk texture — diagonal weave + colour depth blobs */
-    background-image:
-      repeating-linear-gradient(
-        -58deg,
-        transparent 0px,
-        transparent 18px,
-        rgba(35, 62, 190, 0.07) 18px,
-        rgba(35, 62, 190, 0.07) 20px,
-        transparent 20px,
-        transparent 38px,
-        rgba(28, 52, 165, 0.045) 38px,
-        rgba(28, 52, 165, 0.045) 39px
-      ),
-      repeating-linear-gradient(
-        32deg,
-        transparent 0px,
-        transparent 22px,
-        rgba(22, 44, 148, 0.04) 22px,
-        rgba(22, 44, 148, 0.04) 23px,
-        transparent 23px,
-        transparent 45px,
-        rgba(18, 36, 128, 0.03) 45px,
-        rgba(18, 36, 128, 0.03) 46px
-      ),
-      radial-gradient(ellipse at 18% 28%, rgba(32, 62, 195, 0.20) 0%, transparent 52%),
-      radial-gradient(ellipse at 82% 72%, rgba(22, 46, 162, 0.16) 0%, transparent 48%),
-      radial-gradient(ellipse at 52% 96%, rgba(16, 34, 138, 0.12) 0%, transparent 44%);
-    background-attachment: fixed;
+    background-color: #0A0A0A;
     color: #F5F5F0;
     overflow-x: hidden;
   }
@@ -65,7 +37,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #07091C;
+    background: #0A0A0A;
   }
 
   ::-webkit-scrollbar-thumb {

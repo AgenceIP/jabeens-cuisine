@@ -34,7 +34,7 @@ export default function StatsBar() {
   const t = useT()
 
   return (
-    <section style={{ background: '#0B0E25', borderTop: '1px solid #1E1E1E', borderBottom: '1px solid #1E1E1E', padding: '80px 0' }}>
+    <section style={{ background: '#111111', borderTop: '1px solid #1E1E1E', borderBottom: '1px solid #1E1E1E', padding: '80px 0' }}>
       <div className="max-w-site mx-auto px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-6">
           <StatItem target={4.7} suffix="★" label={t.stats.google} decimals={1} />

@@ -44,7 +44,7 @@ function PhotoGrid({ srcs, labels, placeholder }: { srcs: (string | null)[]; lab
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
           className="relative overflow-hidden"
-          style={{ aspectRatio: '4/3', background: '#0B0E25', border: '1px solid #1E1E1E' }}
+          style={{ aspectRatio: '4/3', background: '#111111', border: '1px solid #1E1E1E' }}
         >
           {src ? (
             <img src={src} alt={labels[i]} className="w-full h-full object-cover" />
@@ -102,7 +102,7 @@ export default function Hall() {
 
   return (
     <>
-      <div style={{ background: '#07091C', minHeight: '100vh' }}>
+      <div style={{ background: '#0A0A0A', minHeight: '100vh' }}>
 
         {/* Header */}
         <div className="pt-40 pb-16 text-center px-8" style={{ borderBottom: '1px solid #1E1E1E' }}>
