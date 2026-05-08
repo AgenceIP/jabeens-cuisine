@@ -18,14 +18,14 @@ type LightboxItem = { image: string; name: string; description?: string; vegetar
 
 function MenuItemRow({ item, onImageClick }: { item: MenuCategory['items'][0]; onImageClick: (item: LightboxItem) => void }) {
   return (
-    <div className="flex items-start gap-4 py-5" style={{ borderBottom: '1px solid #1E1E1E' }}>
+    <div className="flex items-start gap-6 py-6" style={{ borderBottom: '1px solid #1E1E1E' }}>
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-1">
-          {item.vegetarian && <span className="text-gold" style={{ fontSize: '0.65rem' }}>✦</span>}
-          <p className="text-display text-text-primary" style={{ fontSize: '1.05rem' }}>{item.name}</p>
+        <div className="flex items-center gap-2 mb-2">
+          {item.vegetarian && <span className="text-gold" style={{ fontSize: '0.75rem' }}>✦</span>}
+          <p className="text-display text-text-primary" style={{ fontSize: '1.25rem' }}>{item.name}</p>
         </div>
         {item.description && (
-          <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.78rem' }}>
+          <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.92rem' }}>
             {item.description}
           </p>
         )}
@@ -40,7 +40,7 @@ function MenuItemRow({ item, onImageClick }: { item: MenuCategory['items'][0]; o
             src={item.image}
             alt={item.name}
             style={{
-              width: 88, height: 88,
+              width: 120, height: 120,
               objectFit: 'contain', background: '#111',
               filter: 'brightness(0.92) contrast(1.05)',
               display: 'block',
@@ -51,7 +51,7 @@ function MenuItemRow({ item, onImageClick }: { item: MenuCategory['items'][0]; o
           />
         </button>
       ) : (
-        <p className="text-text-muted font-light flex-shrink-0 pt-1" style={{ fontSize: '0.85rem' }}>——</p>
+        <div style={{ width: 120, flexShrink: 0 }} />
       )}
     </div>
   )
@@ -136,55 +136,6 @@ export default function Menu() {
         <p className="text-label text-gold mb-4">{m.label}</p>
         <h1 className="text-display text-text-primary" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)' }}>{m.heading}</h1>
         <p className="text-text-muted font-light mt-4 text-sm">{m.subheading}</p>
-      </div>
-
-      {/* PDF Previews */}
-      <div style={{ background: '#0A0A0A', padding: '48px 24px 40px', borderBottom: '1px solid #1E1E1E' }}>
-        <p className="text-center text-label text-gold mb-8" style={{ fontSize: '0.6rem', letterSpacing: '0.25em' }}>
-          NOS MENUS — TÉLÉCHARGER OU CONSULTER
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto', perspective: 1200 }}>
-          {[...PDF_MENUS, DRINKS_PDF].map((menu, i) => (
-            <motion.div
-              key={menu.title}
-              initial={{ opacity: 0, y: 40, rotateY: i === 0 ? 12 : -12, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, rotateY: 0, scale: 1 }}
-              transition={{ duration: 0.75, delay: i * 0.18, ease: [0.22, 1, 0.36, 1] }}
-              style={{ transformStyle: 'preserve-3d' }}
-            >
-              <div style={{ border: '1px solid #2A2A2A', overflow: 'hidden', background: '#0E0E0E', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}>
-                {/* Mobile: full-card button */}
-                <a
-                  href={menu.pdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="md:hidden flex flex-col items-center justify-center py-10 px-6"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: '#F5F5F0', textAlign: 'center' }}>{menu.title}</p>
-                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.6rem', color: '#6B6B6B', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
-                </a>
-                {/* Desktop header */}
-                <div className="hidden md:flex" style={{ padding: '14px 20px', borderBottom: '1px solid #1E1E1E', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div>
-                    <p style={{ fontFamily: 'Montserrat', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.22em', color: '#A8956A' }}>{menu.title}</p>
-                    <p style={{ fontFamily: 'Montserrat', fontSize: '0.55rem', color: '#555', marginTop: 3 }}>{menu.subtitle}</p>
-                  </div>
-                  <a
-                    href={menu.pdf} target="_blank" rel="noopener noreferrer"
-                    style={{ fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 700, color: '#F5F5F0', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #6B6B6B', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
-                    onMouseEnter={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#A8956A'; a.style.borderColor = '#A8956A' }}
-                    onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#F5F5F0'; a.style.borderColor = '#6B6B6B' }}
-                  >↗ OUVRIR</a>
-                </div>
-                {/* PDF iframe — desktop only */}
-                <div className="hidden md:block" style={{ height: 460, overflow: 'hidden', background: '#111' }}>
-                  <iframe src={`${menu.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} title={menu.title} style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }} />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
 
       {/* ── MOBILE sticky nav bar: tab switcher + category pills ── */}
@@ -319,6 +270,39 @@ export default function Menu() {
       <AnimatePresence>
         {lightbox && <ImageLightbox item={lightbox} onClose={() => setLightbox(null)} />}
       </AnimatePresence>
+
+      {/* PDF Menus — at the bottom */}
+      <div style={{ background: '#0A0A0A', padding: '48px 24px 60px', borderTop: '1px solid #1E1E1E' }}>
+        <p className="text-center text-label text-gold mb-8" style={{ fontSize: '0.6rem', letterSpacing: '0.25em' }}>
+          NOS MENUS — TÉLÉCHARGER OU CONSULTER
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto' }}>
+          {[...PDF_MENUS, DRINKS_PDF].map((menu) => (
+            <div key={menu.title} style={{ border: '1px solid #2A2A2A', overflow: 'hidden', background: '#0E0E0E' }}>
+              {/* Mobile: full-card button */}
+              <a href={menu.pdf} target="_blank" rel="noopener noreferrer" className="md:hidden flex flex-col items-center justify-center py-10 px-6" style={{ textDecoration: 'none' }}>
+                <p style={{ fontFamily: 'Montserrat', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: '#F5F5F0', textAlign: 'center' }}>{menu.title}</p>
+                <p style={{ fontFamily: 'Montserrat', fontSize: '0.6rem', color: '#6B6B6B', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
+              </a>
+              {/* Desktop */}
+              <div className="hidden md:flex" style={{ padding: '14px 20px', borderBottom: '1px solid #1E1E1E', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.22em', color: '#A8956A' }}>{menu.title}</p>
+                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.55rem', color: '#555', marginTop: 3 }}>{menu.subtitle}</p>
+                </div>
+                <a href={menu.pdf} target="_blank" rel="noopener noreferrer"
+                  style={{ fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 700, color: '#F5F5F0', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #6B6B6B', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
+                  onMouseEnter={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#A8956A'; a.style.borderColor = '#A8956A' }}
+                  onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#F5F5F0'; a.style.borderColor = '#6B6B6B' }}
+                >↗ OUVRIR</a>
+              </div>
+              <div className="hidden md:block" style={{ height: 420, overflow: 'hidden', background: '#111' }}>
+                <iframe src={`${menu.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} title={menu.title} style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <Footer />
     </>

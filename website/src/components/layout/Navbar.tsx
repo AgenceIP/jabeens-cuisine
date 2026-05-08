@@ -58,7 +58,7 @@ export default function Navbar() {
           </Link>
 
           {/* Center links — desktop only */}
-          <div className="hidden md:flex items-center gap-10 flex-1 justify-center">
+          <div className="hidden md:flex items-center flex-1 justify-center" style={{ gap: lang === 'fr' ? '1.8rem' : '2.5rem' }}>
             {navLinks.map(link => (
               <Link
                 key={link.to}
@@ -66,7 +66,7 @@ export default function Navbar() {
                 className={`text-label transition-colors duration-300 hover:text-gold ${
                   location.pathname === link.to ? 'text-gold' : 'text-text-primary'
                 }`}
-                style={{ fontSize: '0.72rem', fontWeight: 700 }}
+                style={{ fontSize: lang === 'fr' ? '0.62rem' : '0.72rem', fontWeight: 700, letterSpacing: lang === 'fr' ? '0.14em' : '0.2em' }}
               >
                 {link.label}
               </Link>
