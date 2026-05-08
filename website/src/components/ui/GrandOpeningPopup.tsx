@@ -50,7 +50,7 @@ export default function GrandOpeningPopup() {
                 width: 32,
                 height: 32,
                 borderRadius: '50%',
-                background: '#0A0A0A',
+                background: '#07091C',
                 border: '1px solid #3A3A3A',
                 color: '#999',
                 cursor: 'pointer',

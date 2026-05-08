@@ -203,7 +203,7 @@ function LangToggle({ lang, setLang }: { lang: 'en' | 'fr'; setLang: (l: 'en' | 
             position: 'relative', zIndex: 1,
             background: 'none', border: 'none', cursor: 'pointer',
             fontFamily: 'Montserrat', fontSize: '0.55rem', letterSpacing: '0.25em',
-            color: lang === l ? '#0A0A0A' : '#6B6B6B',
+            color: lang === l ? '#07091C' : '#6B6B6B',
             transition: 'color 0.3s',
             padding: '6px 10px',
             fontWeight: 600,

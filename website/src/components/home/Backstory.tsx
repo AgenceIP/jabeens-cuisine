@@ -89,7 +89,7 @@ export default function Backstory() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="section-padding" style={{ background: '#0A0A0A' }}>
+    <section ref={sectionRef} className="section-padding" style={{ background: '#07091C' }}>
       <div className="max-w-site mx-auto">
 
         {/* Quote */}

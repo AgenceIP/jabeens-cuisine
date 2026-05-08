@@ -89,7 +89,7 @@ export default function LaCarte() {
   return (
     <section
       style={{
-        background: '#0A0A0A',
+        background: '#07091C',
         paddingTop: '80px',
         paddingBottom: '80px',
         borderTop: '1px solid #1E1E1E',
@@ -123,7 +123,7 @@ export default function LaCarte() {
           position: 'absolute',
           top: 0, left: 0, bottom: 0,
           width: '180px',
-          background: 'linear-gradient(to right, #0A0A0A 0%, transparent 100%)',
+          background: 'linear-gradient(to right, #07091C 0%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: 2,
         }}
@@ -134,7 +134,7 @@ export default function LaCarte() {
           position: 'absolute',
           top: 0, right: 0, bottom: 0,
           width: '180px',
-          background: 'linear-gradient(to left, #0A0A0A 0%, transparent 100%)',
+          background: 'linear-gradient(to left, #07091C 0%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: 2,
         }}

@@ -67,13 +67,13 @@ export default function EvenementsPrives() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: '#111111', borderTop: '1px solid #1E1E1E' }}>
+    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: '#0B0E25', borderTop: '1px solid #1E1E1E' }}>
       <div className="flex flex-col md:flex-row min-h-[600px]">
 
         {/* Text */}
         <div
           className="w-full md:w-1/2 flex flex-col justify-center px-10 md:px-16 lg:px-20 py-20"
-          style={{ background: '#111111' }}
+          style={{ background: '#0B0E25' }}
         >
           <p ref={labelRef} className="text-label text-gold mb-6">{t.evenements.label}</p>
 
@@ -99,7 +99,7 @@ export default function EvenementsPrives() {
                 to="/location-salle"
                 className="text-label border px-8 py-4 inline-block transition-all duration-300"
                 style={{ borderColor: '#F5F5F0', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#F5F5F0'; e.currentTarget.style.color = '#0A0A0A' }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#F5F5F0'; e.currentTarget.style.color = '#07091C' }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#F5F5F0' }}
               >
                 {t.evenements.cta}

@@ -72,7 +72,7 @@ export default function PremiereImpression() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: '#0A0A0A' }}>
+    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: '#07091C' }}>
       <div className="flex flex-col md:flex-row min-h-[640px]">
 
         {/* Image — clip-path reveal */}
@@ -96,7 +96,7 @@ export default function PremiereImpression() {
         {/* Text block */}
         <div
           className="w-full md:w-[40%] flex flex-col justify-center px-10 md:px-16 lg:px-20 py-20"
-          style={{ background: '#0A0A0A' }}
+          style={{ background: '#07091C' }}
         >
           <p ref={labelRef} className="text-label text-gold mb-6">{t.premiereImpression.label}</p>
 

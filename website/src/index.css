@@ -12,7 +12,7 @@
   }
 
   html {
-    background-color: #0A0A0A;
+    background-color: #07091C;
     color: #F5F5F0;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -22,7 +22,14 @@
   body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    background-color: #0A0A0A;
+    background-color: #07091C;
+    /* Subtle dark navy texture — looks black in low light, reveals depth in light */
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse at 20% 35%, rgba(18, 32, 115, 0.13) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 65%, rgba(12, 22, 88, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 55% 90%, rgba(10, 18, 72, 0.08) 0%, transparent 50%);
+    background-attachment: fixed;
     color: #F5F5F0;
     overflow-x: hidden;
   }
@@ -37,7 +44,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: #07091C;
   }
 
   ::-webkit-scrollbar-thumb {

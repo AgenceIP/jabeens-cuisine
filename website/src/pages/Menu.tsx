@@ -75,7 +75,7 @@ function ImageLightbox({ item, onClose }: { item: LightboxItem; onClose: () => v
         initial={{ opacity: 0, scale: 0.92, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.94, y: 8 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         onClick={e => e.stopPropagation()}
-        style={{ position: 'relative', maxWidth: 520, width: '100%', background: '#0E0E0E', border: '1px solid #2A2A2A', boxShadow: '0 32px 80px rgba(0,0,0,0.8)', overflow: 'hidden' }}
+        style={{ position: 'relative', maxWidth: 520, width: '100%', background: '#090C20', border: '1px solid #2A2A2A', boxShadow: '0 32px 80px rgba(0,0,0,0.8)', overflow: 'hidden' }}
       >
         <button
           onClick={onClose} aria-label="Fermer"
@@ -132,7 +132,7 @@ export default function Menu() {
   return (
     <>
       {/* Hero */}
-      <div className="pt-32 pb-12 px-8 md:px-16 text-center" style={{ background: '#0A0A0A', borderBottom: '1px solid #1E1E1E' }}>
+      <div className="pt-32 pb-12 px-8 md:px-16 text-center" style={{ background: '#07091C', borderBottom: '1px solid #1E1E1E' }}>
         <p className="text-label text-gold mb-4">{m.label}</p>
         <h1 className="text-display text-text-primary" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)' }}>{m.heading}</h1>
         <p className="text-text-muted font-light mt-4 text-sm">{m.subheading}</p>
@@ -141,7 +141,7 @@ export default function Menu() {
       {/* ── MOBILE sticky nav bar: tab switcher + category pills ── */}
       <div
         className="md:hidden sticky z-40"
-        style={{ top: 79, background: '#0A0A0A', borderBottom: '1px solid #1E1E1E' }}
+        style={{ top: 79, background: '#07091C', borderBottom: '1px solid #1E1E1E' }}
       >
         {/* Tab switcher */}
         <div style={{ display: 'flex', borderBottom: '1px solid #1E1E1E' }}>
@@ -169,7 +169,7 @@ export default function Menu() {
               style={{
                 flexShrink: 0, padding: '6px 14px', cursor: 'pointer',
                 background: activeId === cat.id ? '#A8956A' : 'transparent',
-                color: activeId === cat.id ? '#0A0A0A' : '#6B6B6B',
+                color: activeId === cat.id ? '#07091C' : '#6B6B6B',
                 border: `1px solid ${activeId === cat.id ? '#A8956A' : '#2A2A2A'}`,
                 fontFamily: 'Montserrat', fontSize: '0.52rem', fontWeight: 500,
                 letterSpacing: '0.12em', textTransform: 'uppercase' as const,
@@ -181,7 +181,7 @@ export default function Menu() {
       </div>
 
       {/* ── DESKTOP tab switcher ── */}
-      <div className="hidden md:block" style={{ background: '#0A0A0A' }}>
+      <div className="hidden md:block" style={{ background: '#07091C' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', borderBottom: '1px solid #1E1E1E' }}>
           {PDF_MENUS.map(menu => (
             <button
@@ -206,7 +206,7 @@ export default function Menu() {
           key={activeMenu}
           initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.3 }}
-          style={{ background: '#0A0A0A', display: 'flex', minHeight: '100vh' }}
+          style={{ background: '#07091C', display: 'flex', minHeight: '100vh' }}
         >
           {/* Desktop sidebar */}
           <aside
@@ -272,13 +272,13 @@ export default function Menu() {
       </AnimatePresence>
 
       {/* PDF Menus — at the bottom */}
-      <div style={{ background: '#0A0A0A', padding: '48px 24px 60px', borderTop: '1px solid #1E1E1E' }}>
+      <div style={{ background: '#07091C', padding: '48px 24px 60px', borderTop: '1px solid #1E1E1E' }}>
         <p className="text-center text-label text-gold mb-8" style={{ fontSize: '0.6rem', letterSpacing: '0.25em' }}>
           NOS MENUS — TÉLÉCHARGER OU CONSULTER
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto' }}>
           {[...PDF_MENUS, DRINKS_PDF].map((menu) => (
-            <div key={menu.title} style={{ border: '1px solid #2A2A2A', overflow: 'hidden', background: '#0E0E0E' }}>
+            <div key={menu.title} style={{ border: '1px solid #2A2A2A', overflow: 'hidden', background: '#090C20' }}>
               {/* Mobile: full-card button */}
               <a href={menu.pdf} target="_blank" rel="noopener noreferrer" className="md:hidden flex flex-col items-center justify-center py-10 px-6" style={{ textDecoration: 'none' }}>
                 <p style={{ fontFamily: 'Montserrat', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: '#F5F5F0', textAlign: 'center' }}>{menu.title}</p>
