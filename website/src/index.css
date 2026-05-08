@@ -23,12 +23,33 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     background-color: #07091C;
-    /* Subtle dark navy texture — looks black in low light, reveals depth in light */
+    /* Dark navy silk texture — diagonal weave + colour depth blobs */
     background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
-      radial-gradient(ellipse at 20% 35%, rgba(18, 32, 115, 0.13) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 65%, rgba(12, 22, 88, 0.10) 0%, transparent 55%),
-      radial-gradient(ellipse at 55% 90%, rgba(10, 18, 72, 0.08) 0%, transparent 50%);
+      repeating-linear-gradient(
+        -58deg,
+        transparent 0px,
+        transparent 18px,
+        rgba(35, 62, 190, 0.07) 18px,
+        rgba(35, 62, 190, 0.07) 20px,
+        transparent 20px,
+        transparent 38px,
+        rgba(28, 52, 165, 0.045) 38px,
+        rgba(28, 52, 165, 0.045) 39px
+      ),
+      repeating-linear-gradient(
+        32deg,
+        transparent 0px,
+        transparent 22px,
+        rgba(22, 44, 148, 0.04) 22px,
+        rgba(22, 44, 148, 0.04) 23px,
+        transparent 23px,
+        transparent 45px,
+        rgba(18, 36, 128, 0.03) 45px,
+        rgba(18, 36, 128, 0.03) 46px
+      ),
+      radial-gradient(ellipse at 18% 28%, rgba(32, 62, 195, 0.20) 0%, transparent 52%),
+      radial-gradient(ellipse at 82% 72%, rgba(22, 46, 162, 0.16) 0%, transparent 48%),
+      radial-gradient(ellipse at 52% 96%, rgba(16, 34, 138, 0.12) 0%, transparent 44%);
     background-attachment: fixed;
     color: #F5F5F0;
     overflow-x: hidden;
