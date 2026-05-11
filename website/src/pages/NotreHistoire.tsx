@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -9,6 +9,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function NotreHistoire() {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const videoMobileRef = useRef<HTMLVideoElement>(null)
+  const videoDesktopRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    [videoMobileRef.current, videoDesktopRef.current].forEach(v => {
+      if (v) { v.muted = true; v.play().catch(() => {}) }
+    })
+  }, [])
   const t = useT()
   const h = t.histoirePage
 
@@ -51,6 +59,7 @@ export default function NotreHistoire() {
         {/* Left: solid dark panel with text */}
         <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24" style={{ background: '#0A0A0A' }}>
           <video
+            ref={videoMobileRef}
             src="/assets/restaurant-interior.mp4"
             autoPlay muted loop playsInline
             className="md:hidden absolute inset-0 w-full h-full object-cover opacity-30"
@@ -70,6 +79,7 @@ export default function NotreHistoire() {
         {/* Right: video panel (desktop only) */}
         <div className="hidden md:block flex-1 relative overflow-hidden">
           <video
+            ref={videoDesktopRef}
             src="/assets/restaurant-interior.mp4"
             autoPlay muted loop playsInline
             className="absolute inset-0 w-full h-full object-cover"

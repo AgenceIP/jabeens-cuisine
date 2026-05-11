@@ -14,19 +14,19 @@ export default function Navbar() {
 
   const closeMobile = () => setMobileOpen(false)
 
-  // Simplified — only 3 core links. "Réserver" is the CTA button on the right.
+  const ORDER_URL = 'https://jabeenscuisine.clusterpos.com/'
+
   const navLinks = [
     { label: t.nav.menu,       to: '/menu' },
-    { label: t.nav.order,      to: '/commander' },
+    { label: t.nav.order,      to: ORDER_URL, external: true },
     { label: t.nav.hallRental, to: '/location-salle' },
     { label: t.nav.ourStory,   to: '/notre-histoire' },
   ]
 
-  // All links for the mobile full-screen overlay
   const allLinks = [
     { label: t.nav.home,       to: '/' },
     { label: t.nav.menu,       to: '/menu' },
-    { label: t.nav.order,      to: '/commander' },
+    { label: t.nav.order,      to: ORDER_URL, external: true },
     { label: t.nav.ourStory,   to: '/notre-histoire' },
     { label: t.nav.hallRental, to: '/location-salle' },
   ]
@@ -59,7 +59,18 @@ export default function Navbar() {
 
           {/* Center links — desktop only */}
           <div className="hidden md:flex items-center flex-1 justify-center" style={{ gap: lang === 'fr' ? '1.8rem' : '2.5rem' }}>
-            {navLinks.map(link => (
+            {navLinks.map(link => link.external ? (
+              <a
+                key={link.to}
+                href={link.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-label transition-colors duration-300 hover:text-gold text-text-primary"
+                style={{ fontSize: lang === 'fr' ? '0.62rem' : '0.72rem', fontWeight: 700, letterSpacing: lang === 'fr' ? '0.14em' : '0.2em' }}
+              >
+                {link.label}
+              </a>
+            ) : (
               <Link
                 key={link.to}
                 to={link.to}
@@ -140,13 +151,25 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.08 + 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <Link
-                    to={link.to}
-                    onClick={closeMobile}
-                    className="text-display text-4xl text-text-primary hover:text-gold transition-colors duration-300 block"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMobile}
+                      className="text-display text-4xl text-text-primary hover:text-gold transition-colors duration-300 block"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.to}
+                      onClick={closeMobile}
+                      className="text-display text-4xl text-text-primary hover:text-gold transition-colors duration-300 block"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               <motion.div

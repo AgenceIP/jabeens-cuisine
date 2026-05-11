@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -16,7 +16,13 @@ export default function Hero() {
   const titleLine2Inner = useRef<HTMLSpanElement>(null)
   const taglineRef      = useRef<HTMLParagraphElement>(null)
   const ctaRef          = useRef<HTMLDivElement>(null)
+  const videoRef        = useRef<HTMLVideoElement>(null)
   const t = useT()
+
+  useEffect(() => {
+    const v = videoRef.current
+    if (v) { v.muted = true; v.play().catch(() => {}) }
+  }, [])
 
   useGSAP(() => {
     // Set initial hidden states immediately (GSAP owns the transform, not React)
@@ -74,6 +80,7 @@ export default function Hero() {
       {/* Background — parallax target */}
       <div ref={bgRef} className="absolute inset-0 overflow-hidden" style={{ willChange: 'transform' }}>
         <video
+          ref={videoRef}
           src="/assets/hero-video.mp4"
           autoPlay
           muted

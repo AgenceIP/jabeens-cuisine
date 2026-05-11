@@ -147,7 +147,7 @@ export const translations = {
         { year: '2020', title: 'The Opening', text: "Jabeen's Cuisine opens its doors in Brossard in early 2020 — weeks before the COVID-19 pandemic shuts the world down. The timing is brutal. The conviction is stronger." },
         { year: '2021', title: 'The Test', text: "Lockdowns, restrictions, uncertainty. Where others saw the end, the team saw proof. Delivery, takeout, community. The restaurant adapts, holds, and survives. This is where the resilience is forged." },
         { year: '2023', title: 'The Growth', text: "The South Shore takes notice. A loyal clientele grows into a community. The menu deepens, the reputation builds. Jabeen's is no longer a new restaurant — it is a reference." },
-        { year: '2025', title: 'The Rebranding', text: "A new chapter. Not just for the restaurant — for a cuisine. Jabeen's sets out to permanently change how Indian and Pakistani food is seen, experienced, and celebrated. No compromises. No shortcuts. Never." },
+        { year: '2026', title: 'The Rebranding', text: "A new chapter. Not just for the restaurant — for a cuisine. Jabeen's sets out to permanently change how Indian and Pakistani food is seen, experienced, and celebrated. No compromises. No shortcuts. Never." },
       ],
       values: [
         { title: 'Ambition', text: 'Indian and Pakistani cuisine deserves to be treated with the same ambition as any great culinary tradition in the world. We refuse to let it be anything less.' },
@@ -355,7 +355,7 @@ export const translations = {
         { year: '2020', title: "L'Ouverture", text: "Jabeen's Cuisine ouvre ses portes à Brossard au début de l'année 2020 — quelques semaines avant que la pandémie de COVID-19 paralyse le monde. Le timing est brutal. La conviction, elle, est plus forte." },
         { year: '2021', title: "L'Épreuve", text: "Confinements, restrictions, incertitude. Là où d'autres ont vu une fin, l'équipe a vu une preuve. Livraison, à emporter, communauté. Le restaurant s'adapte, tient bon et survit. C'est ici que la résilience se forge." },
         { year: '2023', title: 'La Croissance', text: "La Rive-Sud prend note. Une clientèle fidèle devient une communauté. Le menu s'approfondit, la réputation se bâtit. Jabeen's n'est plus un nouveau restaurant — c'est une référence." },
-        { year: '2025', title: 'Le Rebranding', text: "Un nouveau chapitre. Pas seulement pour le restaurant — pour une cuisine tout entière. Jabeen's entreprend de changer pour toujours la façon dont la nourriture indienne et pakistanaise est perçue, vécue et célébrée. Sans compromis. Sans raccourcis. Jamais." },
+        { year: '2026', title: 'Le Rebranding', text: "Un nouveau chapitre. Pas seulement pour le restaurant — pour une cuisine tout entière. Jabeen's entreprend de changer pour toujours la façon dont la nourriture indienne et pakistanaise est perçue, vécue et célébrée. Sans compromis. Sans raccourcis. Jamais." },
       ],
       values: [
         { title: "L'Ambition", text: "La cuisine indienne et pakistanaise mérite d'être traitée avec la même ambition que n'importe quelle grande tradition culinaire au monde. Nous refusons qu'il en soit autrement." },
