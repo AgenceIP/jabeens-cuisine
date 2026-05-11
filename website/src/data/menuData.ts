@@ -271,6 +271,8 @@ export const menuData: MenuCategory[] = [
     id: 'breads',
     label: 'Breads',
     sublabel: 'Pains',
+    labelFr: 'Pains',
+    sublabelFr: 'Pains',
     items: [
       { name: 'Tandoori Butter Roti', vegetarian: true },
       { name: 'Butter Naan', vegetarian: true, image: img('Butter Naan') },
@@ -340,6 +342,8 @@ export const menuData: MenuCategory[] = [
     id: 'rice-noodles',
     label: 'Rice & Noodles',
     sublabel: 'Riz & Nouilles',
+    labelFr: 'Riz & Nouilles',
+    sublabelFr: 'Riz & Nouilles',
     items: [
       {
         name: 'Veg Fried Rice',
@@ -359,6 +363,8 @@ export const menuData: MenuCategory[] = [
     id: 'sides',
     label: 'Sides',
     sublabel: 'Accompagnements',
+    labelFr: 'Accompagnements',
+    sublabelFr: 'Accompagnements',
     items: [
       { name: 'Steam Rice', vegetarian: true },
       { name: 'Jeera Rice', vegetarian: true },
@@ -369,6 +375,8 @@ export const menuData: MenuCategory[] = [
     id: 'desserts',
     label: 'Sweet Tooth',
     sublabel: 'Desserts',
+    labelFr: 'Desserts',
+    sublabelFr: 'Desserts',
     items: [
       {
         name: 'New Style Boondi Pak',
@@ -419,8 +427,10 @@ export const menuData: MenuCategory[] = [
   },
   {
     id: 'drinks',
-    label: 'Boissons',
-    sublabel: 'Drinks',
+    label: 'Drinks',
+    sublabel: 'Beverages',
+    labelFr: 'Boissons',
+    sublabelFr: 'Boissons & Cocktails',
     items: [
       { name: 'Mojito', description: 'Citron vert, menthe, soda — 9$', vegetarian: true },
       { name: 'Strawberry Mojito', description: 'Citron vert, fraise, mangue — 9$', vegetarian: true },

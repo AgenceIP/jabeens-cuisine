@@ -3,16 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { menuData } from '@/data/menuData'
 import type { MenuCategory } from '@/types'
 import Footer from '@/components/layout/Footer'
-import { useT } from '@/contexts/LanguageContext'
+import { useT, useLang } from '@/contexts/LanguageContext'
 
 type MenuType = 'dineIn' | 'takeOut'
-
-const PDF_MENUS = [
-  { type: 'dineIn' as MenuType,  title: 'DINE IN',  subtitle: 'Restaurant Menu', pdf: '/menu/Restaurant MENU.pdf' },
-  { type: 'takeOut' as MenuType, title: 'TAKE OUT', subtitle: 'À emporter',       pdf: '/menu/TAKE OUT MENU.pdf' },
-]
-
-const DRINKS_PDF = { title: 'DRINKS', subtitle: 'Boissons & Cocktails', pdf: '/menu/DrinkMenu.pdf' }
 
 type LightboxItem = { image: string; name: string; description?: string; vegetarian?: boolean }
 
@@ -102,6 +95,16 @@ export default function Menu() {
   const [lightbox, setLightbox] = useState<LightboxItem | null>(null)
   const t = useT()
   const m = t.menuPage
+  const { lang } = useLang()
+
+  const PDF_MENUS = [
+    { type: 'dineIn' as MenuType, title: m.dineIn.toUpperCase(), subtitle: m.dineInSubtitle, pdf: '/menu/Restaurant MENU.pdf' },
+    { type: 'takeOut' as MenuType, title: m.takeOut.toUpperCase(), subtitle: m.takeOutSubtitle, pdf: '/menu/TAKE OUT MENU.pdf' },
+  ]
+  const DRINKS_PDF = { title: m.drinks.toUpperCase(), subtitle: m.drinksSubtitle, pdf: '/menu/DrinkMenu.pdf' }
+
+  const catLabel = (cat: MenuCategory) => lang === 'fr' ? (cat.labelFr ?? cat.label) : cat.label
+  const catSublabel = (cat: MenuCategory) => lang === 'fr' ? (cat.sublabelFr ?? cat.sublabel) : cat.sublabel
 
   const filteredData = useMemo(
     () => menuData
@@ -175,7 +178,7 @@ export default function Menu() {
                 letterSpacing: '0.12em', textTransform: 'uppercase' as const,
                 transition: 'all 0.25s', whiteSpace: 'nowrap' as const,
               }}
-            >{cat.label}</button>
+            >{catLabel(cat)}</button>
           ))}
         </div>
       </div>
@@ -228,8 +231,8 @@ export default function Menu() {
                     letterSpacing: '0.2em', textTransform: 'uppercase' as const,
                   }}
                 >
-                  <span>{cat.label}</span>
-                  {cat.sublabel && <span className="block" style={{ fontSize: '0.55rem', opacity: 0.6, fontWeight: 400 }}>{cat.sublabel}</span>}
+                  <span>{catLabel(cat)}</span>
+                  {cat.sublabel && <span className="block" style={{ fontSize: '0.55rem', opacity: 0.6, fontWeight: 400 }}>{catSublabel(cat)}</span>}
                 </button>
               ))}
             </nav>
@@ -243,13 +246,13 @@ export default function Menu() {
                 <div className="mb-6 md:mb-8">
                   <div className="md:hidden flex flex-col items-center text-center py-4" style={{ borderTop: '1px solid #1E1E1E', borderBottom: '1px solid #1E1E1E' }}>
                     <span style={{ width: 20, height: 1, background: '#A8956A', display: 'block', marginBottom: 8 }} />
-                    <p className="text-label text-gold" style={{ fontSize: '0.68rem', letterSpacing: '0.25em' }}>{category.label}</p>
-                    {category.sublabel && <p className="text-text-muted font-light mt-1" style={{ fontSize: '0.62rem' }}>{category.sublabel}</p>}
+                    <p className="text-label text-gold" style={{ fontSize: '0.68rem', letterSpacing: '0.25em' }}>{catLabel(category)}</p>
+                    {category.sublabel && <p className="text-text-muted font-light mt-1" style={{ fontSize: '0.62rem' }}>{catSublabel(category)}</p>}
                     <span style={{ width: 20, height: 1, background: '#A8956A', display: 'block', marginTop: 8 }} />
                   </div>
                   <div className="hidden md:block">
-                    <p className="text-label text-gold mb-2" style={{ borderLeft: '2px solid #A8956A', paddingLeft: '12px' }}>{category.label}</p>
-                    {category.sublabel && <p className="text-text-muted font-light" style={{ fontSize: '0.75rem', paddingLeft: '14px' }}>{category.sublabel}</p>}
+                    <p className="text-label text-gold mb-2" style={{ borderLeft: '2px solid #A8956A', paddingLeft: '12px' }}>{catLabel(category)}</p>
+                    {category.sublabel && <p className="text-text-muted font-light" style={{ fontSize: '0.75rem', paddingLeft: '14px' }}>{catSublabel(category)}</p>}
                     <div className="mt-4 gold-rule" />
                   </div>
                 </div>
@@ -274,7 +277,7 @@ export default function Menu() {
       {/* PDF Menus — at the bottom */}
       <div style={{ background: '#0A0A0A', padding: '48px 24px 60px', borderTop: '1px solid #1E1E1E' }}>
         <p className="text-center text-label text-gold mb-8" style={{ fontSize: '0.6rem', letterSpacing: '0.25em' }}>
-          NOS MENUS — TÉLÉCHARGER OU CONSULTER
+          {m.pdfLabel.toUpperCase()}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto' }}>
           {[...PDF_MENUS, DRINKS_PDF].map((menu) => (
@@ -294,7 +297,7 @@ export default function Menu() {
                   style={{ fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 700, color: '#F5F5F0', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #6B6B6B', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
                   onMouseEnter={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#A8956A'; a.style.borderColor = '#A8956A' }}
                   onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#F5F5F0'; a.style.borderColor = '#6B6B6B' }}
-                >↗ OUVRIR</a>
+                >{m.openButton}</a>
               </div>
               <div className="hidden md:block" style={{ height: 420, overflow: 'hidden', background: '#111' }}>
                 <iframe src={`${menu.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} title={menu.title} style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }} />

@@ -2,6 +2,7 @@ import Footer from '@/components/layout/Footer'
 import { siteConfig } from '@/data/siteConfig'
 import { useT } from '@/contexts/LanguageContext'
 
+
 export default function Commander() {
   const t = useT()
   const c = t.commanderPage
@@ -56,7 +57,7 @@ export default function Commander() {
               onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = '#C4AF85' }}
               onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = '#A8956A' }}
             >
-              Order from the menu
+              {c.orderFromMenu}
             </a>
           </div>
 

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '@/components/layout/Footer'
 import { useT } from '@/contexts/LanguageContext'
 
+
 interface HallFormValues {
   prenom: string; nom: string; email: string; telephone: string
   date: string; heure_debut: string; heure_fin: string
@@ -83,6 +84,7 @@ export default function Hall() {
   const cateringForm = useForm<CateringFormValues>()
   const t = useT()
   const h = t.hallPage
+  const m = t.menuPage
 
   const hallLabels = h.photos.map(p => p.label)
   const cateringLabels = ['Service en salle', 'Buffet', 'Cocktail', 'Présentation']
@@ -115,8 +117,8 @@ export default function Hall() {
 
         {/* Tab switcher */}
         <div style={{ borderBottom: '1px solid #1E1E1E', display: 'flex', maxWidth: 480, margin: '0 auto' }}>
-          {tabBtn('hall', t.nav.hallRental.split(' - ')[0] || 'Hall Rental')}
-          {tabBtn('catering', 'Catering')}
+          {tabBtn('hall', h.formHeading)}
+          {tabBtn('catering', m.cateringTab)}
         </div>
 
         {/* Photo gallery */}

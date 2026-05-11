@@ -11,6 +11,8 @@ export interface MenuCategory {
   id: string
   label: string
   sublabel?: string
+  labelFr?: string
+  sublabelFr?: string
   items: MenuItem[]
 }
 
