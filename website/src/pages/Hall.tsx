@@ -76,46 +76,13 @@ function getStyle(base: React.CSSProperties, hasError: boolean): React.CSSProper
   return { ...base, borderBottomColor: hasError ? '#A8956A' : '#1E1E1E' }
 }
 
-const HALL_ID = 'xnjwwyrg'
-const CATERING_ID = 'xdabbvjy'
-
 export default function Hall() {
   const [activeTab, setActiveTab] = useState<'hall' | 'catering'>('hall')
   const [submittedHall, setSubmittedHall] = useState(false)
   const [submittedCatering, setSubmittedCatering] = useState(false)
-  const [sendingHall, setSendingHall] = useState(false)
-  const [sendingCatering, setSendingCatering] = useState(false)
   const hallForm = useForm<HallFormValues>()
   const cateringForm = useForm<CateringFormValues>()
   const t = useT()
-
-  const submitHall = async (data: HallFormValues) => {
-    setSendingHall(true)
-    try {
-      const res = await fetch(`https://formspree.io/f/${HALL_ID}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(data),
-      })
-      if (res.ok) setSubmittedHall(true)
-    } finally {
-      setSendingHall(false)
-    }
-  }
-
-  const submitCatering = async (data: CateringFormValues) => {
-    setSendingCatering(true)
-    try {
-      const res = await fetch(`https://formspree.io/f/${CATERING_ID}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(data),
-      })
-      if (res.ok) setSubmittedCatering(true)
-    } finally {
-      setSendingCatering(false)
-    }
-  }
   const h = t.hallPage
   const m = t.menuPage
 
@@ -201,7 +168,7 @@ export default function Hall() {
 
               <AnimatePresence mode="wait">
                 {!submittedHall ? (
-                  <motion.form key="hall-f" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} onSubmit={hallForm.handleSubmit(submitHall)}>
+                  <motion.form key="hall-f" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} onSubmit={hallForm.handleSubmit(() => setSubmittedHall(true))}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
                         <label style={labelStyle}>{h.prenom}</label>
@@ -263,8 +230,8 @@ export default function Hall() {
                       <label style={labelStyle}>{h.notes}</label>
                       <textarea {...hallForm.register('notes')} rows={3} placeholder={h.placeholder_notes} style={{ ...inputStyle, resize: 'none', lineHeight: 1.7 }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = '#1E1E1E')} />
                     </div>
-                    <button type="submit" disabled={sendingHall} className="text-label w-full py-5 transition-all duration-300" style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700, opacity: sendingHall ? 0.7 : 1, cursor: sendingHall ? 'wait' : 'pointer' }} onMouseEnter={e => { if (!sendingHall) e.currentTarget.style.background = '#bfa97a' }} onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}>
-                      {sendingHall ? '...' : h.submit}
+                    <button type="submit" className="text-label w-full py-5 transition-all duration-300" style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }} onMouseEnter={e => (e.currentTarget.style.background = '#bfa97a')} onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}>
+                      {h.submit}
                     </button>
                     <p className="text-text-muted text-center mt-6 font-light" style={{ fontSize: '0.75rem' }}>{h.note}</p>
                   </motion.form>
@@ -285,7 +252,7 @@ export default function Hall() {
 
               <AnimatePresence mode="wait">
                 {!submittedCatering ? (
-                  <motion.form key="catering-f" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} onSubmit={cateringForm.handleSubmit(submitCatering)}>
+                  <motion.form key="catering-f" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} onSubmit={cateringForm.handleSubmit(() => setSubmittedCatering(true))}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
                         <label style={labelStyle}>{h.prenom}</label>
@@ -344,8 +311,8 @@ export default function Hall() {
                       <label style={labelStyle}>{h.notes}</label>
                       <textarea {...cateringForm.register('notes')} rows={3} placeholder={h.placeholder_notes} style={{ ...inputStyle, resize: 'none', lineHeight: 1.7 }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = '#1E1E1E')} />
                     </div>
-                    <button type="submit" disabled={sendingCatering} className="text-label w-full py-5 transition-all duration-300" style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700, opacity: sendingCatering ? 0.7 : 1, cursor: sendingCatering ? 'wait' : 'pointer' }} onMouseEnter={e => { if (!sendingCatering) e.currentTarget.style.background = '#bfa97a' }} onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}>
-                      {sendingCatering ? '...' : h.submit}
+                    <button type="submit" className="text-label w-full py-5 transition-all duration-300" style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }} onMouseEnter={e => (e.currentTarget.style.background = '#bfa97a')} onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}>
+                      {h.submit}
                     </button>
                     <p className="text-text-muted text-center mt-6 font-light" style={{ fontSize: '0.75rem' }}>{h.note}</p>
                   </motion.form>

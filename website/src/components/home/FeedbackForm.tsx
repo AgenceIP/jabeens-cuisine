@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { siteConfig } from '@/data/siteConfig'
 import { useT } from '@/contexts/LanguageContext'
 
-const FORMSPREE_ID = 'xeennwdj'
+// TODO: remplace FORMSPREE_ID par l'ID obtenu sur formspree.io
+const FORMSPREE_ID = 'FORMSPREE_ID'
 
 interface FormValues {
   prenom: string
