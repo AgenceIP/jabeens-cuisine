@@ -32,6 +32,10 @@ function MenuItemRow({ item, onImageClick }: { item: MenuCategory['items'][0]; o
           <img
             src={item.image}
             alt={item.name}
+            loading="lazy"
+            decoding="async"
+            width={120}
+            height={120}
             style={{
               width: 120, height: 120,
               objectFit: 'contain', background: '#111',
@@ -102,6 +106,10 @@ export default function Menu() {
     { type: 'takeOut' as MenuType, title: m.takeOut.toUpperCase(), subtitle: m.takeOutSubtitle, pdf: '/menu/TAKE OUT MENU.pdf' },
   ]
   const DRINKS_PDF = { title: m.drinks.toUpperCase(), subtitle: m.drinksSubtitle, pdf: '/menu/DrinkMenu.pdf' }
+
+  useEffect(() => {
+    document.title = "Menu — Jabeen's Cuisine | Indien & Pakistanais Halal · Brossard"
+  }, [])
 
   const catLabel = (cat: MenuCategory) => lang === 'fr' ? (cat.labelFr ?? cat.label) : cat.label
   const catSublabel = (cat: MenuCategory) => lang === 'fr' ? (cat.sublabelFr ?? cat.sublabel) : cat.sublabel

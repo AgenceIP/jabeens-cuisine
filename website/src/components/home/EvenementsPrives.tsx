@@ -123,6 +123,7 @@ export default function EvenementsPrives() {
             className="w-full h-full object-cover"
             style={{ willChange: 'transform' }}
             loading="lazy"
+            decoding="async"
           />
         </div>
 

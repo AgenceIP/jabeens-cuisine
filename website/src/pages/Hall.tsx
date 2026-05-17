@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '@/components/layout/Footer'
@@ -90,6 +90,10 @@ export default function Hall() {
   const t = useT()
   const h = t.hallPage
   const m = t.menuPage
+
+  useEffect(() => {
+    document.title = "Location de Salle & Catering — Jabeen's Cuisine | Jusqu'à 225 personnes"
+  }, [])
 
   const submitHall = async (data: HallFormValues) => {
     setSendingHall(true)

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Hero from '@/components/home/Hero'
 import Marquee from '@/components/home/Marquee'
 import PremiereImpression from '@/components/home/PremiereImpression'
@@ -9,6 +10,10 @@ import FeedbackForm from '@/components/home/FeedbackForm'
 import Footer from '@/components/layout/Footer'
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "Jabeen's Cuisine — Restaurant Indien & Pakistanais Halal, Brossard"
+  }, [])
+
   return (
     <>
       <Hero />

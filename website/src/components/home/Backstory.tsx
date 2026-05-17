@@ -132,6 +132,7 @@ export default function Backstory() {
                 className="w-full object-cover"
                 style={{ willChange: 'transform', aspectRatio: '4/3' }}
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

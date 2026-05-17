@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Navbar from '@/components/layout/Navbar'
 import PageTransition from '@/components/layout/PageTransition'
 import GrandOpeningPopup from '@/components/ui/GrandOpeningPopup'
-import Home from '@/pages/Home'
-import Menu from '@/pages/Menu'
-import NotreHistoire from '@/pages/NotreHistoire'
-import Hall from '@/pages/Hall'
+
+const Home         = lazy(() => import('@/pages/Home'))
+const Menu         = lazy(() => import('@/pages/Menu'))
+const NotreHistoire = lazy(() => import('@/pages/NotreHistoire'))
+const Hall         = lazy(() => import('@/pages/Hall'))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -37,7 +38,9 @@ export default function App() {
         <ScrollToTop />
         <GrandOpeningPopup />
         <Navbar />
-        <AnimatedRoutes />
+        <Suspense fallback={<div style={{ background: '#0A0A0A', minHeight: '100vh' }} />}>
+          <AnimatedRoutes />
+        </Suspense>
       </BrowserRouter>
     </LanguageProvider>
   )

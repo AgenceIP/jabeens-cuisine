@@ -10,12 +10,55 @@
     <meta property="og:image" content="/assets/logo-footer.png" />
     <meta property="og:type" content="restaurant" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0A0A0A" />
     <link rel="icon" type="image/png" href="/assets/logo-footer.png" />
     <link rel="apple-touch-icon" href="/assets/logo-footer.png" />
+
+    <!-- Preconnect for external ordering platform -->
+    <link rel="preconnect" href="https://jabeenscuisine.clusterpos.com" />
+    <link rel="dns-prefetch" href="https://www.google.com" />
+
+    <!-- Preload hero video so first frame appears faster -->
+    <link rel="preload" as="video" href="/assets/hero-video.mp4" type="video/mp4" />
+
     <title>Jabeen's Cuisine — Indien & Pakistanais, Brossard</title>
   </head>
   <body>
     <div id="root"></div>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Jabeen's Cuisine",
+      "image": "https://www.jabeenscuisine.com/assets/logo-footer.png",
+      "url": "https://www.jabeenscuisine.com",
+      "telephone": "+1-450-926-3111",
+      "servesCuisine": ["Indian", "Pakistani", "Halal"],
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8105 Boul. Taschereau",
+        "addressLocality": "Brossard",
+        "addressRegion": "QC",
+        "postalCode": "J4X 1C2",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.4473,
+        "longitude": -73.4615
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "11:30", "closes": "21:30" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "11:30", "closes": "22:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "11:30", "closes": "21:00" }
+      ],
+      "hasMap": "https://maps.google.com/?q=Jabeen%27s+Cuisine+Brossard",
+      "menu": "https://www.jabeenscuisine.com/menu",
+      "acceptsReservations": "True",
+      "description": "Restaurant Indien et Pakistanais Halal à Brossard, QC. Spécialités: Biryani, Butter Chicken, Seekh Kebab. Salle de réception jusqu'à 225 personnes."
+    }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

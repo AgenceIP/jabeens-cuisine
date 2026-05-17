@@ -52,8 +52,12 @@ export default function Navbar() {
             <img
               src="/assets/logo-main.png"
               alt="Jabeen's Cuisine"
+              width={320}
+              height={80}
               className="w-52 md:w-80"
               style={{ objectFit: 'contain' }}
+              fetchPriority="high"
+              decoding="async"
             />
           </Link>
 
@@ -143,6 +147,7 @@ export default function Navbar() {
                 width={80}
                 height={80}
                 className="mb-4 opacity-60"
+                decoding="async"
               />
               {allLinks.map((link, i) => (
                 <motion.div

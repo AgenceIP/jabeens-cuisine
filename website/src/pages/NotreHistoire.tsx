@@ -9,16 +9,18 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function NotreHistoire() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const videoMobileRef = useRef<HTMLVideoElement>(null)
-  const videoDesktopRef = useRef<HTMLVideoElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    [videoMobileRef.current, videoDesktopRef.current].forEach(v => {
-      if (v) { v.muted = true; v.play().catch(() => {}) }
-    })
+    const v = videoRef.current
+    if (v) { v.muted = true; v.play().catch(() => {}) }
   }, [])
   const t = useT()
   const h = t.histoirePage
+
+  useEffect(() => {
+    document.title = "Notre Histoire — Jabeen's Cuisine | Depuis 2017, Brossard"
+  }, [])
 
   useGSAP(() => {
     // Hero entrance
@@ -56,14 +58,22 @@ export default function NotreHistoire() {
       {/* Hero — split: dark left panel + video right panel */}
       <div className="relative h-screen overflow-hidden flex">
 
-        {/* Left: solid dark panel with text */}
-        <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24" style={{ background: '#0A0A0A' }}>
-          <video
-            ref={videoMobileRef}
-            src="/assets/restaurant-interior.mp4"
-            autoPlay muted loop playsInline
-            className="md:hidden absolute inset-0 w-full h-full object-cover opacity-30"
-          />
+        {/* Single video — loads once, positioned behind both panels */}
+        <video
+          ref={videoRef}
+          src="/assets/restaurant-interior.mp4"
+          autoPlay muted loop playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* Mobile dark overlay (hidden on md+) */}
+        <div className="md:hidden absolute inset-0" style={{ background: 'rgba(10,10,10,0.72)' }} />
+
+        {/* Desktop: solid dark left panel */}
+        <div className="hidden md:block absolute inset-y-0 left-0" style={{ right: '55%', background: '#0A0A0A' }} />
+
+        {/* Left: text panel */}
+        <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24">
           <div className="histoire-hero-content opacity-0 relative z-10 text-center md:text-left">
             <p className="text-label text-gold mb-6">{h.label}</p>
             <h1 className="text-display text-text-primary leading-none mb-10" style={{ fontSize: 'clamp(3rem, 4.5vw, 5rem)' }}>
@@ -76,14 +86,8 @@ export default function NotreHistoire() {
           </div>
         </div>
 
-        {/* Right: video panel (desktop only) */}
-        <div className="hidden md:block flex-1 relative overflow-hidden">
-          <video
-            ref={videoDesktopRef}
-            src="/assets/restaurant-interior.mp4"
-            autoPlay muted loop playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+        {/* Right panel: gradient overlays only */}
+        <div className="hidden md:block flex-1 relative z-10 overflow-hidden">
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #0A0A0A 0%, transparent 18%)' }} />
           <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
         </div>
