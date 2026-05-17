@@ -90,13 +90,24 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: f.menu, to: '/menu' },
-                { label: f.order, to: '/commander' },
+                { label: f.order, to: 'https://jabeenscuisine.clusterpos.com', external: true },
                 { label: f.hallRental, to: '/location-salle' },
               ].map(item => (
                 <li key={item.to}>
-                  <Link to={item.to} className="text-text-muted hover:text-text-primary transition-colors duration-300 text-sm font-light">
-                    {item.label}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text-muted hover:text-text-primary transition-colors duration-300 text-sm font-light"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link to={item.to} className="text-text-muted hover:text-text-primary transition-colors duration-300 text-sm font-light">
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

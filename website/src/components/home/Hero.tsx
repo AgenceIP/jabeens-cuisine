@@ -135,15 +135,17 @@ export default function Hero() {
 
           <div ref={ctaRef} className="flex flex-wrap gap-4 opacity-0">
             <MagneticButton>
-              <Link
-                to="/commander"
+              <a
+                href="https://jabeenscuisine.clusterpos.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-label px-8 py-4 transition-colors duration-300 block"
                 style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
                 onMouseEnter={e => (e.currentTarget.style.background = '#bfa97a')}
                 onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}
               >
                 {t.hero.cta_order}
-              </Link>
+              </a>
             </MagneticButton>
             <MagneticButton>
               <Link

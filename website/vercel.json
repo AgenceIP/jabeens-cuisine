@@ -1,3 +1,20 @@
 {
+  "redirects": [
+    { "source": "/event-hall",        "destination": "/location-salle",                          "permanent": true },
+    { "source": "/event-hall/:path*", "destination": "/location-salle",                          "permanent": true },
+    { "source": "/online-ordering",   "destination": "https://jabeenscuisine.clusterpos.com",    "permanent": true },
+    { "source": "/commander",         "destination": "https://jabeenscuisine.clusterpos.com",    "permanent": true },
+    { "source": "/reservations",      "destination": "/",                                         "permanent": true },
+    { "source": "/reservations/:path*","destination": "/",                                        "permanent": true },
+    { "source": "/contact",           "destination": "/",                                         "permanent": true },
+    { "source": "/contact/:path*",    "destination": "/",                                         "permanent": true },
+    { "source": "/franchise",         "destination": "/",                                         "permanent": true },
+    { "source": "/franchising",       "destination": "/",                                         "permanent": true },
+    { "source": "/Experiences",       "destination": "/",                                         "permanent": true },
+    { "source": "/experiences",       "destination": "/",                                         "permanent": true },
+    { "source": "/privacy-policy",    "destination": "/",                                         "permanent": true },
+    { "source": "/privacy",           "destination": "/",                                         "permanent": true },
+    { "source": "/Menus (New)",       "destination": "/menu",                                     "permanent": true }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

@@ -29,8 +29,7 @@ export const siteConfig = {
     { label: 'Accueil', to: '/' },
     { label: 'Menu', to: '/menu' },
     { label: 'Notre Histoire', to: '/notre-histoire' },
-    { label: 'Réservations', to: '/reservations' },
-    { label: 'Commander', to: '/commander' },
+    { label: 'Commander', to: 'https://jabeenscuisine.clusterpos.com' },
     { label: 'Location de Salle', to: '/location-salle' },
   ],
 }
