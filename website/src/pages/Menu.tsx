@@ -67,7 +67,7 @@ function ImageLightbox({ item, onClose }: { item: LightboxItem; onClose: () => v
         initial={{ opacity: 0, scale: 0.92, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.94, y: 8 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         onClick={e => e.stopPropagation()}
-        style={{ position: 'relative', maxWidth: 520, width: '100%', background: '#0E0E0E', border: '1px solid #2A2A2A', boxShadow: '0 32px 80px rgba(0,0,0,0.8)', overflow: 'hidden' }}
+        style={{ position: 'relative', maxWidth: 520, width: '100%', background: 'rgba(6,13,24,0.97)', border: '1px solid #2A2A2A', boxShadow: '0 32px 80px rgba(0,0,0,0.8)', overflow: 'hidden' }}
       >
         <button
           onClick={onClose} aria-label="Fermer"
@@ -281,7 +281,7 @@ export default function Menu() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto' }}>
           {[...PDF_MENUS, DRINKS_PDF].map((menu) => (
-            <div key={menu.title} style={{ border: '1px solid #2A2A2A', overflow: 'hidden', background: '#0E0E0E' }}>
+            <div key={menu.title} style={{ border: '1px solid #2A2A2A', overflow: 'hidden', background: 'rgba(6,13,24,0.8)' }}>
               {/* Mobile: full-card button */}
               <a href={menu.pdf} target="_blank" rel="noopener noreferrer" className="md:hidden flex flex-col items-center justify-center py-10 px-6" style={{ textDecoration: 'none' }}>
                 <p style={{ fontFamily: 'Montserrat', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: '#F5F5F0', textAlign: 'center' }}>{menu.title}</p>
@@ -299,7 +299,7 @@ export default function Menu() {
                   onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#F5F5F0'; a.style.borderColor = '#DEDEDA' }}
                 >{m.openButton}</a>
               </div>
-              <div className="hidden md:block" style={{ height: 420, overflow: 'hidden', background: '#111' }}>
+              <div className="hidden md:block" style={{ height: 420, overflow: 'hidden', background: 'rgba(6,13,24,0.6)' }}>
                 <iframe src={`${menu.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} title={menu.title} style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }} />
               </div>
             </div>

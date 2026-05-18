@@ -27,8 +27,18 @@
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-position: center center;
     color: #F5F5F0;
     overflow-x: hidden;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+      background-size: auto 60vh;
+      background-repeat: repeat;
+      background-position: top center;
+    }
   }
 
   ::selection {

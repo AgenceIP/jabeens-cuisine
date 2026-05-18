@@ -45,7 +45,7 @@ function PhotoGrid({ srcs, labels, placeholder }: { srcs: (string | null)[]; lab
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
           className="relative overflow-hidden"
-          style={{ aspectRatio: '4/3', background: '#111111', border: '1px solid #1E1E1E' }}
+          style={{ aspectRatio: '4/3', background: 'rgba(6,13,24,0.6)', border: '1px solid #1E1E1E' }}
         >
           {src ? (
             <img src={src} alt={labels[i]} className="w-full h-full object-cover" />
@@ -244,23 +244,23 @@ export default function Hall() {
                       <div>
                         <label style={labelStyle}>{h.personnes}</label>
                         <select {...hallForm.register('personnes', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.personnes), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
-                          <option value="" disabled style={{ background: '#111' }}>—</option>
-                          {h.personnesOptions.map(n => <option key={n} value={n} style={{ background: '#111' }}>{n} {h.personnesLabel}</option>)}
+                          <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
+                          {h.personnesOptions.map(n => <option key={n} value={n} style={{ background: '#0D1A2E' }}>{n} {h.personnesLabel}</option>)}
                         </select>
                       </div>
                       <div>
                         <label style={labelStyle}>{h.typeEvenement}</label>
                         <select {...hallForm.register('type_evenement', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.type_evenement), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
-                          <option value="" disabled style={{ background: '#111' }}>—</option>
-                          {Object.entries(h.typeOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#111' }}>{label}</option>)}
+                          <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
+                          {Object.entries(h.typeOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#0D1A2E' }}>{label}</option>)}
                         </select>
                       </div>
                     </div>
                     <div className="mb-8">
                       <label style={labelStyle}>{h.restauration}</label>
                       <select {...hallForm.register('restauration', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.restauration), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
-                        <option value="" disabled style={{ background: '#111' }}>—</option>
-                        {Object.entries(h.restaurationOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#111' }}>{label}</option>)}
+                        <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
+                        {Object.entries(h.restaurationOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#0D1A2E' }}>{label}</option>)}
                       </select>
                     </div>
                     <div className="mb-12">
@@ -322,26 +322,26 @@ export default function Hall() {
                       <div>
                         <label style={labelStyle}>{h.personnes}</label>
                         <select {...cateringForm.register('personnes', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.personnes), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
-                          <option value="" disabled style={{ background: '#111' }}>—</option>
-                          {h.personnesOptions.map(n => <option key={n} value={n} style={{ background: '#111' }}>{n} {h.personnesLabel}</option>)}
+                          <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
+                          {h.personnesOptions.map(n => <option key={n} value={n} style={{ background: '#0D1A2E' }}>{n} {h.personnesLabel}</option>)}
                         </select>
                       </div>
                       <div>
                         <label style={labelStyle}>{h.typeEvenement}</label>
                         <select {...cateringForm.register('type_evenement', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.type_evenement), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
-                          <option value="" disabled style={{ background: '#111' }}>—</option>
-                          {Object.entries(h.typeOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#111' }}>{label}</option>)}
+                          <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
+                          {Object.entries(h.typeOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#0D1A2E' }}>{label}</option>)}
                         </select>
                       </div>
                     </div>
                     <div className="mb-8">
                       <label style={labelStyle}>{h.restauration}</label>
                       <select {...cateringForm.register('menu_preference', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.menu_preference), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
-                        <option value="" disabled style={{ background: '#111' }}>—</option>
-                        <option value="buffet" style={{ background: '#111' }}>Buffet</option>
-                        <option value="cocktail" style={{ background: '#111' }}>{Object.values(h.restaurationOptions)[1]}</option>
-                        <option value="table" style={{ background: '#111' }}>{Object.values(h.restaurationOptions)[0]}</option>
-                        <option value="sur_mesure" style={{ background: '#111' }}>{h.typeOptions.autre}</option>
+                        <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
+                        <option value="buffet" style={{ background: '#0D1A2E' }}>Buffet</option>
+                        <option value="cocktail" style={{ background: '#0D1A2E' }}>{Object.values(h.restaurationOptions)[1]}</option>
+                        <option value="table" style={{ background: '#0D1A2E' }}>{Object.values(h.restaurationOptions)[0]}</option>
+                        <option value="sur_mesure" style={{ background: '#0D1A2E' }}>{h.typeOptions.autre}</option>
                       </select>
                     </div>
                     <div className="mb-12">

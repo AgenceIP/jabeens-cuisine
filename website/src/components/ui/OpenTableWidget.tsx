@@ -19,7 +19,7 @@ export default function OpenTableWidget() {
 
   if (!restaurantId) {
     return (
-      <div className="text-center py-14 px-8" style={{ border: '1px dashed #2A2A2A', background: '#111111' }}>
+      <div className="text-center py-14 px-8" style={{ border: '1px dashed #2A2A2A', background: 'rgba(6,13,24,0.7)' }}>
         <p className="text-label text-gold mb-3" style={{ fontSize: '0.55rem' }}>OPENTABLE</p>
         <p className="font-light mb-3" style={{ fontFamily: 'Cormorant Garamond', fontSize: '1.4rem', color: '#F5F5F0' }}>
           Widget de réservation

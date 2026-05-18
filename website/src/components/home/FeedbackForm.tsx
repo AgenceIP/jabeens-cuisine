@@ -110,11 +110,11 @@ export default function FeedbackForm() {
                   {...register('type', { required: true })}
                   style={{ ...inputStyle, cursor: 'pointer', appearance: 'none', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}
                 >
-                  <option value="" disabled style={{ background: '#111111' }}>{fb.selectType}</option>
-                  <option value="compliment" style={{ background: '#111111' }}>{fb.types.compliment}</option>
-                  <option value="suggestion" style={{ background: '#111111' }}>{fb.types.suggestion}</option>
-                  <option value="probleme" style={{ background: '#111111' }}>{fb.types.probleme}</option>
-                  <option value="autre" style={{ background: '#111111' }}>{fb.types.autre}</option>
+                  <option value="" disabled style={{ background: '#0D1A2E' }}>{fb.selectType}</option>
+                  <option value="compliment" style={{ background: '#0D1A2E' }}>{fb.types.compliment}</option>
+                  <option value="suggestion" style={{ background: '#0D1A2E' }}>{fb.types.suggestion}</option>
+                  <option value="probleme" style={{ background: '#0D1A2E' }}>{fb.types.probleme}</option>
+                  <option value="autre" style={{ background: '#0D1A2E' }}>{fb.types.autre}</option>
                 </select>
               </div>
 

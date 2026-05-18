@@ -121,8 +121,8 @@ export default function NotreHistoire() {
       </div>
 
       {/* Philosophy */}
-      <div className="philosophy-section section-padding" style={{ background: '#111111', borderTop: 'none', position: 'relative' }}>
-        <div aria-hidden style={{ position: 'absolute', top: -80, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, transparent, #111111)', pointerEvents: 'none' }} />
+      <div className="philosophy-section section-padding" style={{ background: 'rgba(6,13,24,0.75)', borderTop: 'none', position: 'relative' }}>
+        <div aria-hidden style={{ position: 'absolute', top: -80, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, transparent, rgba(6,13,24,0.75))', pointerEvents: 'none' }} />
         <div className="max-w-site mx-auto">
           <p className="fade-in-section text-label text-gold mb-16 text-center">{h.valuesLabel}</p>
           <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: '1px solid #1E1E1E' }}>
