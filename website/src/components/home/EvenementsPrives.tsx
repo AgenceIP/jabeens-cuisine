@@ -67,7 +67,7 @@ export default function EvenementsPrives() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: 'transparent', borderTop: '1px solid #1E1E1E' }}>
+    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: 'transparent' }}>
       <div className="flex flex-col md:flex-row min-h-[600px]">
 
         {/* Text */}
@@ -112,7 +112,13 @@ export default function EvenementsPrives() {
         <div
           ref={imgWrapRef}
           className="w-full md:w-1/2 overflow-hidden"
-          style={{ minHeight: '480px', position: 'relative' }}
+          style={{
+            minHeight: '480px',
+            WebkitMaskImage: 'linear-gradient(to left, black 60%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 8%, black 92%, rgba(0,0,0,0) 100%)',
+            WebkitMaskComposite: 'destination-in',
+            maskImage: 'linear-gradient(to left, black 60%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 8%, black 92%, rgba(0,0,0,0) 100%)',
+            maskComposite: 'intersect',
+          }}
         >
           <img
             ref={imgInnerRef}
@@ -125,9 +131,6 @@ export default function EvenementsPrives() {
             loading="lazy"
             decoding="async"
           />
-          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to bottom, rgba(6,13,24,0.92), rgba(6,13,24,0))', pointerEvents: 'none' }} />
-          <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to top, rgba(6,13,24,0.92), rgba(6,13,24,0))', pointerEvents: 'none' }} />
-          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 180, background: 'linear-gradient(to right, rgba(6,13,24,0.92), rgba(6,13,24,0))', pointerEvents: 'none' }} />
         </div>
 
       </div>

@@ -114,7 +114,13 @@ export default function Backstory() {
           <div className="w-full md:w-[45%]">
             <div
               ref={imgWrapRef}
-              className="relative overflow-hidden"
+              className="overflow-hidden"
+              style={{
+                WebkitMaskImage: 'linear-gradient(to right, black 65%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 6%, black 94%, rgba(0,0,0,0) 100%)',
+                WebkitMaskComposite: 'destination-in',
+                maskImage: 'linear-gradient(to right, black 65%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 6%, black 94%, rgba(0,0,0,0) 100%)',
+                maskComposite: 'intersect',
+              }}
             >
               <img
                 ref={imgInnerRef}
@@ -127,9 +133,6 @@ export default function Backstory() {
                 loading="lazy"
                 decoding="async"
               />
-              <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, rgba(6,13,24,0.88), rgba(6,13,24,0))', pointerEvents: 'none' }} />
-              <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to top, rgba(6,13,24,0.88), rgba(6,13,24,0))', pointerEvents: 'none' }} />
-              <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, rgba(6,13,24,0.88), rgba(6,13,24,0))', pointerEvents: 'none' }} />
             </div>
           </div>
 

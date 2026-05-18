@@ -92,8 +92,6 @@ export default function LaCarte() {
         background: 'transparent',
         paddingTop: '60px',
         paddingBottom: '0px',
-        borderTop: '1px solid #1E1E1E',
-        borderBottom: '1px solid #1E1E1E',
         overflow: 'hidden',
         position: 'relative',
       }}

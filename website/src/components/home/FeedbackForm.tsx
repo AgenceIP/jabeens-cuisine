@@ -56,7 +56,7 @@ export default function FeedbackForm() {
   }
 
   return (
-    <section style={{ background: 'transparent', borderTop: '1px solid #1E1E1E' }} className="section-padding">
+    <section style={{ background: 'transparent' }} className="section-padding">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-label text-gold mb-4">{fb.label}</p>
