@@ -98,6 +98,7 @@ export default function NotreHistoire() {
             style={{ objectFit: 'contain', objectPosition: 'center' }}
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #060D18 0%, rgba(6,13,24,0) 18%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, #060D18 0%, rgba(6,13,24,0) 18%)' }} />
           <div className="absolute top-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to bottom, #060D18, rgba(6,13,24,0))' }} />
           <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #060D18, rgba(6,13,24,0))' }} />
         </div>
