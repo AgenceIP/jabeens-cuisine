@@ -68,7 +68,7 @@ export default function NotreHistoire() {
           style={{ objectFit: 'cover' }}
         />
         {/* Mobile dark overlay */}
-        <div className="md:hidden absolute inset-0" style={{ background: 'rgba(10,10,10,0.72)' }} />
+        <div className="md:hidden absolute inset-0" style={{ background: 'rgba(6,13,24,0.72)' }} />
 
         {/* Desktop: solid dark left panel */}
         <div className="hidden md:block absolute inset-y-0 left-0" style={{ right: '55%', background: '#060D18' }} />
@@ -87,7 +87,7 @@ export default function NotreHistoire() {
           </div>
         </div>
 
-        {/* Right panel: video + gradient overlays */}
+        {/* Right panel: video — all 4 edges masked */}
         <div className="hidden md:flex flex-1 relative z-10 overflow-hidden items-center justify-center">
           <video
             ref={videoRef}
@@ -98,15 +98,21 @@ export default function NotreHistoire() {
             style={{
               objectFit: 'contain',
               objectPosition: 'center',
-              WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, black 12%, black 88%, rgba(0,0,0,0) 100%)',
-              maskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, black 12%, black 88%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, black 25%, black 75%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 12%, black 88%, rgba(0,0,0,0) 100%)',
+              WebkitMaskComposite: 'destination-in',
+              maskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, black 25%, black 75%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 12%, black 88%, rgba(0,0,0,0) 100%)',
+              maskComposite: 'intersect',
             }}
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #060D18 0%, rgba(6,13,24,0) 18%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, #060D18 0%, rgba(6,13,24,0) 18%)' }} />
-          <div className="absolute top-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to bottom, #060D18, rgba(6,13,24,0))' }} />
-          <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #060D18, rgba(6,13,24,0))' }} />
+          {/* Left blend — merges video into the dark left panel */}
+          <div className="absolute inset-y-0 left-0 pointer-events-none" style={{ width: '35%', background: 'linear-gradient(to right, #060D18 0%, rgba(6,13,24,0) 100%)' }} />
+          {/* Right blend */}
+          <div className="absolute inset-y-0 right-0 pointer-events-none" style={{ width: '25%', background: 'linear-gradient(to left, rgba(6,13,24,0.85) 0%, rgba(6,13,24,0) 100%)' }} />
         </div>
+
+        {/* Bottom section fade — blends hero into the next section */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
+          style={{ height: '30%', background: 'linear-gradient(to top, rgba(6,13,24,1) 0%, rgba(6,13,24,0.5) 50%, rgba(6,13,24,0) 100%)' }} />
 
       </div>
 
