@@ -51,7 +51,7 @@ function PhotoGrid({ srcs, labels, placeholder }: { srcs: (string | null)[]; lab
             <img src={src} alt={labels[i]} className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center gap-3">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                 <rect x="2" y="6" width="28" height="20" rx="1" stroke="#2A2A2A" strokeWidth="1.5" />
                 <circle cx="21" cy="13" r="3" stroke="#2A2A2A" strokeWidth="1.5" />
                 <path d="M2 22l8-7 5 5 4-3 11 9" stroke="#2A2A2A" strokeWidth="1.5" strokeLinejoin="round" />
@@ -208,64 +208,64 @@ export default function Hall() {
                   <motion.form key="hall-f" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} onSubmit={hallForm.handleSubmit(submitHall)}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <label style={labelStyle}>{h.prenom}</label>
-                        <input {...hallForm.register('prenom', { required: true })} placeholder={h.prenom} style={getStyle(inputStyle, !!hallForm.formState.errors.prenom)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.prenom ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="hall-prenom" style={labelStyle}>{h.prenom}</label>
+                        <input id="hall-prenom" {...hallForm.register('prenom', { required: true })} placeholder={h.prenom} style={getStyle(inputStyle, !!hallForm.formState.errors.prenom)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.prenom ? '#A8956A' : '#1E1E1E')} />
                       </div>
                       <div>
-                        <label style={labelStyle}>{h.nom}</label>
-                        <input {...hallForm.register('nom', { required: true })} placeholder={h.nom} style={getStyle(inputStyle, !!hallForm.formState.errors.nom)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.nom ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="hall-nom" style={labelStyle}>{h.nom}</label>
+                        <input id="hall-nom" {...hallForm.register('nom', { required: true })} placeholder={h.nom} style={getStyle(inputStyle, !!hallForm.formState.errors.nom)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.nom ? '#A8956A' : '#1E1E1E')} />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <label style={labelStyle}>{h.email}</label>
-                        <input {...hallForm.register('email', { required: true, pattern: /^\S+@\S+$/i })} type="email" placeholder="email@example.com" style={getStyle(inputStyle, !!hallForm.formState.errors.email)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.email ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="hall-email" style={labelStyle}>{h.email}</label>
+                        <input id="hall-email" {...hallForm.register('email', { required: true, pattern: /^\S+@\S+$/i })} type="email" placeholder="email@example.com" style={getStyle(inputStyle, !!hallForm.formState.errors.email)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.email ? '#A8956A' : '#1E1E1E')} />
                       </div>
                       <div>
-                        <label style={labelStyle}>{h.telephone}</label>
-                        <input {...hallForm.register('telephone', { required: true })} type="tel" placeholder="(450) 926-3111" style={getStyle(inputStyle, !!hallForm.formState.errors.telephone)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.telephone ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="hall-telephone" style={labelStyle}>{h.telephone}</label>
+                        <input id="hall-telephone" {...hallForm.register('telephone', { required: true })} type="tel" placeholder="(450) 926-3111" style={getStyle(inputStyle, !!hallForm.formState.errors.telephone)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.telephone ? '#A8956A' : '#1E1E1E')} />
                       </div>
                     </div>
                     <div className="mb-8">
-                      <label style={labelStyle}>{h.date}</label>
-                      <input {...hallForm.register('date', { required: true })} type="date" style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.date), colorScheme: 'dark' }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.date ? '#A8956A' : '#1E1E1E')} />
+                      <label htmlFor="hall-date" style={labelStyle}>{h.date}</label>
+                      <input id="hall-date" {...hallForm.register('date', { required: true })} type="date" style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.date), colorScheme: 'dark' }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.date ? '#A8956A' : '#1E1E1E')} />
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <label style={labelStyle}>{h.heureDebut}</label>
-                        <input {...hallForm.register('heure_debut', { required: true })} type="time" style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.heure_debut), colorScheme: 'dark' }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.heure_debut ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="hall-heure-debut" style={labelStyle}>{h.heureDebut}</label>
+                        <input id="hall-heure-debut" {...hallForm.register('heure_debut', { required: true })} type="time" style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.heure_debut), colorScheme: 'dark' }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.heure_debut ? '#A8956A' : '#1E1E1E')} />
                       </div>
                       <div>
-                        <label style={labelStyle}>{h.heureFin}</label>
-                        <input {...hallForm.register('heure_fin', { required: true })} type="time" style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.heure_fin), colorScheme: 'dark' }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.heure_fin ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="hall-heure-fin" style={labelStyle}>{h.heureFin}</label>
+                        <input id="hall-heure-fin" {...hallForm.register('heure_fin', { required: true })} type="time" style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.heure_fin), colorScheme: 'dark' }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = hallForm.formState.errors.heure_fin ? '#A8956A' : '#1E1E1E')} />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <label style={labelStyle}>{h.personnes}</label>
-                        <select {...hallForm.register('personnes', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.personnes), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
+                        <label htmlFor="hall-personnes" style={labelStyle}>{h.personnes}</label>
+                        <select id="hall-personnes" {...hallForm.register('personnes', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.personnes), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
                           <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
                           {h.personnesOptions.map(n => <option key={n} value={n} style={{ background: '#0D1A2E' }}>{n} {h.personnesLabel}</option>)}
                         </select>
                       </div>
                       <div>
-                        <label style={labelStyle}>{h.typeEvenement}</label>
-                        <select {...hallForm.register('type_evenement', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.type_evenement), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
+                        <label htmlFor="hall-type-evenement" style={labelStyle}>{h.typeEvenement}</label>
+                        <select id="hall-type-evenement" {...hallForm.register('type_evenement', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.type_evenement), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
                           <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
                           {Object.entries(h.typeOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#0D1A2E' }}>{label}</option>)}
                         </select>
                       </div>
                     </div>
                     <div className="mb-8">
-                      <label style={labelStyle}>{h.restauration}</label>
-                      <select {...hallForm.register('restauration', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.restauration), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
+                      <label htmlFor="hall-restauration" style={labelStyle}>{h.restauration}</label>
+                      <select id="hall-restauration" {...hallForm.register('restauration', { required: true })} style={{ ...getStyle(inputStyle, !!hallForm.formState.errors.restauration), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
                         <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
                         {Object.entries(h.restaurationOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#0D1A2E' }}>{label}</option>)}
                       </select>
                     </div>
                     <div className="mb-12">
-                      <label style={labelStyle}>{h.notes}</label>
-                      <textarea {...hallForm.register('notes')} rows={3} placeholder={h.placeholder_notes} style={{ ...inputStyle, resize: 'none', lineHeight: 1.7 }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = '#1E1E1E')} />
+                      <label htmlFor="hall-notes" style={labelStyle}>{h.notes}</label>
+                      <textarea id="hall-notes" {...hallForm.register('notes')} rows={3} placeholder={h.placeholder_notes} style={{ ...inputStyle, resize: 'none', lineHeight: 1.7 }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = '#1E1E1E')} />
                     </div>
                     <button type="submit" disabled={sendingHall} className="text-label w-full py-5 transition-all duration-300" style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700, opacity: sendingHall ? 0.7 : 1, cursor: sendingHall ? 'wait' : 'pointer' }} onMouseEnter={e => { if (!sendingHall) e.currentTarget.style.background = '#bfa97a' }} onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}>
                       {sendingHall ? '...' : h.submit}
@@ -292,51 +292,51 @@ export default function Hall() {
                   <motion.form key="catering-f" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} onSubmit={cateringForm.handleSubmit(submitCatering)}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <label style={labelStyle}>{h.prenom}</label>
-                        <input {...cateringForm.register('prenom', { required: true })} placeholder={h.prenom} style={getStyle(inputStyle, !!cateringForm.formState.errors.prenom)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.prenom ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="cat-prenom" style={labelStyle}>{h.prenom}</label>
+                        <input id="cat-prenom" {...cateringForm.register('prenom', { required: true })} placeholder={h.prenom} style={getStyle(inputStyle, !!cateringForm.formState.errors.prenom)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.prenom ? '#A8956A' : '#1E1E1E')} />
                       </div>
                       <div>
-                        <label style={labelStyle}>{h.nom}</label>
-                        <input {...cateringForm.register('nom', { required: true })} placeholder={h.nom} style={getStyle(inputStyle, !!cateringForm.formState.errors.nom)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.nom ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="cat-nom" style={labelStyle}>{h.nom}</label>
+                        <input id="cat-nom" {...cateringForm.register('nom', { required: true })} placeholder={h.nom} style={getStyle(inputStyle, !!cateringForm.formState.errors.nom)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.nom ? '#A8956A' : '#1E1E1E')} />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <label style={labelStyle}>{h.email}</label>
-                        <input {...cateringForm.register('email', { required: true, pattern: /^\S+@\S+$/i })} type="email" placeholder="email@example.com" style={getStyle(inputStyle, !!cateringForm.formState.errors.email)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.email ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="cat-email" style={labelStyle}>{h.email}</label>
+                        <input id="cat-email" {...cateringForm.register('email', { required: true, pattern: /^\S+@\S+$/i })} type="email" placeholder="email@example.com" style={getStyle(inputStyle, !!cateringForm.formState.errors.email)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.email ? '#A8956A' : '#1E1E1E')} />
                       </div>
                       <div>
-                        <label style={labelStyle}>{h.telephone}</label>
-                        <input {...cateringForm.register('telephone', { required: true })} type="tel" placeholder="(450) 926-3111" style={getStyle(inputStyle, !!cateringForm.formState.errors.telephone)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.telephone ? '#A8956A' : '#1E1E1E')} />
+                        <label htmlFor="cat-telephone" style={labelStyle}>{h.telephone}</label>
+                        <input id="cat-telephone" {...cateringForm.register('telephone', { required: true })} type="tel" placeholder="(450) 926-3111" style={getStyle(inputStyle, !!cateringForm.formState.errors.telephone)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.telephone ? '#A8956A' : '#1E1E1E')} />
                       </div>
                     </div>
                     <div className="mb-8">
-                      <label style={labelStyle}>{h.date}</label>
-                      <input {...cateringForm.register('date', { required: true })} type="date" style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.date), colorScheme: 'dark' }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.date ? '#A8956A' : '#1E1E1E')} />
+                      <label htmlFor="cat-date" style={labelStyle}>{h.date}</label>
+                      <input id="cat-date" {...cateringForm.register('date', { required: true })} type="date" style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.date), colorScheme: 'dark' }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.date ? '#A8956A' : '#1E1E1E')} />
                     </div>
                     <div className="mb-8">
-                      <label style={labelStyle}>{h.notes.includes('Informations') ? 'Event Address' : "Adresse de l'événement"}</label>
-                      <input {...cateringForm.register('adresse', { required: true })} placeholder="123 Rue Exemple, Brossard" style={getStyle(inputStyle, !!cateringForm.formState.errors.adresse)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.adresse ? '#A8956A' : '#1E1E1E')} />
+                      <label htmlFor="cat-adresse" style={labelStyle}>{h.notes.includes('Informations') ? 'Event Address' : "Adresse de l'événement"}</label>
+                      <input id="cat-adresse" {...cateringForm.register('adresse', { required: true })} placeholder="123 Rue Exemple, Brossard" style={getStyle(inputStyle, !!cateringForm.formState.errors.adresse)} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = cateringForm.formState.errors.adresse ? '#A8956A' : '#1E1E1E')} />
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <label style={labelStyle}>{h.personnes}</label>
-                        <select {...cateringForm.register('personnes', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.personnes), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
+                        <label htmlFor="cat-personnes" style={labelStyle}>{h.personnes}</label>
+                        <select id="cat-personnes" {...cateringForm.register('personnes', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.personnes), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
                           <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
                           {h.personnesOptions.map(n => <option key={n} value={n} style={{ background: '#0D1A2E' }}>{n} {h.personnesLabel}</option>)}
                         </select>
                       </div>
                       <div>
-                        <label style={labelStyle}>{h.typeEvenement}</label>
-                        <select {...cateringForm.register('type_evenement', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.type_evenement), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
+                        <label htmlFor="cat-type-evenement" style={labelStyle}>{h.typeEvenement}</label>
+                        <select id="cat-type-evenement" {...cateringForm.register('type_evenement', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.type_evenement), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
                           <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
                           {Object.entries(h.typeOptions).map(([val, label]) => <option key={val} value={val} style={{ background: '#0D1A2E' }}>{label}</option>)}
                         </select>
                       </div>
                     </div>
                     <div className="mb-8">
-                      <label style={labelStyle}>{h.restauration}</label>
-                      <select {...cateringForm.register('menu_preference', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.menu_preference), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
+                      <label htmlFor="cat-menu-pref" style={labelStyle}>{h.restauration}</label>
+                      <select id="cat-menu-pref" {...cateringForm.register('menu_preference', { required: true })} style={{ ...getStyle(inputStyle, !!cateringForm.formState.errors.menu_preference), appearance: 'none', cursor: 'pointer', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}>
                         <option value="" disabled style={{ background: '#0D1A2E' }}>—</option>
                         <option value="buffet" style={{ background: '#0D1A2E' }}>Buffet</option>
                         <option value="cocktail" style={{ background: '#0D1A2E' }}>{Object.values(h.restaurationOptions)[1]}</option>
@@ -345,8 +345,8 @@ export default function Hall() {
                       </select>
                     </div>
                     <div className="mb-12">
-                      <label style={labelStyle}>{h.notes}</label>
-                      <textarea {...cateringForm.register('notes')} rows={3} placeholder={h.placeholder_notes} style={{ ...inputStyle, resize: 'none', lineHeight: 1.7 }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = '#1E1E1E')} />
+                      <label htmlFor="cat-notes" style={labelStyle}>{h.notes}</label>
+                      <textarea id="cat-notes" {...cateringForm.register('notes')} rows={3} placeholder={h.placeholder_notes} style={{ ...inputStyle, resize: 'none', lineHeight: 1.7 }} onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')} onBlur={e => (e.currentTarget.style.borderBottomColor = '#1E1E1E')} />
                     </div>
                     <button type="submit" disabled={sendingCatering} className="text-label w-full py-5 transition-all duration-300" style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700, opacity: sendingCatering ? 0.7 : 1, cursor: sendingCatering ? 'wait' : 'pointer' }} onMouseEnter={e => { if (!sendingCatering) e.currentTarget.style.background = '#bfa97a' }} onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}>
                       {sendingCatering ? '...' : h.submit}

@@ -71,8 +71,9 @@ export default function FeedbackForm() {
             <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.prenom}</label>
+                  <label htmlFor="fb-prenom" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.prenom}</label>
                   <input
+                    id="fb-prenom"
                     {...register('prenom', { required: true })}
                     placeholder={fb.placeholder_prenom}
                     style={{ ...inputStyle, borderBottomColor: errors.prenom ? '#A8956A' : '#1E1E1E' }}
@@ -81,8 +82,9 @@ export default function FeedbackForm() {
                   />
                 </div>
                 <div>
-                  <label className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.nom}</label>
+                  <label htmlFor="fb-nom" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.nom}</label>
                   <input
+                    id="fb-nom"
                     {...register('nom', { required: true })}
                     placeholder={fb.placeholder_nom}
                     style={{ ...inputStyle, borderBottomColor: errors.nom ? '#A8956A' : '#1E1E1E' }}
@@ -93,8 +95,9 @@ export default function FeedbackForm() {
               </div>
 
               <div className="mb-6">
-                <label className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.email}</label>
+                <label htmlFor="fb-email" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.email}</label>
                 <input
+                  id="fb-email"
                   {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                   type="email"
                   placeholder="email@example.com"
@@ -105,8 +108,9 @@ export default function FeedbackForm() {
               </div>
 
               <div className="mb-6">
-                <label className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.typeLabel}</label>
+                <label htmlFor="fb-type" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.typeLabel}</label>
                 <select
+                  id="fb-type"
                   {...register('type', { required: true })}
                   style={{ ...inputStyle, cursor: 'pointer', appearance: 'none', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}
                 >
@@ -119,8 +123,9 @@ export default function FeedbackForm() {
               </div>
 
               <div className="mb-12">
-                <label className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.message}</label>
+                <label htmlFor="fb-message" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.message}</label>
                 <textarea
+                  id="fb-message"
                   {...register('message', { required: true })}
                   rows={4}
                   placeholder={fb.placeholder_message}

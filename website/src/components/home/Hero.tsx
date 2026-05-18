@@ -21,7 +21,9 @@ export default function Hero() {
 
   useEffect(() => {
     const v = videoRef.current
-    if (v) { v.muted = true; v.play().catch(() => {}) }
+    if (v && window.matchMedia('(min-width: 768px)').matches) {
+      v.muted = true; v.play().catch(() => {})
+    }
   }, [])
 
   useGSAP(() => {
@@ -79,6 +81,15 @@ export default function Hero() {
     >
       {/* Background — parallax target */}
       <div ref={bgRef} className="absolute inset-0 overflow-hidden" style={{ willChange: 'transform' }}>
+        {/* Mobile: static image — fast LCP, no video download */}
+        <img
+          src="/assets/hero-2.jpg"
+          alt=""
+          aria-hidden="true"
+          className="md:hidden absolute inset-0 w-full h-full object-cover"
+          fetchPriority="high"
+        />
+        {/* Desktop: video */}
         <video
           ref={videoRef}
           src="/assets/hero-video.mp4"
@@ -86,7 +97,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover scale-100 md:scale-[1.12]"
+          className="hidden md:block w-full h-full object-cover md:scale-[1.12]"
           style={{ objectPosition: 'center center' }}
         />
         <div

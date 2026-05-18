@@ -72,13 +72,13 @@ export default function Footer() {
               Brossard, Québec
             </p>
             <div className="flex gap-5 mt-6">
-              <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-gold transition-colors duration-300">
+              <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-text-muted hover:text-gold transition-colors duration-300">
                 <InstagramIcon />
               </a>
-              <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-gold transition-colors duration-300">
+              <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-text-muted hover:text-gold transition-colors duration-300">
                 <FacebookIcon />
               </a>
-              <a href={siteConfig.social.tiktok} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-gold transition-colors duration-300">
+              <a href={siteConfig.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-text-muted hover:text-gold transition-colors duration-300">
                 <TikTokIcon />
               </a>
             </div>
