@@ -7,7 +7,7 @@ export default function Footer() {
   const f = t.footer
 
   return (
-    <footer style={{ background: '#080808', borderTop: '1px solid rgba(168,149,106,0.15)' }}>
+    <footer style={{ background: 'transparent', borderTop: '1px solid rgba(168,149,106,0.15)' }}>
 
       {/* Google Maps strip */}
       <div style={{ position: 'relative', height: '300px', overflow: 'hidden' }}>
@@ -28,7 +28,7 @@ export default function Footer() {
             left: 0,
             right: 0,
             height: '120px',
-            background: 'linear-gradient(to top, #080808 0%, transparent 100%)',
+            background: 'linear-gradient(to top, #060D18 0%, transparent 100%)',
             pointerEvents: 'none',
           }}
         />
@@ -48,7 +48,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-label transition-colors duration-300 hover:text-gold"
-            style={{ fontSize: '0.55rem', color: '#6B6B6B' }}
+            style={{ fontSize: '0.55rem', color: '#DEDEDA', fontWeight: 500 }}
           >
             {f.directions}
           </a>

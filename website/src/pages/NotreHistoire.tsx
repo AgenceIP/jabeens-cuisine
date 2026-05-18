@@ -54,7 +54,7 @@ export default function NotreHistoire() {
   }, { scope: sectionRef })
 
   return (
-    <div ref={sectionRef} style={{ background: '#0A0A0A' }}>
+    <div ref={sectionRef} style={{ background: 'transparent' }}>
       {/* Hero — split: dark left panel + video right panel */}
       <div className="relative h-screen overflow-hidden flex">
 
@@ -70,7 +70,7 @@ export default function NotreHistoire() {
         <div className="md:hidden absolute inset-0" style={{ background: 'rgba(10,10,10,0.72)' }} />
 
         {/* Desktop: solid dark left panel */}
-        <div className="hidden md:block absolute inset-y-0 left-0" style={{ right: '55%', background: '#0A0A0A' }} />
+        <div className="hidden md:block absolute inset-y-0 left-0" style={{ right: '55%', background: '#060D18' }} />
 
         {/* Left: text panel */}
         <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24">
@@ -80,7 +80,7 @@ export default function NotreHistoire() {
               {h.heroTitle}
             </h1>
             <div className="gold-divider mb-8 mx-auto md:mx-0" />
-            <blockquote className="text-display-italic" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.15rem)', lineHeight: 1.9, color: 'rgba(245,245,240,0.65)' }}>
+            <blockquote className="text-display-italic" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.15rem)', lineHeight: 1.9, color: '#DEDEDA' }}>
               {h.quote}
             </blockquote>
           </div>
@@ -88,8 +88,8 @@ export default function NotreHistoire() {
 
         {/* Right panel: gradient overlays only */}
         <div className="hidden md:block flex-1 relative z-10 overflow-hidden">
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #0A0A0A 0%, transparent 18%)' }} />
-          <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #060D18 0%, transparent 18%)' }} />
+          <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #060D18, transparent)' }} />
         </div>
 
       </div>
@@ -121,7 +121,8 @@ export default function NotreHistoire() {
       </div>
 
       {/* Philosophy */}
-      <div className="philosophy-section section-padding" style={{ background: '#111111', borderTop: '1px solid #1E1E1E' }}>
+      <div className="philosophy-section section-padding" style={{ background: '#111111', borderTop: 'none', position: 'relative' }}>
+        <div aria-hidden style={{ position: 'absolute', top: -80, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, transparent, #111111)', pointerEvents: 'none' }} />
         <div className="max-w-site mx-auto">
           <p className="fade-in-section text-label text-gold mb-16 text-center">{h.valuesLabel}</p>
           <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: '1px solid #1E1E1E' }}>

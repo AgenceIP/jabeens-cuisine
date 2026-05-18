@@ -24,7 +24,7 @@ export default function OpenTableWidget() {
         <p className="font-light mb-3" style={{ fontFamily: 'Cormorant Garamond', fontSize: '1.4rem', color: '#F5F5F0' }}>
           Widget de réservation
         </p>
-        <p className="font-light" style={{ fontFamily: 'Montserrat', fontSize: '0.75rem', color: '#6B6B6B', lineHeight: 1.7 }}>
+        <p className="font-light" style={{ fontFamily: 'Montserrat', fontSize: '0.75rem', color: '#DEDEDA', fontWeight: 500, lineHeight: 1.7 }}>
           Créez un compte sur{' '}
           <a
             href="https://restaurant.opentable.com"

@@ -89,7 +89,7 @@ export default function LaCarte() {
   return (
     <section
       style={{
-        background: '#0A0A0A',
+        background: 'transparent',
         paddingTop: '80px',
         paddingBottom: '80px',
         borderTop: '1px solid #1E1E1E',
@@ -116,43 +116,25 @@ export default function LaCarte() {
         <PhotoRow photos={row3} height={210} direction="left"  duration={56} />
       </div>
 
-      {/* Left + right edge vignettes */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: 0, left: 0, bottom: 0,
-          width: '180px',
-          background: 'linear-gradient(to right, #0A0A0A 0%, transparent 100%)',
-          pointerEvents: 'none',
-          zIndex: 2,
-        }}
-      />
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: 0, right: 0, bottom: 0,
-          width: '180px',
-          background: 'linear-gradient(to left, #0A0A0A 0%, transparent 100%)',
-          pointerEvents: 'none',
-          zIndex: 2,
-        }}
-      />
+      {/* Edge vignettes — left, right, top, bottom */}
+      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '180px', background: 'linear-gradient(to right, #060D18 0%, transparent 100%)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '180px', background: 'linear-gradient(to left, #060D18 0%, transparent 100%)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to bottom, #060D18, transparent)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to top, #060D18, transparent)', pointerEvents: 'none', zIndex: 2 }} />
 
       {/* CTA */}
       <div className="text-center mt-14 px-8" style={{ position: 'relative', zIndex: 3 }}>
         <Link
           to="/menu"
           className="text-label transition-all duration-300 inline-block"
-          style={{ borderBottom: '1px solid #2A2A2A', paddingBottom: '6px', color: '#6B6B6B', letterSpacing: '0.2em' }}
+          style={{ borderBottom: '1px solid #4A4A44', paddingBottom: '6px', color: '#DEDEDA', letterSpacing: '0.2em' }}
           onMouseEnter={e => {
             e.currentTarget.style.borderBottomColor = '#A8956A'
             e.currentTarget.style.color = '#A8956A'
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.borderBottomColor = '#2A2A2A'
-            e.currentTarget.style.color = '#6B6B6B'
+            e.currentTarget.style.borderBottomColor = '#4A4A44'
+            e.currentTarget.style.color = '#DEDEDA'
           }}
         >
           {c.cta}

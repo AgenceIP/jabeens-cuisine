@@ -12,7 +12,7 @@
   }
 
   html {
-    background-color: #0A0A0A;
+    background-color: #060D18;
     color: #F5F5F0;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -22,7 +22,11 @@
   body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    background-color: #0A0A0A;
+    background-color: #060D18;
+    background-image: url('/assets/background.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: #F5F5F0;
     overflow-x: hidden;
   }
@@ -37,7 +41,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: #060D18;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -96,6 +100,10 @@
     font-weight: 300;
     font-style: italic;
     letter-spacing: 0.04em;
+  }
+
+  .text-text-muted {
+    font-weight: 400 !important;
   }
 
   .gold-divider {

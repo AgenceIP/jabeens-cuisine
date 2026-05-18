@@ -75,7 +75,7 @@ export default function Hero() {
     <section
       ref={containerRef}
       className="relative h-screen w-full overflow-hidden flex items-center"
-      style={{ background: '#0A0A0A' }}
+      style={{ background: 'transparent' }}
     >
       {/* Background — parallax target */}
       <div ref={bgRef} className="absolute inset-0 overflow-hidden" style={{ willChange: 'transform' }}>
@@ -128,7 +128,7 @@ export default function Hero() {
           <p
             ref={taglineRef}
             className="text-display-italic mb-10 opacity-0"
-            style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', color: 'rgba(245,245,240,0.7)' }}
+            style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', color: '#DEDEDA' }}
           >
             {t.hero.tagline}
           </p>

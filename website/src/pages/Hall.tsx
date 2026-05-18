@@ -27,7 +27,7 @@ const inputStyle: React.CSSProperties = {
 const labelStyle: React.CSSProperties = {
   fontFamily: 'Montserrat', fontSize: '0.55rem', fontWeight: 500,
   letterSpacing: '0.3em', textTransform: 'uppercase' as const,
-  color: '#6B6B6B', display: 'block', marginBottom: '8px',
+  color: '#DEDEDA', display: 'block', marginBottom: '8px',
 }
 
 const selectArrow = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B6B6B' stroke-width='1' fill='none'/%3E%3C/svg%3E")`
@@ -63,7 +63,7 @@ function PhotoGrid({ srcs, labels, placeholder }: { srcs: (string | null)[]; lab
           )}
           {labels[i] && (
             <div className="absolute bottom-0 left-0 right-0 px-4 py-3" style={{ background: 'linear-gradient(0deg, rgba(10,10,10,0.85) 0%, transparent 100%)' }}>
-              <span style={{ fontFamily: 'Montserrat', fontSize: '0.6rem', letterSpacing: '0.25em', color: '#6B6B6B', textTransform: 'uppercase' }}>{labels[i]}</span>
+              <span style={{ fontFamily: 'Montserrat', fontSize: '0.6rem', letterSpacing: '0.25em', color: '#DEDEDA', fontWeight: 500, textTransform: 'uppercase' }}>{labels[i]}</span>
             </div>
           )}
         </motion.div>
@@ -134,14 +134,14 @@ export default function Hall() {
         borderBottom: `2px solid ${activeTab === tab ? '#A8956A' : 'transparent'}`,
         cursor: 'pointer', fontFamily: 'Montserrat', fontSize: '0.72rem',
         fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const,
-        color: activeTab === tab ? '#A8956A' : '#555', transition: 'color 0.3s, border-color 0.3s',
+        color: activeTab === tab ? '#A8956A' : '#DEDEDA', transition: 'color 0.3s, border-color 0.3s',
       }}
     >{label}</button>
   )
 
   return (
     <>
-      <div style={{ background: '#0A0A0A', minHeight: '100vh' }}>
+      <div style={{ background: 'transparent', minHeight: '100vh' }}>
 
         {/* Header */}
         <div className="pt-40 pb-16 text-center px-8" style={{ borderBottom: '1px solid #1E1E1E' }}>

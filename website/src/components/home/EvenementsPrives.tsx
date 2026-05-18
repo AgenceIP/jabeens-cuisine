@@ -67,13 +67,13 @@ export default function EvenementsPrives() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: '#111111', borderTop: '1px solid #1E1E1E' }}>
+    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: 'transparent', borderTop: '1px solid #1E1E1E' }}>
       <div className="flex flex-col md:flex-row min-h-[600px]">
 
         {/* Text */}
         <div
           className="w-full md:w-1/2 flex flex-col justify-center px-10 md:px-16 lg:px-20 py-20"
-          style={{ background: '#111111' }}
+          style={{ background: 'transparent' }}
         >
           <p ref={labelRef} className="text-label text-gold mb-6">{t.evenements.label}</p>
 
@@ -112,7 +112,7 @@ export default function EvenementsPrives() {
         <div
           ref={imgWrapRef}
           className="w-full md:w-1/2 overflow-hidden"
-          style={{ minHeight: '480px' }}
+          style={{ minHeight: '480px', position: 'relative' }}
         >
           <img
             ref={imgInnerRef}
@@ -125,6 +125,8 @@ export default function EvenementsPrives() {
             loading="lazy"
             decoding="async"
           />
+          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to bottom, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
+          <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to top, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
         </div>
 
       </div>

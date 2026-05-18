@@ -89,7 +89,7 @@ export default function Backstory() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="section-padding" style={{ background: '#0A0A0A' }}>
+    <section ref={sectionRef} className="section-padding" style={{ background: 'transparent' }}>
       <div className="max-w-site mx-auto">
 
         {/* Quote */}
@@ -134,6 +134,8 @@ export default function Backstory() {
                 loading="lazy"
                 decoding="async"
               />
+              <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, rgba(6,13,24,0.9), transparent)', pointerEvents: 'none' }} />
+              <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to top, rgba(6,13,24,0.9), transparent)', pointerEvents: 'none' }} />
             </div>
           </div>
 

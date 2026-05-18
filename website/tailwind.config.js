@@ -8,7 +8,7 @@ export default {
         surface: '#111111',
         'border-subtle': '#1E1E1E',
         'text-primary': '#F5F5F0',
-        'text-muted': '#6B6B6B',
+        'text-muted': '#DEDEDA',
         gold: '#A8956A',
       },
       fontFamily: {

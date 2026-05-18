@@ -133,7 +133,7 @@ export default function Menu() {
   return (
     <>
       {/* Hero */}
-      <div className="pt-32 pb-12 px-8 md:px-16 text-center" style={{ background: '#0A0A0A', borderBottom: '1px solid #1E1E1E' }}>
+      <div className="pt-32 pb-12 px-8 md:px-16 text-center" style={{ background: 'transparent', borderBottom: '1px solid #1E1E1E' }}>
         <p className="text-label text-gold mb-4">{m.label}</p>
         <h1 className="text-display text-text-primary" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)' }}>{m.heading}</h1>
         <p className="text-text-muted font-light mt-4 text-sm">{m.subheading}</p>
@@ -142,7 +142,7 @@ export default function Menu() {
       {/* ── MOBILE sticky nav bar: tab switcher + category pills ── */}
       <div
         className="md:hidden sticky z-40"
-        style={{ top: 79, background: '#0A0A0A', borderBottom: '1px solid #1E1E1E' }}
+        style={{ top: 79, background: 'rgba(6, 13, 24, 0.92)', backdropFilter: 'blur(8px)', borderBottom: '1px solid #1E1E1E' }}
       >
         {/* Tab switcher */}
         <div style={{ display: 'flex', borderBottom: '1px solid #1E1E1E' }}>
@@ -155,7 +155,7 @@ export default function Menu() {
                 borderBottom: `2px solid ${activeMenu === menu.type ? '#A8956A' : 'transparent'}`,
                 cursor: 'pointer', fontFamily: 'Montserrat', fontSize: '0.6rem', fontWeight: 600,
                 letterSpacing: '0.2em', textTransform: 'uppercase' as const,
-                color: activeMenu === menu.type ? '#A8956A' : '#555',
+                color: activeMenu === menu.type ? '#A8956A' : '#DEDEDA',
                 transition: 'color 0.3s',
               }}
             >{menu.title}</button>
@@ -170,8 +170,8 @@ export default function Menu() {
               style={{
                 flexShrink: 0, padding: '6px 14px', cursor: 'pointer',
                 background: activeId === cat.id ? '#A8956A' : 'transparent',
-                color: activeId === cat.id ? '#0A0A0A' : '#6B6B6B',
-                border: `1px solid ${activeId === cat.id ? '#A8956A' : '#2A2A2A'}`,
+                color: activeId === cat.id ? '#0A0A0A' : '#DEDEDA',
+                border: `1px solid ${activeId === cat.id ? '#A8956A' : '#3A3A3A'}`,
                 fontFamily: 'Montserrat', fontSize: '0.52rem', fontWeight: 500,
                 letterSpacing: '0.12em', textTransform: 'uppercase' as const,
                 transition: 'all 0.25s', whiteSpace: 'nowrap' as const,
@@ -182,7 +182,7 @@ export default function Menu() {
       </div>
 
       {/* ── DESKTOP tab switcher ── */}
-      <div className="hidden md:block" style={{ background: '#0A0A0A' }}>
+      <div className="hidden md:block" style={{ background: 'transparent' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', borderBottom: '1px solid #1E1E1E' }}>
           {PDF_MENUS.map(menu => (
             <button
@@ -193,7 +193,7 @@ export default function Menu() {
                 borderBottom: `2px solid ${activeMenu === menu.type ? '#A8956A' : 'transparent'}`,
                 cursor: 'pointer', fontFamily: 'Montserrat', fontSize: '0.65rem', fontWeight: 600,
                 letterSpacing: '0.22em', textTransform: 'uppercase' as const,
-                color: activeMenu === menu.type ? '#A8956A' : '#444',
+                color: activeMenu === menu.type ? '#A8956A' : '#DEDEDA',
                 transition: 'color 0.3s, border-color 0.3s',
               }}
             >{menu.title}</button>
@@ -207,7 +207,7 @@ export default function Menu() {
           key={activeMenu}
           initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.3 }}
-          style={{ background: '#0A0A0A', display: 'flex', minHeight: '100vh' }}
+          style={{ background: 'transparent', display: 'flex', minHeight: '100vh' }}
         >
           {/* Desktop sidebar */}
           <aside
@@ -230,7 +230,7 @@ export default function Menu() {
                   }}
                 >
                   <span>{catLabel(cat)}</span>
-                  {cat.sublabel && <span className="block" style={{ fontSize: '0.58rem', opacity: 0.55, fontWeight: 400, marginTop: 2 }}>{catSublabel(cat)}</span>}
+                  {cat.sublabel && <span className="block" style={{ fontSize: '0.58rem', opacity: 0.85, fontWeight: 500, marginTop: 2 }}>{catSublabel(cat)}</span>}
                 </button>
               ))}
             </nav>
@@ -275,7 +275,7 @@ export default function Menu() {
       </AnimatePresence>
 
       {/* PDF Menus — at the bottom */}
-      <div style={{ background: '#0A0A0A', padding: '48px 24px 60px', borderTop: '1px solid #1E1E1E' }}>
+      <div style={{ background: 'transparent', padding: '48px 24px 60px', borderTop: '1px solid #1E1E1E' }}>
         <p className="text-center text-label text-gold mb-8" style={{ fontSize: '0.6rem', letterSpacing: '0.25em' }}>
           {m.pdfLabel.toUpperCase()}
         </p>
@@ -285,18 +285,18 @@ export default function Menu() {
               {/* Mobile: full-card button */}
               <a href={menu.pdf} target="_blank" rel="noopener noreferrer" className="md:hidden flex flex-col items-center justify-center py-10 px-6" style={{ textDecoration: 'none' }}>
                 <p style={{ fontFamily: 'Montserrat', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: '#F5F5F0', textAlign: 'center' }}>{menu.title}</p>
-                <p style={{ fontFamily: 'Montserrat', fontSize: '0.6rem', color: '#6B6B6B', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
+                <p style={{ fontFamily: 'Montserrat', fontSize: '0.6rem', color: '#DEDEDA', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
               </a>
               {/* Desktop */}
               <div className="hidden md:flex" style={{ padding: '14px 20px', borderBottom: '1px solid #1E1E1E', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
                   <p style={{ fontFamily: 'Montserrat', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.22em', color: '#A8956A' }}>{menu.title}</p>
-                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.55rem', color: '#555', marginTop: 3 }}>{menu.subtitle}</p>
+                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.55rem', color: '#DEDEDA', fontWeight: 500, marginTop: 3 }}>{menu.subtitle}</p>
                 </div>
                 <a href={menu.pdf} target="_blank" rel="noopener noreferrer"
-                  style={{ fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 700, color: '#F5F5F0', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #6B6B6B', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
+                  style={{ fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 700, color: '#F5F5F0', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #DEDEDA', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
                   onMouseEnter={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#A8956A'; a.style.borderColor = '#A8956A' }}
-                  onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#F5F5F0'; a.style.borderColor = '#6B6B6B' }}
+                  onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#F5F5F0'; a.style.borderColor = '#DEDEDA' }}
                 >{m.openButton}</a>
               </div>
               <div className="hidden md:block" style={{ height: 420, overflow: 'hidden', background: '#111' }}>

@@ -18,7 +18,7 @@ export default function Marquee() {
     <div
       className="marquee-wrapper"
       style={{
-        background: '#111111',
+        background: 'transparent',
         borderTop: '1px solid #1E1E1E',
         borderBottom: '1px solid #1E1E1E',
         padding: '20px 0',

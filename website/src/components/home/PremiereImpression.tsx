@@ -72,14 +72,14 @@ export default function PremiereImpression() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: '#0A0A0A' }}>
+    <section ref={sectionRef} className="w-full overflow-hidden" style={{ background: 'transparent' }}>
       <div className="flex flex-col md:flex-row min-h-[640px]">
 
         {/* Image — clip-path reveal */}
         <div
           ref={imgWrapRef}
           className="w-full md:w-[60%] overflow-hidden"
-          style={{ minHeight: '500px' }}
+          style={{ minHeight: '500px', position: 'relative' }}
         >
           <img
             ref={imgInnerRef}
@@ -91,12 +91,14 @@ export default function PremiereImpression() {
             style={{ minHeight: '500px', willChange: 'transform' }}
             loading="lazy"
           />
+          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to bottom, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
+          <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to top, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
         </div>
 
         {/* Text block */}
         <div
           className="w-full md:w-[40%] flex flex-col justify-center px-10 md:px-16 lg:px-20 py-20"
-          style={{ background: '#0A0A0A' }}
+          style={{ background: 'transparent' }}
         >
           <p ref={labelRef} className="text-label text-gold mb-6">{t.premiereImpression.label}</p>
 
