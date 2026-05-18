@@ -95,7 +95,12 @@ export default function NotreHistoire() {
             autoPlay muted loop playsInline
             preload="metadata"
             className="w-full h-full"
-            style={{ objectFit: 'contain', objectPosition: 'center' }}
+            style={{
+              objectFit: 'contain',
+              objectPosition: 'center',
+              WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, black 12%, black 88%, rgba(0,0,0,0) 100%)',
+              maskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, black 12%, black 88%, rgba(0,0,0,0) 100%)',
+            }}
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #060D18 0%, rgba(6,13,24,0) 18%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, #060D18 0%, rgba(6,13,24,0) 18%)' }} />
