@@ -92,10 +92,16 @@ export default function Hero() {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.88) 100%)',
+            background: 'linear-gradient(to bottom, rgba(6,13,24,0.25) 0%, rgba(6,13,24,0.4) 50%, rgba(6,13,24,0.85) 80%, rgba(6,13,24,1) 100%)',
           }}
         />
       </div>
+
+      {/* Bottom section fade — blends into next section on scroll */}
+      <div
+        className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
+        style={{ height: '35%', background: 'linear-gradient(to top, rgba(6,13,24,1) 0%, rgba(6,13,24,0.6) 40%, rgba(6,13,24,0) 100%)' }}
+      />
 
       {/* Content — fades + rises on scroll */}
       <div ref={contentRef} className="relative z-10 w-full max-w-site mx-auto px-8 md:px-20 lg:px-24" style={{ willChange: 'transform, opacity' }}>
