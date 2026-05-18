@@ -60,7 +60,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <img
-              src="/assets/logo-footer.png"
+              src="/assets/logo-footer.webp"
               alt="Jabeen's Cuisine"
               width={200}
               height={200}

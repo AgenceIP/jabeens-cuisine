@@ -50,7 +50,7 @@ export default function Navbar() {
             className="flex-shrink-0"
           >
             <img
-              src="/assets/logo-main.png"
+              src="/assets/logo-main.webp"
               alt="Jabeen's Cuisine"
               width={320}
               height={80}
@@ -143,7 +143,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col items-center gap-8">
               <img
-                src="/assets/logo-peacock.png"
+                src="/assets/logo-peacock.webp"
                 alt="Jabeen's Cuisine"
                 width={80}
                 height={80}

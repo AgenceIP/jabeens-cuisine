@@ -1,13 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import compression from 'vite-plugin-compression2'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    compression({ algorithm: 'gzip', exclude: [/\.(mp4|webm|png|jpg|jpeg|webp|gif|ico)$/] }),
+    compression({ algorithm: 'brotliCompress', exclude: [/\.(mp4|webm|png|jpg|jpeg|webp|gif|ico)$/] }),
+  ],
   resolve: {
     alias: { '@': path.resolve(__dirname, './src') },
   },
   build: {
+    cssMinify: true,
     rollupOptions: {
       output: {
         manualChunks(id) {
