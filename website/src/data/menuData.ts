@@ -8,7 +8,8 @@ export const dineInMenuData: MenuCategory[] = [
   {
     id: 'tapas',
     label: 'Tapas',
-    sublabel: 'Apéritifs',
+    sublabel: 'Starters',
+    sublabelFr: 'Apéritifs',
     items: [
       {
         name: 'Popadum Platter',
@@ -69,7 +70,8 @@ export const dineInMenuData: MenuCategory[] = [
   {
     id: 'tapas-plus',
     label: 'Tapas Plus',
-    sublabel: 'Grillades & Tandoor',
+    sublabel: 'Grills & Tandoor',
+    sublabelFr: 'Grillades & Tandoor',
     items: [
       {
         name: 'Achaari Paneer Tikka',
@@ -125,7 +127,7 @@ export const dineInMenuData: MenuCategory[] = [
   {
     id: 'exotic-garden',
     label: 'Exotic Garden',
-    sublabel: 'Salades',
+    sublabel: 'Salads',
     labelFr: 'Jardin Exotique',
     sublabelFr: 'Salades',
     items: [
@@ -279,7 +281,8 @@ export const dineInMenuData: MenuCategory[] = [
   {
     id: 'biryani',
     label: 'Biryani',
-    sublabel: 'Servi avec Boondi Raita',
+    sublabel: 'Served with Boondi Raita',
+    sublabelFr: 'Servi avec Boondi Raita',
     items: [
       {
         name: 'Vegetarian Biryani',
@@ -307,7 +310,7 @@ export const dineInMenuData: MenuCategory[] = [
   {
     id: 'breads',
     label: 'Breads',
-    sublabel: 'Pains',
+    sublabel: '',
     labelFr: 'Pains',
     sublabelFr: 'Pains',
     items: [
@@ -322,7 +325,7 @@ export const dineInMenuData: MenuCategory[] = [
   {
     id: 'sides',
     label: 'Sides',
-    sublabel: 'Accompagnements',
+    sublabel: '',
     labelFr: 'Accompagnements',
     sublabelFr: 'Accompagnements',
     items: [
@@ -366,7 +369,7 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-appetizers',
     label: 'Appetizers',
-    sublabel: 'Entrées',
+    sublabel: '',
     labelFr: 'Entrées',
     sublabelFr: 'Entrées',
     items: [
@@ -488,7 +491,7 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-salads',
     label: 'Salads',
-    sublabel: 'Salades',
+    sublabel: '',
     labelFr: 'Salades',
     sublabelFr: 'Salades',
     items: [
@@ -502,7 +505,7 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-main-veg',
     label: 'Main Course',
-    sublabel: 'Végétarien',
+    sublabel: 'Vegetarian',
     labelFr: 'Plat Principal',
     sublabelFr: 'Végétarien',
     items: [
@@ -565,7 +568,7 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-main-meats',
     label: 'Main Course',
-    sublabel: 'Non Végétarien',
+    sublabel: 'Non Vegetarian',
     labelFr: 'Plat Principal',
     sublabelFr: 'Non Végétarien',
     items: [
@@ -630,7 +633,8 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-biryani',
     label: 'Biryani',
-    sublabel: 'Servi avec Boondi Raita',
+    sublabel: 'Served with Boondi Raita',
+    sublabelFr: 'Servi avec Boondi Raita',
     items: [
       {
         name: 'Vegetarian Biryani',
@@ -658,7 +662,8 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-karachi-rolls',
     label: 'Karachi Rolls',
-    sublabel: 'Rouleaux Karachi',
+    sublabel: '',
+    sublabelFr: 'Rouleaux Karachi',
     items: [
       {
         name: 'Paneer Tikka Roll',
@@ -691,9 +696,9 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-indo-chinese',
     label: 'Indo Chinese',
-    sublabel: 'Indo-Chinois',
+    sublabel: '',
     labelFr: 'Indo-Chinois',
-    sublabelFr: 'Indo Chinese',
+    sublabelFr: 'Indo-Chinois',
     items: [
       {
         name: 'Veg Noodles',
@@ -712,7 +717,7 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-breads',
     label: 'Breads',
-    sublabel: 'Pains',
+    sublabel: '',
     labelFr: 'Pains',
     sublabelFr: 'Pains',
     items: [
@@ -726,7 +731,7 @@ export const takeOutMenuData: MenuCategory[] = [
   {
     id: 'to-sides',
     label: 'Sides',
-    sublabel: 'Accompagnements',
+    sublabel: '',
     labelFr: 'Accompagnements',
     sublabelFr: 'Accompagnements',
     items: [

@@ -86,6 +86,7 @@ export const translations = {
       halal: '100% Halal · Brossard, QC',
       findUs: 'Find Us',
       directions: 'Get directions →',
+      hoursData: [{ days: 'Every day', hours: '11h00 – 23h00' }],
     },
     menuPage: {
       label: 'The Menu',
@@ -304,6 +305,7 @@ export const translations = {
       halal: '100% Halal · Brossard, QC',
       findUs: 'Nous Trouver',
       directions: "Obtenir l'itinéraire →",
+      hoursData: [{ days: 'Tous les jours', hours: '11h00 – 23h00' }],
     },
     menuPage: {
       label: 'La Carte',

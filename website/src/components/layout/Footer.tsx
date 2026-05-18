@@ -132,7 +132,7 @@ export default function Footer() {
           <div>
             <p className="text-label text-gold mb-6">{f.hours}</p>
             <ul className="space-y-3">
-              {Object.entries(siteConfig.hours).map(([days, hours]) => (
+              {f.hoursData.map(({ days, hours }) => (
                 <li key={days} className="text-text-muted text-sm font-light">
                   <span className="text-text-primary">{days}</span><br />
                   {hours}

@@ -17,9 +17,9 @@ function MenuItemRow({ item, onImageClick, lang }: { item: MenuCategory['items']
       {item.image && (
         <div style={{ width: 200, flexShrink: 0, padding: 10, display: 'flex', alignItems: 'stretch' }}>
           <button
-            onClick={() => onImageClick({ image: item.image!, name: item.name, description: item.description, vegetarian: item.vegetarian })}
+            onClick={() => onImageClick({ image: item.image!, name: item.name, description: desc, vegetarian: item.vegetarian })}
             style={{ flex: 1, overflow: 'hidden', padding: 0, background: 'none', border: '1px solid #A8956A', cursor: 'zoom-in', display: 'block', position: 'relative' }}
-            aria-label={`Voir ${item.name}`}
+            aria-label={lang === 'fr' ? `Voir ${item.name}` : `View ${item.name}`}
           >
             <img
               src={item.image}
@@ -50,6 +50,7 @@ function MenuItemRow({ item, onImageClick, lang }: { item: MenuCategory['items']
 }
 
 function ImageLightbox({ item, onClose }: { item: LightboxItem; onClose: () => void }) {
+  const { lang } = useLang()
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
@@ -70,7 +71,7 @@ function ImageLightbox({ item, onClose }: { item: LightboxItem; onClose: () => v
         style={{ position: 'relative', maxWidth: 520, width: '100%', background: 'rgba(6,13,24,0.97)', border: '1px solid #2A2A2A', boxShadow: '0 32px 80px rgba(0,0,0,0.8)', overflow: 'hidden' }}
       >
         <button
-          onClick={onClose} aria-label="Fermer"
+          onClick={onClose} aria-label={lang === 'fr' ? 'Fermer' : 'Close'}
           style={{ position: 'absolute', top: 12, right: 12, zIndex: 10, width: 30, height: 30, borderRadius: '50%', background: 'rgba(10,10,10,0.7)', border: '1px solid #3A3A3A', color: '#999', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', backdropFilter: 'blur(4px)' }}
         >✕</button>
         <img src={item.image} alt={item.name} style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '65vh', display: 'block', margin: '0 auto' }} />
