@@ -136,6 +136,7 @@ export default function Backstory() {
               />
               <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, rgba(6,13,24,0.9), transparent)', pointerEvents: 'none' }} />
               <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to top, rgba(6,13,24,0.9), transparent)', pointerEvents: 'none' }} />
+              <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, rgba(6,13,24,0.9), transparent)', pointerEvents: 'none' }} />
             </div>
           </div>
 

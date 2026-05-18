@@ -89,6 +89,7 @@ export default function NotreHistoire() {
         {/* Right panel: gradient overlays only */}
         <div className="hidden md:block flex-1 relative z-10 overflow-hidden">
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #060D18 0%, transparent 18%)' }} />
+          <div className="absolute top-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to bottom, #060D18, transparent)' }} />
           <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #060D18, transparent)' }} />
         </div>
 
