@@ -94,13 +94,6 @@ export default function Backstory() {
 
         {/* Quote */}
         <div className="text-center mb-20 max-w-3xl mx-auto px-4">
-          <div
-            ref={quoteMarkRef}
-            className="text-display-italic text-gold leading-none mb-4 select-none"
-            style={{ fontSize: '6rem', lineHeight: 0.8 }}
-          >
-            "
-          </div>
           <div className="reveal-wrap">
             <blockquote
               ref={quoteInner}
@@ -134,9 +127,9 @@ export default function Backstory() {
                 loading="lazy"
                 decoding="async"
               />
-              <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, rgba(6,13,24,0.9), transparent)', pointerEvents: 'none' }} />
-              <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to top, rgba(6,13,24,0.9), transparent)', pointerEvents: 'none' }} />
-              <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, rgba(6,13,24,0.9), transparent)', pointerEvents: 'none' }} />
+              <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, rgba(6,13,24,0.88), rgba(6,13,24,0))', pointerEvents: 'none' }} />
+              <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(to top, rgba(6,13,24,0.88), rgba(6,13,24,0))', pointerEvents: 'none' }} />
+              <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, rgba(6,13,24,0.88), rgba(6,13,24,0))', pointerEvents: 'none' }} />
             </div>
           </div>
 

@@ -125,9 +125,9 @@ export default function EvenementsPrives() {
             loading="lazy"
             decoding="async"
           />
-          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to bottom, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
-          <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to top, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
-          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 180, background: 'linear-gradient(to right, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
+          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to bottom, rgba(6,13,24,0.92), rgba(6,13,24,0))', pointerEvents: 'none' }} />
+          <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to top, rgba(6,13,24,0.92), rgba(6,13,24,0))', pointerEvents: 'none' }} />
+          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 180, background: 'linear-gradient(to right, rgba(6,13,24,0.92), rgba(6,13,24,0))', pointerEvents: 'none' }} />
         </div>
 
       </div>

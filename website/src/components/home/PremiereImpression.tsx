@@ -91,9 +91,9 @@ export default function PremiereImpression() {
             style={{ minHeight: '500px', willChange: 'transform' }}
             loading="lazy"
           />
-          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to bottom, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
-          <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to top, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
-          <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 180, background: 'linear-gradient(to left, rgba(6,13,24,1), transparent)', pointerEvents: 'none' }} />
+          <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to bottom, rgba(6,13,24,0.95), rgba(6,13,24,0))', pointerEvents: 'none' }} />
+          <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 140, background: 'linear-gradient(to top, rgba(6,13,24,0.95), rgba(6,13,24,0))', pointerEvents: 'none' }} />
+          <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 180, background: 'linear-gradient(to left, rgba(6,13,24,0.95), rgba(6,13,24,0))', pointerEvents: 'none' }} />
         </div>
 
         {/* Text block */}

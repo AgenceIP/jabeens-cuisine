@@ -90,8 +90,8 @@ export default function LaCarte() {
     <section
       style={{
         background: 'transparent',
-        paddingTop: '80px',
-        paddingBottom: '80px',
+        paddingTop: '60px',
+        paddingBottom: '0px',
         borderTop: '1px solid #1E1E1E',
         borderBottom: '1px solid #1E1E1E',
         overflow: 'hidden',
@@ -117,8 +117,8 @@ export default function LaCarte() {
       </div>
 
       {/* Edge vignettes — left, right, top, bottom */}
-      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '180px', background: 'linear-gradient(to right, #060D18 0%, transparent 100%)', pointerEvents: 'none', zIndex: 2 }} />
-      <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '180px', background: 'linear-gradient(to left, #060D18 0%, transparent 100%)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '180px', background: 'linear-gradient(to right, #060D18 0%, rgba(6,13,24,0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '180px', background: 'linear-gradient(to left, #060D18 0%, rgba(6,13,24,0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
       <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to bottom, #060D18, transparent)', pointerEvents: 'none', zIndex: 2 }} />
       <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to top, #060D18, transparent)', pointerEvents: 'none', zIndex: 2 }} />
 
