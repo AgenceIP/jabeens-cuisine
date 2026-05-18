@@ -1,6 +1,7 @@
 export interface MenuItem {
   name: string
   description?: string
+  descriptionEn?: string
   price?: string
   vegetarian?: boolean
   image?: string

@@ -9,47 +9,42 @@ type MenuType = 'dineIn' | 'takeOut'
 
 type LightboxItem = { image: string; name: string; description?: string; vegetarian?: boolean }
 
-function MenuItemRow({ item, onImageClick }: { item: MenuCategory['items'][0]; onImageClick: (item: LightboxItem) => void }) {
+function MenuItemRow({ item, onImageClick, lang }: { item: MenuCategory['items'][0]; onImageClick: (item: LightboxItem) => void; lang: string }) {
+  const desc = lang === 'fr' ? item.description : (item.descriptionEn ?? item.description)
   return (
-    <div className="flex items-start gap-6 py-6" style={{ borderBottom: '1px solid #1E1E1E' }}>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-2">
-          {item.vegetarian && <span className="text-gold" style={{ fontSize: '0.75rem' }}>✦</span>}
-          <p className="text-display text-text-primary" style={{ fontSize: '1.25rem' }}>{item.name}</p>
+    <div style={{ display: 'flex', alignItems: 'stretch', borderBottom: '1px solid #1E1E1E', minHeight: 110 }}>
+      {/* Image — gauche */}
+      {item.image && (
+        <div style={{ width: 200, flexShrink: 0, padding: 10, display: 'flex', alignItems: 'stretch' }}>
+          <button
+            onClick={() => onImageClick({ image: item.image!, name: item.name, description: item.description, vegetarian: item.vegetarian })}
+            style={{ flex: 1, overflow: 'hidden', padding: 0, background: 'none', border: '1px solid #A8956A', cursor: 'zoom-in', display: 'block', position: 'relative' }}
+            aria-label={`Voir ${item.name}`}
+          >
+            <img
+              src={item.image}
+              alt={item.name}
+              loading="lazy"
+              decoding="async"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'brightness(0.85)', transition: 'transform 0.4s ease, filter 0.4s ease' }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.filter = 'brightness(1)' }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'brightness(0.85)' }}
+            />
+          </button>
         </div>
-        {item.description && (
-          <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.92rem' }}>
-            {item.description}
+      )}
+      {/* Texte */}
+      <div style={{ flex: 1, minWidth: 0, padding: '22px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+          {item.vegetarian && <span className="text-gold" style={{ fontSize: '0.65rem', flexShrink: 0 }}>✦</span>}
+          <p className="text-display text-text-primary" style={{ fontSize: '1.4rem', lineHeight: 1.15 }}>{item.name}</p>
+        </div>
+        {desc && (
+          <p className="text-text-muted font-light" style={{ fontSize: '0.88rem', lineHeight: 1.7 }}>
+            {desc}
           </p>
         )}
       </div>
-      {item.image ? (
-        <button
-          onClick={() => onImageClick({ image: item.image!, name: item.name, description: item.description, vegetarian: item.vegetarian })}
-          style={{ padding: 0, background: 'none', border: 'none', cursor: 'zoom-in', flexShrink: 0, overflow: 'hidden', display: 'block' }}
-          aria-label={`Voir ${item.name}`}
-        >
-          <img
-            src={item.image}
-            alt={item.name}
-            loading="lazy"
-            decoding="async"
-            width={120}
-            height={120}
-            style={{
-              width: 120, height: 120,
-              objectFit: 'contain', background: '#111',
-              filter: 'brightness(0.92) contrast(1.05)',
-              display: 'block',
-              transition: 'transform 0.4s ease, filter 0.4s ease',
-            }}
-            onMouseEnter={e => { const i = e.currentTarget as HTMLImageElement; i.style.transform = 'scale(1.06)'; i.style.filter = 'brightness(1) contrast(1.05)' }}
-            onMouseLeave={e => { const i = e.currentTarget as HTMLImageElement; i.style.transform = 'scale(1)'; i.style.filter = 'brightness(0.92) contrast(1.05)' }}
-          />
-        </button>
-      ) : (
-        <div style={{ width: 120, flexShrink: 0 }} />
-      )}
     </div>
   )
 }
@@ -217,51 +212,53 @@ export default function Menu() {
           {/* Desktop sidebar */}
           <aside
             className="hidden md:block flex-shrink-0 py-12"
-            style={{ width: 240, borderRight: '1px solid #1E1E1E', position: 'sticky', top: 80, alignSelf: 'flex-start', maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }}
+            style={{ width: 300, borderRight: '1px solid #1E1E1E', position: 'sticky', top: 80, alignSelf: 'flex-start', maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }}
           >
-            <nav className="px-8">
+            <nav className="px-10">
               {currentData.map(cat => (
                 <button
                   key={cat.id}
                   onClick={() => scrollToSection(cat.id)}
-                  className="text-left w-full py-3 block transition-all duration-300"
+                  className="text-left w-full py-4 block transition-all duration-300"
                   style={{
-                    paddingLeft: '12px', background: 'none', cursor: 'pointer',
+                    paddingLeft: '16px', background: 'none', cursor: 'pointer',
                     borderTop: 'none', borderRight: 'none', borderBottom: 'none',
                     borderLeft: `2px solid ${activeId === cat.id ? '#A8956A' : 'transparent'}`,
                     color: activeId === cat.id ? '#A8956A' : '#6B6B6B',
-                    fontFamily: 'Montserrat', fontSize: '0.65rem', fontWeight: 500,
+                    fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 500,
                     letterSpacing: '0.2em', textTransform: 'uppercase' as const,
                   }}
                 >
                   <span>{catLabel(cat)}</span>
-                  {cat.sublabel && <span className="block" style={{ fontSize: '0.55rem', opacity: 0.6, fontWeight: 400 }}>{catSublabel(cat)}</span>}
+                  {cat.sublabel && <span className="block" style={{ fontSize: '0.58rem', opacity: 0.55, fontWeight: 400, marginTop: 2 }}>{catSublabel(cat)}</span>}
                 </button>
               ))}
             </nav>
           </aside>
 
           {/* Main content */}
-          <main className="flex-1 py-8 md:py-12 px-4 md:px-16" style={{ maxWidth: 760 }}>
+          <main className="flex-1 py-8 md:py-12 px-4 md:px-16">
             {currentData.map(category => (
               <section key={category.id} id={category.id} className="mb-10 md:mb-20">
                 {/* Category header */}
-                <div className="mb-6 md:mb-8">
-                  <div className="md:hidden flex flex-col items-center text-center py-4" style={{ borderTop: '1px solid #1E1E1E', borderBottom: '1px solid #1E1E1E' }}>
-                    <span style={{ width: 20, height: 1, background: '#A8956A', display: 'block', marginBottom: 8 }} />
-                    <p className="text-label text-gold" style={{ fontSize: '0.68rem', letterSpacing: '0.25em' }}>{catLabel(category)}</p>
-                    {category.sublabel && <p className="text-text-muted font-light mt-1" style={{ fontSize: '0.62rem' }}>{catSublabel(category)}</p>}
-                    <span style={{ width: 20, height: 1, background: '#A8956A', display: 'block', marginTop: 8 }} />
-                  </div>
-                  <div className="hidden md:block">
-                    <p className="text-label text-gold mb-2" style={{ borderLeft: '2px solid #A8956A', paddingLeft: '12px' }}>{catLabel(category)}</p>
-                    {category.sublabel && <p className="text-text-muted font-light" style={{ fontSize: '0.75rem', paddingLeft: '14px' }}>{catSublabel(category)}</p>}
-                    <div className="mt-4 gold-rule" />
+                <div className="mb-2" style={{ paddingTop: 56, paddingBottom: 20, textAlign: 'center' }}>
+                  {category.sublabel && (
+                    <p className="text-label text-text-muted" style={{ fontSize: '0.58rem', letterSpacing: '0.35em', marginBottom: 10 }}>
+                      {catSublabel(category)}
+                    </p>
+                  )}
+                  <h2 className="text-display text-text-primary" style={{ fontSize: 'clamp(1.8rem, 3vw, 3rem)', marginBottom: 20 }}>
+                    {catLabel(category)}
+                  </h2>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                    <div style={{ flex: 1, height: 1, background: '#1E1E1E' }} />
+                    <span className="text-gold" style={{ fontSize: '0.6rem' }}>✦</span>
+                    <div style={{ flex: 1, height: 1, background: '#1E1E1E' }} />
                   </div>
                 </div>
 
                 {category.items.map((item, i) => (
-                  <MenuItemRow key={i} item={item} onImageClick={setLightbox} />
+                  <MenuItemRow key={i} item={item} onImageClick={setLightbox} lang={lang} />
                 ))}
               </section>
             ))}
