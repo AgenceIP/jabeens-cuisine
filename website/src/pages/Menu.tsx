@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { menuData } from '@/data/menuData'
+import { menuData, dineInMenuData, takeOutMenuData } from '@/data/menuData'
 import type { MenuCategory } from '@/types'
 import Footer from '@/components/layout/Footer'
 import { useT, useLang } from '@/contexts/LanguageContext'
@@ -114,26 +114,21 @@ export default function Menu() {
   const catLabel = (cat: MenuCategory) => lang === 'fr' ? (cat.labelFr ?? cat.label) : cat.label
   const catSublabel = (cat: MenuCategory) => lang === 'fr' ? (cat.sublabelFr ?? cat.sublabel) : cat.sublabel
 
-  const filteredData = useMemo(
-    () => menuData
-      .map(cat => ({ ...cat, items: cat.items.filter(item => !item.menus || item.menus.includes(activeMenu)) }))
-      .filter(cat => cat.items.length > 0),
-    [activeMenu]
-  )
+  const currentData = activeMenu === 'dineIn' ? dineInMenuData : takeOutMenuData
 
-  useEffect(() => { if (filteredData.length > 0) setActiveId(filteredData[0].id) }, [activeMenu])
+  useEffect(() => { setActiveId(currentData[0].id) }, [activeMenu])
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY + 200
-      for (let i = filteredData.length - 1; i >= 0; i--) {
-        const el = document.getElementById(filteredData[i].id)
-        if (el && el.offsetTop <= scrollY) { setActiveId(filteredData[i].id); break }
+      for (let i = currentData.length - 1; i >= 0; i--) {
+        const el = document.getElementById(currentData[i].id)
+        if (el && el.offsetTop <= scrollY) { setActiveId(currentData[i].id); break }
       }
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [filteredData])
+  }, [currentData])
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)
@@ -173,7 +168,7 @@ export default function Menu() {
         </div>
         {/* Category pills */}
         <div style={{ overflowX: 'auto', display: 'flex', gap: 8, padding: '10px 16px' }}>
-          {filteredData.map(cat => (
+          {currentData.map(cat => (
             <button
               key={cat.id}
               onClick={() => scrollToSection(cat.id)}
@@ -225,7 +220,7 @@ export default function Menu() {
             style={{ width: 240, borderRight: '1px solid #1E1E1E', position: 'sticky', top: 80, alignSelf: 'flex-start', maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }}
           >
             <nav className="px-8">
-              {filteredData.map(cat => (
+              {currentData.map(cat => (
                 <button
                   key={cat.id}
                   onClick={() => scrollToSection(cat.id)}
@@ -248,7 +243,7 @@ export default function Menu() {
 
           {/* Main content */}
           <main className="flex-1 py-8 md:py-12 px-4 md:px-16" style={{ maxWidth: 760 }}>
-            {filteredData.map(category => (
+            {currentData.map(category => (
               <section key={category.id} id={category.id} className="mb-10 md:mb-20">
                 {/* Category header */}
                 <div className="mb-6 md:mb-8">
