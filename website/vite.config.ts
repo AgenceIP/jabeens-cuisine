@@ -6,8 +6,8 @@ import compression from 'vite-plugin-compression2'
 export default defineConfig({
   plugins: [
     react(),
-    compression({ algorithm: 'gzip', exclude: [/\.(mp4|webm|png|jpg|jpeg|webp|gif|ico)$/] }),
-    compression({ algorithm: 'brotliCompress', exclude: [/\.(mp4|webm|png|jpg|jpeg|webp|gif|ico)$/] }),
+    compression({ algorithms: ['gzip'], exclude: [/\.(mp4|webm|png|jpg|jpeg|webp|gif|ico)$/] }),
+    compression({ algorithms: ['brotliCompress'], exclude: [/\.(mp4|webm|png|jpg|jpeg|webp|gif|ico)$/] }),
   ],
   resolve: {
     alias: { '@': path.resolve(__dirname, './src') },
