@@ -58,17 +58,16 @@ export default function NotreHistoire() {
       {/* Hero — split: dark left panel + video right panel */}
       <div className="relative h-screen overflow-hidden flex">
 
-        {/* Single video — loads once, positioned behind both panels */}
+        {/* Mobile: video full screen */}
         <video
           ref={videoRef}
           src="/assets/restaurant-interior.mp4"
           autoPlay muted loop playsInline
           preload="metadata"
-          className="absolute inset-0 w-full h-full"
-          style={{ objectFit: 'contain', objectPosition: 'center' }}
+          className="md:hidden absolute inset-0 w-full h-full"
+          style={{ objectFit: 'cover' }}
         />
-
-        {/* Mobile dark overlay (hidden on md+) */}
+        {/* Mobile dark overlay */}
         <div className="md:hidden absolute inset-0" style={{ background: 'rgba(10,10,10,0.72)' }} />
 
         {/* Desktop: solid dark left panel */}
@@ -88,9 +87,17 @@ export default function NotreHistoire() {
           </div>
         </div>
 
-        {/* Right panel: gradient overlays only */}
-        <div className="hidden md:block flex-1 relative z-10 overflow-hidden">
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #060D18 0%, transparent 18%)' }} />
+        {/* Right panel: video + gradient overlays */}
+        <div className="hidden md:flex flex-1 relative z-10 overflow-hidden items-center justify-center">
+          <video
+            ref={videoRef}
+            src="/assets/restaurant-interior.mp4"
+            autoPlay muted loop playsInline
+            preload="metadata"
+            className="w-full h-full"
+            style={{ objectFit: 'contain', objectPosition: 'center' }}
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #060D18 0%, rgba(6,13,24,0) 18%)' }} />
           <div className="absolute top-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to bottom, #060D18, rgba(6,13,24,0))' }} />
           <div className="absolute bottom-0 left-0 right-0" style={{ height: 120, background: 'linear-gradient(to top, #060D18, rgba(6,13,24,0))' }} />
         </div>
