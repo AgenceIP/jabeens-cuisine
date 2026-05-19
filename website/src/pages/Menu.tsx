@@ -133,36 +133,37 @@ export default function Menu() {
 
   return (
     <>
-      {/* Hero */}
-      <div className="pt-32 pb-12 px-8 md:px-16 text-center" style={{ background: 'transparent', borderBottom: '1px solid #1E1E1E' }}>
+      {/* ── Hero — integrated with tab switcher ── */}
+      <div className="pt-32 pb-0 px-8 md:px-16 text-center" style={{ background: 'transparent' }}>
         <p className="text-label text-gold mb-4">{m.label}</p>
-        <h1 className="text-display text-text-primary" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)' }}>{m.heading}</h1>
-        <p className="text-text-muted font-light mt-4 text-sm">{m.subheading}</p>
-      </div>
+        <h1 className="text-display text-text-primary mb-4" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)' }}>{m.heading}</h1>
+        <p className="text-text-muted font-light text-sm mb-10">{m.subheading}</p>
 
-      {/* ── MOBILE sticky nav bar: tab switcher + category pills ── */}
-      <div
-        className="md:hidden sticky z-40"
-        style={{ top: 79, background: 'rgba(6, 13, 24, 0.92)', backdropFilter: 'blur(8px)', borderBottom: '1px solid #1E1E1E' }}
-      >
-        {/* Tab switcher */}
-        <div style={{ display: 'flex', borderBottom: '1px solid #1E1E1E' }}>
+        {/* Tab switcher — part of the hero, same visual zone */}
+        <div style={{ display: 'flex', maxWidth: 480, margin: '0 auto', borderTop: '1px solid rgba(168,149,106,0.2)' }}>
           {PDF_MENUS.map(menu => (
             <button
               key={menu.type}
               onClick={() => setActiveMenu(menu.type)}
               style={{
-                flex: 1, padding: '14px 0', background: 'none', border: 'none',
+                flex: 1, padding: '20px 0', background: 'none', border: 'none',
                 borderBottom: `2px solid ${activeMenu === menu.type ? '#A8956A' : 'transparent'}`,
-                cursor: 'pointer', fontFamily: 'Montserrat', fontSize: '0.6rem', fontWeight: 600,
-                letterSpacing: '0.2em', textTransform: 'uppercase' as const,
+                cursor: 'pointer', fontFamily: 'Montserrat',
+                fontSize: '0.65rem', fontWeight: 700,
+                letterSpacing: '0.22em', textTransform: 'uppercase' as const,
                 color: activeMenu === menu.type ? '#A8956A' : '#DEDEDA',
-                transition: 'color 0.3s',
+                transition: 'color 0.3s, border-color 0.3s',
               }}
             >{menu.title}</button>
           ))}
         </div>
-        {/* Category pills */}
+      </div>
+
+      {/* ── MOBILE sticky nav — category pills only (tabs are in the hero above) ── */}
+      <div
+        className="md:hidden sticky z-40"
+        style={{ top: 79, background: 'rgba(6,13,24,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(168,149,106,0.15)' }}
+      >
         <div style={{ overflowX: 'auto', display: 'flex', gap: 8, padding: '10px 16px' }}>
           {currentData.map(cat => (
             <button
@@ -178,26 +179,6 @@ export default function Menu() {
                 transition: 'all 0.25s', whiteSpace: 'nowrap' as const,
               }}
             >{catLabel(cat)}</button>
-          ))}
-        </div>
-      </div>
-
-      {/* ── DESKTOP tab switcher ── */}
-      <div className="hidden md:block" style={{ background: 'transparent' }}>
-        <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', borderBottom: '1px solid #1E1E1E' }}>
-          {PDF_MENUS.map(menu => (
-            <button
-              key={menu.type}
-              onClick={() => setActiveMenu(menu.type)}
-              style={{
-                flex: 1, padding: '22px 0', background: 'none', border: 'none',
-                borderBottom: `2px solid ${activeMenu === menu.type ? '#A8956A' : 'transparent'}`,
-                cursor: 'pointer', fontFamily: 'Montserrat', fontSize: '0.65rem', fontWeight: 600,
-                letterSpacing: '0.22em', textTransform: 'uppercase' as const,
-                color: activeMenu === menu.type ? '#A8956A' : '#DEDEDA',
-                transition: 'color 0.3s, border-color 0.3s',
-              }}
-            >{menu.title}</button>
           ))}
         </div>
       </div>

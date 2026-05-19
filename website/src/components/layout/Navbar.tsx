@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavbarScroll } from '@/hooks/useNavbarScroll'
@@ -13,6 +13,12 @@ export default function Navbar() {
   const { lang, setLang } = useLang()
 
   const closeMobile = () => setMobileOpen(false)
+
+  // Lock body scroll while mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
 
   const ORDER_URL = 'https://jabeenscuisine.clusterpos.com/'
 
@@ -138,7 +144,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[45] flex flex-col items-center justify-center"
             style={{ background: 'rgba(6,13,24,0.97)', backdropFilter: 'blur(20px)' }}
           >
             <div className="flex flex-col items-center gap-8">

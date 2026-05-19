@@ -17,57 +17,52 @@ export default function Hero() {
   const taglineRef      = useRef<HTMLParagraphElement>(null)
   const ctaRef          = useRef<HTMLDivElement>(null)
   const videoRef        = useRef<HTMLVideoElement>(null)
+  const posterRef       = useRef<HTMLImageElement>(null)
   const t = useT()
 
   useEffect(() => {
     const v = videoRef.current
-    if (v) { v.muted = true; v.play().catch(() => {}) }
+    if (!v) return
+    // Set imperatively for maximum iOS Safari compatibility
+    v.muted = true
+    v.setAttribute('muted', '')
+    v.setAttribute('playsinline', '')
+
+    const playVideo = () => {
+      v.play()
+        .then(() => {
+          // Fade out the custom poster once video is actually playing
+          if (posterRef.current) {
+            posterRef.current.style.transition = 'opacity 0.6s'
+            posterRef.current.style.opacity = '0'
+          }
+        })
+        .catch(() => {})
+    }
+
+    playVideo()
+    // Retry on canplay in case the first attempt fires before data is available
+    v.addEventListener('canplay', playVideo, { once: true })
   }, [])
 
   useGSAP(() => {
-    // Set initial hidden states immediately (GSAP owns the transform, not React)
     gsap.set([titleLine1Inner.current, titleLine2Inner.current], { yPercent: 110 })
     gsap.set([taglineRef.current, ctaRef.current], { opacity: 0 })
 
-    // ── Entrance timeline ──────────────────────────────────────────
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
+    tl.to(titleLine1Inner.current, { yPercent: 0, duration: 1 }, 0.3)
+    tl.to(titleLine2Inner.current, { yPercent: 0, duration: 1 }, 0.53)
+    tl.to(taglineRef.current,      { opacity: 1, y: 0, duration: 0.8 }, 1.0)
+    tl.to(ctaRef.current,          { opacity: 1, y: 0, duration: 0.7 }, 1.35)
 
-    // Masked line reveals — text slides up from behind invisible barrier
-    tl.to(titleLine1Inner.current,
-      { yPercent: 0, duration: 1 }, 0.3)
-    tl.to(titleLine2Inner.current,
-      { yPercent: 0, duration: 1 }, 0.53)
-
-    tl.to(taglineRef.current,
-      { opacity: 1, y: 0, duration: 0.8 }, 1.0)
-    tl.to(ctaRef.current,
-      { opacity: 1, y: 0, duration: 0.7 }, 1.35)
-
-    // ── Background parallax on scroll ─────────────────────────────
-    // Background drifts up slower than the page → creates depth
     gsap.to(bgRef.current, {
-      yPercent: 22,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
+      yPercent: 22, ease: 'none',
+      scrollTrigger: { trigger: containerRef.current, start: 'top top', end: 'bottom top', scrub: true },
     })
 
-    // ── Content fades + rises as hero scrolls out ─────────────────
-    // Very Apple: the hero content disappears into the page
     gsap.to(contentRef.current, {
-      opacity: 0,
-      yPercent: -18,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: '45% top',
-        scrub: true,
-      },
+      opacity: 0, yPercent: -18, ease: 'none',
+      scrollTrigger: { trigger: containerRef.current, start: 'top top', end: '45% top', scrub: true },
     })
   }, { scope: containerRef })
 
@@ -79,20 +74,33 @@ export default function Hero() {
     >
       {/* Background — parallax target */}
       <div ref={bgRef} className="absolute inset-0 overflow-hidden" style={{ willChange: 'transform' }}>
+        {/* Custom LCP poster — shown while video loads, fades once video plays.
+            Using a CSS image instead of the video poster attribute avoids iOS
+            showing a native play button overlay when autoplay is triggered. */}
+        <img
+          ref={posterRef}
+          src="/assets/hero-2.jpg"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center center', zIndex: 1, pointerEvents: 'none' }}
+        />
         <video
           ref={videoRef}
           src="/assets/hero-video.mp4"
-          poster="/assets/hero-2.jpg"
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover scale-100 md:scale-[1.12]"
-          style={{ objectPosition: 'center center' }}
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover scale-100 md:scale-[1.12]"
+          style={{ objectPosition: 'center center', zIndex: 2 }}
         />
         <div
           className="absolute inset-0"
           style={{
+            zIndex: 3,
             background: 'linear-gradient(to bottom, rgba(6,13,24,0.25) 0%, rgba(6,13,24,0.4) 50%, rgba(6,13,24,0.85) 80%, rgba(6,13,24,1) 100%)',
           }}
         />
@@ -107,14 +115,9 @@ export default function Hero() {
       {/* Content — fades + rises on scroll */}
       <div ref={contentRef} className="relative z-10 w-full max-w-site mx-auto px-8 md:px-20 lg:px-24" style={{ willChange: 'transform, opacity' }}>
         <div className="max-w-3xl">
-          {/* Masked title lines */}
           <h1 className="text-display mb-2 leading-none tracking-display">
             <span className="reveal-wrap">
-              <span
-                ref={titleLine1Inner}
-                className="block text-text-primary"
-                style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}
-              >
+              <span ref={titleLine1Inner} className="block text-text-primary" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}>
                 Jabeen's
               </span>
             </span>
@@ -122,11 +125,7 @@ export default function Hero() {
           <div className="my-3 md:my-4" style={{ width: 60, height: 1, background: 'rgba(168,149,106,0.5)' }} />
           <h1 className="text-display mb-6 leading-none tracking-display">
             <span className="reveal-wrap">
-              <span
-                ref={titleLine2Inner}
-                className="block text-text-primary"
-                style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}
-              >
+              <span ref={titleLine2Inner} className="block text-text-primary" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}>
                 Cuisine
               </span>
             </span>
@@ -159,14 +158,8 @@ export default function Hero() {
                 to="/menu"
                 className="text-label px-8 py-4 border transition-all duration-300 block"
                 style={{ borderColor: 'rgba(245,245,240,0.4)', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = '#A8956A'
-                  e.currentTarget.style.color = '#A8956A'
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'rgba(245,245,240,0.4)'
-                  e.currentTarget.style.color = '#F5F5F0'
-                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = '#A8956A'; e.currentTarget.style.color = '#A8956A' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(245,245,240,0.4)'; e.currentTarget.style.color = '#F5F5F0' }}
               >
                 {t.hero.cta_menu}
               </Link>
@@ -178,4 +171,3 @@ export default function Hero() {
     </section>
   )
 }
-
