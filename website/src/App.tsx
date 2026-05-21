@@ -4,7 +4,7 @@ import { useEffect, lazy, Suspense } from 'react'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Navbar from '@/components/layout/Navbar'
 import PageTransition from '@/components/layout/PageTransition'
-import GrandOpeningPopup from '@/components/ui/GrandOpeningPopup'
+import NewsletterPopup from '@/components/ui/NewsletterPopup'
 
 const Home         = lazy(() => import('@/pages/Home'))
 const Menu         = lazy(() => import('@/pages/Menu'))
@@ -36,7 +36,7 @@ export default function App() {
     <LanguageProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <GrandOpeningPopup />
+        <NewsletterPopup />
         <Navbar />
         <Suspense fallback={<div style={{ background: '#060D18', minHeight: '100vh' }} />}>
           <AnimatedRoutes />
