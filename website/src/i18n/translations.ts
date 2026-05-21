@@ -72,6 +72,15 @@ export const translations = {
       placeholder_nom: 'Your last name',
       placeholder_message: 'Your message…',
     },
+    newsletter: {
+      heading: 'Be the first to know.',
+      subheading: 'Exclusive deals, new dishes and special offers — straight to your inbox.',
+      placeholder: 'Your email',
+      cta: 'Subscribe',
+      success_title: "You're in!",
+      success_body: "We'll keep you posted on all our best offers.",
+      error: 'Something went wrong. Please try again.',
+    },
     footer: {
       tagline: 'Indian & Pakistani Cuisine',
       eat: 'Eat',
@@ -290,6 +299,15 @@ export const translations = {
       placeholder_prenom: 'Votre prénom',
       placeholder_nom: 'Votre nom',
       placeholder_message: 'Votre message…',
+    },
+    newsletter: {
+      heading: 'Soyez les premiers informés.',
+      subheading: 'Offres exclusives, nouveaux plats et deals — directement dans votre boîte mail.',
+      placeholder: 'Votre courriel',
+      cta: "S'inscrire",
+      success_title: "C'est noté !",
+      success_body: 'On vous tient au courant de toutes nos meilleures offres.',
+      error: 'Une erreur est survenue. Veuillez réessayer.',
     },
     footer: {
       tagline: 'Cuisine Indienne & Pakistanaise',
