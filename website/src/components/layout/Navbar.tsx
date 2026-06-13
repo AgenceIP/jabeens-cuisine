@@ -21,6 +21,7 @@ export default function Navbar() {
   }, [mobileOpen])
 
   const ORDER_URL = 'https://jabeenscuisine.clusterpos.com/'
+  const RESERVE_URL = 'https://www.opentable.ca/r/jabeens-cuisine-brossard'
 
   const navLinks = [
     { label: t.nav.menu,       to: '/menu' },
@@ -98,7 +99,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-5 flex-shrink-0">
             <MagneticButton strength={0.2}>
               <a
-                href="tel:4509263111"
+                href={RESERVE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-label border border-text-primary text-text-primary px-6 py-3 transition-all duration-300 hover:border-gold hover:text-gold block text-center"
                 style={{ fontSize: '0.76rem', fontWeight: 700 }}
               >
@@ -191,7 +194,9 @@ export default function Navbar() {
                 className="flex flex-col items-center gap-4 mt-4"
               >
                 <a
-                  href="tel:4509263111"
+                  href={RESERVE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={closeMobile}
                   className="text-label border border-gold text-gold px-8 py-4 block"
                   style={{ fontSize: '0.76rem', fontWeight: 700 }}

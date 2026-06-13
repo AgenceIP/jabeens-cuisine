@@ -7,37 +7,27 @@ import { useT, useLang } from '@/contexts/LanguageContext'
 
 type MenuType = 'dineIn' | 'takeOut'
 
-type LightboxItem = { image: string; name: string; description?: string; vegetarian?: boolean }
+function VegLeaf({ size = 14, label }: { size?: number; label: string }) {
+  return (
+    <svg
+      width={size} height={size} viewBox="0 0 24 24" fill="#74B36B"
+      role="img" aria-label={label} style={{ flexShrink: 0 }}
+    >
+      <path d="M6.05 8.05c-2.73 2.73-2.73 7.15-.02 9.88 1.47-3.4 4.09-6.24 7.36-7.93-2.77 2.34-4.71 5.61-5.39 9.32 2.6 1.23 5.8.78 7.95-1.37C19.43 14.47 20 4 20 4S9.53 4.57 6.05 8.05z" />
+    </svg>
+  )
+}
 
-function MenuItemRow({ item, onImageClick, lang }: { item: MenuCategory['items'][0]; onImageClick: (item: LightboxItem) => void; lang: string }) {
+function MenuItemRow({ item, lang }: { item: MenuCategory['items'][0]; lang: string }) {
   const desc = lang === 'fr' ? item.description : (item.descriptionEn ?? item.description)
   return (
-    <div style={{ display: 'flex', alignItems: 'stretch', borderBottom: '1px solid #1E1E1E', minHeight: 110 }}>
-      {/* Image — gauche */}
-      {item.image && (
-        <div style={{ width: 200, flexShrink: 0, padding: 10, display: 'flex', alignItems: 'stretch' }}>
-          <button
-            onClick={() => onImageClick({ image: item.image!, name: item.name, description: desc, vegetarian: item.vegetarian })}
-            style={{ flex: 1, overflow: 'hidden', padding: 0, background: 'none', border: '1px solid #A8956A', cursor: 'zoom-in', display: 'block', position: 'relative' }}
-            aria-label={lang === 'fr' ? `Voir ${item.name}` : `View ${item.name}`}
-          >
-            <img
-              src={item.image}
-              alt={item.name}
-              loading="lazy"
-              decoding="async"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'brightness(0.85)', transition: 'transform 0.4s ease, filter 0.4s ease' }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.filter = 'brightness(1)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.filter = 'brightness(0.85)' }}
-            />
-          </button>
-        </div>
-      )}
+    <div style={{ display: 'flex', alignItems: 'stretch', borderBottom: '1px solid #1E1E1E' }}>
       {/* Texte */}
       <div style={{ flex: 1, minWidth: 0, padding: '22px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-          {item.vegetarian && <span className="text-gold" style={{ fontSize: '0.65rem', flexShrink: 0 }}>✦</span>}
+          <span className="text-gold" style={{ fontSize: '0.65rem', flexShrink: 0 }}>✦</span>
           <p className="text-display text-text-primary" style={{ fontSize: '1.4rem', lineHeight: 1.15 }}>{item.name}</p>
+          {item.vegetarian && <VegLeaf label={lang === 'fr' ? 'Végétarien' : 'Vegetarian'} />}
         </div>
         {desc && (
           <p className="text-text-muted font-light" style={{ fontSize: '0.88rem', lineHeight: 1.7 }}>
@@ -49,50 +39,9 @@ function MenuItemRow({ item, onImageClick, lang }: { item: MenuCategory['items']
   )
 }
 
-function ImageLightbox({ item, onClose }: { item: LightboxItem; onClose: () => void }) {
-  const { lang } = useLang()
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [onClose])
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
-      onClick={onClose}
-      style={{ position: 'fixed', inset: 0, zIndex: 9998, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(8px)', padding: '24px' }}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.92, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.94, y: 8 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        onClick={e => e.stopPropagation()}
-        style={{ position: 'relative', maxWidth: 520, width: '100%', background: 'rgba(6,13,24,0.97)', border: '1px solid #2A2A2A', boxShadow: '0 32px 80px rgba(0,0,0,0.8)', overflow: 'hidden' }}
-      >
-        <button
-          onClick={onClose} aria-label={lang === 'fr' ? 'Fermer' : 'Close'}
-          style={{ position: 'absolute', top: 12, right: 12, zIndex: 10, width: 30, height: 30, borderRadius: '50%', background: 'rgba(10,10,10,0.7)', border: '1px solid #3A3A3A', color: '#999', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', backdropFilter: 'blur(4px)' }}
-        >✕</button>
-        <img src={item.image} alt={item.name} style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '65vh', display: 'block', margin: '0 auto' }} />
-        <div style={{ padding: '20px 24px 24px' }}>
-          <div className="flex items-center gap-2 mb-2">
-            {item.vegetarian && <span className="text-gold" style={{ fontSize: '0.65rem' }}>✦</span>}
-            <p className="text-display text-text-primary" style={{ fontSize: '1.2rem' }}>{item.name}</p>
-          </div>
-          {item.description && (
-            <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.82rem' }}>{item.description}</p>
-          )}
-        </div>
-      </motion.div>
-    </motion.div>
-  )
-}
-
 export default function Menu() {
   const [activeMenu, setActiveMenu] = useState<MenuType>('dineIn')
   const [activeId, setActiveId] = useState(menuData[0].id)
-  const [lightbox, setLightbox] = useState<LightboxItem | null>(null)
   const t = useT()
   const m = t.menuPage
   const { lang } = useLang()
@@ -240,20 +189,17 @@ export default function Menu() {
                 </div>
 
                 {category.items.map((item, i) => (
-                  <MenuItemRow key={i} item={item} onImageClick={setLightbox} lang={lang} />
+                  <MenuItemRow key={i} item={item} lang={lang} />
                 ))}
               </section>
             ))}
 
-            <div className="py-10 text-center">
+            <div className="py-10" style={{ display: 'flex', gap: 7, alignItems: 'center', justifyContent: 'center' }}>
+              <VegLeaf size={13} label={lang === 'fr' ? 'Végétarien' : 'Vegetarian'} />
               <p className="text-label text-text-muted" style={{ fontSize: '0.6rem' }}>{m.vegetarian}</p>
             </div>
           </main>
         </motion.div>
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {lightbox && <ImageLightbox item={lightbox} onClose={() => setLightbox(null)} />}
       </AnimatePresence>
 
       {/* PDF Menus — at the bottom */}
