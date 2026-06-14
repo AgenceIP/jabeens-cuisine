@@ -21,7 +21,7 @@ export default function Navbar() {
   }, [mobileOpen])
 
   const ORDER_URL = 'https://jabeenscuisine.clusterpos.com/'
-  const RESERVE_URL = 'https://www.opentable.ca/r/jabeens-cuisine-brossard'
+  const RESERVE_URL = 'https://www.opentable.ca/booking/restref/availability?lang=en-CA&restRef=1507504&otSource=Restaurant%20website'
 
   const navLinks = [
     { label: t.nav.menu,       to: '/menu' },

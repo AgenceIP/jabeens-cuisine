@@ -22,8 +22,7 @@ export const siteConfig = {
     directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=5750+C+Boulevard+Taschereau,+Brossard,+QC+J4W+1M4',
   },
   openTable: {
-    // TODO: Create account at restaurant.opentable.com, then paste your restaurant ID here
-    restaurantId: '',
+    restaurantId: '1507504',
   },
   nav: [
     { label: 'Accueil', to: '/' },
