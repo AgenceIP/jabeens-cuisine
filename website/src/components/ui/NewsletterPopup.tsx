@@ -10,7 +10,17 @@ const FORMSPREE_NEWSLETTER_ID = 'xeennwdj'
 const LS_KEY = 'jc_newsletter_seen'
 const TTL_MS = 30 * 24 * 60 * 60 * 1000 // 30 days
 
+// Site affiché dans un cadre (ex.: la vitrine d'Agence IP): pas de fenêtre d'infolettre.
+function isEmbedded(): boolean {
+  try {
+    return window.self !== window.top
+  } catch {
+    return true // accès refusé au parent: on est forcément dans un cadre
+  }
+}
+
 function shouldShow(): boolean {
+  if (isEmbedded()) return false
   try {
     const raw = localStorage.getItem(LS_KEY)
     if (!raw) return true
