@@ -8,6 +8,7 @@ const row1: { src: string; w: number; pos?: string }[] = [
   { src: p('Butter Chicken'),              w: 340, pos: 'center 65%' },
   { src: p('Lahori Kadhai Chicken'),       w: 300, pos: 'center 65%' },
   { src: p('Achaari Paneer Tikka'),        w: 320, pos: 'center 65%' },
+  { src: '/assets/catering/live-01-pani-puri-cart-800.webp', w: 300, pos: 'center 55%' },
   { src: p('Goan Style Prawns Curry'),     w: 290, pos: 'center 65%' },
   { src: p('Mushroom Stuffed Tikka'),      w: 330, pos: 'center 65%' },
   { src: p('Lamb Bhuna'),                  w: 310, pos: 'center 65%' },
@@ -17,6 +18,7 @@ const row1: { src: string; w: number; pos?: string }[] = [
 const row2: { src: string; w: number; pos?: string }[] = [
   { src: p('Chicken Lababdar'),       w: 480, pos: 'center 65%' },
   { src: p('Samosa Chaat'),           w: 440, pos: 'center 65%' },
+  { src: '/assets/catering/buffet-01-gold-buffet-line-800.webp', w: 440, pos: 'center 62%' },
   { src: p('Methi Malai Chicken'),    w: 460, pos: 'center 65%' },
   { src: p('Dahi Puri'),              w: 420, pos: 'center 65%' },
   { src: p('Melon Salad'),            w: 450, pos: 'center 65%' },
@@ -27,9 +29,11 @@ const row3: { src: string; w: number; pos?: string }[] = [
   { src: p('Honey Chili Gobhi'),      w: 310, pos: 'center 65%' },
   { src: p('Phirni Brûlée'),          w: 290, pos: 'center 65%' },
   { src: p('Popadum Platter'),        w: 330, pos: 'center 65%' },
+  { src: '/assets/catering/buffet-02-butter-chicken-800.webp', w: 310, pos: 'center 50%' },
   { src: p('Beef Samosa'),            w: 270, pos: 'center 65%' },
   { src: p('South Asian Tiramisu'),   w: 320, pos: 'center 65%' },
   { src: p('Pani Puri'),              w: 300, pos: 'center 65%' },
+  { src: '/assets/catering/live-05-pani-puri-closeup-800.webp', w: 300, pos: 'center 45%' },
   { src: p('Butter Naan'),            w: 285, pos: 'center 65%' },
 ]
 
