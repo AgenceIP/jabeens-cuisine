@@ -176,7 +176,10 @@ export const translations = {
       ],
     },
     hallPage: {
-      meta: { title: "Hall & Catering — Jabeen's Cuisine | Hall for up to 225 guests, catering at your place" },
+      meta: {
+        title: "Reception Hall & Catering in Brossard | Jabeen's Cuisine",
+        description: "Reception hall for up to 225 guests in Brossard and Indian and Pakistani catering at your place: Queen, King and Corporate menus, live pani puri and chai stations.",
+      },
       label: 'Hall & Catering',
       heading: 'Your event, our cooking.',
       description: 'A reception hall for up to 225 guests in Brossard, and a catering service that comes to you.',
@@ -430,7 +433,10 @@ export const translations = {
       ],
     },
     hallPage: {
-      meta: { title: "Hall & Traiteur — Jabeen's Cuisine | Salle jusqu'à 225 personnes, traiteur à domicile" },
+      meta: {
+        title: "Salle de réception et traiteur à Brossard | Jabeen's Cuisine",
+        description: "Salle de réception jusqu'à 225 personnes à Brossard et traiteur indien et pakistanais à domicile : menus Queen, King et Corporate, stations pani puri et chai en direct.",
+      },
       label: 'Hall & Traiteur',
       heading: 'Votre événement, notre cuisine.',
       description: "Une salle de réception jusqu'à 225 personnes à Brossard, et un service traiteur qui se déplace chez vous.",

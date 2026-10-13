@@ -19,7 +19,20 @@ export default function Hall() {
   const h = useT().hallPage
   const [preset, setPreset] = useState<{ menu: CateringMenuId; n: number } | null>(null)
 
-  useEffect(() => { document.title = h.meta.title }, [h])
+  // Page-specific title, description and canonical; restored when leaving (the other routes share index.html's).
+  useEffect(() => {
+    const desc = document.querySelector<HTMLMetaElement>('meta[name="description"]')
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    const before = { title: document.title, desc: desc?.content, canonical: canonical?.href }
+    document.title = h.meta.title
+    desc?.setAttribute('content', h.meta.description)
+    canonical?.setAttribute('href', 'https://www.jabeenscuisine.com/location-salle')
+    return () => {
+      document.title = before.title
+      if (before.desc) desc?.setAttribute('content', before.desc)
+      if (before.canonical) canonical?.setAttribute('href', before.canonical)
+    }
+  }, [h])
 
   const choose = (menu: CateringMenuId) => {
     setPreset(p => ({ menu, n: (p?.n ?? 0) + 1 }))
