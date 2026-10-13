@@ -131,7 +131,7 @@ export default function PremiereImpression() {
               ref={linkRef}
               to="/notre-histoire"
               className="text-label hover-underline inline-block"
-              style={{ color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
+              style={{ color: 'rgb(var(--c-ink))', fontSize: '0.78rem', fontWeight: 700 }}
             >
               {t.premiereImpression.link}
             </Link>

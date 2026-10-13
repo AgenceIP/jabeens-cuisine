@@ -115,24 +115,24 @@ export default function LaCarte() {
       </div>
 
       {/* Edge vignettes — left, right, top, bottom */}
-      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '180px', background: 'linear-gradient(to right, #060D18 0%, rgba(6,13,24,0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
-      <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '180px', background: 'linear-gradient(to left, #060D18 0%, rgba(6,13,24,0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
-      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to bottom, #060D18, transparent)', pointerEvents: 'none', zIndex: 2 }} />
-      <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to top, #060D18, transparent)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '180px', background: 'linear-gradient(to right, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '180px', background: 'linear-gradient(to left, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to bottom, rgb(var(--c-bg)), rgb(var(--c-bg) / 0))', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to top, rgb(var(--c-bg)), rgb(var(--c-bg) / 0))', pointerEvents: 'none', zIndex: 2 }} />
 
       {/* CTA */}
       <div className="text-center mt-14 px-8" style={{ position: 'relative', zIndex: 3 }}>
         <Link
           to="/menu"
           className="text-label transition-all duration-300 inline-block"
-          style={{ borderBottom: '1px solid #4A4A44', paddingBottom: '6px', color: '#DEDEDA', letterSpacing: '0.2em' }}
+          style={{ borderBottom: '1px solid rgb(var(--c-ink) / 0.3)', paddingBottom: '6px', color: 'rgb(var(--c-muted))', letterSpacing: '0.2em' }}
           onMouseEnter={e => {
-            e.currentTarget.style.borderBottomColor = '#A8956A'
-            e.currentTarget.style.color = '#A8956A'
+            e.currentTarget.style.borderBottomColor = 'rgb(var(--c-accent))'
+            e.currentTarget.style.color = 'rgb(var(--c-accent))'
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.borderBottomColor = '#4A4A44'
-            e.currentTarget.style.color = '#DEDEDA'
+            e.currentTarget.style.borderBottomColor = 'rgb(var(--c-ink) / 0.3)'
+            e.currentTarget.style.color = 'rgb(var(--c-muted))'
           }}
         >
           {c.cta}

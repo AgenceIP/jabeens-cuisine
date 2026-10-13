@@ -101,7 +101,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             zIndex: 3,
-            background: 'linear-gradient(to bottom, rgba(6,13,24,0.25) 0%, rgba(6,13,24,0.4) 50%, rgba(6,13,24,0.85) 80%, rgba(6,13,24,1) 100%)',
+            background: 'linear-gradient(to bottom, rgb(var(--c-scrim) / 0.25) 0%, rgb(var(--c-scrim) / 0.4) 50%, rgb(var(--c-scrim) / 0.85) 80%, rgb(var(--c-scrim) / 0.85) 100%)',
           }}
         />
       </div>
@@ -109,7 +109,7 @@ export default function Hero() {
       {/* Bottom section fade — blends into next section on scroll */}
       <div
         className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
-        style={{ height: '35%', background: 'linear-gradient(to top, rgba(6,13,24,1) 0%, rgba(6,13,24,0.6) 40%, rgba(6,13,24,0) 100%)' }}
+        style={{ height: '16%', background: 'linear-gradient(to top, rgb(var(--c-bg) / 1) 0%, rgb(var(--c-bg) / 0.6) 40%, rgb(var(--c-bg) / 0) 100%)' }}
       />
 
       {/* Content — fades + rises on scroll */}
@@ -117,15 +117,15 @@ export default function Hero() {
         <div className="max-w-3xl">
           <h1 className="text-display mb-2 leading-none tracking-display">
             <span className="reveal-wrap">
-              <span ref={titleLine1Inner} className="block text-text-primary" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}>
+              <span ref={titleLine1Inner} className="block text-on-dark" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}>
                 Jabeen's
               </span>
             </span>
           </h1>
-          <div className="my-3 md:my-4" style={{ width: 60, height: 1, background: 'rgba(168,149,106,0.5)' }} />
+          <div className="my-3 md:my-4" style={{ width: 60, height: 1, background: 'rgb(var(--c-accent-soft) / 0.6)' }} />
           <h1 className="text-display mb-6 leading-none tracking-display">
             <span className="reveal-wrap">
-              <span ref={titleLine2Inner} className="block text-text-primary" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}>
+              <span ref={titleLine2Inner} className="block text-on-dark" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}>
                 Cuisine
               </span>
             </span>
@@ -134,7 +134,7 @@ export default function Hero() {
           <p
             ref={taglineRef}
             className="text-display-italic mb-10 opacity-0"
-            style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', color: '#DEDEDA' }}
+            style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)', color: 'rgb(var(--c-on-dark) / 0.85)' }}
           >
             {t.hero.tagline}
           </p>
@@ -146,9 +146,9 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-label px-8 py-4 transition-colors duration-300 block"
-                style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
-                onMouseEnter={e => (e.currentTarget.style.background = '#bfa97a')}
-                onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}
+                style={{ background: 'rgb(var(--c-accent-soft))', color: 'rgb(var(--c-scrim))', fontSize: '0.78rem', fontWeight: 700 }}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgb(var(--c-on-dark))')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'rgb(var(--c-accent-soft))')}
               >
                 {t.hero.cta_order}
               </a>
@@ -157,9 +157,9 @@ export default function Hero() {
               <Link
                 to="/menu"
                 className="text-label px-8 py-4 border transition-all duration-300 block"
-                style={{ borderColor: 'rgba(245,245,240,0.4)', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = '#A8956A'; e.currentTarget.style.color = '#A8956A' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(245,245,240,0.4)'; e.currentTarget.style.color = '#F5F5F0' }}
+                style={{ borderColor: 'rgb(var(--c-on-dark) / 0.4)', color: 'rgb(var(--c-on-dark))', fontSize: '0.78rem', fontWeight: 700 }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgb(var(--c-accent-soft))'; e.currentTarget.style.color = 'rgb(var(--c-accent-soft))' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgb(var(--c-on-dark) / 0.4)'; e.currentTarget.style.color = 'rgb(var(--c-on-dark))' }}
               >
                 {t.hero.cta_menu}
               </Link>

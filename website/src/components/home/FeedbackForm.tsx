@@ -14,19 +14,6 @@ interface FormValues {
   message: string
 }
 
-const inputStyle: React.CSSProperties = {
-  background: 'transparent',
-  border: 'none',
-  borderBottom: '1px solid #1E1E1E',
-  color: '#F5F5F0',
-  padding: '12px 0',
-  fontSize: '0.875rem',
-  fontFamily: 'Montserrat',
-  fontWeight: 300,
-  width: '100%',
-  transition: 'border-color 0.3s',
-}
-
 const selectArrow = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B6B6B' stroke-width='1' fill='none'/%3E%3C/svg%3E")`
 
 export default function FeedbackForm() {
@@ -76,9 +63,8 @@ export default function FeedbackForm() {
                     id="fb-prenom"
                     {...register('prenom', { required: true })}
                     placeholder={fb.placeholder_prenom}
-                    style={{ ...inputStyle, borderBottomColor: errors.prenom ? '#A8956A' : '#1E1E1E' }}
-                    onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')}
-                    onBlur={e => (e.currentTarget.style.borderBottomColor = errors.prenom ? '#A8956A' : '#1E1E1E')}
+                    className="field"
+                    aria-invalid={!!errors.prenom}
                   />
                 </div>
                 <div>
@@ -87,9 +73,8 @@ export default function FeedbackForm() {
                     id="fb-nom"
                     {...register('nom', { required: true })}
                     placeholder={fb.placeholder_nom}
-                    style={{ ...inputStyle, borderBottomColor: errors.nom ? '#A8956A' : '#1E1E1E' }}
-                    onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')}
-                    onBlur={e => (e.currentTarget.style.borderBottomColor = errors.nom ? '#A8956A' : '#1E1E1E')}
+                    className="field"
+                    aria-invalid={!!errors.nom}
                   />
                 </div>
               </div>
@@ -101,9 +86,8 @@ export default function FeedbackForm() {
                   {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                   type="email"
                   placeholder="email@example.com"
-                  style={{ ...inputStyle, borderBottomColor: errors.email ? '#A8956A' : '#1E1E1E' }}
-                  onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')}
-                  onBlur={e => (e.currentTarget.style.borderBottomColor = errors.email ? '#A8956A' : '#1E1E1E')}
+                  className="field"
+                  aria-invalid={!!errors.email}
                 />
               </div>
 
@@ -112,13 +96,15 @@ export default function FeedbackForm() {
                 <select
                   id="fb-type"
                   {...register('type', { required: true })}
-                  style={{ ...inputStyle, cursor: 'pointer', appearance: 'none', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}
+                  className="field"
+                  aria-invalid={!!errors.type}
+                  style={{ cursor: 'pointer', appearance: 'none', backgroundImage: selectArrow, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 4px center' }}
                 >
-                  <option value="" disabled style={{ background: '#0D1A2E' }}>{fb.selectType}</option>
-                  <option value="compliment" style={{ background: '#0D1A2E' }}>{fb.types.compliment}</option>
-                  <option value="suggestion" style={{ background: '#0D1A2E' }}>{fb.types.suggestion}</option>
-                  <option value="probleme" style={{ background: '#0D1A2E' }}>{fb.types.probleme}</option>
-                  <option value="autre" style={{ background: '#0D1A2E' }}>{fb.types.autre}</option>
+                  <option value="" disabled>{fb.selectType}</option>
+                  <option value="compliment">{fb.types.compliment}</option>
+                  <option value="suggestion">{fb.types.suggestion}</option>
+                  <option value="probleme">{fb.types.probleme}</option>
+                  <option value="autre">{fb.types.autre}</option>
                 </select>
               </div>
 
@@ -129,19 +115,16 @@ export default function FeedbackForm() {
                   {...register('message', { required: true })}
                   rows={4}
                   placeholder={fb.placeholder_message}
-                  style={{ ...inputStyle, resize: 'none', lineHeight: 1.7, borderBottomColor: errors.message ? '#A8956A' : '#1E1E1E' }}
-                  onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')}
-                  onBlur={e => (e.currentTarget.style.borderBottomColor = errors.message ? '#A8956A' : '#1E1E1E')}
+                  className="field resize-none"
+                  style={{ lineHeight: 1.7 }}
+                  aria-invalid={!!errors.message}
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={sending}
-                className="text-label w-full py-5 transition-all duration-300"
-                style={{ background: '#A8956A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700, opacity: sending ? 0.7 : 1, cursor: sending ? 'wait' : 'pointer' }}
-                onMouseEnter={e => { if (!sending) e.currentTarget.style.background = '#bfa97a' }}
-                onMouseLeave={e => (e.currentTarget.style.background = '#A8956A')}
+                className="btn-primary w-full py-5"
               >
                 {sending ? '...' : fb.submit}
               </button>

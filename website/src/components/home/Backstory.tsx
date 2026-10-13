@@ -69,8 +69,8 @@ export default function Backstory() {
 
     // ── Scrubbed paragraphs — text brightens as user reads through ──
     // This is the Apple M-series chip page effect
-    const scrubColor = { color: 'rgba(245,245,240,0.12)' }
-    const brightColor = { color: 'rgba(245,245,240,0.82)' }
+    const scrubColor = { color: 'rgb(var(--c-ink) / 0.12)' }
+    const brightColor = { color: 'rgb(var(--c-ink) / 0.82)' }
 
     ;[p1Ref, p2Ref, p3Ref].forEach((ref) => {
       gsap.set(ref.current, scrubColor)

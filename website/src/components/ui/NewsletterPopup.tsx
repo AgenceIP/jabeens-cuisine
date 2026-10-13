@@ -104,7 +104,7 @@ export default function NewsletterPopup() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'rgba(0,0,0,0.85)',
+            background: 'rgb(var(--c-scrim) / 0.7)',
             backdropFilter: 'blur(6px)',
             padding: '24px',
           }}
@@ -117,8 +117,8 @@ export default function NewsletterPopup() {
             onClick={e => e.stopPropagation()}
             style={{
               position: 'relative',
-              background: '#060D18',
-              border: '1px solid #2A2A2A',
+              background: 'rgb(var(--c-surface))',
+              border: '1px solid rgb(var(--c-line))',
               boxShadow: '0 32px 80px rgba(0,0,0,0.8)',
               padding: 'clamp(32px, 6vw, 56px)',
               width: 'min(480px, 90vw)',
@@ -137,9 +137,9 @@ export default function NewsletterPopup() {
                 width: 32,
                 height: 32,
                 borderRadius: '50%',
-                background: '#060D18',
-                border: '1px solid #3A3A3A',
-                color: '#999',
+                background: 'rgb(var(--c-surface))',
+                border: '1px solid rgb(var(--c-ink) / 0.3)',
+                color: 'rgb(var(--c-muted))',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -149,13 +149,13 @@ export default function NewsletterPopup() {
               }}
               onMouseEnter={e => {
                 const b = e.currentTarget as HTMLButtonElement
-                b.style.color = '#E8E8E8'
-                b.style.borderColor = '#A8956A'
+                b.style.color = 'rgb(var(--c-ink))'
+                b.style.borderColor = 'rgb(var(--c-accent))'
               }}
               onMouseLeave={e => {
                 const b = e.currentTarget as HTMLButtonElement
-                b.style.color = '#999'
-                b.style.borderColor = '#3A3A3A'
+                b.style.color = 'rgb(var(--c-muted))'
+                b.style.borderColor = 'rgb(var(--c-ink) / 0.3)'
               }}
             >
               ✕
@@ -165,14 +165,14 @@ export default function NewsletterPopup() {
               {status !== 'success' ? (
                 <motion.div key="form" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
                   {/* Gold accent line */}
-                  <div style={{ width: 32, height: 1, background: '#A8956A', margin: '0 auto 24px' }} />
+                  <div style={{ width: 32, height: 1, background: 'rgb(var(--c-accent))', margin: '0 auto 24px' }} />
 
                   <h2
                     style={{
-                      fontFamily: 'Cormorant Garamond, serif',
+                      fontFamily: 'var(--font-display)',
                       fontWeight: 400,
                       fontSize: 'clamp(1.6rem, 4vw, 2.2rem)',
-                      color: '#F5F5F0',
+                      color: 'rgb(var(--c-ink))',
                       lineHeight: 1.2,
                       marginBottom: 12,
                     }}
@@ -182,10 +182,10 @@ export default function NewsletterPopup() {
 
                   <p
                     style={{
-                      fontFamily: 'Montserrat, sans-serif',
+                      fontFamily: 'var(--font-body)',
                       fontWeight: 300,
                       fontSize: '0.8rem',
-                      color: '#888',
+                      color: 'rgb(var(--c-muted))',
                       lineHeight: 1.6,
                       marginBottom: 32,
                     }}
@@ -206,11 +206,11 @@ export default function NewsletterPopup() {
                         width: '100%',
                         background: 'transparent',
                         border: 'none',
-                        borderBottom: '1px solid #2A2A2A',
-                        color: '#F5F5F0',
+                        borderBottom: '1px solid rgb(var(--c-ink) / 0.25)',
+                        color: 'rgb(var(--c-ink))',
                         padding: '12px 0',
                         fontSize: '0.875rem',
-                        fontFamily: 'Montserrat, sans-serif',
+                        fontFamily: 'var(--font-body)',
                         fontWeight: 300,
                         marginBottom: 24,
                         outline: 'none',
@@ -218,12 +218,12 @@ export default function NewsletterPopup() {
                         transition: 'border-color 0.3s',
                         boxSizing: 'border-box',
                       }}
-                      onFocus={e => (e.currentTarget.style.borderBottomColor = '#A8956A')}
-                      onBlur={e => (e.currentTarget.style.borderBottomColor = '#2A2A2A')}
+                      onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgb(var(--c-accent))')}
+                      onBlur={e => (e.currentTarget.style.borderBottomColor = 'rgb(var(--c-ink) / 0.25)')}
                     />
 
                     {status === 'error' && (
-                      <p style={{ color: '#A8956A', fontSize: '0.75rem', fontFamily: 'Montserrat', marginBottom: 12 }}>
+                      <p style={{ color: 'rgb(var(--c-error))', fontSize: '0.75rem', fontFamily: 'var(--font-body)', marginBottom: 12 }}>
                         {nl.error}
                       </p>
                     )}
@@ -234,11 +234,11 @@ export default function NewsletterPopup() {
                       style={{
                         display: 'block',
                         width: '100%',
-                        background: '#A8956A',
-                        color: '#F5F5F0',
+                        background: 'rgb(var(--c-btn))',
+                        color: 'rgb(var(--c-btn-ink))',
                         border: 'none',
                         padding: '14px 0',
-                        fontFamily: 'Montserrat, sans-serif',
+                        fontFamily: 'var(--font-body)',
                         fontWeight: 600,
                         fontSize: '0.72rem',
                         letterSpacing: '0.12em',
@@ -248,10 +248,10 @@ export default function NewsletterPopup() {
                         transition: 'background 0.2s, opacity 0.2s',
                       }}
                       onMouseEnter={e => {
-                        if (status !== 'sending') (e.currentTarget as HTMLButtonElement).style.background = '#bfa97a'
+                        if (status !== 'sending') (e.currentTarget as HTMLButtonElement).style.background = 'rgb(var(--c-btn-hover))'
                       }}
                       onMouseLeave={e => {
-                        (e.currentTarget as HTMLButtonElement).style.background = '#A8956A'
+                        (e.currentTarget as HTMLButtonElement).style.background = 'rgb(var(--c-btn))'
                       }}
                     >
                       {status === 'sending' ? '…' : nl.cta}
@@ -266,23 +266,23 @@ export default function NewsletterPopup() {
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   style={{ padding: '16px 0' }}
                 >
-                  <div style={{ width: 32, height: 1, background: '#A8956A', margin: '0 auto 24px' }} />
+                  <div style={{ width: 32, height: 1, background: 'rgb(var(--c-accent))', margin: '0 auto 24px' }} />
                   <p
                     style={{
-                      fontFamily: 'Cormorant Garamond, serif',
+                      fontFamily: 'var(--font-display)',
                       fontStyle: 'italic',
                       fontWeight: 400,
                       fontSize: 'clamp(1.4rem, 3vw, 1.9rem)',
-                      color: '#F5F5F0',
+                      color: 'rgb(var(--c-ink))',
                       marginBottom: 12,
                     }}
                   >
                     {nl.success_title}
                   </p>
-                  <p style={{ fontFamily: 'Montserrat', fontWeight: 300, fontSize: '0.8rem', color: '#888' }}>
+                  <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: '0.8rem', color: 'rgb(var(--c-muted))' }}>
                     {nl.success_body}
                   </p>
-                  <div style={{ width: 32, height: 1, background: '#A8956A', margin: '24px auto 0' }} />
+                  <div style={{ width: 32, height: 1, background: 'rgb(var(--c-accent))', margin: '24px auto 0' }} />
                 </motion.div>
               )}
             </AnimatePresence>

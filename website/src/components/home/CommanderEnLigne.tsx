@@ -53,23 +53,23 @@ export default function CommanderEnLigne() {
     <section ref={sectionRef} className="relative overflow-hidden" style={{ background: 'transparent' }}>
       <div className="absolute inset-0">
         <img src="/assets/food-gen-2.jpg" alt="" width={896} height={1200} className="w-full h-full object-cover opacity-20" loading="lazy" />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.7), rgba(10,10,10,0.9))' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgb(var(--c-band) / 0.88), rgb(var(--c-band) / 0.96))' }} />
       </div>
 
       <div className="relative z-10 text-center section-padding">
-        <p ref={labelRef} className="text-label text-gold mb-6 opacity-0">{t.commanderSection.label}</p>
+        <p ref={labelRef} className="text-label text-gold-soft mb-6 opacity-0">{t.commanderSection.label}</p>
 
         <div className="reveal-wrap mb-4">
           <h2
             ref={headingInner}
-            className="text-display text-text-primary inline-block"
+            className="text-display text-band-ink inline-block"
             style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
           >
             {t.commanderSection.heading}
           </h2>
         </div>
 
-        <p ref={subRef} className="text-text-muted mb-14 font-light opacity-0" style={{ fontSize: '0.9rem' }}>
+        <p ref={subRef} className="text-band-ink/80 mb-14 font-light opacity-0" style={{ fontSize: '0.9rem' }}>
           {t.commanderSection.subheading}
         </p>
 
@@ -81,9 +81,9 @@ export default function CommanderEnLigne() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-label px-10 py-4 border transition-all duration-300 block"
-                style={{ borderColor: '#3A3A3A', color: '#F5F5F0', fontSize: '0.78rem', fontWeight: 700 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = '#A8956A'; e.currentTarget.style.color = '#A8956A' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = '#3A3A3A'; e.currentTarget.style.color = '#F5F5F0' }}
+                style={{ borderColor: 'rgb(var(--c-band-ink) / 0.35)', color: 'rgb(var(--c-band-ink))', fontSize: '0.78rem', fontWeight: 700 }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgb(var(--c-accent-soft))'; e.currentTarget.style.color = 'rgb(var(--c-accent-soft))' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgb(var(--c-band-ink) / 0.35)'; e.currentTarget.style.color = 'rgb(var(--c-band-ink))' }}
               >
                 {platform.name}
               </a>
