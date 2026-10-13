@@ -68,10 +68,10 @@ export default function NotreHistoire() {
           style={{ objectFit: 'cover' }}
         />
         {/* Mobile dark overlay */}
-        <div className="md:hidden absolute inset-0" style={{ background: 'rgba(6,13,24,0.72)' }} />
+        <div className="md:hidden absolute inset-0" style={{ background: 'rgb(var(--c-bg) / 0.82)' }} />
 
         {/* Desktop: solid dark left panel */}
-        <div className="hidden md:block absolute inset-y-0 left-0" style={{ right: '55%', background: '#060D18' }} />
+        <div className="hidden md:block absolute inset-y-0 left-0" style={{ right: '55%', background: 'rgb(var(--c-bg))' }} />
 
         {/* Left: text panel */}
         <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24">
@@ -81,7 +81,7 @@ export default function NotreHistoire() {
               {h.heroTitle}
             </h1>
             <div className="gold-divider mb-8 mx-auto md:mx-0" />
-            <blockquote className="text-display-italic" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.15rem)', lineHeight: 1.9, color: '#DEDEDA' }}>
+            <blockquote className="text-display-italic" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.15rem)', lineHeight: 1.9, color: 'rgb(var(--c-muted))' }}>
               {h.quote}
             </blockquote>
           </div>
@@ -105,14 +105,14 @@ export default function NotreHistoire() {
             }}
           />
           {/* Left blend — merges video into the dark left panel */}
-          <div className="absolute inset-y-0 left-0 pointer-events-none" style={{ width: '35%', background: 'linear-gradient(to right, #060D18 0%, rgba(6,13,24,0) 100%)' }} />
+          <div className="absolute inset-y-0 left-0 pointer-events-none" style={{ width: '35%', background: 'linear-gradient(to right, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)' }} />
           {/* Right blend */}
-          <div className="absolute inset-y-0 right-0 pointer-events-none" style={{ width: '25%', background: 'linear-gradient(to left, rgba(6,13,24,0.85) 0%, rgba(6,13,24,0) 100%)' }} />
+          <div className="absolute inset-y-0 right-0 pointer-events-none" style={{ width: '25%', background: 'linear-gradient(to left, rgb(var(--c-bg) / 0.85) 0%, rgb(var(--c-bg) / 0) 100%)' }} />
         </div>
 
         {/* Bottom section fade — blends hero into the next section */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
-          style={{ height: '30%', background: 'linear-gradient(to top, rgba(6,13,24,1) 0%, rgba(6,13,24,0.5) 50%, rgba(6,13,24,0) 100%)' }} />
+          style={{ height: '30%', background: 'linear-gradient(to top, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0.5) 50%, rgb(var(--c-bg) / 0) 100%)' }} />
 
       </div>
 
@@ -121,7 +121,7 @@ export default function NotreHistoire() {
         <div className="max-w-site mx-auto">
           <p className="fade-in-section text-label text-gold mb-16 text-center">{h.timelineLabel}</p>
           <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 hidden md:block" style={{ width: 1, background: '#1E1E1E' }} />
+            <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 hidden md:block" style={{ width: 1, background: 'rgb(var(--c-line))' }} />
             <div className="space-y-16">
               {h.timeline.map((entry, i) => (
                 <div
@@ -133,7 +133,7 @@ export default function NotreHistoire() {
                     <h3 className="text-display text-text-primary mb-3" style={{ fontSize: '1.3rem' }}>{entry.title}</h3>
                     <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.85rem' }}>{entry.text}</p>
                   </div>
-                  <div className="hidden md:flex flex-shrink-0 items-center justify-center w-3 h-3 rounded-full border border-gold mt-4" style={{ background: '#0A0A0A' }} />
+                  <div className="hidden md:flex flex-shrink-0 items-center justify-center w-3 h-3 rounded-full border border-gold mt-4" style={{ background: 'rgb(var(--c-bg))' }} />
                   <div className="flex-1" />
                 </div>
               ))}
@@ -143,19 +143,19 @@ export default function NotreHistoire() {
       </div>
 
       {/* Philosophy */}
-      <div className="philosophy-section section-padding" style={{ background: 'rgba(6,13,24,0.75)', borderTop: 'none', position: 'relative' }}>
-        <div aria-hidden style={{ position: 'absolute', top: -80, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, transparent, rgba(6,13,24,0.75))', pointerEvents: 'none' }} />
+      <div className="philosophy-section section-padding" style={{ background: 'rgb(var(--c-surface) / 0.75)', borderTop: 'none', position: 'relative' }}>
+        <div aria-hidden style={{ position: 'absolute', top: -80, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, transparent, rgb(var(--c-surface) / 0.75))', pointerEvents: 'none' }} />
         <div className="max-w-site mx-auto">
           <p className="fade-in-section text-label text-gold mb-16 text-center">{h.valuesLabel}</p>
-          <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: '1px solid #1E1E1E' }}>
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: '1px solid rgb(var(--c-line))' }}>
             {h.values.map((col, i) => (
               <div
                 key={col.title}
                 className="philosophy-col opacity-0 py-12 px-10"
-                style={{ borderLeft: i > 0 ? '1px solid #1E1E1E' : 'none' }}
+                style={{ borderLeft: i > 0 ? '1px solid rgb(var(--c-line))' : 'none' }}
               >
                 <div className="mb-6">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ color: '#A8956A' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ color: 'rgb(var(--c-accent))' }}>
                     <path d="M12 2L9.5 9.5H2L8 14L5.5 21.5L12 17L18.5 21.5L16 14L22 9.5H14.5L12 2Z" stroke="currentColor" strokeWidth="1" fill="none" />
                   </svg>
                 </div>

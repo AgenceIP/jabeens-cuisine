@@ -21,7 +21,7 @@ function VegLeaf({ size = 14, label }: { size?: number; label: string }) {
 function MenuItemRow({ item, lang }: { item: MenuCategory['items'][0]; lang: string }) {
   const desc = lang === 'fr' ? item.description : (item.descriptionEn ?? item.description)
   return (
-    <div style={{ display: 'flex', alignItems: 'stretch', borderBottom: '1px solid #1E1E1E' }}>
+    <div style={{ display: 'flex', alignItems: 'stretch', borderBottom: '1px solid rgb(var(--c-line))' }}>
       {/* Texte */}
       <div style={{ flex: 1, minWidth: 0, padding: '22px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
@@ -89,18 +89,18 @@ export default function Menu() {
         <p className="text-text-muted font-light text-sm mb-10">{m.subheading}</p>
 
         {/* Tab switcher — part of the hero, same visual zone */}
-        <div style={{ display: 'flex', maxWidth: 480, margin: '0 auto', borderTop: '1px solid rgba(168,149,106,0.2)' }}>
+        <div style={{ display: 'flex', maxWidth: 480, margin: '0 auto', borderTop: '1px solid rgb(var(--c-accent) / 0.2)' }}>
           {PDF_MENUS.map(menu => (
             <button
               key={menu.type}
               onClick={() => setActiveMenu(menu.type)}
               style={{
                 flex: 1, padding: '20px 0', background: 'none', border: 'none',
-                borderBottom: `2px solid ${activeMenu === menu.type ? '#A8956A' : 'transparent'}`,
-                cursor: 'pointer', fontFamily: 'Montserrat',
+                borderBottom: `2px solid ${activeMenu === menu.type ? 'rgb(var(--c-accent))' : 'transparent'}`,
+                cursor: 'pointer', fontFamily: 'var(--font-body)',
                 fontSize: '0.65rem', fontWeight: 700,
                 letterSpacing: '0.22em', textTransform: 'uppercase' as const,
-                color: activeMenu === menu.type ? '#A8956A' : '#DEDEDA',
+                color: activeMenu === menu.type ? 'rgb(var(--c-accent))' : 'rgb(var(--c-muted))',
                 transition: 'color 0.3s, border-color 0.3s',
               }}
             >{menu.title}</button>
@@ -111,7 +111,7 @@ export default function Menu() {
       {/* ── MOBILE sticky nav — category pills only (tabs are in the hero above) ── */}
       <div
         className="md:hidden sticky z-40"
-        style={{ top: 79, background: 'rgba(6,13,24,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(168,149,106,0.15)' }}
+        style={{ top: 79, background: 'rgb(var(--c-nav) / 0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgb(var(--c-accent) / 0.15)' }}
       >
         <div style={{ overflowX: 'auto', display: 'flex', gap: 8, padding: '10px 16px' }}>
           {currentData.map(cat => (
@@ -120,10 +120,10 @@ export default function Menu() {
               onClick={() => scrollToSection(cat.id)}
               style={{
                 flexShrink: 0, padding: '6px 14px', cursor: 'pointer',
-                background: activeId === cat.id ? '#A8956A' : 'transparent',
-                color: activeId === cat.id ? '#0A0A0A' : '#DEDEDA',
-                border: `1px solid ${activeId === cat.id ? '#A8956A' : '#3A3A3A'}`,
-                fontFamily: 'Montserrat', fontSize: '0.52rem', fontWeight: 500,
+                background: activeId === cat.id ? 'rgb(var(--c-btn))' : 'transparent',
+                color: activeId === cat.id ? 'rgb(var(--c-btn-ink))' : 'rgb(var(--c-muted))',
+                border: `1px solid ${activeId === cat.id ? 'rgb(var(--c-btn))' : 'rgb(var(--c-ink) / 0.3)'}`,
+                fontFamily: 'var(--font-body)', fontSize: '0.52rem', fontWeight: 500,
                 letterSpacing: '0.12em', textTransform: 'uppercase' as const,
                 transition: 'all 0.25s', whiteSpace: 'nowrap' as const,
               }}
@@ -143,7 +143,7 @@ export default function Menu() {
           {/* Desktop sidebar */}
           <aside
             className="hidden md:block flex-shrink-0 py-12"
-            style={{ width: 300, borderRight: '1px solid #1E1E1E', position: 'sticky', top: 80, alignSelf: 'flex-start', maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }}
+            style={{ width: 300, borderRight: '1px solid rgb(var(--c-line))', position: 'sticky', top: 80, alignSelf: 'flex-start', maxHeight: 'calc(100vh - 80px)', overflowY: 'auto' }}
           >
             <nav className="px-10">
               {currentData.map(cat => (
@@ -154,9 +154,9 @@ export default function Menu() {
                   style={{
                     paddingLeft: '16px', background: 'none', cursor: 'pointer',
                     borderTop: 'none', borderRight: 'none', borderBottom: 'none',
-                    borderLeft: `2px solid ${activeId === cat.id ? '#A8956A' : 'transparent'}`,
-                    color: activeId === cat.id ? '#A8956A' : '#6B6B6B',
-                    fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 500,
+                    borderLeft: `2px solid ${activeId === cat.id ? 'rgb(var(--c-accent))' : 'transparent'}`,
+                    color: activeId === cat.id ? 'rgb(var(--c-accent))' : 'rgb(var(--c-muted))',
+                    fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 500,
                     letterSpacing: '0.2em', textTransform: 'uppercase' as const,
                   }}
                 >
@@ -182,9 +182,9 @@ export default function Menu() {
                     {catLabel(category)}
                   </h2>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <div style={{ flex: 1, height: 1, background: '#1E1E1E' }} />
+                    <div style={{ flex: 1, height: 1, background: 'rgb(var(--c-line))' }} />
                     <span className="text-gold" style={{ fontSize: '0.6rem' }}>✦</span>
-                    <div style={{ flex: 1, height: 1, background: '#1E1E1E' }} />
+                    <div style={{ flex: 1, height: 1, background: 'rgb(var(--c-line))' }} />
                   </div>
                 </div>
 
@@ -203,31 +203,31 @@ export default function Menu() {
       </AnimatePresence>
 
       {/* PDF Menus — at the bottom */}
-      <div style={{ background: 'transparent', padding: '48px 24px 60px', borderTop: '1px solid #1E1E1E' }}>
+      <div style={{ background: 'transparent', padding: '48px 24px 60px', borderTop: '1px solid rgb(var(--c-line))' }}>
         <p className="text-center text-label text-gold mb-8" style={{ fontSize: '0.6rem', letterSpacing: '0.25em' }}>
           {m.pdfLabel.toUpperCase()}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto' }}>
           {[...PDF_MENUS, DRINKS_PDF].map((menu) => (
-            <div key={menu.title} style={{ border: '1px solid #2A2A2A', overflow: 'hidden', background: 'rgba(6,13,24,0.8)' }}>
+            <div key={menu.title} style={{ border: '1px solid rgb(var(--c-line))', overflow: 'hidden', background: 'rgb(var(--c-surface))' }}>
               {/* Mobile: full-card button */}
               <a href={menu.pdf} target="_blank" rel="noopener noreferrer" className="md:hidden flex flex-col items-center justify-center py-10 px-6" style={{ textDecoration: 'none' }}>
-                <p style={{ fontFamily: 'Montserrat', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: '#F5F5F0', textAlign: 'center' }}>{menu.title}</p>
-                <p style={{ fontFamily: 'Montserrat', fontSize: '0.6rem', color: '#DEDEDA', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: 'rgb(var(--c-ink))', textAlign: 'center' }}>{menu.title}</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.6rem', color: 'rgb(var(--c-muted))', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
               </a>
               {/* Desktop */}
-              <div className="hidden md:flex" style={{ padding: '14px 20px', borderBottom: '1px solid #1E1E1E', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="hidden md:flex" style={{ padding: '14px 20px', borderBottom: '1px solid rgb(var(--c-line))', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.22em', color: '#A8956A' }}>{menu.title}</p>
-                  <p style={{ fontFamily: 'Montserrat', fontSize: '0.55rem', color: '#DEDEDA', fontWeight: 500, marginTop: 3 }}>{menu.subtitle}</p>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.22em', color: 'rgb(var(--c-accent))' }}>{menu.title}</p>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.55rem', color: 'rgb(var(--c-muted))', fontWeight: 500, marginTop: 3 }}>{menu.subtitle}</p>
                 </div>
                 <a href={menu.pdf} target="_blank" rel="noopener noreferrer"
-                  style={{ fontFamily: 'Montserrat', fontSize: '0.72rem', fontWeight: 700, color: '#F5F5F0', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid #DEDEDA', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
-                  onMouseEnter={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#A8956A'; a.style.borderColor = '#A8956A' }}
-                  onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = '#F5F5F0'; a.style.borderColor = '#DEDEDA' }}
+                  style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 700, color: 'rgb(var(--c-ink))', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid rgb(var(--c-ink) / 0.4)', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
+                  onMouseEnter={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = 'rgb(var(--c-accent))'; a.style.borderColor = 'rgb(var(--c-accent))' }}
+                  onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = 'rgb(var(--c-ink))'; a.style.borderColor = 'rgb(var(--c-ink) / 0.4)' }}
                 >{m.openButton}</a>
               </div>
-              <div className="hidden md:block" style={{ height: 420, overflow: 'hidden', background: 'rgba(6,13,24,0.6)' }}>
+              <div className="hidden md:block" style={{ height: 420, overflow: 'hidden', background: 'rgb(var(--c-surface))' }}>
                 <iframe src={`${menu.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} title={menu.title} style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }} />
               </div>
             </div>
