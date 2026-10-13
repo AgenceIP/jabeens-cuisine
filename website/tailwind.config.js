@@ -1,19 +1,27 @@
+const c = name => `rgb(var(--c-${name}) / <alpha-value>)`
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        background: '#060D18',
-        surface: '#111111',
-        'border-subtle': '#1E1E1E',
-        'text-primary': '#F5F5F0',
-        'text-muted': '#DEDEDA',
-        gold: '#A8956A',
+        background: c('bg'),
+        surface: c('surface'),
+        'border-subtle': c('line'),
+        'text-primary': c('ink'),
+        'text-muted': c('muted'),
+        gold: c('accent'),
+        'gold-soft': c('accent-soft'),
+        band: c('band'),
+        'band-ink': c('band-ink'),
+        'on-dark': c('on-dark'),
+        scrim: c('scrim'),
+        error: c('error'),
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
-        body: ['Montserrat', 'sans-serif'],
+        display: ['var(--font-display)'],
+        body: ['var(--font-body)'],
       },
       letterSpacing: {
         label: '0.3em',
