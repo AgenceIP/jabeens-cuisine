@@ -186,7 +186,7 @@
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgb(var(--c-ink) / 0.25);
+    border-bottom: 1px solid rgb(var(--c-ink) / 0.5);
     color: rgb(var(--c-ink));
     padding: 14px 0;
     font-size: 0.95rem;

@@ -36,7 +36,10 @@ export default function RequestForm({ preset }: { preset: { menu: CateringMenuId
   const uid = useId()
   const id = (name: string) => `${uid}-${name}`
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
-  const { register, control, handleSubmit, setValue, trigger, getValues, formState: { errors, isSubmitted } } = useForm<Values>({
+  const { register, control, handleSubmit, setValue, trigger, getValues, getFieldState, formState: { errors, isSubmitted } } = useForm<Values>({
+    // onTouched: once a field was visited, its error updates as the visitor types (an error shown
+    // after a menu change must clear as soon as the count is fixed).
+    mode: 'onTouched',
     defaultValues: { service: '', menu: '', occasion: '', guests: '', date: '', address: '', prenom: '', nom: '', email: '', telephone: '', notes: '' },
   })
   const service = useWatch({ control, name: 'service' })
@@ -45,9 +48,10 @@ export default function RequestForm({ preset }: { preset: { menu: CateringMenuId
 
   useEffect(() => {
     if (!preset) return
-    setValue('menu', preset.menu, { shouldDirty: true })
-    if (getValues('service') === 'salle_seule' || getValues('service') === '') setValue('service', 'salle_traiteur')
-  }, [preset, setValue, getValues])
+    setValue('menu', preset.menu, { shouldDirty: true, shouldValidate: true })
+    // A menu needs catering: leave the hall-only choice, but let the visitor pick hall or address.
+    if (getValues('service') === 'salle_seule') setValue('service', '', { shouldValidate: isSubmitted })
+  }, [preset, setValue, getValues, isSubmitted])
 
   // Re-check the guest count as soon as the menu or service changes.
   useEffect(() => {
@@ -107,7 +111,7 @@ export default function RequestForm({ preset }: { preset: { menu: CateringMenuId
                 <legend className="text-label text-text-primary mb-3" style={{ fontSize: '0.62rem' }}>{f.service}</legend>
                 <div className="grid sm:grid-cols-3 gap-3" role="radiogroup">
                   {SERVICES.map(s => (
-                    <label key={s} className={`border px-4 py-3 cursor-pointer text-sm transition-colors focus-within:ring-2 focus-within:ring-gold ${service === s ? 'border-gold text-text-primary bg-surface' : 'border-text-primary/25 text-text-muted'}`}>
+                    <label key={s} className={`border px-4 py-3 cursor-pointer text-sm transition-colors focus-within:ring-2 focus-within:ring-gold ${service === s ? 'border-gold text-text-primary bg-surface' : 'border-text-primary/50 text-text-muted'}`}>
                       <input type="radio" value={s} className="sr-only" {...register('service', { required: f.errors.required })} />
                       {f.serviceOptions[s]}
                     </label>
@@ -138,7 +142,11 @@ export default function RequestForm({ preset }: { preset: { menu: CateringMenuId
                   hint={range.max ? fmt(f.guestsHintMax, { min: range.min, max: range.max }) : fmt(f.guestsHint, { min: range.min })}>
                   <input id={id('guests')} type="number" inputMode="numeric" min={range.min} max={range.max ?? undefined} step={1} className="field"
                     {...aria('guests')} aria-describedby={errors.guests ? `${id('guests')}-err` : `${id('guests')}-hint`}
-                    {...register('guests', { validate: guestMessage })} />
+                    {...register('guests', {
+                      validate: guestMessage,
+                      // An error shown after a menu/service change must update as the visitor types.
+                      onChange: () => { if (getFieldState('guests').error) void trigger('guests') },
+                    })} />
                 </Field>
                 <Field id={id('date')} label={f.date} error={err('date')}>
                   <input id={id('date')} type="date" min={toLocalISODate(new Date())} className="field" {...aria('date')}

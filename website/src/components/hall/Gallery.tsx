@@ -11,8 +11,11 @@ function Group({ title, photos, cols }: { title: string; photos: CateringPhoto[]
       <h3 className="text-label text-text-primary mb-5" style={{ fontSize: '0.72rem' }}>{title}</h3>
       <div className={`grid grid-cols-2 ${cols} gap-3 md:gap-4`}>
         {photos.map((p, i) => (
-          <motion.figure key={p.id} {...reveal} transition={{ ...reveal.transition, delay: (i % 3) * 0.06 }} className="overflow-hidden">
-            <CateringImg id={p.id} alt={p.alt[lang]} className="aspect-[3/4] transition-transform duration-700 hover:scale-[1.03]" />
+          <motion.figure key={p.id} {...reveal} transition={{ ...reveal.transition, delay: (i % 3) * 0.06 }}>
+            <div className="overflow-hidden">
+              <CateringImg id={p.id} alt={p.alt[lang]} className="aspect-[3/4] transition-transform duration-700 hover:scale-[1.03]" />
+            </div>
+            {p.caption && <figcaption className="text-text-muted text-xs mt-2">{p.caption[lang]}</figcaption>}
           </motion.figure>
         ))}
       </div>
