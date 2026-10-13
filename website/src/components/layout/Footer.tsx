@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import { siteConfig } from '@/data/siteConfig'
 import { useT } from '@/contexts/LanguageContext'
+import { currentTheme, logoSrc } from '@/theme/theme'
 
 export default function Footer() {
   const t = useT()
   const f = t.footer
 
   return (
-    <footer style={{ background: 'transparent', borderTop: '1px solid rgba(168,149,106,0.15)' }}>
+    <footer style={{ background: 'transparent', borderTop: '1px solid rgb(var(--c-accent) / 0.15)' }}>
 
       {/* Google Maps strip */}
       <div style={{ position: 'relative', height: '300px', overflow: 'hidden' }}>
@@ -28,7 +29,7 @@ export default function Footer() {
             left: 0,
             right: 0,
             height: '120px',
-            background: 'linear-gradient(to top, #060D18 0%, transparent 100%)',
+            background: 'linear-gradient(to top, rgb(var(--c-bg)) 0%, transparent 100%)',
             pointerEvents: 'none',
           }}
         />
@@ -39,7 +40,7 @@ export default function Footer() {
         >
           <div>
             <p className="text-label text-gold mb-1" style={{ fontSize: '0.55rem' }}>{f.findUs}</p>
-            <p style={{ fontFamily: 'Montserrat', fontSize: '0.75rem', color: '#F5F5F0', fontWeight: 300 }}>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'rgb(var(--c-ink))', fontWeight: 300 }}>
               {siteConfig.address}
             </p>
           </div>
@@ -48,7 +49,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-label transition-colors duration-300 hover:text-gold"
-            style={{ fontSize: '0.55rem', color: '#DEDEDA', fontWeight: 500 }}
+            style={{ fontSize: '0.55rem', color: 'rgb(var(--c-muted))', fontWeight: 500 }}
           >
             {f.directions}
           </a>
@@ -60,14 +61,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <img
-              src="/assets/logo-footer.webp"
+              src={logoSrc('footer', currentTheme())}
               alt="Jabeen's Cuisine"
               width={200}
               height={200}
               style={{ objectFit: 'contain' }}
               className="mb-6"
             />
-            <p className="text-text-muted text-xs leading-relaxed font-light" style={{ fontFamily: 'Montserrat' }}>
+            <p className="text-text-muted text-xs leading-relaxed font-light" style={{ fontFamily: 'var(--font-body)' }}>
               {f.tagline}<br />
               Brossard, Québec
             </p>
@@ -143,7 +144,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-6" style={{ borderTop: '1px solid #1E1E1E' }}>
+        <div className="mt-16 pt-6" style={{ borderTop: '1px solid rgb(var(--c-line))' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-label text-text-muted" style={{ fontSize: '0.6rem' }}>
               © {new Date().getFullYear()} Jabeen's Cuisine. {f.copyright}

@@ -5,9 +5,6 @@ import { join, relative, resolve } from 'node:path'
 const SRC = resolve(__dirname, '..')
 // Files still to convert. Each task removes the files it converts; Task 10 empties it.
 const PENDING = new Set<string>([
-  'App.tsx',
-  'components/layout/Navbar.tsx',
-  'components/layout/Footer.tsx',
   'components/home/Backstory.tsx',
   'components/home/CommanderEnLigne.tsx',
   'components/home/EvenementsPrives.tsx',

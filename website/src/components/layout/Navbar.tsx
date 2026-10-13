@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavbarScroll } from '@/hooks/useNavbarScroll'
 import { useT, useLang } from '@/contexts/LanguageContext'
 import MagneticButton from '@/components/ui/MagneticButton'
+import { currentTheme, logoSrc } from '@/theme/theme'
 
 export default function Navbar() {
   const scrolled = useNavbarScroll(60)
@@ -11,6 +12,9 @@ export default function Navbar() {
   const location = useLocation()
   const t = useT()
   const { lang, setLang } = useLang()
+  // Transparent bar with white text only over the dark home hero video.
+  const overHero = location.pathname === '/' && !scrolled && !mobileOpen
+  const linkIdle = overHero ? 'text-on-dark' : 'text-text-primary'
 
   const closeMobile = () => setMobileOpen(false)
 
@@ -43,9 +47,9 @@ export default function Navbar() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? 'rgba(6,13,24,0.94)' : 'rgba(0,0,0,0.25)',
-          backdropFilter: scrolled ? 'blur(16px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(30,30,30,0.8)' : 'none',
+          background: overHero ? 'rgb(var(--c-scrim) / 0.25)' : 'rgb(var(--c-nav) / 0.94)',
+          backdropFilter: overHero ? 'none' : 'blur(16px)',
+          borderBottom: overHero ? 'none' : '1px solid rgb(var(--c-line))',
         }}
       >
         <div className="max-w-site mx-auto px-8 md:px-16 flex items-center h-20" style={{ gap: 0 }}>
@@ -57,7 +61,7 @@ export default function Navbar() {
             className="flex-shrink-0"
           >
             <img
-              src="/assets/logo-main.webp"
+              src={logoSrc('main', currentTheme(), overHero)}
               alt="Jabeen's Cuisine"
               width={320}
               height={80}
@@ -76,7 +80,7 @@ export default function Navbar() {
                 href={link.to}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-label transition-colors duration-300 hover:text-gold text-text-primary"
+                className={`text-label transition-colors duration-300 hover:text-gold ${linkIdle}`}
                 style={{ fontSize: lang === 'fr' ? '0.62rem' : '0.72rem', fontWeight: 700, letterSpacing: lang === 'fr' ? '0.14em' : '0.2em' }}
               >
                 {link.label}
@@ -86,7 +90,7 @@ export default function Navbar() {
                 key={link.to}
                 to={link.to}
                 className={`text-label transition-colors duration-300 hover:text-gold ${
-                  location.pathname === link.to ? 'text-gold' : 'text-text-primary'
+                  location.pathname === link.to ? 'text-gold' : linkIdle
                 }`}
                 style={{ fontSize: lang === 'fr' ? '0.62rem' : '0.72rem', fontWeight: 700, letterSpacing: lang === 'fr' ? '0.14em' : '0.2em' }}
               >
@@ -102,13 +106,13 @@ export default function Navbar() {
                 href={RESERVE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-label border border-text-primary text-text-primary px-6 py-3 transition-all duration-300 hover:border-gold hover:text-gold block text-center"
+                className={`text-label border ${overHero ? 'border-on-dark text-on-dark' : 'border-text-primary text-text-primary'} px-6 py-3 transition-all duration-300 hover:border-gold hover:text-gold block text-center`}
                 style={{ fontSize: '0.76rem', fontWeight: 700 }}
               >
                 {t.nav.reserve}
               </a>
             </MagneticButton>
-            <LangToggle lang={lang} setLang={setLang} />
+            <LangToggle lang={lang} setLang={setLang} onDark={overHero} />
           </div>
 
           {/* Mobile: hamburger */}
@@ -119,17 +123,17 @@ export default function Navbar() {
               aria-label="Menu"
             >
               <motion.span
-                className="block w-6 h-px bg-text-primary origin-center"
+                className={`block w-6 h-px ${overHero ? 'bg-on-dark' : 'bg-text-primary'} origin-center`}
                 animate={mobileOpen ? { rotate: 45, y: 3 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.3 }}
               />
               <motion.span
-                className="block w-6 h-px bg-text-primary origin-center"
+                className={`block w-6 h-px ${overHero ? 'bg-on-dark' : 'bg-text-primary'} origin-center`}
                 animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
                 transition={{ duration: 0.2 }}
               />
               <motion.span
-                className="block w-6 h-px bg-text-primary origin-center"
+                className={`block w-6 h-px ${overHero ? 'bg-on-dark' : 'bg-text-primary'} origin-center`}
                 animate={mobileOpen ? { rotate: -45, y: -3 } : { rotate: 0, y: 0 }}
                 transition={{ duration: 0.3 }}
               />
@@ -148,7 +152,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[45] flex flex-col items-center justify-center"
-            style={{ background: 'rgba(6,13,24,0.97)', backdropFilter: 'blur(20px)' }}
+            style={{ background: 'rgb(var(--c-bg) / 0.97)', backdropFilter: 'blur(20px)' }}
           >
             <div className="flex flex-col items-center gap-8">
               <img
@@ -213,12 +217,12 @@ export default function Navbar() {
   )
 }
 
-function LangToggle({ lang, setLang }: { lang: 'en' | 'fr'; setLang: (l: 'en' | 'fr') => void }) {
+function LangToggle({ lang, setLang, onDark = false }: { lang: 'en' | 'fr'; setLang: (l: 'en' | 'fr') => void; onDark?: boolean }) {
   return (
     <div
       style={{
         display: 'flex', alignItems: 'center',
-        border: '1px solid #2A2A2A',
+        border: `1px solid ${onDark ? 'rgb(var(--c-on-dark) / 0.35)' : 'rgb(var(--c-line))'}`,
         borderRadius: 2,
         overflow: 'hidden',
         position: 'relative',
@@ -230,7 +234,7 @@ function LangToggle({ lang, setLang }: { lang: 'en' | 'fr'; setLang: (l: 'en' | 
           position: 'absolute',
           top: 0, bottom: 0,
           width: '50%',
-          background: '#A8956A',
+          background: 'rgb(var(--c-btn))',
           left: lang === 'fr' ? '0%' : '50%',
         }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -242,8 +246,8 @@ function LangToggle({ lang, setLang }: { lang: 'en' | 'fr'; setLang: (l: 'en' | 
           style={{
             position: 'relative', zIndex: 1,
             background: 'none', border: 'none', cursor: 'pointer',
-            fontFamily: 'Montserrat', fontSize: '0.55rem', letterSpacing: '0.25em',
-            color: lang === l ? '#0A0A0A' : '#6B6B6B',
+            fontFamily: 'var(--font-body)', fontSize: '0.55rem', letterSpacing: '0.25em',
+            color: lang === l ? 'rgb(var(--c-btn-ink))' : onDark ? 'rgb(var(--c-on-dark) / 0.7)' : 'rgb(var(--c-muted))',
             transition: 'color 0.3s',
             padding: '6px 10px',
             fontWeight: 600,

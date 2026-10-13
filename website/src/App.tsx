@@ -38,7 +38,7 @@ export default function App() {
         <ScrollToTop />
         <NewsletterPopup />
         <Navbar />
-        <Suspense fallback={<div style={{ background: '#060D18', minHeight: '100vh' }} />}>
+        <Suspense fallback={<div style={{ background: 'rgb(var(--c-bg))', minHeight: '100vh' }} />}>
           <AnimatedRoutes />
         </Suspense>
       </BrowserRouter>
