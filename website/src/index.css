@@ -308,8 +308,8 @@
 }
 
 /* ── Theme-scoped decor ─────────────────────────────────────────
-   Light theme: the dine-in menu's marble behind every page, crisp photo
-   edges, ink and gold accents. Dark theme (rollback) keeps its texture
+   Light theme: the dine-in menu's marble behind every page, photos that
+   melt into it, ink and gold accents. Dark theme (rollback) keeps its texture
    and its feathered fades. */
 :root[data-theme="light"] body {
   background-color: transparent;
@@ -321,30 +321,40 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: rgb(var(--c-bg)) url('/assets/decor/marble.webp') center / cover no-repeat;
+  background: rgb(var(--c-bg)) url('/assets/decor/marble-1600.webp') center / cover no-repeat;
+}
+
+@media (min-width: 1024px) {
+  :root[data-theme="light"] body::before {
+    background-image: url('/assets/decor/marble-3840.webp');
+  }
 }
 
 :root[data-theme="dark"] .light-only { display: none; }
 :root[data-theme="light"] .dark-only { display: none; }
 
-/* Inline masks feather photos into the dark page; on marble they turn grey, so drop them. */
-:root[data-theme="light"] .dark-mask {
-  -webkit-mask-image: none !important;
-  mask-image: none !important;
+/* Light theme: photos and videos melt into the marble. These are alpha masks (the element itself
+   turns transparent and the marble shows through), never colour overlays, which turn grey. */
+:root[data-theme="light"] .melt-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgb(0 0 0 / 0.7) 80%, rgb(0 0 0 / 0.3) 91%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgb(0 0 0 / 0.7) 80%, rgb(0 0 0 / 0.3) 91%, transparent 100%);
 }
 
-/* Home hero framed on the marble: rounded card instead of a line across the page. */
-:root[data-theme="light"] .hero-frame {
-  margin: 12px 12px 0;
-  width: auto;
-  border-radius: 18px;
+:root[data-theme="light"] .melt-x {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
 }
 
-@media (min-width: 768px) {
-  :root[data-theme="light"] .hero-frame {
-    margin: 16px 20px 0;
-    border-radius: 22px;
-  }
+:root[data-theme="light"] .melt-y {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+}
+
+:root[data-theme="light"] .melt-edges {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-composite: intersect;
 }
 
 /* Ink from the menu, hanging from a section edge: straight side against the edge, drips into the page. */
@@ -358,4 +368,12 @@
 
 .ink-band--up {
   transform: scaleY(-1);
+  /* the mask flips with the element: this fades the straight edge, which ends up at the bottom */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 38%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 38%);
+}
+
+/* Story video: fill the panel so its own edges sit inside the melt (inline style says contain). */
+:root[data-theme="light"] .light-cover {
+  object-fit: cover !important;
 }

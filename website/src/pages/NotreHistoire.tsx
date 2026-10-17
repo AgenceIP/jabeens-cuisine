@@ -96,7 +96,7 @@ export default function NotreHistoire() {
             src="/assets/restaurant-interior.mp4"
             autoPlay muted loop playsInline
             preload="metadata"
-            className="w-full h-full dark-mask"
+            className="w-full h-full light-cover"
             style={{
               objectFit: 'contain',
               objectPosition: 'center',

@@ -1,5 +1,7 @@
 // Pull the decor of the client's dine-in menu (public/menu/Restaurant MENU.pdf) into web assets:
-// marble background, blue/gold ink band, gold flecks -> public/assets/decor/*.webp
+// blue/gold ink band and gold flecks -> public/assets/decor/*.webp
+// The marble (marble-3840 / marble-1600.webp) is the menu marble upscaled to 4K with Higgsfield
+// (bytedance upscale, 2026-10-17) and colour-matched to the original; it is not rebuilt here.
 // pdf.js draws each image on its own page (it decodes the menu's CMYK JPEGs correctly); the colour
 // layer and its mask are separate images in this PDF, so they are recombined into RGBA here.
 // Usage (from website/): node scripts/pdf-clean/menu-art.mjs
@@ -66,9 +68,7 @@ const img = await renderImages()
 const bySize = (w, h) => img.filter(i => i.w === w && i.h === h)
 const [flecks, flecksMask] = bySize(1556, 1601)
 const [ink, inkMask] = bySize(3162, 3162)
-const [marble] = bySize(3000, 1687)
 
-await sharp(marble.png).resize({ width: 2400 }).webp({ quality: 72 }).toFile(path.join(OUT, 'marble.webp'))
 await sharp(await withMask(flecks, flecksMask)).resize({ width: 600 }).webp({ quality: 80, alphaQuality: 85 }).toFile(path.join(OUT, 'gold.webp'))
 // The ink is cut straight on its top, left and right sides; its only organic edge sits at 70-85 % of
 // its height. Keep rows 60-90 %: dense ink against a straight edge, drips below.
@@ -79,7 +79,7 @@ const band = await sharp(inkRgba).extract({ left: 0, top: Math.round(ih * 0.6), 
 for (const w of [1280, 2560]) {
   await sharp(band).resize({ width: w }).webp({ quality: 84, alphaQuality: 90 }).toFile(path.join(OUT, `ink-band-${w}.webp`))
 }
-for (const f of ['marble.webp', 'gold.webp', 'ink-band-1280.webp', 'ink-band-2560.webp']) {
+for (const f of ['gold.webp', 'ink-band-1280.webp', 'ink-band-2560.webp']) {
   const m = await sharp(path.join(OUT, f)).metadata()
   console.log(f, `${m.width}x${m.height}`)
 }

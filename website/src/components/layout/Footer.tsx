@@ -22,6 +22,7 @@ export default function Footer() {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Jabeen's Cuisine — Google Maps"
+          className="melt-y"
         />
         {/* Bottom gradient overlay (dark theme; on marble the map keeps a crisp edge) */}
         <div

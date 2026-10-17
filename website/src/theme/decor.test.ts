@@ -2,9 +2,11 @@ import { describe, expect, it } from 'vitest'
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, relative, resolve } from 'node:path'
 
-// Light theme = marble + crisp edges + ink/gold decor; dark theme (rollback) keeps its fades.
+// Light theme = marble + photos and videos that melt into it (alpha masks) + ink/gold decor.
+// Dark theme (rollback) keeps its colour-overlay fades.
 const SRC = resolve(__dirname, '..')
 const css = readFileSync(join(SRC, 'index.css'), 'utf8').replace(/\s+/g, ' ')
+const read = (f: string) => readFileSync(join(SRC, f), 'utf8')
 
 function walk(dir: string): string[] {
   return readdirSync(dir).flatMap(name => {
@@ -19,53 +21,76 @@ describe('theme-scoped decor', () => {
     expect(css).toMatch(/:root\[data-theme="dark"\] \.light-only \{ display: none/)
   })
 
-  it('hides fade overlays and turns photo masks off in the light theme', () => {
+  it('hides colour-overlay fades in the light theme', () => {
     expect(css).toMatch(/:root\[data-theme="light"\] \.dark-only \{ display: none/)
-    expect(css).toMatch(/:root\[data-theme="light"\] \.dark-mask \{[^}]*mask-image: none !important/)
+  })
+
+  it('keeps photo masks on in the light theme so images melt into the marble', () => {
+    expect(css).not.toMatch(/dark-mask/)
   })
 
   it('puts the menu marble behind the light theme', () => {
-    expect(css).toMatch(/:root\[data-theme="light"\] body::before \{[^}]*marble\.webp/)
+    expect(css).toMatch(/:root\[data-theme="light"\] body::before \{[^}]*marble/)
   })
 
-  it('frames the home hero on the marble in the light theme only', () => {
-    expect(css).toMatch(/:root\[data-theme="light"\] \.hero-frame \{[^}]*border-radius/)
-    expect(readFileSync(join(SRC, 'components/home/Hero.tsx'), 'utf8')).toContain('hero-frame')
+  it('has no rounded frame around the home hero', () => {
+    expect(css).not.toMatch(/hero-frame/)
+    expect(read('components/home/Hero.tsx')).not.toContain('hero-frame')
+  })
+})
+
+describe('melting into the marble (light theme)', () => {
+  it.each([
+    ['melt-bottom', 'components/home/Hero.tsx'],
+    ['melt-x', 'components/home/LaCarte.tsx'],
+    ['melt-edges', 'components/hall/HallIntro.tsx'],
+    ['melt-y', 'components/layout/Footer.tsx'],
+  ])('.%s is a light-theme alpha mask used by %s', (cls, file) => {
+    expect(css).toMatch(new RegExp(`:root\\[data-theme="light"\\] \\.${cls} \\{[^}]*mask-image: linear-gradient`))
+    expect(read(file)).toContain(cls)
+  })
+})
+
+describe('story video', () => {
+  it('fills its panel in the light theme so its own edges sit in the melt', () => {
+    expect(css).toMatch(/:root\[data-theme="light"\] \.light-cover \{[^}]*object-fit: cover/)
+    expect(read('pages/NotreHistoire.tsx')).toContain('light-cover')
   })
 })
 
 describe('ink band', () => {
-  const ink = readFileSync(join(SRC, 'components/decor/InkBand.tsx'), 'utf8')
+  const ink = read('components/decor/InkBand.tsx')
 
   it('serves a sharp source on wide screens and loads lazily', () => {
     expect(ink).toMatch(/ink-band-2560\.webp 2560w/)
     expect(ink).toContain('loading="lazy"')
   })
 
+  it('melts its straight edge into the marble when it rises above the footer', () => {
+    expect(css).toMatch(/\.ink-band--up \{[^}]*mask-image: linear-gradient/)
+  })
+
   it('no longer hangs under the home hero', () => {
-    expect(readFileSync(join(SRC, 'pages/Home.tsx'), 'utf8')).not.toContain('InkBand')
+    expect(read('pages/Home.tsx')).not.toContain('InkBand')
   })
 })
 
 describe('components', () => {
-  // Every element that feathers a photo with a CSS mask must carry .dark-mask,
-  // and every overlay that fades into the page colour must carry .dark-only.
+  // Overlays that fade into the flat page colour turn grey on marble: dark theme only.
   const cases = tsx.flatMap(file => {
     const lines = readFileSync(file, 'utf8').split(/\r?\n/)
     const rel = relative(SRC, file).replace(/\\/g, '/')
-    return lines.flatMap((line, i): [string, string, string][] => {
+    return lines.flatMap((line, i): [string, string][] => {
       const before = lines.slice(Math.max(0, i - 12), i + 1).join('\n')
-      if (/maskImage:/i.test(line)) return [[`${rel}:${i + 1} mask`, before, 'dark-mask']]
-      if (/linear-gradient\(to [a-z]+, [^)]*rgb\(var\(--c-(bg|surface)\)/.test(line)) return [[`${rel}:${i + 1} fade`, before, 'dark-only']]
-      return []
+      return /linear-gradient\(to [a-z]+, [^)]*rgb\(var\(--c-(bg|surface)\)/.test(line) ? [[`${rel}:${i + 1}`, before]] : []
     })
   })
 
-  it('finds the feathered photos and fades to check', () => {
+  it('finds the colour fades to check', () => {
     expect(cases.length).toBeGreaterThan(5)
   })
 
-  it.each(cases)('%s is scoped to the dark theme', (_label, before, cls) => {
-    expect(before).toContain(cls)
+  it.each(cases)('%s is scoped to the dark theme', (_label, before) => {
+    expect(before).toContain('dark-only')
   })
 })

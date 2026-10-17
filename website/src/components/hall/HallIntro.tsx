@@ -20,7 +20,7 @@ export default function HallIntro({ onMenus, onQuote }: { onMenus: () => void; o
           <button type="button" onClick={onQuote} className="btn-ghost">{h.ctaQuote}</button>
         </div>
       </div>
-      <CateringImg id={stage.id} alt={stage.alt[lang]} priority sizes="(min-width: 768px) 45vw, 100vw" className="aspect-[4/5]" />
+      <CateringImg id={stage.id} alt={stage.alt[lang]} priority sizes="(min-width: 768px) 45vw, 100vw" className="aspect-[4/5] melt-edges" />
     </section>
   )
 }

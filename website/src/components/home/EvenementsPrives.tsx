@@ -111,7 +111,7 @@ export default function EvenementsPrives() {
         {/* Image — clip-path from top */}
         <div
           ref={imgWrapRef}
-          className="w-full md:w-1/2 overflow-hidden dark-mask"
+          className="w-full md:w-1/2 overflow-hidden"
           style={{
             minHeight: '480px',
             WebkitMaskImage: 'linear-gradient(to left, black 60%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 8%, black 92%, rgba(0,0,0,0) 100%)',

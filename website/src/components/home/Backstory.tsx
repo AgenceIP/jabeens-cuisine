@@ -114,7 +114,7 @@ export default function Backstory() {
           <div className="w-full md:w-[45%]">
             <div
               ref={imgWrapRef}
-              className="overflow-hidden dark-mask"
+              className="overflow-hidden"
               style={{
                 WebkitMaskImage: 'linear-gradient(to right, black 65%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 6%, black 94%, rgba(0,0,0,0) 100%)',
                 WebkitMaskComposite: 'destination-in',
