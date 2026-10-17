@@ -6,6 +6,7 @@ import LaCarte from '@/components/home/LaCarte'
 import EvenementsPrives from '@/components/home/EvenementsPrives'
 import FeedbackForm from '@/components/home/FeedbackForm'
 import Footer from '@/components/layout/Footer'
+import InkBand from '@/components/decor/InkBand'
 
 export default function Home() {
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <InkBand />
       <Marquee />
       <PremiereImpression />
       <LaCarte />

@@ -78,7 +78,7 @@ export default function PremiereImpression() {
         {/* Image — clip-path reveal */}
         <div
           ref={imgWrapRef}
-          className="w-full md:w-[60%] overflow-hidden"
+          className="w-full md:w-[60%] overflow-hidden dark-mask"
           style={{
             minHeight: '500px',
             WebkitMaskImage: 'linear-gradient(to right, black 60%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 8%, black 92%, rgba(0,0,0,0) 100%)',

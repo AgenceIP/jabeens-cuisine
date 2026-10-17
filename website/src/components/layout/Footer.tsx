@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { siteConfig } from '@/data/siteConfig'
 import { useT } from '@/contexts/LanguageContext'
+import InkBand from '@/components/decor/InkBand'
 import { currentTheme, logoSrc } from '@/theme/theme'
 
 export default function Footer() {
@@ -9,6 +10,7 @@ export default function Footer() {
 
   return (
     <footer style={{ background: 'transparent', borderTop: '1px solid rgb(var(--c-accent) / 0.15)' }}>
+      <InkBand direction="up" />
 
       {/* Google Maps strip */}
       <div style={{ position: 'relative', height: '300px', overflow: 'hidden' }}>
@@ -21,8 +23,9 @@ export default function Footer() {
           referrerPolicy="no-referrer-when-downgrade"
           title="Jabeen's Cuisine — Google Maps"
         />
-        {/* Bottom gradient overlay */}
+        {/* Bottom gradient overlay (dark theme; on marble the map keeps a crisp edge) */}
         <div
+          className="dark-only"
           style={{
             position: 'absolute',
             bottom: 0,

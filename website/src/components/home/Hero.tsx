@@ -108,7 +108,7 @@ export default function Hero() {
 
       {/* Bottom section fade — blends into next section on scroll */}
       <div
-        className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
+        className="dark-only absolute bottom-0 left-0 right-0 pointer-events-none z-20"
         style={{ height: '16%', background: 'linear-gradient(to top, rgb(var(--c-bg) / 1) 0%, rgb(var(--c-bg) / 0.6) 40%, rgb(var(--c-bg) / 0) 100%)' }}
       />
 

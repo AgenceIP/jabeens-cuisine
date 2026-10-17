@@ -306,3 +306,42 @@
     }
   }
 }
+
+/* ── Theme-scoped decor ─────────────────────────────────────────
+   Light theme: the dine-in menu's marble behind every page, crisp photo
+   edges, ink and gold accents. Dark theme (rollback) keeps its texture
+   and its feathered fades. */
+:root[data-theme="light"] body {
+  background-color: transparent;
+}
+
+:root[data-theme="light"] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgb(var(--c-bg)) url('/assets/decor/marble.webp') center / cover no-repeat;
+}
+
+:root[data-theme="dark"] .light-only { display: none; }
+:root[data-theme="light"] .dark-only { display: none; }
+
+/* Inline masks feather photos into the dark page; on marble they turn grey, so drop them. */
+:root[data-theme="light"] .dark-mask {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+/* Ink from the menu, hanging from a section edge: straight side against the edge, drips into the page. */
+.ink-band {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1600 / 475;
+  background: url('/assets/decor/ink-band.webp') center top / 100% auto no-repeat;
+  pointer-events: none;
+}
+
+.ink-band--up {
+  transform: scaleY(-1);
+}

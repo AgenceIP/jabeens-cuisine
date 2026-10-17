@@ -4,6 +4,7 @@ import { menuData, dineInMenuData, takeOutMenuData } from '@/data/menuData'
 import type { MenuCategory } from '@/types'
 import Footer from '@/components/layout/Footer'
 import { useT, useLang } from '@/contexts/LanguageContext'
+import GoldFlecks from '@/components/decor/GoldFlecks'
 
 type MenuType = 'dineIn' | 'takeOut'
 
@@ -83,7 +84,8 @@ export default function Menu() {
   return (
     <>
       {/* ── Hero — integrated with tab switcher ── */}
-      <div className="pt-32 pb-0 px-8 md:px-16 text-center" style={{ background: 'transparent' }}>
+      <div className="relative isolate pt-32 pb-0 px-8 md:px-16 text-center" style={{ background: 'transparent' }}>
+        <GoldFlecks className="-z-10 right-[6%] top-24 w-28 md:w-48" />
         <p className="text-label text-gold mb-4">{m.label}</p>
         <h1 className="text-display text-text-primary mb-4" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)' }}>{m.heading}</h1>
         <p className="text-text-muted font-light text-sm mb-10">{m.subheading}</p>

@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Footer from '@/components/layout/Footer'
+import GoldFlecks from '@/components/decor/GoldFlecks'
 import { useT } from '@/contexts/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -71,10 +72,11 @@ export default function NotreHistoire() {
         <div className="md:hidden absolute inset-0" style={{ background: 'rgb(var(--c-bg) / 0.82)' }} />
 
         {/* Desktop: solid dark left panel */}
-        <div className="hidden md:block absolute inset-y-0 left-0" style={{ right: '55%', background: 'rgb(var(--c-bg))' }} />
+        <div className="dark-only hidden md:block absolute inset-y-0 left-0" style={{ right: '55%', background: 'rgb(var(--c-bg))' }} />
 
         {/* Left: text panel */}
         <div className="relative z-10 w-full md:w-[45%] flex-shrink-0 flex flex-col justify-center px-10 md:px-16 lg:px-24">
+          <GoldFlecks className="-z-10 left-4 md:left-10 top-24 w-28 md:w-44" />
           <div className="histoire-hero-content opacity-0 relative z-10 text-center md:text-left">
             <p className="text-label text-gold mb-6">{h.label}</p>
             <h1 className="text-display text-text-primary leading-none mb-10" style={{ fontSize: 'clamp(3rem, 4.5vw, 5rem)' }}>
@@ -94,7 +96,7 @@ export default function NotreHistoire() {
             src="/assets/restaurant-interior.mp4"
             autoPlay muted loop playsInline
             preload="metadata"
-            className="w-full h-full"
+            className="w-full h-full dark-mask"
             style={{
               objectFit: 'contain',
               objectPosition: 'center',
@@ -105,13 +107,13 @@ export default function NotreHistoire() {
             }}
           />
           {/* Left blend — merges video into the dark left panel */}
-          <div className="absolute inset-y-0 left-0 pointer-events-none" style={{ width: '35%', background: 'linear-gradient(to right, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)' }} />
+          <div className="dark-only absolute inset-y-0 left-0 pointer-events-none" style={{ width: '35%', background: 'linear-gradient(to right, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)' }} />
           {/* Right blend */}
-          <div className="absolute inset-y-0 right-0 pointer-events-none" style={{ width: '25%', background: 'linear-gradient(to left, rgb(var(--c-bg) / 0.85) 0%, rgb(var(--c-bg) / 0) 100%)' }} />
+          <div className="dark-only absolute inset-y-0 right-0 pointer-events-none" style={{ width: '25%', background: 'linear-gradient(to left, rgb(var(--c-bg) / 0.85) 0%, rgb(var(--c-bg) / 0) 100%)' }} />
         </div>
 
         {/* Bottom section fade — blends hero into the next section */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
+        <div className="dark-only absolute bottom-0 left-0 right-0 pointer-events-none z-20"
           style={{ height: '30%', background: 'linear-gradient(to top, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0.5) 50%, rgb(var(--c-bg) / 0) 100%)' }} />
 
       </div>
@@ -144,7 +146,7 @@ export default function NotreHistoire() {
 
       {/* Philosophy */}
       <div className="philosophy-section section-padding" style={{ background: 'rgb(var(--c-surface) / 0.75)', borderTop: 'none', position: 'relative' }}>
-        <div aria-hidden style={{ position: 'absolute', top: -80, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, transparent, rgb(var(--c-surface) / 0.75))', pointerEvents: 'none' }} />
+        <div aria-hidden className="dark-only" style={{ position: 'absolute', top: -80, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, transparent, rgb(var(--c-surface) / 0.75))', pointerEvents: 'none' }} />
         <div className="max-w-site mx-auto">
           <p className="fade-in-section text-label text-gold mb-16 text-center">{h.valuesLabel}</p>
           <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: '1px solid rgb(var(--c-line))' }}>

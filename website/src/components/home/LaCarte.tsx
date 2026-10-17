@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useT } from '@/contexts/LanguageContext'
 import './GaleriePhoto.css'
+import GoldFlecks from '@/components/decor/GoldFlecks'
 
 const p = (name: string) => `/menu/images/${encodeURIComponent(name)}.jpg`
 
@@ -92,6 +93,7 @@ export default function LaCarte() {
 
   return (
     <section
+      className="isolate"
       style={{
         background: 'transparent',
         paddingTop: '60px',
@@ -101,6 +103,7 @@ export default function LaCarte() {
       }}
     >
       {/* Header */}
+      <GoldFlecks className="-z-10 left-[8%] top-4 w-28 md:w-48" />
       <div className="text-center mb-12 px-8">
         <p className="text-label text-gold mb-4">{c.label}</p>
         <h2
@@ -119,10 +122,10 @@ export default function LaCarte() {
       </div>
 
       {/* Edge vignettes — left, right, top, bottom */}
-      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '180px', background: 'linear-gradient(to right, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
-      <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '180px', background: 'linear-gradient(to left, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
-      <div aria-hidden style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to bottom, rgb(var(--c-bg)), rgb(var(--c-bg) / 0))', pointerEvents: 'none', zIndex: 2 }} />
-      <div aria-hidden style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to top, rgb(var(--c-bg)), rgb(var(--c-bg) / 0))', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden className="dark-only" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '180px', background: 'linear-gradient(to right, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden className="dark-only" style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '180px', background: 'linear-gradient(to left, rgb(var(--c-bg)) 0%, rgb(var(--c-bg) / 0) 100%)', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden className="dark-only" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to bottom, rgb(var(--c-bg)), rgb(var(--c-bg) / 0))', pointerEvents: 'none', zIndex: 2 }} />
+      <div aria-hidden className="dark-only" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '120px', background: 'linear-gradient(to top, rgb(var(--c-bg)), rgb(var(--c-bg) / 0))', pointerEvents: 'none', zIndex: 2 }} />
 
       {/* CTA */}
       <div className="text-center mt-14 px-8" style={{ position: 'relative', zIndex: 3 }}>

@@ -1,13 +1,15 @@
 import { useLang, useT } from '@/contexts/LanguageContext'
 import { hallPhotos } from '@/data/cateringPhotos'
 import CateringImg from './CateringImg'
+import GoldFlecks from '@/components/decor/GoldFlecks'
 
 export default function HallIntro({ onMenus, onQuote }: { onMenus: () => void; onQuote: () => void }) {
   const h = useT().hallPage
   const { lang } = useLang()
   const stage = hallPhotos[0]
   return (
-    <section className="max-w-site mx-auto px-6 md:px-16 pt-32 md:pt-40 pb-16 md:pb-24 grid md:grid-cols-[1.05fr_0.95fr] gap-10 md:gap-16 items-center">
+    <section className="relative isolate max-w-site mx-auto px-6 md:px-16 pt-32 md:pt-40 pb-16 md:pb-24 grid md:grid-cols-[1.05fr_0.95fr] gap-10 md:gap-16 items-center">
+      <GoldFlecks className="-z-10 right-2 md:right-6 top-20 md:top-24 w-32 md:w-56" />
       {/* No entrance animation: this block is the LCP element. */}
       <div>
         <p className="text-label text-gold mb-4">{h.label}</p>
