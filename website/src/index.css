@@ -339,9 +339,10 @@
 
 /* Light theme: photos and videos melt into the marble. These are alpha masks (the element itself
    turns transparent and the marble shows through), never colour overlays, which turn grey. */
+/* Hero: whole down to ~3/4, then an eased (smoothstep) fade, so no line shows where it starts. */
 :root[data-theme="light"] .melt-bottom {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 85%, rgb(0 0 0 / 0.55) 93%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 85%, rgb(0 0 0 / 0.55) 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 74%, rgb(0 0 0 / 0.97) 76.6%, rgb(0 0 0 / 0.9) 79.2%, rgb(0 0 0 / 0.78) 81.8%, rgb(0 0 0 / 0.65) 84.4%, rgb(0 0 0 / 0.5) 87%, rgb(0 0 0 / 0.35) 89.6%, rgb(0 0 0 / 0.22) 92.2%, rgb(0 0 0 / 0.1) 94.8%, rgb(0 0 0 / 0.03) 97.4%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 74%, rgb(0 0 0 / 0.97) 76.6%, rgb(0 0 0 / 0.9) 79.2%, rgb(0 0 0 / 0.78) 81.8%, rgb(0 0 0 / 0.65) 84.4%, rgb(0 0 0 / 0.5) 87%, rgb(0 0 0 / 0.35) 89.6%, rgb(0 0 0 / 0.22) 92.2%, rgb(0 0 0 / 0.1) 94.8%, rgb(0 0 0 / 0.03) 97.4%, transparent 100%);
 }
 
 :root[data-theme="light"] .melt-y {
@@ -401,10 +402,26 @@
   background: transparent !important;
 }
 
+:root[data-theme="light"] {
+  --band-fade: 300px;
+  /* edge (transparent) to solid, eased: the colour holds long, then lets go slowly */
+  --ramp: transparent 0%, rgb(0 0 0 / 0.05) 10%, rgb(0 0 0 / 0.14) 20%, rgb(0 0 0 / 0.27) 30%, rgb(0 0 0 / 0.42) 40%, rgb(0 0 0 / 0.57) 50%, rgb(0 0 0 / 0.7) 60%, rgb(0 0 0 / 0.81) 70%, rgb(0 0 0 / 0.9) 80%, rgb(0 0 0 / 0.96) 90%, #000 100%;
+}
+
+@media (max-width: 767px) {
+  :root[data-theme="light"] { --band-fade: 200px; }
+}
+
 :root[data-theme="light"] .melt-band::before,
 :root[data-theme="light"] .melt-band-layer {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, var(--ramp)), linear-gradient(#000, #000), linear-gradient(to top, var(--ramp));
+  mask-image: linear-gradient(to bottom, var(--ramp)), linear-gradient(#000, #000), linear-gradient(to top, var(--ramp));
+  -webkit-mask-size: 100% var(--band-fade), 100% calc(100% - 2 * var(--band-fade) + 2px), 100% var(--band-fade);
+  mask-size: 100% var(--band-fade), 100% calc(100% - 2 * var(--band-fade) + 2px), 100% var(--band-fade);
+  -webkit-mask-position: top, center, bottom;
+  mask-position: top, center, bottom;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 :root[data-theme="light"] .melt-band::before {
@@ -415,11 +432,16 @@
   background: var(--melt-bg, rgb(var(--c-band)));
 }
 
-/* Light text on the navy bands stays inside the solid part. */
+/* Light text on the navy bands stays where the navy is at least ~90 %. */
 :root[data-theme="light"] .melt-band.bg-band,
 :root[data-theme="light"] .melt-band-content {
-  padding-top: 170px;
-  padding-bottom: 170px;
+  padding-top: calc(var(--band-fade) * 0.82);
+  padding-bottom: calc(var(--band-fade) * 0.82);
+}
+
+/* Section titles (gold eyebrows) read at a glance; buttons and nav keep their own sizes. */
+:root[data-theme="light"] p.text-label {
+  font-size: 0.95rem;
 }
 
 /* Offer photos melt into the marble instead of sitting in white cards. */

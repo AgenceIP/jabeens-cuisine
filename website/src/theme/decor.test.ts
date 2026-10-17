@@ -56,6 +56,12 @@ describe('section edges melt into the marble (light theme)', () => {
     expect(css).toMatch(/:root\[data-theme="light"\] \.melt-band::before,[^{]*\{[^}]*mask-image: linear-gradient/)
   })
 
+  it('fades bands gradually: a long eased ramp, the colour holding before it lets go', () => {
+    expect(Number(/--band-fade: (\d+)px/.exec(css)?.[1])).toBeGreaterThanOrEqual(240)
+    const ramp = /--ramp: ([^;]+);/.exec(css)?.[1] ?? ''
+    expect(ramp.split(/,(?![^(]*\))/).length).toBeGreaterThanOrEqual(7)
+  })
+
   it.each(['components/hall/LiveStations.tsx', 'components/home/CommanderEnLigne.tsx', 'pages/NotreHistoire.tsx'])('%s uses it', file => {
     expect(read(file)).toContain('melt-band')
   })
@@ -94,6 +100,10 @@ describe('readability on the light theme', () => {
   it('small text has a floor in the light theme', () => {
     expect(light['--fs-min']).toBe('0.8rem')
     expect(css).toMatch(/\.text-label \{[^}]*font-size: max\(0\.65rem, var\(--fs-min\)\)/)
+  })
+
+  it('section titles (gold eyebrows) are larger in the light theme', () => {
+    expect(css).toMatch(/:root\[data-theme="light"\] p\.text-label \{ font-size: 0\.95rem/)
   })
 
   it.each(tsx.map(f => relative(SRC, f).replace(/\\/g, '/')))('%s has no tiny fixed font size', file => {
@@ -142,10 +152,12 @@ describe('every photo melts into its background (light theme)', () => {
     for (const l of lines) expect(l).toMatch(/melt-/)
   })
 
-  it('the hero video only fades over its last ~15%', () => {
+  it('the hero video stays whole down to ~3/4, then fades gradually (eased, not a step)', () => {
     const rule = /:root\[data-theme="light"\] \.melt-bottom \{[^}]*\}/.exec(css)?.[0] ?? ''
     const opaqueUntil = Number(/#000 0%, #000 (\d+)%/.exec(rule)?.[1])
-    expect(opaqueUntil).toBeGreaterThanOrEqual(84)
+    expect(opaqueUntil).toBeGreaterThanOrEqual(74)
+    expect(opaqueUntil).toBeLessThanOrEqual(80)
+    expect(rule.match(/rgb\(0 0 0 \/ [\d.]+\) [\d.]+%/g)?.length).toBeGreaterThanOrEqual(8)
   })
 
   it.each(['components/home/PremiereImpression.tsx', 'components/home/EvenementsPrives.tsx'])('%s: the parallax photo fades its own top and bottom', file => {
