@@ -13,7 +13,7 @@ function Group({ title, photos, cols, aspect }: { title: string; photos: Caterin
         {photos.map((p, i) => (
           <motion.figure key={p.id} {...reveal} transition={{ ...reveal.transition, delay: (i % 3) * 0.06 }}>
             <div className="overflow-hidden">
-              <CateringImg id={p.id} alt={p.alt[lang]} className={`${aspect} transition-transform duration-700 hover:scale-[1.03]`} />
+              <CateringImg id={p.id} alt={p.alt[lang]} className={`${aspect} melt-soft transition-transform duration-700 hover:scale-[1.03]`} />
             </div>
             {p.caption && <figcaption className="text-text-muted text-xs mt-2">{p.caption[lang]}</figcaption>}
           </motion.figure>

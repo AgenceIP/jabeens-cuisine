@@ -20,7 +20,7 @@ export default function LiveStations() {
         <div className="grid md:grid-cols-3 gap-5">
           {carts.map((p, i) => (
             <motion.figure key={p.id} {...reveal} transition={{ ...reveal.transition, delay: i * 0.08 }}>
-              <CateringImg id={p.id} alt={p.alt[lang]} className="aspect-[3/4]" />
+              <CateringImg id={p.id} alt={p.alt[lang]} className="aspect-[3/4] melt-soft" />
               <figcaption className="text-label mt-3" style={{ fontSize: 'max(0.7rem, var(--fs-min))' }}>{h.live.carts[i]}</figcaption>
             </motion.figure>
           ))}
@@ -28,7 +28,7 @@ export default function LiveStations() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
           {details.map(p => (
             <motion.figure key={p.id} {...reveal}>
-              <CateringImg id={p.id} alt={p.alt[lang]} sizes="(min-width: 768px) 25vw, 50vw" className="aspect-[3/4]" />
+              <CateringImg id={p.id} alt={p.alt[lang]} sizes="(min-width: 768px) 25vw, 50vw" className="aspect-[3/4] melt-soft" />
             </motion.figure>
           ))}
         </div>

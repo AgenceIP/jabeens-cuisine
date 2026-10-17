@@ -115,7 +115,7 @@ export default function LaCarte() {
       </div>
 
       {/* Three drift rows */}
-      <div className="melt-x" style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
+      <div className="melt-edges" style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
         <PhotoRow photos={row1} height={218} direction="left"  duration={48} />
         <PhotoRow photos={row2} height={198} direction="right" duration={36} />
         <PhotoRow photos={row3} height={210} direction="left"  duration={56} />

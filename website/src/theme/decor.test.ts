@@ -42,7 +42,7 @@ describe('theme-scoped decor', () => {
 describe('melting into the marble (light theme)', () => {
   it.each([
     ['melt-bottom', 'components/home/Hero.tsx'],
-    ['melt-x', 'components/home/LaCarte.tsx'],
+    ['melt-soft', 'components/hall/Gallery.tsx'],
     ['melt-edges', 'components/hall/HallIntro.tsx'],
     ['melt-y', 'components/layout/Footer.tsx'],
   ])('.%s is a light-theme alpha mask used by %s', (cls, file) => {
@@ -128,6 +128,29 @@ describe('buffet photos', () => {
       expect(m.width).toBe(m.height)
     }
     expect(read('components/hall/Gallery.tsx')).toContain('aspect-square')
+  })
+})
+
+describe('every photo melts into its background (light theme)', () => {
+  it('has a soft edge mask for photos in grids', () => {
+    expect(css).toMatch(/:root\[data-theme="light"\] \.melt-soft \{[^}]*mask-image: linear-gradient/)
+  })
+
+  it.each(['components/hall/Gallery.tsx', 'components/hall/LiveStations.tsx'])('%s: every grid photo melts', file => {
+    const lines = read(file).split(/\r?\n/).filter(l => l.includes('<CateringImg'))
+    expect(lines.length).toBeGreaterThan(0)
+    for (const l of lines) expect(l).toMatch(/melt-/)
+  })
+
+  it('the home carousel melts on all four sides', () => {
+    expect(read('components/home/LaCarte.tsx')).toContain('className="melt-edges"')
+  })
+
+  it('every page-level photo or video is masked or melted', () => {
+    // feathered with an inline mask (also in the light theme now) or with a melt-* class
+    for (const f of ['components/home/Hero.tsx', 'components/home/PremiereImpression.tsx', 'components/home/EvenementsPrives.tsx', 'pages/NotreHistoire.tsx', 'components/hall/HallIntro.tsx', 'components/hall/Offers.tsx', 'components/layout/Footer.tsx']) {
+      expect(read(f), f).toMatch(/melt-|maskImage/)
+    }
   })
 })
 

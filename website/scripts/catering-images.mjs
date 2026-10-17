@@ -9,7 +9,7 @@ const OUT = path.resolve('public', 'assets', 'catering')
 // Square crops: centre of the dish in source pixels, side 1600.
 const SQUARE = {
   'buffet-01-gold-buffet-line': [872, 1300],
-  'buffet-02-butter-chicken': [741, 1051],
+  'buffet-02-butter-chicken': [850, 1125],
   'buffet-03-curry': [785, 1075],
   'buffet-04-biryani': [785, 1285],
 }

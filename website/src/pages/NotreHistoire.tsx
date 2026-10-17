@@ -57,7 +57,7 @@ export default function NotreHistoire() {
   return (
     <div ref={sectionRef} style={{ background: 'transparent' }}>
       {/* Hero — split: dark left panel + video right panel */}
-      <div className="relative h-screen overflow-hidden flex">
+      <div className="melt-bottom relative h-screen overflow-hidden flex">
 
         {/* Mobile: video full screen */}
         <video

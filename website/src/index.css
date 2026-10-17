@@ -149,7 +149,7 @@
   .btn-primary {
     display: inline-block;
     font-family: var(--font-body);
-    font-size: 0.74rem;
+    font-size: max(0.74rem, var(--fs-min));
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -171,7 +171,7 @@
   .btn-ghost {
     display: inline-block;
     font-family: var(--font-body);
-    font-size: 0.74rem;
+    font-size: max(0.74rem, var(--fs-min));
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -344,14 +344,16 @@
   mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgb(0 0 0 / 0.7) 80%, rgb(0 0 0 / 0.3) 91%, transparent 100%);
 }
 
-:root[data-theme="light"] .melt-x {
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
-}
-
 :root[data-theme="light"] .melt-y {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+}
+
+:root[data-theme="light"] .melt-soft {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  mask-composite: intersect;
 }
 
 :root[data-theme="light"] .melt-edges {
@@ -425,4 +427,18 @@
 :root[data-theme="light"] .text-sm {
   font-size: 1rem;
   line-height: 1.65;
+}
+
+/* Footer links are easy to tap on phones (44px rows, 44px icons). */
+@media (max-width: 767px) {
+  footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  footer a[aria-label] {
+    min-width: 44px;
+    justify-content: center;
+  }
 }
