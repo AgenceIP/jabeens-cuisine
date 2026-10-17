@@ -345,6 +345,21 @@
   mask-image: linear-gradient(to bottom, #000 0%, #000 74%, rgb(0 0 0 / 0.97) 76.6%, rgb(0 0 0 / 0.9) 79.2%, rgb(0 0 0 / 0.78) 81.8%, rgb(0 0 0 / 0.65) 84.4%, rgb(0 0 0 / 0.5) 87%, rgb(0 0 0 / 0.35) 89.6%, rgb(0 0 0 / 0.22) 92.2%, rgb(0 0 0 / 0.1) 94.8%, rgb(0 0 0 / 0.03) 97.4%, transparent 100%);
 }
 
+/* Home hero: a 100vh hero cannot fade both late and slowly, so the light theme extends the
+   video below the fold and fades it there (eased), the title staying centred in the first screen. */
+:root[data-theme="light"] .melt-hero {
+  --hero-fade: 340px;
+  --hero-below: 300px;
+  height: calc(100vh + var(--hero-below));
+  padding-bottom: var(--hero-below);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--hero-fade)), rgb(0 0 0 / 0.97) calc(100% - var(--hero-fade) * 0.9), rgb(0 0 0 / 0.9) calc(100% - var(--hero-fade) * 0.8), rgb(0 0 0 / 0.78) calc(100% - var(--hero-fade) * 0.7), rgb(0 0 0 / 0.65) calc(100% - var(--hero-fade) * 0.6), rgb(0 0 0 / 0.5) calc(100% - var(--hero-fade) * 0.5), rgb(0 0 0 / 0.35) calc(100% - var(--hero-fade) * 0.4), rgb(0 0 0 / 0.22) calc(100% - var(--hero-fade) * 0.3), rgb(0 0 0 / 0.1) calc(100% - var(--hero-fade) * 0.2), rgb(0 0 0 / 0.03) calc(100% - var(--hero-fade) * 0.1), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - var(--hero-fade)), rgb(0 0 0 / 0.97) calc(100% - var(--hero-fade) * 0.9), rgb(0 0 0 / 0.9) calc(100% - var(--hero-fade) * 0.8), rgb(0 0 0 / 0.78) calc(100% - var(--hero-fade) * 0.7), rgb(0 0 0 / 0.65) calc(100% - var(--hero-fade) * 0.6), rgb(0 0 0 / 0.5) calc(100% - var(--hero-fade) * 0.5), rgb(0 0 0 / 0.35) calc(100% - var(--hero-fade) * 0.4), rgb(0 0 0 / 0.22) calc(100% - var(--hero-fade) * 0.3), rgb(0 0 0 / 0.1) calc(100% - var(--hero-fade) * 0.2), rgb(0 0 0 / 0.03) calc(100% - var(--hero-fade) * 0.1), transparent 100%);
+}
+
+@media (max-width: 767px) {
+  :root[data-theme="light"] .melt-hero { --hero-fade: 240px; --hero-below: 210px; }
+}
+
 :root[data-theme="light"] .melt-y {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);

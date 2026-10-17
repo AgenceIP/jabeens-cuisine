@@ -41,7 +41,8 @@ describe('theme-scoped decor', () => {
 
 describe('melting into the marble (light theme)', () => {
   it.each([
-    ['melt-bottom', 'components/home/Hero.tsx'],
+    ['melt-bottom', 'pages/NotreHistoire.tsx'],
+    ['melt-hero', 'components/home/Hero.tsx'],
     ['melt-soft', 'components/hall/Gallery.tsx'],
     ['melt-edges', 'components/hall/HallIntro.tsx'],
     ['melt-y', 'components/layout/Footer.tsx'],
@@ -152,12 +153,14 @@ describe('every photo melts into its background (light theme)', () => {
     for (const l of lines) expect(l).toMatch(/melt-/)
   })
 
-  it('the hero video stays whole down to ~3/4, then fades gradually (eased, not a step)', () => {
-    const rule = /:root\[data-theme="light"\] \.melt-bottom \{[^}]*\}/.exec(css)?.[0] ?? ''
-    const opaqueUntil = Number(/#000 0%, #000 (\d+)%/.exec(rule)?.[1])
-    expect(opaqueUntil).toBeGreaterThanOrEqual(74)
-    expect(opaqueUntil).toBeLessThanOrEqual(80)
-    expect(rule.match(/rgb\(0 0 0 \/ [\d.]+\) [\d.]+%/g)?.length).toBeGreaterThanOrEqual(8)
+  it('the home hero fills the screen whole and fades gradually below the fold (eased, long)', () => {
+    const rule = /:root\[data-theme="light"\] \.melt-hero \{[^}]*\}/.exec(css)?.[0] ?? ''
+    const px = (k: string) => Number(new RegExp(`${k}: (\\d+)px`).exec(rule)?.[1])
+    expect(px('--hero-fade')).toBeGreaterThanOrEqual(280)
+    expect(px('--hero-below')).toBeGreaterThanOrEqual(px('--hero-fade') * 0.85) // fade starts at most ~15% above the fold
+    expect(rule).toContain('height: calc(100vh + var(--hero-below))')
+    expect(rule).toContain('padding-bottom: var(--hero-below)') // title stays centred in the first screen
+    expect(rule.match(/rgb\(0 0 0 \/ [\d.]+\) calc/g)?.length).toBeGreaterThanOrEqual(8)
   })
 
   it.each(['components/home/PremiereImpression.tsx', 'components/home/EvenementsPrives.tsx'])('%s: the parallax photo fades its own top and bottom', file => {
