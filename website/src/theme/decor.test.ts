@@ -27,6 +27,24 @@ describe('theme-scoped decor', () => {
   it('puts the menu marble behind the light theme', () => {
     expect(css).toMatch(/:root\[data-theme="light"\] body::before \{[^}]*marble\.webp/)
   })
+
+  it('frames the home hero on the marble in the light theme only', () => {
+    expect(css).toMatch(/:root\[data-theme="light"\] \.hero-frame \{[^}]*border-radius/)
+    expect(readFileSync(join(SRC, 'components/home/Hero.tsx'), 'utf8')).toContain('hero-frame')
+  })
+})
+
+describe('ink band', () => {
+  const ink = readFileSync(join(SRC, 'components/decor/InkBand.tsx'), 'utf8')
+
+  it('serves a sharp source on wide screens and loads lazily', () => {
+    expect(ink).toMatch(/ink-band-2560\.webp 2560w/)
+    expect(ink).toContain('loading="lazy"')
+  })
+
+  it('no longer hangs under the home hero', () => {
+    expect(readFileSync(join(SRC, 'pages/Home.tsx'), 'utf8')).not.toContain('InkBand')
+  })
 })
 
 describe('components', () => {

@@ -72,11 +72,14 @@ await sharp(marble.png).resize({ width: 2400 }).webp({ quality: 72 }).toFile(pat
 await sharp(await withMask(flecks, flecksMask)).resize({ width: 600 }).webp({ quality: 80, alphaQuality: 85 }).toFile(path.join(OUT, 'gold.webp'))
 // The ink is cut straight on its top, left and right sides; its only organic edge sits at 70-85 % of
 // its height. Keep rows 60-90 %: dense ink against a straight edge, drips below.
-const inkRgba = await sharp(await withMask(ink, inkMask)).resize({ width: 1600 }).png().toBuffer()
-const { height } = await sharp(inkRgba).metadata()
-await sharp(inkRgba).extract({ left: 0, top: Math.round(height * 0.6), width: 1600, height: Math.round(height * 0.3) })
-  .webp({ quality: 82, alphaQuality: 90 }).toFile(path.join(OUT, 'ink-band.webp'))
-for (const f of ['marble.webp', 'gold.webp', 'ink-band.webp']) {
+// Full resolution first, so wide screens get a sharp 2560 px band.
+const inkRgba = await withMask(ink, inkMask)
+const { width: iw, height: ih } = await sharp(inkRgba).metadata()
+const band = await sharp(inkRgba).extract({ left: 0, top: Math.round(ih * 0.6), width: iw, height: Math.round(ih * 0.3) }).png().toBuffer()
+for (const w of [1280, 2560]) {
+  await sharp(band).resize({ width: w }).webp({ quality: 84, alphaQuality: 90 }).toFile(path.join(OUT, `ink-band-${w}.webp`))
+}
+for (const f of ['marble.webp', 'gold.webp', 'ink-band-1280.webp', 'ink-band-2560.webp']) {
   const m = await sharp(path.join(OUT, f)).metadata()
   console.log(f, `${m.width}x${m.height}`)
 }

@@ -69,7 +69,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden flex items-center"
+      className="hero-frame relative h-screen w-full overflow-hidden flex items-center"
       style={{ background: 'transparent' }}
     >
       {/* Background — parallax target */}

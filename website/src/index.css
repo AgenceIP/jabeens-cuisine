@@ -333,13 +333,27 @@
   mask-image: none !important;
 }
 
+/* Home hero framed on the marble: rounded card instead of a line across the page. */
+:root[data-theme="light"] .hero-frame {
+  margin: 12px 12px 0;
+  width: auto;
+  border-radius: 18px;
+}
+
+@media (min-width: 768px) {
+  :root[data-theme="light"] .hero-frame {
+    margin: 16px 20px 0;
+    border-radius: 22px;
+  }
+}
+
 /* Ink from the menu, hanging from a section edge: straight side against the edge, drips into the page. */
 .ink-band {
   display: block;
   width: 100%;
-  aspect-ratio: 1600 / 475;
-  background: url('/assets/decor/ink-band.webp') center top / 100% auto no-repeat;
+  height: auto;
   pointer-events: none;
+  user-select: none;
 }
 
 .ink-band--up {
