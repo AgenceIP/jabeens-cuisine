@@ -139,13 +139,13 @@ export default function Backstory() {
           {/* Text */}
           <div className="w-full md:w-[55%] pt-8 md:pt-16">
             <p ref={labelRef} className="text-label text-gold mb-8">{t.backstory.label}</p>
-            <p ref={p1Ref} className="font-light leading-loose mb-6" style={{ fontSize: '0.92rem', lineHeight: 1.95 }}>
+            <p ref={p1Ref} className="font-light leading-loose mb-6" style={{ fontSize: 'max(0.92rem, var(--fs-body-min))', lineHeight: 1.95 }}>
               {t.backstory.p1}
             </p>
-            <p ref={p2Ref} className="font-light leading-loose mb-6" style={{ fontSize: '0.92rem', lineHeight: 1.95 }}>
+            <p ref={p2Ref} className="font-light leading-loose mb-6" style={{ fontSize: 'max(0.92rem, var(--fs-body-min))', lineHeight: 1.95 }}>
               {t.backstory.p2}
             </p>
-            <p ref={p3Ref} className="font-light leading-loose mb-12" style={{ fontSize: '0.92rem', lineHeight: 1.95 }}>
+            <p ref={p3Ref} className="font-light leading-loose mb-12" style={{ fontSize: 'max(0.92rem, var(--fs-body-min))', lineHeight: 1.95 }}>
               {t.backstory.p3}
             </p>
             <div className="gold-divider mb-8" />

@@ -73,7 +73,7 @@ export default function Navbar() {
           </Link>
 
           {/* Center links — desktop only */}
-          <div className="hidden md:flex items-center flex-1 justify-center" style={{ gap: lang === 'fr' ? '1.8rem' : '2.5rem' }}>
+          <div className="hidden xl:flex items-center flex-1 justify-center" style={{ gap: lang === 'fr' ? '1.8rem' : '2.5rem' }}>
             {navLinks.map(link => link.external ? (
               <a
                 key={link.to}
@@ -100,14 +100,14 @@ export default function Navbar() {
           </div>
 
           {/* Right: Réserver CTA + lang toggle — desktop */}
-          <div className="hidden md:flex items-center gap-5 flex-shrink-0">
+          <div className="hidden xl:flex items-center gap-5 flex-shrink-0">
             <MagneticButton strength={0.2}>
               <a
                 href={RESERVE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`text-label border ${overHero ? 'border-on-dark text-on-dark' : 'border-text-primary text-text-primary'} px-6 py-3 transition-all duration-300 hover:border-gold hover:text-gold block text-center`}
-                style={{ fontSize: '0.76rem', fontWeight: 700 }}
+                style={{ fontSize: 'max(0.76rem, var(--fs-min))', fontWeight: 700 }}
               >
                 {t.nav.reserve}
               </a>
@@ -116,7 +116,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile: hamburger */}
-          <div className="md:hidden flex-1 flex justify-end">
+          <div className="xl:hidden flex-1 flex justify-end">
             <button
               className="flex flex-col gap-1.5 p-2 z-60"
               onClick={() => setMobileOpen(prev => !prev)}
@@ -203,7 +203,7 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   onClick={closeMobile}
                   className="text-label border border-gold text-gold px-8 py-4 block"
-                  style={{ fontSize: '0.76rem', fontWeight: 700 }}
+                  style={{ fontSize: 'max(0.76rem, var(--fs-min))', fontWeight: 700 }}
                 >
                   {t.nav.reserveTable}
                 </a>
@@ -246,7 +246,7 @@ function LangToggle({ lang, setLang, onDark = false }: { lang: 'en' | 'fr'; setL
           style={{
             position: 'relative', zIndex: 1,
             background: 'none', border: 'none', cursor: 'pointer',
-            fontFamily: 'var(--font-body)', fontSize: '0.55rem', letterSpacing: '0.25em',
+            fontFamily: 'var(--font-body)', fontSize: 'max(0.55rem, var(--fs-min))', letterSpacing: '0.25em',
             color: lang === l ? 'rgb(var(--c-btn-ink))' : onDark ? 'rgb(var(--c-on-dark) / 0.7)' : 'rgb(var(--c-muted))',
             transition: 'color 0.3s',
             padding: '6px 10px',

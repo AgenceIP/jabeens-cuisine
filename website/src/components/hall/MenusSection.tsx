@@ -18,13 +18,13 @@ export default function MenusSection({ onChoose }: { onChoose: (menu: CateringMe
           <motion.article key={menu.id} {...reveal} transition={{ ...reveal.transition, delay: i * 0.08 }} className="bg-surface border border-border-subtle p-7 md:p-8 flex flex-col">
             <p className="text-label text-gold">Menu</p>
             <h3 className="text-display text-text-primary mt-1" style={{ fontSize: '2.4rem' }}>{menu.name}</h3>
-            <p className="text-label text-gold border border-gold self-start px-3 py-2 mt-3 mb-5" style={{ fontSize: '0.62rem' }}>{fmt(m.minimum, { n: MENU_MINIMUMS[menu.id] })}</p>
-            <ul className="text-text-muted text-[0.95rem] mb-8 flex-1">
+            <p className="text-label text-gold border border-gold self-start px-3 py-2 mt-3 mb-5" style={{ fontSize: 'max(0.62rem, var(--fs-min))' }}>{fmt(m.minimum, { n: MENU_MINIMUMS[menu.id] })}</p>
+            <ul className="text-text-muted mb-8 flex-1" style={{ fontSize: 'max(0.95rem, var(--fs-body-min))' }}>
               {m.items[menu.id].map(line => <li key={line} className="py-2 border-b border-border-subtle">{line}</li>)}
             </ul>
             <div className="flex flex-col gap-3">
               <button type="button" onClick={() => onChoose(menu.id)} className="btn-primary text-center">{m.choose}</button>
-              <a href={menu.pdf} target="_blank" rel="noopener" className="text-label text-gold underline underline-offset-4 text-center py-2" style={{ fontSize: '0.68rem' }}>
+              <a href={menu.pdf} target="_blank" rel="noopener" className="text-label text-gold underline underline-offset-4 text-center py-2" style={{ fontSize: 'max(0.68rem, var(--fs-min))' }}>
                 {m.download} ({menu.name})
               </a>
             </div>

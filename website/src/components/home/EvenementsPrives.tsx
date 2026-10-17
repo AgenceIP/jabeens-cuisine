@@ -89,7 +89,7 @@ export default function EvenementsPrives() {
 
           <div ref={dividerRef} className="gold-divider mb-8" />
 
-          <p ref={bodyRef} className="text-text-muted font-light leading-relaxed mb-10" style={{ fontSize: '0.9rem' }}>
+          <p ref={bodyRef} className="text-text-muted font-light leading-relaxed mb-10" style={{ fontSize: 'max(0.9rem, var(--fs-body-min))' }}>
             {t.evenements.body}
           </p>
 
@@ -98,7 +98,7 @@ export default function EvenementsPrives() {
               <Link
                 to="/location-salle"
                 className="text-label border px-8 py-4 inline-block transition-all duration-300"
-                style={{ borderColor: 'rgb(var(--c-ink))', color: 'rgb(var(--c-ink))', fontSize: '0.78rem', fontWeight: 700 }}
+                style={{ borderColor: 'rgb(var(--c-ink))', color: 'rgb(var(--c-ink))', fontSize: 'max(0.78rem, var(--fs-min))', fontWeight: 700 }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgb(var(--c-ink))'; e.currentTarget.style.color = 'rgb(var(--c-bg))' }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'rgb(var(--c-ink))' }}
               >

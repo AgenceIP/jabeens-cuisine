@@ -58,7 +58,7 @@ export default function FeedbackForm() {
             <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0, y: -10 }} onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="fb-prenom" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.prenom}</label>
+                  <label htmlFor="fb-prenom" className="text-label text-text-muted block mb-2" style={{ fontSize: 'max(0.55rem, var(--fs-min))' }}>{fb.prenom}</label>
                   <input
                     id="fb-prenom"
                     {...register('prenom', { required: true })}
@@ -68,7 +68,7 @@ export default function FeedbackForm() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="fb-nom" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.nom}</label>
+                  <label htmlFor="fb-nom" className="text-label text-text-muted block mb-2" style={{ fontSize: 'max(0.55rem, var(--fs-min))' }}>{fb.nom}</label>
                   <input
                     id="fb-nom"
                     {...register('nom', { required: true })}
@@ -80,7 +80,7 @@ export default function FeedbackForm() {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="fb-email" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.email}</label>
+                <label htmlFor="fb-email" className="text-label text-text-muted block mb-2" style={{ fontSize: 'max(0.55rem, var(--fs-min))' }}>{fb.email}</label>
                 <input
                   id="fb-email"
                   {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
@@ -92,7 +92,7 @@ export default function FeedbackForm() {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="fb-type" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.typeLabel}</label>
+                <label htmlFor="fb-type" className="text-label text-text-muted block mb-2" style={{ fontSize: 'max(0.55rem, var(--fs-min))' }}>{fb.typeLabel}</label>
                 <select
                   id="fb-type"
                   {...register('type', { required: true })}
@@ -109,7 +109,7 @@ export default function FeedbackForm() {
               </div>
 
               <div className="mb-12">
-                <label htmlFor="fb-message" className="text-label text-text-muted block mb-2" style={{ fontSize: '0.55rem' }}>{fb.message}</label>
+                <label htmlFor="fb-message" className="text-label text-text-muted block mb-2" style={{ fontSize: 'max(0.55rem, var(--fs-min))' }}>{fb.message}</label>
                 <textarea
                   id="fb-message"
                   {...register('message', { required: true })}
@@ -130,9 +130,9 @@ export default function FeedbackForm() {
               </button>
 
               <div className="flex justify-center gap-8 mt-12">
-                <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-label text-text-muted hover:text-gold transition-colors duration-300" style={{ fontSize: '0.6rem' }}>Instagram</a>
-                <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-label text-text-muted hover:text-gold transition-colors duration-300" style={{ fontSize: '0.6rem' }}>Facebook</a>
-                <a href={siteConfig.social.tiktok} target="_blank" rel="noopener noreferrer" className="text-label text-text-muted hover:text-gold transition-colors duration-300" style={{ fontSize: '0.6rem' }}>TikTok</a>
+                <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-label text-text-muted hover:text-gold transition-colors duration-300" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>Instagram</a>
+                <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-label text-text-muted hover:text-gold transition-colors duration-300" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>Facebook</a>
+                <a href={siteConfig.social.tiktok} target="_blank" rel="noopener noreferrer" className="text-label text-text-muted hover:text-gold transition-colors duration-300" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>TikTok</a>
               </div>
             </motion.form>
           ) : (

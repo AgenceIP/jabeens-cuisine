@@ -144,7 +144,7 @@ export default function NewsletterPopup() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '0.75rem',
+                fontSize: 'max(0.75rem, var(--fs-min))',
                 transition: 'color 0.2s, border-color 0.2s',
               }}
               onMouseEnter={e => {
@@ -223,7 +223,7 @@ export default function NewsletterPopup() {
                     />
 
                     {status === 'error' && (
-                      <p style={{ color: 'rgb(var(--c-error))', fontSize: '0.75rem', fontFamily: 'var(--font-body)', marginBottom: 12 }}>
+                      <p style={{ color: 'rgb(var(--c-error))', fontSize: 'max(0.75rem, var(--fs-min))', fontFamily: 'var(--font-body)', marginBottom: 12 }}>
                         {nl.error}
                       </p>
                     )}
@@ -240,7 +240,7 @@ export default function NewsletterPopup() {
                         padding: '14px 0',
                         fontFamily: 'var(--font-body)',
                         fontWeight: 600,
-                        fontSize: '0.72rem',
+                        fontSize: 'max(0.72rem, var(--fs-min))',
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
                         cursor: status === 'sending' ? 'wait' : 'pointer',

@@ -26,12 +26,12 @@ function MenuItemRow({ item, lang }: { item: MenuCategory['items'][0]; lang: str
       {/* Texte */}
       <div style={{ flex: 1, minWidth: 0, padding: '22px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-          <span className="text-gold" style={{ fontSize: '0.65rem', flexShrink: 0 }}>✦</span>
+          <span className="text-gold" style={{ fontSize: 'max(0.65rem, var(--fs-min))', flexShrink: 0 }}>✦</span>
           <p className="text-display text-text-primary" style={{ fontSize: '1.4rem', lineHeight: 1.15 }}>{item.name}</p>
           {item.vegetarian && <VegLeaf label={lang === 'fr' ? 'Végétarien' : 'Vegetarian'} />}
         </div>
         {desc && (
-          <p className="text-text-muted font-light" style={{ fontSize: '0.88rem', lineHeight: 1.7 }}>
+          <p className="text-text-muted font-light" style={{ fontSize: 'max(0.88rem, var(--fs-body-min))', lineHeight: 1.7 }}>
             {desc}
           </p>
         )}
@@ -100,7 +100,7 @@ export default function Menu() {
                 flex: 1, padding: '20px 0', background: 'none', border: 'none',
                 borderBottom: `2px solid ${activeMenu === menu.type ? 'rgb(var(--c-accent))' : 'transparent'}`,
                 cursor: 'pointer', fontFamily: 'var(--font-body)',
-                fontSize: '0.65rem', fontWeight: 700,
+                fontSize: 'max(0.65rem, var(--fs-min))', fontWeight: 700,
                 letterSpacing: '0.22em', textTransform: 'uppercase' as const,
                 color: activeMenu === menu.type ? 'rgb(var(--c-accent))' : 'rgb(var(--c-muted))',
                 transition: 'color 0.3s, border-color 0.3s',
@@ -125,7 +125,7 @@ export default function Menu() {
                 background: activeId === cat.id ? 'rgb(var(--c-btn))' : 'transparent',
                 color: activeId === cat.id ? 'rgb(var(--c-btn-ink))' : 'rgb(var(--c-muted))',
                 border: `1px solid ${activeId === cat.id ? 'rgb(var(--c-btn))' : 'rgb(var(--c-ink) / 0.3)'}`,
-                fontFamily: 'var(--font-body)', fontSize: '0.52rem', fontWeight: 500,
+                fontFamily: 'var(--font-body)', fontSize: 'max(0.52rem, var(--fs-min))', fontWeight: 500,
                 letterSpacing: '0.12em', textTransform: 'uppercase' as const,
                 transition: 'all 0.25s', whiteSpace: 'nowrap' as const,
               }}
@@ -158,12 +158,12 @@ export default function Menu() {
                     borderTop: 'none', borderRight: 'none', borderBottom: 'none',
                     borderLeft: `2px solid ${activeId === cat.id ? 'rgb(var(--c-accent))' : 'transparent'}`,
                     color: activeId === cat.id ? 'rgb(var(--c-accent))' : 'rgb(var(--c-muted))',
-                    fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 500,
+                    fontFamily: 'var(--font-body)', fontSize: 'max(0.72rem, var(--fs-min))', fontWeight: 500,
                     letterSpacing: '0.2em', textTransform: 'uppercase' as const,
                   }}
                 >
                   <span>{catLabel(cat)}</span>
-                  {cat.sublabel && <span className="block" style={{ fontSize: '0.58rem', opacity: 0.85, fontWeight: 500, marginTop: 2 }}>{catSublabel(cat)}</span>}
+                  {cat.sublabel && <span className="block" style={{ fontSize: 'max(0.58rem, var(--fs-min))', opacity: 0.85, fontWeight: 500, marginTop: 2 }}>{catSublabel(cat)}</span>}
                 </button>
               ))}
             </nav>
@@ -176,7 +176,7 @@ export default function Menu() {
                 {/* Category header */}
                 <div className="mb-2" style={{ paddingTop: 56, paddingBottom: 20, textAlign: 'center' }}>
                   {category.sublabel && (
-                    <p className="text-label text-text-muted" style={{ fontSize: '0.58rem', letterSpacing: '0.35em', marginBottom: 10 }}>
+                    <p className="text-label text-text-muted" style={{ fontSize: 'max(0.58rem, var(--fs-min))', letterSpacing: '0.35em', marginBottom: 10 }}>
                       {catSublabel(category)}
                     </p>
                   )}
@@ -185,7 +185,7 @@ export default function Menu() {
                   </h2>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                     <div style={{ flex: 1, height: 1, background: 'rgb(var(--c-line))' }} />
-                    <span className="text-gold" style={{ fontSize: '0.6rem' }}>✦</span>
+                    <span className="text-gold" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>✦</span>
                     <div style={{ flex: 1, height: 1, background: 'rgb(var(--c-line))' }} />
                   </div>
                 </div>
@@ -198,7 +198,7 @@ export default function Menu() {
 
             <div className="py-10" style={{ display: 'flex', gap: 7, alignItems: 'center', justifyContent: 'center' }}>
               <VegLeaf size={13} label={lang === 'fr' ? 'Végétarien' : 'Vegetarian'} />
-              <p className="text-label text-text-muted" style={{ fontSize: '0.6rem' }}>{m.vegetarian}</p>
+              <p className="text-label text-text-muted" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>{m.vegetarian}</p>
             </div>
           </main>
         </motion.div>
@@ -206,7 +206,7 @@ export default function Menu() {
 
       {/* PDF Menus — at the bottom */}
       <div style={{ background: 'transparent', padding: '48px 24px 60px', borderTop: '1px solid rgb(var(--c-line))' }}>
-        <p className="text-center text-label text-gold mb-8" style={{ fontSize: '0.6rem', letterSpacing: '0.25em' }}>
+        <p className="text-center text-label text-gold mb-8" style={{ fontSize: 'max(0.6rem, var(--fs-min))', letterSpacing: '0.25em' }}>
           {m.pdfLabel.toUpperCase()}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ maxWidth: 960, margin: '0 auto' }}>
@@ -214,17 +214,17 @@ export default function Menu() {
             <div key={menu.title} style={{ border: '1px solid rgb(var(--c-line))', overflow: 'hidden', background: 'rgb(var(--c-surface))' }}>
               {/* Mobile: full-card button */}
               <a href={menu.pdf} target="_blank" rel="noopener noreferrer" className="md:hidden flex flex-col items-center justify-center py-10 px-6" style={{ textDecoration: 'none' }}>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.88rem', fontWeight: 700, letterSpacing: '0.25em', color: 'rgb(var(--c-ink))', textAlign: 'center' }}>{menu.title}</p>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.6rem', color: 'rgb(var(--c-muted))', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'max(0.88rem, var(--fs-body-min))', fontWeight: 700, letterSpacing: '0.25em', color: 'rgb(var(--c-ink))', textAlign: 'center' }}>{menu.title}</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'max(0.6rem, var(--fs-min))', color: 'rgb(var(--c-muted))', marginTop: 6, textAlign: 'center' }}>{menu.subtitle}</p>
               </a>
               {/* Desktop */}
               <div className="hidden md:flex" style={{ padding: '14px 20px', borderBottom: '1px solid rgb(var(--c-line))', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.22em', color: 'rgb(var(--c-accent))' }}>{menu.title}</p>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.55rem', color: 'rgb(var(--c-muted))', fontWeight: 500, marginTop: 3 }}>{menu.subtitle}</p>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 'max(0.65rem, var(--fs-min))', fontWeight: 600, letterSpacing: '0.22em', color: 'rgb(var(--c-accent))' }}>{menu.title}</p>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 'max(0.55rem, var(--fs-min))', color: 'rgb(var(--c-muted))', fontWeight: 500, marginTop: 3 }}>{menu.subtitle}</p>
                 </div>
                 <a href={menu.pdf} target="_blank" rel="noopener noreferrer"
-                  style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', fontWeight: 700, color: 'rgb(var(--c-ink))', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid rgb(var(--c-ink) / 0.4)', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
+                  style={{ fontFamily: 'var(--font-body)', fontSize: 'max(0.72rem, var(--fs-min))', fontWeight: 700, color: 'rgb(var(--c-ink))', letterSpacing: '0.12em', textDecoration: 'none', border: '1px solid rgb(var(--c-ink) / 0.4)', padding: '6px 12px', transition: 'color 0.2s, border-color 0.2s' }}
                   onMouseEnter={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = 'rgb(var(--c-accent))'; a.style.borderColor = 'rgb(var(--c-accent))' }}
                   onMouseLeave={e => { const a = e.currentTarget as HTMLAnchorElement; a.style.color = 'rgb(var(--c-ink))'; a.style.borderColor = 'rgb(var(--c-ink) / 0.4)' }}
                 >{m.openButton}</a>

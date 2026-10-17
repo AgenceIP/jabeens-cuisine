@@ -10,7 +10,7 @@ export default function LiveStations() {
   const carts = livePhotos.slice(0, 3)
   const details = livePhotos.slice(3)
   return (
-    <section className="bg-band text-band-ink py-20 md:py-28">
+    <section className="melt-band bg-band text-band-ink py-20 md:py-28">
       <div className="max-w-site mx-auto px-6 md:px-16">
         <motion.div {...reveal} className="max-w-2xl mb-12">
           <p className="text-label text-gold-soft mb-3">{h.live.label}</p>
@@ -21,7 +21,7 @@ export default function LiveStations() {
           {carts.map((p, i) => (
             <motion.figure key={p.id} {...reveal} transition={{ ...reveal.transition, delay: i * 0.08 }}>
               <CateringImg id={p.id} alt={p.alt[lang]} className="aspect-[3/4]" />
-              <figcaption className="text-label mt-3" style={{ fontSize: '0.7rem' }}>{h.live.carts[i]}</figcaption>
+              <figcaption className="text-label mt-3" style={{ fontSize: 'max(0.7rem, var(--fs-min))' }}>{h.live.carts[i]}</figcaption>
             </motion.figure>
           ))}
         </div>

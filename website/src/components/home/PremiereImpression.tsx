@@ -119,10 +119,10 @@ export default function PremiereImpression() {
 
           <div ref={dividerRef} className="gold-divider mb-8" />
 
-          <p ref={p1Ref} className="text-text-muted font-light leading-relaxed mb-4" style={{ fontSize: '0.9rem' }}>
+          <p ref={p1Ref} className="text-text-muted font-light leading-relaxed mb-4" style={{ fontSize: 'max(0.9rem, var(--fs-body-min))' }}>
             {t.premiereImpression.p1}
           </p>
-          <p ref={p2Ref} className="text-text-muted font-light leading-relaxed mb-10" style={{ fontSize: '0.9rem' }}>
+          <p ref={p2Ref} className="text-text-muted font-light leading-relaxed mb-10" style={{ fontSize: 'max(0.9rem, var(--fs-body-min))' }}>
             {t.premiereImpression.p2}
           </p>
 
@@ -131,7 +131,7 @@ export default function PremiereImpression() {
               ref={linkRef}
               to="/notre-histoire"
               className="text-label hover-underline inline-block"
-              style={{ color: 'rgb(var(--c-ink))', fontSize: '0.78rem', fontWeight: 700 }}
+              style={{ color: 'rgb(var(--c-ink))', fontSize: 'max(0.78rem, var(--fs-min))', fontWeight: 700 }}
             >
               {t.premiereImpression.link}
             </Link>

@@ -10,8 +10,6 @@ export default function Footer() {
 
   return (
     <footer style={{ background: 'transparent', borderTop: '1px solid rgb(var(--c-accent) / 0.15)' }}>
-      <InkBand direction="up" />
-
       {/* Google Maps strip */}
       <div style={{ position: 'relative', height: '300px', overflow: 'hidden' }}>
         <iframe
@@ -43,8 +41,8 @@ export default function Footer() {
           className="max-w-site mx-auto px-8 md:px-16 pb-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2"
         >
           <div>
-            <p className="text-label text-gold mb-1" style={{ fontSize: '0.55rem' }}>{f.findUs}</p>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'rgb(var(--c-ink))', fontWeight: 300 }}>
+            <p className="text-label text-gold mb-1" style={{ fontSize: 'max(0.55rem, var(--fs-min))' }}>{f.findUs}</p>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 'max(0.75rem, var(--fs-min))', color: 'rgb(var(--c-ink))', fontWeight: 300 }}>
               {siteConfig.address}
             </p>
           </div>
@@ -53,7 +51,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-label transition-colors duration-300 hover:text-gold"
-            style={{ fontSize: '0.55rem', color: 'rgb(var(--c-muted))', fontWeight: 500 }}
+            style={{ fontSize: 'max(0.55rem, var(--fs-min))', color: 'rgb(var(--c-muted))', fontWeight: 500 }}
           >
             {f.directions}
           </a>
@@ -150,15 +148,17 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-6" style={{ borderTop: '1px solid rgb(var(--c-line))' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-label text-text-muted" style={{ fontSize: '0.6rem' }}>
+            <p className="text-label text-text-muted" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>
               © {new Date().getFullYear()} Jabeen's Cuisine. {f.copyright}
             </p>
-            <p className="text-label text-text-muted" style={{ fontSize: '0.6rem' }}>
+            <p className="text-label text-text-muted" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>
               {f.halal}
             </p>
           </div>
         </div>
       </div>
+      {/* Ink from the menu rising from the very bottom of the page (light theme) */}
+      <InkBand direction="up" />
     </footer>
   )
 }

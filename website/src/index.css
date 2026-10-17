@@ -11,9 +11,9 @@
   --c-bg: 251 248 242;
   --c-surface: 255 255 255;
   --c-ink: 20 33 61;
-  --c-muted: 74 85 104;
+  --c-muted: 51 60 77;
   --c-line: 230 223 210;
-  --c-accent: 138 106 47;
+  --c-accent: 115 86 33;
   --c-accent-soft: 201 169 106;
   --c-band: 20 33 61;
   --c-band-ink: 251 248 242;
@@ -29,6 +29,8 @@
   --fw-body: 400;
   --body-bg-image: none;
   --field-scheme: light;
+  --fs-min: 0.8rem;
+  --fs-body-min: 1.0625rem;
 }
 
 :root[data-theme="dark"] {
@@ -53,6 +55,8 @@
   --fw-body: 300;
   --body-bg-image: url('/assets/background.jpg');
   --field-scheme: dark;
+  --fs-min: 0rem;
+  --fs-body-min: 0rem;
 }
 
 @layer base {
@@ -217,7 +221,7 @@
 @layer utilities {
   .text-label {
     font-family: var(--font-body);
-    font-size: 0.65rem;
+    font-size: max(0.65rem, var(--fs-min));
     font-weight: 500;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -376,4 +380,49 @@
 /* Story video: fill the panel so its own edges sit inside the melt (inline style says contain). */
 :root[data-theme="light"] .light-cover {
   object-fit: cover !important;
+}
+
+/* Solid bands and panels fade their backdrop (never their content) into the marble. */
+:root[data-theme="light"] .melt-band {
+  position: relative;
+  isolation: isolate;
+  background: transparent !important;
+}
+
+:root[data-theme="light"] .melt-band::before,
+:root[data-theme="light"] .melt-band-layer {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+}
+
+:root[data-theme="light"] .melt-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--melt-bg, rgb(var(--c-band)));
+}
+
+/* Light text on the navy bands stays inside the solid part. */
+:root[data-theme="light"] .melt-band.bg-band,
+:root[data-theme="light"] .melt-band-content {
+  padding-top: 170px;
+  padding-bottom: 170px;
+}
+
+/* Offer photos melt into the marble instead of sitting in white cards. */
+:root[data-theme="light"] .offer-card {
+  background: transparent;
+  border-color: transparent;
+}
+
+/* Small text reads comfortably on the light background. */
+:root[data-theme="light"] .text-xs {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+:root[data-theme="light"] .text-sm {
+  font-size: 1rem;
+  line-height: 1.65;
 }

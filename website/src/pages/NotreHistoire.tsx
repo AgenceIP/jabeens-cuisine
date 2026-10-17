@@ -133,7 +133,7 @@ export default function NotreHistoire() {
                   <div className={`flex-1 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                     <span className="text-display text-gold block mb-2" style={{ fontSize: '3rem' }}>{entry.year}</span>
                     <h3 className="text-display text-text-primary mb-3" style={{ fontSize: '1.3rem' }}>{entry.title}</h3>
-                    <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: '0.85rem' }}>{entry.text}</p>
+                    <p className="text-text-muted font-light leading-relaxed" style={{ fontSize: 'max(0.85rem, var(--fs-body-min))' }}>{entry.text}</p>
                   </div>
                   <div className="hidden md:flex flex-shrink-0 items-center justify-center w-3 h-3 rounded-full border border-gold mt-4" style={{ background: 'rgb(var(--c-bg))' }} />
                   <div className="flex-1" />
@@ -145,7 +145,7 @@ export default function NotreHistoire() {
       </div>
 
       {/* Philosophy */}
-      <div className="philosophy-section section-padding" style={{ background: 'rgb(var(--c-surface) / 0.75)', borderTop: 'none', position: 'relative' }}>
+      <div className="melt-band philosophy-section section-padding" style={{ '--melt-bg': 'rgb(var(--c-surface) / 0.75)', background: 'rgb(var(--c-surface) / 0.75)', borderTop: 'none', position: 'relative' } as React.CSSProperties}>
         <div aria-hidden className="dark-only" style={{ position: 'absolute', top: -80, left: 0, right: 0, height: 80, background: 'linear-gradient(to bottom, transparent, rgb(var(--c-surface) / 0.75))', pointerEvents: 'none' }} />
         <div className="max-w-site mx-auto">
           <p className="fade-in-section text-label text-gold mb-16 text-center">{h.valuesLabel}</p>
@@ -163,7 +163,7 @@ export default function NotreHistoire() {
                 </div>
                 <h3 className="text-display text-text-primary mb-4" style={{ fontSize: '1.4rem' }}>{col.title}</h3>
                 <div className="gold-divider mb-6" />
-                <p className="text-text-muted font-light leading-loose" style={{ fontSize: '0.85rem' }}>{col.text}</p>
+                <p className="text-text-muted font-light leading-loose" style={{ fontSize: 'max(0.85rem, var(--fs-body-min))' }}>{col.text}</p>
               </div>
             ))}
           </div>

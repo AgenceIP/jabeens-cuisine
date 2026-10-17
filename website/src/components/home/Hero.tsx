@@ -146,7 +146,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-label px-8 py-4 transition-colors duration-300 block"
-                style={{ background: 'rgb(var(--c-accent-soft))', color: 'rgb(var(--c-scrim))', fontSize: '0.78rem', fontWeight: 700 }}
+                style={{ background: 'rgb(var(--c-accent-soft))', color: 'rgb(var(--c-scrim))', fontSize: 'max(0.78rem, var(--fs-min))', fontWeight: 700 }}
                 onMouseEnter={e => (e.currentTarget.style.background = 'rgb(var(--c-on-dark))')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'rgb(var(--c-accent-soft))')}
               >
@@ -157,7 +157,7 @@ export default function Hero() {
               <Link
                 to="/menu"
                 className="text-label px-8 py-4 border transition-all duration-300 block"
-                style={{ borderColor: 'rgb(var(--c-on-dark) / 0.4)', color: 'rgb(var(--c-on-dark))', fontSize: '0.78rem', fontWeight: 700 }}
+                style={{ borderColor: 'rgb(var(--c-on-dark) / 0.4)', color: 'rgb(var(--c-on-dark))', fontSize: 'max(0.78rem, var(--fs-min))', fontWeight: 700 }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgb(var(--c-accent-soft))'; e.currentTarget.style.color = 'rgb(var(--c-accent-soft))' }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgb(var(--c-on-dark) / 0.4)'; e.currentTarget.style.color = 'rgb(var(--c-on-dark))' }}
               >

@@ -22,7 +22,7 @@ const MENU_NAMES: Record<MenuChoice, string> = { queen: 'Queen', king: 'King', c
 function Field({ id, label, error, hint, children }: { id: string; label: string; error?: string; hint?: string; children: ReactNode }) {
   return (
     <div>
-      <label htmlFor={id} className="text-label text-text-primary block mb-1" style={{ fontSize: '0.62rem' }}>{label}</label>
+      <label htmlFor={id} className="text-label text-text-primary block mb-1" style={{ fontSize: 'max(0.62rem, var(--fs-min))' }}>{label}</label>
       {children}
       {hint && !error && <p id={`${id}-hint`} className="text-text-muted text-xs mt-2">{hint}</p>}
       {error && <p id={`${id}-err`} role="alert" className="text-error text-sm mt-2">{error}</p>}
@@ -108,7 +108,7 @@ export default function RequestForm({ preset }: { preset: { menu: CateringMenuId
           ) : (
             <motion.form key="form" noValidate onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8">
               <fieldset>
-                <legend className="text-label text-text-primary mb-3" style={{ fontSize: '0.62rem' }}>{f.service}</legend>
+                <legend className="text-label text-text-primary mb-3" style={{ fontSize: 'max(0.62rem, var(--fs-min))' }}>{f.service}</legend>
                 <div className="grid sm:grid-cols-3 gap-3" role="radiogroup">
                   {SERVICES.map(s => (
                     <label key={s} className={`border px-4 py-3 cursor-pointer text-sm transition-colors focus-within:ring-2 focus-within:ring-gold ${service === s ? 'border-gold text-text-primary bg-surface' : 'border-text-primary/50 text-text-muted'}`}>

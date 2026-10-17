@@ -51,12 +51,12 @@ export default function CommanderEnLigne() {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden" style={{ background: 'transparent' }}>
-      <div className="absolute inset-0">
+      <div className="melt-band-layer absolute inset-0">
         <img src="/assets/food-gen-2.jpg" alt="" width={896} height={1200} className="w-full h-full object-cover opacity-20" loading="lazy" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgb(var(--c-band) / 0.88), rgb(var(--c-band) / 0.96))' }} />
       </div>
 
-      <div className="relative z-10 text-center section-padding">
+      <div className="melt-band-content relative z-10 text-center section-padding">
         <p ref={labelRef} className="text-label text-gold-soft mb-6 opacity-0">{t.commanderSection.label}</p>
 
         <div className="reveal-wrap mb-4">
@@ -69,7 +69,7 @@ export default function CommanderEnLigne() {
           </h2>
         </div>
 
-        <p ref={subRef} className="text-band-ink/80 mb-14 font-light opacity-0" style={{ fontSize: '0.9rem' }}>
+        <p ref={subRef} className="text-band-ink/80 mb-14 font-light opacity-0" style={{ fontSize: 'max(0.9rem, var(--fs-body-min))' }}>
           {t.commanderSection.subheading}
         </p>
 
@@ -81,7 +81,7 @@ export default function CommanderEnLigne() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-label px-10 py-4 border transition-all duration-300 block"
-                style={{ borderColor: 'rgb(var(--c-band-ink) / 0.35)', color: 'rgb(var(--c-band-ink))', fontSize: '0.78rem', fontWeight: 700 }}
+                style={{ borderColor: 'rgb(var(--c-band-ink) / 0.35)', color: 'rgb(var(--c-band-ink))', fontSize: 'max(0.78rem, var(--fs-min))', fontWeight: 700 }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgb(var(--c-accent-soft))'; e.currentTarget.style.color = 'rgb(var(--c-accent-soft))' }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgb(var(--c-band-ink) / 0.35)'; e.currentTarget.style.color = 'rgb(var(--c-band-ink))' }}
               >

@@ -51,6 +51,86 @@ describe('melting into the marble (light theme)', () => {
   })
 })
 
+describe('section edges melt into the marble (light theme)', () => {
+  it('fades the top and bottom of solid bands and panels', () => {
+    expect(css).toMatch(/:root\[data-theme="light"\] \.melt-band::before,[^{]*\{[^}]*mask-image: linear-gradient/)
+  })
+
+  it.each(['components/hall/LiveStations.tsx', 'components/home/CommanderEnLigne.tsx', 'pages/NotreHistoire.tsx'])('%s uses it', file => {
+    expect(read(file)).toContain('melt-band')
+  })
+
+  it('drops the white card behind the offer photos, which melt instead', () => {
+    expect(css).toMatch(/:root\[data-theme="light"\] \.offer-card \{[^}]*background: transparent/)
+    const offers = read('components/hall/Offers.tsx')
+    expect(offers).toContain('offer-card')
+    expect(offers).toContain('melt-edges')
+  })
+})
+
+describe('readability on the light theme', () => {
+  const tokens = (selector: string) => {
+    const start = css.indexOf(selector)
+    const block = css.slice(start, css.indexOf('}', start))
+    return Object.fromEntries([...block.matchAll(/(--[\w-]+)\s*:\s*([^;]+);/g)].map(m => [m[1], m[2].trim()]))
+  }
+  const lum = (rgb: number[]) => {
+    const f = (c: number) => { const s = c / 255; return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4 }
+    return 0.2126 * f(rgb[0]) + 0.7152 * f(rgb[1]) + 0.0722 * f(rgb[2])
+  }
+  const ratio = (a: number[], b: number[]) => { const [h, l] = [lum(a), lum(b)].sort((x, y) => y - x); return (h + 0.05) / (l + 0.05) }
+  const light = tokens(':root[data-theme="light"]')
+  const marble = [222, 228, 229] // darker veins of the marble, worst case behind text
+  const rgb = (k: string) => light[k].split(/\s+/).map(Number)
+
+  it('secondary text reaches 7:1 on the marble', () => {
+    expect(ratio(rgb('--c-muted'), marble)).toBeGreaterThanOrEqual(7)
+  })
+
+  it('gold labels reach 4.5:1 on the marble', () => {
+    expect(ratio(rgb('--c-accent'), marble)).toBeGreaterThanOrEqual(4.5)
+  })
+
+  it('small text has a floor in the light theme', () => {
+    expect(light['--fs-min']).toBe('0.8rem')
+    expect(css).toMatch(/\.text-label \{[^}]*font-size: max\(0\.65rem, var\(--fs-min\)\)/)
+  })
+
+  it.each(tsx.map(f => relative(SRC, f).replace(/\\/g, '/')))('%s has no tiny fixed font size', file => {
+    expect(read(file)).not.toMatch(/fontSize: '0\.[0-7]\d*rem'/)
+  })
+
+  it('body paragraphs get at least 17px in the light theme', () => {
+    expect(light['--fs-body-min']).toBe('1.0625rem')
+    const smallParagraphs = tsx.flatMap(f => readFileSync(f, 'utf8').split(/\r?\n/)
+      .filter(l => /<p\b/.test(l) && /fontSize: '0\.(8[5-9]|9\d*)rem'/.test(l))
+      .map(l => `${relative(SRC, f)}: ${l.trim().slice(0, 60)}`))
+    expect(smallParagraphs).toEqual([])
+  })
+})
+
+describe('navbar with readable labels', () => {
+  it('shows the full bar from 1280px and the menu button below (labels no longer fit at 768-1279)', () => {
+    const nav = read('components/layout/Navbar.tsx')
+    expect(nav).not.toMatch(/hidden md:flex|md:hidden/)
+    expect(nav.match(/hidden xl:flex/g)?.length).toBe(2)
+    expect(nav).toContain('xl:hidden')
+  })
+})
+
+describe('buffet photos', () => {
+  it('are square crops centred on the dish', async () => {
+    const sharp = (await import('sharp')).default
+    const { buffetPhotos } = await import('@/data/cateringPhotos')
+    for (const p of buffetPhotos) {
+      expect(p.id).toMatch(/-sq$/)
+      const m = await sharp(resolve(SRC, '../public/assets/catering', `${p.id}-800.webp`)).metadata()
+      expect(m.width).toBe(m.height)
+    }
+    expect(read('components/hall/Gallery.tsx')).toContain('aspect-square')
+  })
+})
+
 describe('story video', () => {
   it('fills its panel in the light theme so its own edges sit in the melt', () => {
     expect(css).toMatch(/:root\[data-theme="light"\] \.light-cover \{[^}]*object-fit: cover/)
@@ -66,8 +146,9 @@ describe('ink band', () => {
     expect(ink).toContain('loading="lazy"')
   })
 
-  it('melts its straight edge into the marble when it rises above the footer', () => {
-    expect(css).toMatch(/\.ink-band--up \{[^}]*mask-image: linear-gradient/)
+  it('sits at the very bottom of the page, under the footer content', () => {
+    const footer = read('components/layout/Footer.tsx')
+    expect(footer.indexOf('<InkBand')).toBeGreaterThan(footer.indexOf('mt-16 pt-6'))
   })
 
   it('no longer hangs under the home hero', () => {

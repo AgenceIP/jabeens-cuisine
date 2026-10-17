@@ -14,10 +14,10 @@ export const hallPhotos: CateringPhoto[] = [
 ]
 
 export const buffetPhotos: CateringPhoto[] = [
-  { id: 'buffet-01-gold-buffet-line', alt: { fr: 'Buffet en chauffe-plats dorés', en: 'Buffet in gold chafing dishes' }, caption: { fr: 'Buffet doré', en: 'Gold buffet' } },
-  { id: 'buffet-02-butter-chicken', alt: { fr: 'Poulet au beurre au buffet', en: 'Butter chicken on the buffet' }, caption: { fr: 'Poulet au beurre', en: 'Butter chicken' } },
-  { id: 'buffet-03-curry', alt: { fr: 'Cari garni de coriandre et de gingembre', en: 'Curry garnished with coriander and ginger' }, caption: { fr: 'Cari maison', en: 'House curry' } },
-  { id: 'buffet-04-biryani', alt: { fr: 'Biryani aux légumes', en: 'Vegetable biryani' }, caption: { fr: 'Biryani aux légumes', en: 'Vegetable biryani' } },
+  { id: 'buffet-01-gold-buffet-line-sq', alt: { fr: 'Buffet en chauffe-plats dorés', en: 'Buffet in gold chafing dishes' }, caption: { fr: 'Buffet doré', en: 'Gold buffet' } },
+  { id: 'buffet-02-butter-chicken-sq', alt: { fr: 'Poulet au beurre au buffet', en: 'Butter chicken on the buffet' }, caption: { fr: 'Poulet au beurre', en: 'Butter chicken' } },
+  { id: 'buffet-03-curry-sq', alt: { fr: 'Cari garni de coriandre et de gingembre', en: 'Curry garnished with coriander and ginger' }, caption: { fr: 'Cari maison', en: 'House curry' } },
+  { id: 'buffet-04-biryani-sq', alt: { fr: 'Biryani aux légumes', en: 'Vegetable biryani' }, caption: { fr: 'Biryani aux légumes', en: 'Vegetable biryani' } },
 ]
 
 export const livePhotos: CateringPhoto[] = [

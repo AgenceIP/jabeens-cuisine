@@ -20,11 +20,11 @@ export default function OpenTableWidget() {
   if (!restaurantId) {
     return (
       <div className="text-center py-14 px-8" style={{ border: '1px dashed rgb(var(--c-line))', background: 'rgb(var(--c-surface) / 0.7)' }}>
-        <p className="text-label text-gold mb-3" style={{ fontSize: '0.55rem' }}>OPENTABLE</p>
+        <p className="text-label text-gold mb-3" style={{ fontSize: 'max(0.55rem, var(--fs-min))' }}>OPENTABLE</p>
         <p className="font-light mb-3" style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'rgb(var(--c-ink))' }}>
           Widget de réservation
         </p>
-        <p className="font-light" style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'rgb(var(--c-muted))', fontWeight: 500, lineHeight: 1.7 }}>
+        <p className="font-light" style={{ fontFamily: 'var(--font-body)', fontSize: 'max(0.75rem, var(--fs-min))', color: 'rgb(var(--c-muted))', fontWeight: 500, lineHeight: 1.7 }}>
           Créez un compte sur{' '}
           <a
             href="https://restaurant.opentable.com"
@@ -35,7 +35,7 @@ export default function OpenTableWidget() {
             restaurant.opentable.com
           </a>
           , puis ajoutez votre restaurant ID dans{' '}
-          <code style={{ color: 'rgb(var(--c-accent))', fontSize: '0.7rem' }}>siteConfig.openTable.restaurantId</code>
+          <code style={{ color: 'rgb(var(--c-accent))', fontSize: 'max(0.7rem, var(--fs-min))' }}>siteConfig.openTable.restaurantId</code>
         </p>
       </div>
     )
