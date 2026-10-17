@@ -1,4 +1,4 @@
-// Pull the decor of the client's dine-in menu (public/menu/Restaurant MENU.pdf) into web assets:
+// Pull the decor of the client's dine-in menu (original vector PDF, kept in the git-ignored raw folder) into web assets:
 // blue/gold ink band and gold flecks -> public/assets/decor/*.webp
 // The marble (marble-3840 / marble-1600.webp) is the menu marble upscaled to 4K with Higgsfield
 // (bytedance upscale, 2026-10-17) and colour-matched to the original; it is not rebuilt here.
@@ -13,7 +13,7 @@ import path from 'node:path'
 
 const require = createRequire(import.meta.url)
 const sharp = require(path.resolve('node_modules', 'sharp'))
-const SRC = path.resolve('public', 'menu', 'Restaurant MENU.pdf')
+const SRC = path.resolve('..', 'Catering pictures and menus', 'menus-originaux', 'Restaurant MENU.pdf')
 const OUT = path.resolve('public', 'assets', 'decor')
 
 async function renderImages() {
