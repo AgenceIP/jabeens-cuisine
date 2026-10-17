@@ -98,7 +98,7 @@ export default function Hero() {
           style={{ objectPosition: 'center center', zIndex: 2 }}
         />
         <div
-          className="absolute inset-0"
+          className="hero-scrim absolute inset-0"
           style={{
             zIndex: 3,
             background: 'linear-gradient(to bottom, rgb(var(--c-scrim) / 0.25) 0%, rgb(var(--c-scrim) / 0.4) 50%, rgb(var(--c-scrim) / 0.85) 80%, rgb(var(--c-scrim) / 0.85) 100%)',

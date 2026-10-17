@@ -142,6 +142,22 @@ describe('every photo melts into its background (light theme)', () => {
     for (const l of lines) expect(l).toMatch(/melt-/)
   })
 
+  it('the hero video only fades over its last ~15%', () => {
+    const rule = /:root\[data-theme="light"\] \.melt-bottom \{[^}]*\}/.exec(css)?.[0] ?? ''
+    const opaqueUntil = Number(/#000 0%, #000 (\d+)%/.exec(rule)?.[1])
+    expect(opaqueUntil).toBeGreaterThanOrEqual(84)
+  })
+
+  it.each(['components/home/PremiereImpression.tsx', 'components/home/EvenementsPrives.tsx'])('%s: the parallax photo fades its own top and bottom', file => {
+    const src = read(file)
+    const img = src.slice(src.indexOf('ref={imgInnerRef}') - 200, src.indexOf('ref={imgInnerRef}') + 400)
+    expect(img).toContain('melt-ends')
+  })
+
+  it('melt-ends fades top and bottom only', () => {
+    expect(css).toMatch(/:root\[data-theme="light"\] \.melt-ends \{[^}]*mask-image: linear-gradient\(to bottom/)
+  })
+
   it('the home carousel melts on all four sides', () => {
     expect(read('components/home/LaCarte.tsx')).toContain('className="melt-edges"')
   })

@@ -93,7 +93,7 @@ export default function PremiereImpression() {
             alt="Jabeen's Cuisine"
             width={736}
             height={1104}
-            className="w-full h-full object-cover"
+            className="melt-ends w-full h-full object-cover"
             style={{ minHeight: '500px', willChange: 'transform' }}
             loading="lazy"
           />

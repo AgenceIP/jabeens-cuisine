@@ -126,7 +126,7 @@ export default function EvenementsPrives() {
             alt="Jabeen's Cuisine Events"
             width={800}
             height={1000}
-            className="w-full h-full object-cover"
+            className="melt-ends w-full h-full object-cover"
             style={{ willChange: 'transform' }}
             loading="lazy"
             decoding="async"
