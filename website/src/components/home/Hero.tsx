@@ -46,7 +46,7 @@ export default function Hero() {
   }, [])
 
   useGSAP(() => {
-    gsap.set([titleLine1Inner.current, titleLine2Inner.current], { yPercent: 110 })
+    gsap.set([titleLine1Inner.current, titleLine2Inner.current], { y: 0, yPercent: 110 }) // y: 0 drops the inline translateY
     gsap.set([taglineRef.current, ctaRef.current], { opacity: 0 })
 
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
@@ -115,17 +115,16 @@ export default function Hero() {
       {/* Content — fades + rises on scroll */}
       <div ref={contentRef} className="relative z-10 w-full max-w-site mx-auto px-8 md:px-20 lg:px-24" style={{ willChange: 'transform, opacity' }}>
         <div className="max-w-3xl">
-          <h1 className="text-display mb-2 leading-none tracking-display">
-            <span className="reveal-wrap">
-              <span ref={titleLine1Inner} className="block text-on-dark" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}>
+          {/* one h1 for the page; lines start below their mask (as GSAP sets them) so the prerendered HTML does not flash them */}
+          <h1 className="text-display mb-6 leading-none tracking-display">
+            <span className="reveal-wrap mb-2">
+              <span ref={titleLine1Inner} className="block text-on-dark" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)', transform: 'translateY(110%)' }}>
                 Jabeen's
               </span>
-            </span>
-          </h1>
-          <div className="my-3 md:my-4" style={{ width: 60, height: 1, background: 'rgb(var(--c-accent-soft) / 0.6)' }} />
-          <h1 className="text-display mb-6 leading-none tracking-display">
+            </span>{' '}
+            <span aria-hidden className="block my-3 md:my-4" style={{ width: 60, height: 1, background: 'rgb(var(--c-accent-soft) / 0.6)' }} />
             <span className="reveal-wrap">
-              <span ref={titleLine2Inner} className="block text-on-dark" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)' }}>
+              <span ref={titleLine2Inner} className="block text-on-dark" style={{ fontSize: 'clamp(3.5rem, 9vw, 8.5rem)', transform: 'translateY(110%)' }}>
                 Cuisine
               </span>
             </span>

@@ -5,36 +5,40 @@ import GoldFlecks from '@/components/decor/GoldFlecks'
 
 const p = (name: string) => `/menu/images/${encodeURIComponent(name)}.jpg`
 
-const row1: { src: string; w: number; pos?: string }[] = [
+type Photo = { src: string; w: number; pos?: string; alt?: string }
+// dish photos are named after the dish: that name is their alt text
+const altOf = (ph: Photo) => ph.alt ?? decodeURIComponent(ph.src.split('/').pop()!.replace(/.jpg$/, ''))
+
+const row1: Photo[] = [
   { src: p('Butter Chicken'),              w: 340, pos: 'center 65%' },
   { src: p('Lahori Kadhai Chicken'),       w: 300, pos: 'center 65%' },
   { src: p('Achaari Paneer Tikka'),        w: 320, pos: 'center 65%' },
-  { src: '/assets/catering/live-01-pani-puri-cart-800.webp', w: 300, pos: 'center 55%' },
+  { src: '/assets/catering/live-01-pani-puri-cart-800.webp', w: 300, pos: 'center 55%', alt: 'Chariot pani puri' },
   { src: p('Goan Style Prawns Curry'),     w: 290, pos: 'center 65%' },
   { src: p('Mushroom Stuffed Tikka'),      w: 330, pos: 'center 65%' },
   { src: p('Lamb Bhuna'),                  w: 310, pos: 'center 65%' },
   { src: p('Desi Style Fish and Chips'),   w: 285, pos: 'center 65%' },
 ]
 
-const row2: { src: string; w: number; pos?: string }[] = [
+const row2: Photo[] = [
   { src: p('Chicken Lababdar'),       w: 480, pos: 'center 65%' },
   { src: p('Samosa Chaat'),           w: 440, pos: 'center 65%' },
-  { src: '/assets/catering/buffet-01-gold-buffet-line-800.webp', w: 440, pos: 'center 62%' },
+  { src: '/assets/catering/buffet-01-gold-buffet-line-800.webp', w: 440, pos: 'center 62%', alt: 'Buffet traiteur doré' },
   { src: p('Methi Malai Chicken'),    w: 460, pos: 'center 65%' },
   { src: p('Dahi Puri'),              w: 420, pos: 'center 65%' },
   { src: p('Melon Salad'),            w: 450, pos: 'center 65%' },
   { src: p('Chicken Malai Tikka'),    w: 430, pos: 'center 65%' },
 ]
 
-const row3: { src: string; w: number; pos?: string }[] = [
+const row3: Photo[] = [
   { src: p('Honey Chili Gobhi'),      w: 310, pos: 'center 65%' },
   { src: p('Phirni Brûlée'),          w: 290, pos: 'center 65%' },
   { src: p('Popadum Platter'),        w: 330, pos: 'center 65%' },
-  { src: '/assets/catering/buffet-02-butter-chicken-800.webp', w: 310, pos: 'center 50%' },
+  { src: '/assets/catering/buffet-02-butter-chicken-800.webp', w: 310, pos: 'center 50%', alt: 'Butter chicken au buffet' },
   { src: p('Beef Samosa'),            w: 270, pos: 'center 65%' },
   { src: p('South Asian Tiramisu'),   w: 320, pos: 'center 65%' },
   { src: p('Pani Puri'),              w: 300, pos: 'center 65%' },
-  { src: '/assets/catering/live-05-pani-puri-closeup-800.webp', w: 300, pos: 'center 45%' },
+  { src: '/assets/catering/live-05-pani-puri-closeup-800.webp', w: 300, pos: 'center 45%', alt: 'Pani puri' },
   { src: p('Butter Naan'),            w: 285, pos: 'center 65%' },
 ]
 
@@ -46,23 +50,24 @@ function PhotoRow({
   direction,
   duration,
 }: {
-  photos: typeof row1
+  photos: Photo[]
   height: number
   direction: 'left' | 'right'
   duration: number
 }) {
-  // Render 2 identical sets for seamless infinite loop
-  const set = (
+  // Render 2 identical sets for seamless infinite loop; the copy is hidden from screen readers
+  const set = (copy: boolean) => (
     <>
       {photos.map((p, i) => (
         <div
           key={i}
           className="galerie-photo"
+          aria-hidden={copy || undefined}
           style={{ width: p.w, height, marginRight: GAP }}
         >
           <img
             src={p.src}
-            alt=""
+            alt={altOf(p)}
             width={p.w}
             height={height}
             style={{ objectPosition: p.pos ?? 'center center' }}
@@ -80,8 +85,8 @@ function PhotoRow({
         className={`galerie-track galerie-track--${direction}`}
         style={{ '--duration': `${duration}s` } as React.CSSProperties}
       >
-        {set}
-        {set}
+        {set(false)}
+        {set(true)}
       </div>
     </div>
   )

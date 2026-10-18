@@ -334,6 +334,9 @@
   }
 }
 
+/* Prerendered French copy, hidden until React renders the English page (set in index.html). */
+[data-prerender="hide"] #root { visibility: hidden; }
+
 :root[data-theme="dark"] .light-only { display: none; }
 :root[data-theme="light"] .dark-only { display: none; }
 

@@ -42,5 +42,10 @@
     { "source": "/privacy",            "destination": "/",                                       "permanent": true },
     { "source": "/Menus (New)",        "destination": "/menu",                                   "permanent": true }
   ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/menu",           "destination": "/menu/index.html" },
+    { "source": "/location-salle", "destination": "/location-salle/index.html" },
+    { "source": "/notre-histoire", "destination": "/notre-histoire/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

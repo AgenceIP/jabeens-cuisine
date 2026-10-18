@@ -154,6 +154,12 @@ export default function Footer() {
             <p className="text-label text-text-muted" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>
               {f.halal}
             </p>
+            <p className="text-label text-text-muted" style={{ fontSize: 'max(0.6rem, var(--fs-min))' }}>
+              {f.credit}{' '}
+              <a href="https://agenceip.com" target="_blank" rel="noopener" className="hover-underline text-text-primary hover:text-gold transition-colors duration-300">
+                Agence IP
+              </a>
+            </p>
           </div>
         </div>
       </div>

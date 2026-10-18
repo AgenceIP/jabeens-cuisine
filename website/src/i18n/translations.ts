@@ -92,6 +92,7 @@ export const translations = {
       reservations: 'Reservations',
       hours: 'Hours',
       copyright: 'All rights reserved.',
+      credit: 'Website by',
       halal: '100% Halal · Brossard, QC',
       findUs: 'Find Us',
       directions: 'Get directions →',
@@ -176,10 +177,6 @@ export const translations = {
       ],
     },
     hallPage: {
-      meta: {
-        title: "Reception Hall & Catering in Brossard | Jabeen's Cuisine",
-        description: "Reception hall for up to 225 guests in Brossard and Indian and Pakistani catering at your place: Queen, King and Corporate menus, live pani puri and chai stations.",
-      },
       label: 'Hall & Catering',
       heading: 'Your event, our cooking.',
       description: 'A reception hall for up to 225 guests in Brossard, and a catering service that comes to you.',
@@ -349,6 +346,7 @@ export const translations = {
       reservations: 'Réservations',
       hours: 'Heures',
       copyright: 'Tous droits réservés.',
+      credit: 'Site web par',
       halal: '100% Halal · Brossard, QC',
       findUs: 'Nous Trouver',
       directions: "Obtenir l'itinéraire →",
@@ -433,10 +431,6 @@ export const translations = {
       ],
     },
     hallPage: {
-      meta: {
-        title: "Salle de réception et traiteur à Brossard | Jabeen's Cuisine",
-        description: "Salle de réception jusqu'à 225 personnes à Brossard et traiteur indien et pakistanais à domicile : menus Queen, King et Corporate, stations pani puri et chai en direct.",
-      },
       label: 'Hall & Traiteur',
       heading: 'Votre événement, notre cuisine.',
       description: "Une salle de réception jusqu'à 225 personnes à Brossard, et un service traiteur qui se déplace chez vous.",

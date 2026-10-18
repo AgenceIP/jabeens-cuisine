@@ -11,8 +11,9 @@ const LanguageContext = createContext<LanguageContextType | null>(null)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Language>(() => {
-    const stored = localStorage.getItem('lang')
-    return (stored === 'en' || stored === 'fr') ? stored : 'en'
+    // French by default (Quebec, <html lang="fr">, prerendered pages); English once chosen.
+    const stored = typeof localStorage === 'undefined' ? null : localStorage.getItem('lang')
+    return stored === 'en' ? 'en' : 'fr'
   })
 
   const setLang = (newLang: Language) => {

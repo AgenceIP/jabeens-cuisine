@@ -53,10 +53,6 @@ export default function Menu() {
   ]
   const DRINKS_PDF = { title: m.drinks.toUpperCase(), subtitle: m.drinksSubtitle, pdf: '/menu/DrinkMenu.pdf' }
 
-  useEffect(() => {
-    document.title = "Menu — Jabeen's Cuisine | Indien & Pakistanais Halal · Brossard"
-  }, [])
-
   const catLabel = (cat: MenuCategory) => lang === 'fr' ? (cat.labelFr ?? cat.label) : cat.label
   const catSublabel = (cat: MenuCategory) => lang === 'fr' ? (cat.sublabelFr ?? cat.sublabel) : cat.sublabel
 

@@ -1,6 +1,7 @@
 export type Theme = 'light' | 'dark'
 
 export function currentTheme(): Theme {
+  if (typeof document === 'undefined') return 'light' // prerender
   return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
 }
 

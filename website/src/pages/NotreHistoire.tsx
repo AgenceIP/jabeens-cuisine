@@ -19,10 +19,6 @@ export default function NotreHistoire() {
   const t = useT()
   const h = t.histoirePage
 
-  useEffect(() => {
-    document.title = "Notre Histoire — Jabeen's Cuisine | Depuis 2017, Brossard"
-  }, [])
-
   useGSAP(() => {
     // Hero entrance
     gsap.fromTo('.histoire-hero-content',

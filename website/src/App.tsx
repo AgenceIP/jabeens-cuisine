@@ -1,19 +1,29 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import { useEffect, lazy, Suspense } from 'react'
+import { useEffect, Suspense } from 'react'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import Navbar from '@/components/layout/Navbar'
 import PageTransition from '@/components/layout/PageTransition'
 import NewsletterPopup from '@/components/ui/NewsletterPopup'
-
-const Home         = lazy(() => import('@/pages/Home'))
-const Menu         = lazy(() => import('@/pages/Menu'))
-const NotreHistoire = lazy(() => import('@/pages/NotreHistoire'))
-const Hall         = lazy(() => import('@/pages/Hall'))
+import { pages, absolute, type PagePath } from '@/seo/pages'
+import { routes } from '@/routes'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
+
+// Keeps the head in step when navigating inside the app (the prerendered HTML has it already).
+function PageHead() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const p = pages[pathname as PagePath]
+    if (!p) return
+    document.title = p.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', p.description)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', absolute(pathname))
+  }, [pathname])
   return null
 }
 
@@ -22,26 +32,33 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-        <Route path="/menu" element={<PageTransition><Menu /></PageTransition>} />
-        <Route path="/notre-histoire" element={<PageTransition><NotreHistoire /></PageTransition>} />
-        <Route path="/location-salle" element={<PageTransition><Hall /></PageTransition>} />
+        {Object.entries(routes).map(([path, Page]) => (
+          <Route key={path} path={path} element={<PageTransition><Page /></PageTransition>} />
+        ))}
       </Routes>
     </AnimatePresence>
   )
 }
 
-export default function App() {
+/** Everything inside the router; the browser wraps it in BrowserRouter, the prerender in StaticRouter. */
+export function AppShell() {
   return (
     <LanguageProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <NewsletterPopup />
-        <Navbar />
-        <Suspense fallback={<div style={{ background: 'rgb(var(--c-bg))', minHeight: '100vh' }} />}>
-          <AnimatedRoutes />
-        </Suspense>
-      </BrowserRouter>
+      <ScrollToTop />
+      <PageHead />
+      <NewsletterPopup />
+      <Navbar />
+      <Suspense fallback={<div style={{ background: 'rgb(var(--c-bg))', minHeight: '100vh' }} />}>
+        <AnimatedRoutes />
+      </Suspense>
     </LanguageProvider>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
   )
 }
