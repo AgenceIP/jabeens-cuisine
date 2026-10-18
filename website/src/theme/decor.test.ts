@@ -128,11 +128,11 @@ describe('navbar with readable labels', () => {
     expect(nav).toContain('xl:hidden')
   })
 
-  it('is a light veil once scrolled, not an opaque white band, and slips away while reading', () => {
+  it('is a light veil once scrolled, not an opaque white band, and always stays in place', () => {
     const nav = read('components/layout/Navbar.tsx')
     expect(nav).not.toContain('/ 0.94')
     expect(nav).not.toMatch(/borderBottom/)
-    expect(nav).toContain("translateY(-100%)")
+    expect(nav).not.toContain('translateY(-100%)') // the client does not want it to hide on scroll
   })
 
   it('mobile menu: opaque (no page showing through) and starts under the header (nothing clipped)', () => {
