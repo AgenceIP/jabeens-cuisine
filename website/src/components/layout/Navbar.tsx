@@ -7,7 +7,7 @@ import MagneticButton from '@/components/ui/MagneticButton'
 import { currentTheme, logoSrc } from '@/theme/theme'
 
 export default function Navbar() {
-  const scrolled = useNavbarScroll(60)
+  const { scrolled, hidden } = useNavbarScroll(60)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
   const t = useT()
@@ -47,12 +47,14 @@ export default function Navbar() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: overHero ? 'rgb(var(--c-scrim) / 0.25)' : 'rgb(var(--c-nav) / 0.94)',
-          backdropFilter: overHero ? 'none' : 'blur(16px)',
-          borderBottom: overHero ? 'none' : '1px solid rgb(var(--c-line))',
+          // a light veil once scrolled (the page shows through), slipping away while reading down
+          background: overHero ? 'rgb(var(--c-scrim) / 0.25)' : 'rgb(var(--c-nav) / 0.72)',
+          backdropFilter: overHero ? 'none' : 'blur(14px) saturate(1.15)',
+          WebkitBackdropFilter: overHero ? 'none' : 'blur(14px) saturate(1.15)',
+          transform: hidden && !mobileOpen ? 'translateY(-100%)' : 'none',
         }}
       >
-        <div className="max-w-site mx-auto px-8 md:px-16 flex items-center h-20" style={{ gap: 0 }}>
+        <div className={`max-w-site mx-auto px-8 md:px-16 flex items-center transition-[height] duration-500 ${scrolled && !mobileOpen ? 'h-16' : 'h-20'}`} style={{ gap: 0 }}>
 
           {/* Logo — hard left */}
           <Link
@@ -65,7 +67,7 @@ export default function Navbar() {
               alt="Jabeen's Cuisine"
               width={320}
               height={80}
-              className="w-52 md:w-80"
+              className={`w-52 transition-[width] duration-500 ${scrolled && !mobileOpen ? 'md:w-60' : 'md:w-80'}`}
               style={{ objectFit: 'contain' }}
               fetchPriority="high"
               decoding="async"
@@ -151,18 +153,11 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[45] flex flex-col items-center justify-center"
-            style={{ background: 'rgb(var(--c-bg) / 0.97)', backdropFilter: 'blur(20px)' }}
+            className="fixed inset-0 z-[45] flex flex-col overflow-y-auto pt-20"
+            style={{ background: 'rgb(var(--c-bg))' }}
           >
-            <div className="flex flex-col items-center gap-8">
-              <img
-                src="/assets/logo-peacock.webp"
-                alt="Jabeen's Cuisine"
-                width={80}
-                height={80}
-                className="mb-4 opacity-60"
-                decoding="async"
-              />
+            {/* m-auto centres when it fits and scrolls when it does not (never clipped under the header) */}
+            <div className="m-auto py-10 flex flex-col items-center gap-7">
               {allLinks.map((link, i) => (
                 <motion.div
                   key={link.to}

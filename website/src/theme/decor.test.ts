@@ -127,6 +127,22 @@ describe('navbar with readable labels', () => {
     expect(nav.match(/hidden xl:flex/g)?.length).toBe(2)
     expect(nav).toContain('xl:hidden')
   })
+
+  it('is a light veil once scrolled, not an opaque white band, and slips away while reading', () => {
+    const nav = read('components/layout/Navbar.tsx')
+    expect(nav).not.toContain('/ 0.94')
+    expect(nav).not.toMatch(/borderBottom/)
+    expect(nav).toContain("translateY(-100%)")
+  })
+
+  it('mobile menu: opaque (no page showing through) and starts under the header (nothing clipped)', () => {
+    const nav = read('components/layout/Navbar.tsx')
+    const overlay = nav.slice(nav.indexOf('Mobile full-screen overlay'))
+    expect(overlay).not.toMatch(/c-bg\) \/ 0\.\d+/)
+    expect(overlay).toContain('overflow-y-auto')
+    expect(overlay).toContain('pt-20')
+    expect(overlay).toContain('m-auto')
+  })
 })
 
 describe('buffet photos', () => {
