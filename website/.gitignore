@@ -25,3 +25,6 @@ dist-ssr
 
 # screenshots and lighthouse output
 shots
+
+.vercel
+.env*
