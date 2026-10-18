@@ -163,6 +163,13 @@ describe('every photo melts into its background (light theme)', () => {
     expect(rule.match(/rgb\(0 0 0 \/ [\d.]+\) calc/g)?.length).toBeGreaterThanOrEqual(8)
   })
 
+  it('the hero video keeps the first screen, centred and sharp (not stretched over the fade zone)', () => {
+    expect(css).toMatch(/:root\[data-theme="light"\] \.melt-hero \.hero-media \{[^}]*bottom: var\(--hero-below\)/)
+    const hero = read('components/home/Hero.tsx')
+    expect(hero).toContain('hero-media')
+    expect(hero).not.toMatch(/scale-\[1\.\d+\]/) // a CSS zoom upscales the 1080p video and blurs it
+  })
+
   it.each(['components/home/PremiereImpression.tsx', 'components/home/EvenementsPrives.tsx'])('%s: the parallax photo fades its own top and bottom', file => {
     const src = read(file)
     const img = src.slice(src.indexOf('ref={imgInnerRef}') - 200, src.indexOf('ref={imgInnerRef}') + 400)

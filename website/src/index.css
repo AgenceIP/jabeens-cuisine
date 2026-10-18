@@ -360,6 +360,18 @@
   :root[data-theme="light"] .melt-hero { --hero-fade: 240px; --hero-below: 210px; }
 }
 
+/* The video keeps the first screen (centred, not upscaled) and sinks into a dark zone below it,
+   which carries the slow fade into the marble. */
+:root[data-theme="light"] .melt-hero {
+  background: rgb(var(--c-scrim)) !important;
+}
+
+:root[data-theme="light"] .melt-hero .hero-media {
+  bottom: var(--hero-below);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgb(0 0 0 / 0.75) 93%, rgb(0 0 0 / 0.35) 97%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 88%, rgb(0 0 0 / 0.75) 93%, rgb(0 0 0 / 0.35) 97%, transparent 100%);
+}
+
 :root[data-theme="light"] .melt-y {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);

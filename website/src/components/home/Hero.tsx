@@ -73,7 +73,7 @@ export default function Hero() {
       style={{ background: 'transparent' }}
     >
       {/* Background — parallax target */}
-      <div ref={bgRef} className="absolute inset-0 overflow-hidden" style={{ willChange: 'transform' }}>
+      <div ref={bgRef} className="hero-media absolute inset-0 overflow-hidden" style={{ willChange: 'transform' }}>
         {/* Custom LCP poster — shown while video loads, fades once video plays.
             Using a CSS image instead of the video poster attribute avoids iOS
             showing a native play button overlay when autoplay is triggered. */}
@@ -94,7 +94,7 @@ export default function Hero() {
           loop
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover scale-100 md:scale-[1.12]"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: 'center center', zIndex: 2 }}
         />
         <div
