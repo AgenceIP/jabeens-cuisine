@@ -130,7 +130,8 @@ describe('navbar with readable labels', () => {
 
   it('is a light veil once scrolled, not an opaque white band, and always stays in place', () => {
     const nav = read('components/layout/Navbar.tsx')
-    expect(nav).not.toContain('/ 0.94')
+    const veil = Number(/rgb\(var\(--c-nav\) \/ ([\d.]+)\)/.exec(nav)?.[1])
+    expect(veil).toBeLessThanOrEqual(0.5) // 0.94 then 0.72 were still too opaque for the client
     expect(nav).not.toMatch(/borderBottom/)
     expect(nav).not.toContain('translateY(-100%)') // the client does not want it to hide on scroll
   })

@@ -48,9 +48,9 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
           // a light veil once scrolled: the page shows through
-          background: overHero ? 'rgb(var(--c-scrim) / 0.25)' : 'rgb(var(--c-nav) / 0.72)',
-          backdropFilter: overHero ? 'none' : 'blur(14px) saturate(1.15)',
-          WebkitBackdropFilter: overHero ? 'none' : 'blur(14px) saturate(1.15)',
+          background: overHero ? 'rgb(var(--c-scrim) / 0.25)' : 'rgb(var(--c-nav) / 0.5)',
+          backdropFilter: overHero ? 'none' : 'blur(18px) saturate(1.15)',
+          WebkitBackdropFilter: overHero ? 'none' : 'blur(18px) saturate(1.15)',
         }}
       >
         <div className={`max-w-site mx-auto px-8 md:px-16 flex items-center transition-[height] duration-500 ${scrolled && !mobileOpen ? 'h-16' : 'h-20'}`} style={{ gap: 0 }}>
