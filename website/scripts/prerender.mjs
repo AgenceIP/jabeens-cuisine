@@ -10,8 +10,11 @@ const { render, pages, absolute, jsonLd, siteConfig } = await import(pathToFileU
 const template = await readFile(`${dist}/index.html`, 'utf8')
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+// Main content only, like Semrush: it counted 186 words on a home page where everything gave 271.
+// MIN_WORDS keeps a margin over its 200 (it still counted a few words fewer than this method).
+const MIN_WORDS = 220
 const words = html => html
-  .replace(/<(script|style|svg)\b[\s\S]*?<\/\1>/g, ' ')
+  .replace(/<(script|style|svg|nav|footer|form|button)\b[\s\S]*?<\/\1>/g, ' ')
   .replace(/<[^>]+>/g, ' ')
   .replace(/&[a-z#0-9]+;/gi, ' ')
   .split(/\s+/).filter(w => /\p{L}/u.test(w)).length
@@ -54,7 +57,7 @@ for (const path of Object.keys(pages)) {
     .replace('<div id="root"></div>', `<div id="root">${body}</div>`)
 
   const n = words(body), h1 = (body.match(/<h1\b/g) ?? []).length
-  if (n < 200) problems.push(`${path}: ${n} words (200 minimum)`)
+  if (n < MIN_WORDS) problems.push(`${path}: ${n} words of main content (${MIN_WORDS} minimum)`)
   if (h1 !== 1) problems.push(`${path}: ${h1} h1 (exactly 1)`)
 
   const file = path === '/' ? `${dist}/index.html` : `${dist}${path}/index.html`

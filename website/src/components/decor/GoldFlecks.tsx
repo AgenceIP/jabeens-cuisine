@@ -3,7 +3,7 @@ export default function GoldFlecks({ className = '' }: { className?: string }) {
   return (
     <img
       src="/assets/decor/gold.webp"
-      alt=""
+      alt="Feuille d'or décorative"
       aria-hidden="true"
       width={600}
       height={472}

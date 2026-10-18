@@ -52,7 +52,7 @@ export default function CommanderEnLigne() {
   return (
     <section ref={sectionRef} className="relative overflow-hidden" style={{ background: 'transparent' }}>
       <div className="melt-band-layer absolute inset-0">
-        <img src="/assets/food-gen-2.jpg" alt="" width={896} height={1200} className="w-full h-full object-cover opacity-20" loading="lazy" />
+        <img src="/assets/food-gen-2.jpg" alt="Plat de Jabeen's Cuisine" aria-hidden="true" width={896} height={1200} className="w-full h-full object-cover opacity-20" loading="lazy" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgb(var(--c-band) / 0.88), rgb(var(--c-band) / 0.96))' }} />
       </div>
 

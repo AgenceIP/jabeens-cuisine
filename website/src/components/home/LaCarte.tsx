@@ -7,7 +7,7 @@ const p = (name: string) => `/menu/images/${encodeURIComponent(name)}.jpg`
 
 type Photo = { src: string; w: number; pos?: string; alt?: string }
 // dish photos are named after the dish: that name is their alt text
-const altOf = (ph: Photo) => ph.alt ?? decodeURIComponent(ph.src.split('/').pop()!.replace(/.jpg$/, ''))
+const altOf = (ph: Photo) => ph.alt ?? decodeURIComponent(ph.src.split('/').pop()!.replace(/\.jpg$/, ''))
 
 const row1: Photo[] = [
   { src: p('Butter Chicken'),              w: 340, pos: 'center 65%' },
@@ -117,6 +117,9 @@ export default function LaCarte() {
         >
           {c.heading}
         </h2>
+        <p className="text-text-muted font-light leading-relaxed mx-auto mt-6" style={{ maxWidth: '62ch', fontSize: 'max(0.9rem, var(--fs-body-min))' }}>
+          {c.intro}
+        </p>
       </div>
 
       {/* Three drift rows */}

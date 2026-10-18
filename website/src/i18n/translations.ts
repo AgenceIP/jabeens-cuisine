@@ -27,6 +27,7 @@ export const translations = {
     laCarte: {
       label: 'Our Cuisine',
       heading: 'Every dish tells a story.',
+      intro: 'Tapas and tandoor grills, salads, vegetarian and meat curries, biryani served with raita, naans and desserts: our menu brings together the great Indian and Pakistani classics, all 100% halal. The take-out menu adds Karachi rolls and Indo-Chinese dishes. Enjoy them in our Brossard dining room, to go, or delivered.',
       cta: "This is just a taste →",
     },
     backstory: {
@@ -281,6 +282,7 @@ export const translations = {
     laCarte: {
       label: 'Notre Cuisine',
       heading: 'Chaque plat raconte une histoire.',
+      intro: "Tapas et grillades du tandoor, salades, currys végétariens et de viande, biryani servi avec raïta, naans et desserts : notre carte réunit les grands classiques indiens et pakistanais, tous 100 % halal. Le menu à emporter ajoute les rolls de Karachi et des plats indo-chinois. À savourer sur place à Brossard, à emporter ou en livraison.",
       cta: "Ce n'est qu'un avant-goût →",
     },
     backstory: {

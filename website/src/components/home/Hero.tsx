@@ -80,7 +80,7 @@ export default function Hero() {
         <img
           ref={posterRef}
           src="/assets/hero-2.jpg"
-          alt=""
+          alt="Assiette de Jabeen's Cuisine"
           aria-hidden="true"
           fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover"
